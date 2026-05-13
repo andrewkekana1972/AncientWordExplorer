@@ -259,21 +259,36 @@ function buildDictCell(hits){
 }
 
 function buildHebrewCell(w, hits){
-  // Hebrew word + transliteration (highlighted if matched) + all English meanings from dictionary
+  // Hebrew word + transliteration (highlighted if matched) + all English meanings
   var transClass = hits.length ? 'htrans-match' : 'htrans';
   var html = '<span class="hword">'+(w.hebrew_word||'')+'</span>'
     +'<span class="'+transClass+'">'+(w.hebrew_transliteration||'')+'</span>';
 
-  // Add all English meanings linked to this H-number from the dictionary
+  // Collect all meanings: from dictionary entries + Claude's english_meaning
+  var allMeanings = [];
+
+  // From dictionary (all meanings linked to this H-number)
   if(hits.length){
-    var allMeanings = uniq(hits.map(function(e){ return e.meaning; })).filter(Boolean);
-    if(allMeanings.length){
-      html += '<div class="dict-meanings">'
-        + allMeanings.map(function(m){
-            return '<span class="dict-meaning-tag">'+m+'</span>';
-          }).join(' ')
-        +'</div>';
-    }
+    uniq(hits.map(function(e){ return e.meaning; })).filter(Boolean).forEach(function(m){
+      if(allMeanings.indexOf(m) === -1) allMeanings.push(m);
+    });
+  }
+
+  // Also add Claude's english_meaning if not already included
+  if(w.english_meaning){
+    var claudeMeanings = w.english_meaning.split(/[,;\/]+/).map(function(m){ return m.trim(); }).filter(Boolean);
+    claudeMeanings.forEach(function(m){
+      if(allMeanings.indexOf(m) === -1) allMeanings.push(m);
+    });
+  }
+
+  // Always show meanings if we have any
+  if(allMeanings.length){
+    html += '<div class="dict-meanings">'
+      + allMeanings.map(function(m){
+          return '<span class="dict-meaning-tag">'+m+'</span>';
+        }).join(' ')
+      +'</div>';
   }
   return html;
 }
