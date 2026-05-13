@@ -15,7 +15,7 @@ app = Flask(__name__, static_folder='.')
 # Update this URL to match your GitHub username and repo
 GITHUB_CSV_URL = os.environ.get(
     'BANTU_CSV_URL',
-    'https://raw.githubusercontent.com/andrewkekana1972/ancient-word-explorer/main/bantu_dictionary.csv'
+    'https://raw.githubusercontent.com/andrewkekana1972/ancientwordexplorer/main/bantu_dictionary.csv'
 )
 
 def load_bantu_db(url):
