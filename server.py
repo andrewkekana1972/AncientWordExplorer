@@ -63,6 +63,36 @@ def load_bantu_db(url):
 # Load at startup
 BANTU_DB = load_bantu_db(GITHUB_CSV_URL)
 
+def prewarm_cache():
+    """Pre-cache popular verses in background so first user gets fast results."""
+    import threading, time
+    def warm():
+        # Wait for server to fully start
+        time.sleep(3)
+        popular = ['Genesis 1:1', 'John 1:1', 'Psalm 23:1', 'Exodus 3:14', 'Isaiah 40:31', 'Deuteronomy 33:29']
+        for verse in popular:
+            key = verse.lower().strip()
+            if key not in CACHE:
+                try:
+                    print('Pre-warming:', verse)
+                    verse_text = lookup_verse(verse)
+                    result = call_claude(verse, verse_text)
+                    if verse_text and result.get('verses'):
+                        result['verses'][0]['text'] = verse_text
+                    result = correct_strongs(result, verse)
+                    CACHE[key] = result
+                    print('Pre-warmed:', verse)
+                    time.sleep(1)
+                except Exception as e:
+                    print('Pre-warm failed for', verse, ':', e)
+    t = threading.Thread(target=warm, daemon=True)
+    t.start()
+
+prewarm_cache()
+
+# ── Result cache (speeds up repeated searches) ───────────────────────────────
+CACHE = {}
+
 # ── KJV verse lookup ──────────────────────────────────────────────────────────
 KJV = {
     "genesis 1:1": "In the beginning God created the heaven and the earth.",
@@ -265,12 +295,22 @@ def analyse():
     verse_text_from_client = body.get('verse_text', '').strip()
     if not verse:
         return jsonify({'error': 'No verse provided'}), 400
+
+    # Return cached result instantly if available
+    cache_key = verse.lower().strip()
+    if cache_key in CACHE:
+        print('Cache hit:', verse)
+        return jsonify(CACHE[cache_key])
+
     try:
         verse_text = lookup_verse(verse) or verse_text_from_client
         result = call_claude(verse, verse_text)
         if verse_text and result.get('verses'):
             result['verses'][0]['text'] = verse_text
         result = correct_strongs(result, verse)
+        # Store in cache
+        CACHE[cache_key] = result
+        print('Cached:', verse, '| Cache size:', len(CACHE))
         return jsonify(result)
     except urllib.error.HTTPError as e:
         return jsonify({'error': 'API error ' + str(e.code) + ': ' + e.read().decode()}), 500
