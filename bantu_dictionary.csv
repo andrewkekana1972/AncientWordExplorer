@@ -642,6 +642,9 @@
 1037,bôhen,bet-nunu,בנ,great toe,H931,bôhen,Hebrew,בהן
 1037,Bôhan,bet-nunu,בנ,thumb,H932,Bôhan,Hebrew,בהן
 1037,bîyn,bet-nunu,בנ,vision,H995,kubona,kiRundi,בין
+1037,bîyn,bet-nunu,בנ,skillful,H995,bina,Sesotho,בין
+1037,bîyn,bet-nunu,בנ,move skillfully,H995,bina,Sesotho,בין
+1037,bîyn,bet-nunu,בנ,sing skillfully,H995,bina,Sesotho,בין
 1037,bîyn,bet-nunu,בנ,vision,H995,pono,Sesotho,בין
 1037,bîyn,bet-nunu,בנ,vision,H995,bono,tshiVenda,בין
 1037,bîyn,bet-nunu,בנ,vision,H995,xibono,xiTsonga,בין
@@ -3420,6 +3423,7 @@
 1244,kâhan,khaf-nunu,כנ,officiate,H3547,kâhan,Hebrew,כהן
 1244,kôhên,khaf-nunu,כנ,officiating,H3548,kôhên,Hebrew,כהן
 1244,kâhên,khaf-nunu,כנ,priest,H3549,kâhên,Hebrew,כהן
+1244,kôhên,khaf-nunu,כנ,priest,H3548,ngaka,Sesotho,כהן
 1244,kâhên,khaf-nunu,כנ,spiritual healer,H3549,kâhên,Hebrew,כהן
 1244,kâhên,khaf-nunu,כנ,doctor,H3549,ngaka,Sesotho,כהן
 1244,kâhên,khaf-nunu,כנ,healer,H3549,ngaka,Sesotho,כהן
@@ -5028,6 +5032,8 @@
 1324,çâbâʼ,sin-bet,סב,quaff,H5433,çâbâʼ,Hebrew,סבא
 1324,çôbeʼ,sin-bet,סב,potation,H5435,çôbeʼ,Hebrew,סבא
 1324,çâbab,sin-bet,סב,revolve,H5437,çâbab,Hebrew,סבב
+1324,çâbab,sin-bet,סב,turn,H5437,çâbab,Hebrew,סבב
+1324,çâbab,sin-bet,סב,pinch,H5437,soba,Sesotho,סבב
 1324,çibbâh,sin-bet,סב,feather used for turning,H5438,lesiba,Sesotho,סבה
 1324,çâbîyb,sin-bet,סב,circle,H5439,çâbîyb,Hebrew,סביב
 1324,sîyb,sin-bet,סב,become aged,H7867,sîyb,Hebrew,שיב
@@ -8632,6 +8638,7 @@
 2012,bâchûwr,bet-kgeta-resh,בחר,young man,H970,bakala,Kikongo,בחור
 2012,bâchîyr,bet-kgeta-resh,בחר,select,H972,bâchîyr,Hebrew,בחיר
 2012,bâchar,bet-kgeta-resh,בחר,sacrifice a choice one,H977,bâchar,Hebrew,בחר
+2012,bâchar,bet-kgeta-resh,בחר,youth,H977,bacha,Sesotho,בחר
 2012,bâchar,bet-kgeta-resh,בחר,choice one,H977,bâchar,Hebrew,בחר
 2012,bâchar,bet-kgeta-resh,בחר,chosen,H977,bâchar,Hebrew,בחר
 2012,bᵉchurôwth,bet-kgeta-resh,בחר,youth,H979,bᵉchurôwth,Hebrew,בחרות
@@ -11000,7 +11007,9 @@
 2401,nâṭash,nunu-thete-shin,נטש,cast off,H5203,nâṭash,Hebrew,נטש
 2403,nêkach,nunu-khaf-kgeta,נכח,fore,H5226,nêkach,Hebrew,נכח
 2403,nôkach,nunu-khaf-kgeta,נכח,front,H5227,nôkach,Hebrew,נכח
+2403,nôkach,nunu-khaf-kgeta,נכח,nose,H5227,nko,Sesotho,נכח
 2403,nâkôach,nunu-khaf-kgeta,נכח,straightforward,H5228,nâkôach,Hebrew,נכח
+2403,nâkôach,nunu-khaf-kgeta,נכח,nose,H5228,nko,Sesotho,נכח
 2403,nᵉkôchâh,nunu-khaf-kgeta,נכח,straightforwardness,H5229,nᵉkôchâh,Hebrew,נכחה
 2404,nêkel,nunu-khaf-lamed,נכל,deceit,H5231,nêkel,Hebrew,נכל
 2404,nêkel,nunu-khaf-lamed,נכל,wiles,H5231,nêkel,Hebrew,נכל
@@ -11030,9 +11039,11 @@
 2411,maççâch,nunu-sin-kgeta,נסח,broken,H4535,maççâch,Hebrew,מסח
 2411,nâçach,nunu-sin-kgeta,נסח,tear away,H5255,nâçach,Hebrew,נסח
 2411,nâçach,nunu-sin-kgeta,נסח,pluck,H5255,nâçach,Hebrew,נסח
+2411,nâçach,nunu-sin-kgeta,נסח,pluck,H5255,ntsha,Sesotho,נסח
 2411,nâçach,nunu-sin-kgeta,נסח,rooted,H5255,nâçach,Hebrew,נסח
 2411,nâçach,nunu-sin-kgeta,נסח,destroy,H5255,nâçach,Hebrew,נסח
 2411,nᵉçach,nunu-sin-kgeta,נסח,pulled,H5256,nᵉçach,Hebrew,נסח
+2411,nᵉçach,nunu-sin-kgeta,נסח,pluck,H5256,ntsha,Sesotho,נסח
 2411,nᵉçach,nunu-sin-kgeta,נסח,pulled down,H5256,nᵉçach,Hebrew,נסח
 2412,maççêkâh,nunu-sin-khaf,נסכ,pouring,H4541,maççêkâh,Hebrew,מסכה
 2412,maççêkâh,nunu-sin-khaf,נסכ,idol,H4541,maççêkâh,Hebrew,מסכה
@@ -11086,8 +11097,18 @@
 2417,naʻătsûwts,nunu-ayin-tsade,נעצ,brier,H5285,naʻătsûwts,Hebrew,נעצוץ
 2417,naʻătsûwts,nunu-ayin-tsade,נעצ,thorn,H5285,naʻătsûwts,Hebrew,נעצוץ
 2417,nâtsach,nunu-ayin-tsade,נעצ,glitter from afar,H5329,nâtsach,Hebrew,נצח
+2417,nâtsach,nunu-ayin-tsade,נעצ,perpetual,H5329,nâtsach,Hebrew,נצח
+2417,nâtsach,nunu-ayin-tsade,נעצ,still,H5329,ntse,Hebrew,נצח
+2417,nâtsach,nunu-ayin-tsade,נעצ,to be enduring,H5329,nâtsach,Hebrew,נצח
+2417,nâtsach,nunu-ayin-tsade,נעצ,lasting,H5329,nâtsach,Hebrew,נצח
+2417,nâtsach,nunu-ayin-tsade,נעצ,excel,H5329,nâtsach,Hebrew,נצח
+2417,nâtsach,nunu-ayin-tsade,נעצ,set forward,H5329,nâtsach,Hebrew,נצח
 2417,nᵉtsach,nunu-ayin-tsade,נעצ,become chief,H5330,nᵉtsach,Hebrew,נצח
 2417,netsach,nunu-ayin-tsade,נעצ,goal,H5331,netsach,Hebrew,נצח
+2417,netsach,nunu-ayin-tsade,נעצ,always,H5331,netsach,Hebrew,נצח
+2417,netsach,nunu-ayin-tsade,נעצ,constantly,H5331,netsach,Hebrew,נצח
+2417,netsach,nunu-ayin-tsade,נעצ,evermore,H5331,netsach,Hebrew,נצח
+2417,netsach,nunu-ayin-tsade,נעצ,still,H5331,ntse,Sesotho ,נצח
 2418,nâʻûwr,nunu-ayin-resh,נער,youth,H5271,nâʻûwr,Hebrew,נעור
 2418,nâʻûwr,nunu-ayin-resh,נער,childhood,H5271,nâʻûwr,Hebrew,נעור
 2419,mappâch,nunu-peh-kgeta,נפח,breathing out,H4646,mappâch,Hebrew,מפח
@@ -11199,6 +11220,7 @@
 2426,nᵉtsîyb,nunu-tsade-bet,נצב,pillar,H5333,nsika,isiZulu,נציב
 2428,nâtsal,nunu-tsade-lamed,נצל,snatch,H5337,nâtsal,Hebrew,נצל
 2428,nâtsal,nunu-tsade-lamed,נצל,deliver,H5337,nâtsal,Hebrew,נצל
+2428,nâtsal,nunu-tsade-lamed,נצל,take me back,H5337,ntsola,Sesotho,נצל
 2428,nâtsal,nunu-tsade-lamed,נצל,recover,H5337,nâtsal,Hebrew,נצל
 2428,nâtsal,nunu-tsade-lamed,נצל,rid,H5337,nâtsal,Hebrew,נצל
 2428,nâtsal,nunu-tsade-lamed,נצל,escape,H5337,nâtsal,Hebrew,נצל
@@ -11217,6 +11239,8 @@
 2429,nâtsar,nunu-tsade-resh,נצר,monument,H5341,nâtsar,Hebrew,נצר
 2429,nâtsar,nunu-tsade-resh,נצר,preserver,H5341,nâtsar,Hebrew,נצר
 2429,nâtsar,nunu-tsade-resh,נצר,subtil,H5341,nâtsar,Hebrew,נצר
+2429,nâtsar,nunu-tsade-resh,נצר,still,H5341,ntsela,Hebrew,נצר
+2429,nâtsar,nunu-tsade-resh,נצר,still,H5341,ntsa ,Hebrew,נצר
 2429,nâtsar,nunu-tsade-resh,נצר,hidden,H5341,nâtsar,Hebrew,נצר
 2429,nâtsar,nunu-tsade-resh,נצר,watcher,H5341,nâtsar,Hebrew,נצר
 2429,nêtser,nunu-tsade-resh,נצר,shoot,H5342,nêtser,Hebrew,נצר
@@ -11233,6 +11257,9 @@
 2433,nâqâm,nunu-qupha-mah,נקמ,revenge,H5359,nâqâm,Hebrew,נקם
 2433,nᵉqâmâh,nunu-qupha-mah,נקמ,avengement,H5360,nᵉqâmâh,Hebrew,נקמה
 2434,nâqaʻ,nunu-qupha-ayin,נקע,feel aversion,H5361,nâqaʻ,Hebrew,נקע
+2434,nâqaʻ,nunu-qupha-ayin,נקע,alienate,H5361,nâqaʻ,Hebrew,נקע
+2434,nâqaʻ,nunu-qupha-ayin,נקע,turn away in disgust,H5361,nkga,Sesotho,נקע
+2434,nâqaʻ,nunu-qupha-ayin,נקע,stench,H5361,nkga,Sesotho,נקע
 2435,nâqaph,nunu-qupha-peh,נקפ,strike,H5362,nâqaph,Hebrew,נקף
 2435,nôqeph,nunu-qupha-peh,נקפ,threshing,H5363,nôqeph,Hebrew,נקף
 2435,niqpâh,nunu-qupha-peh,נקפ,rope,H5364,niqpâh,Hebrew,נקפה
