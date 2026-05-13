@@ -1,5 +1,6 @@
 """
 Ancient Word Explorer - Flask Backend
+Loads Bantu dictionary from GitHub at startup.
 No extra packages needed beyond flask and gunicorn.
 Locally: python3 server.py
 Render:  gunicorn server:app
@@ -10,13 +11,64 @@ from flask import Flask, request, jsonify, send_from_directory
 
 app = Flask(__name__, static_folder='.')
 
-# ── KJV verse lookup (server-side, guaranteed accurate) ──────────────────────
+# ── Load Bantu dictionary from GitHub ────────────────────────────────────────
+# Update this URL to match your GitHub username and repo
+GITHUB_CSV_URL = os.environ.get(
+    'BANTU_CSV_URL',
+    'https://raw.githubusercontent.com/andrewkekana1972/ancient-word-explorer/main/bantu_dictionary.csv'
+)
+
+def load_bantu_db(url):
+    """Fetch and parse the Bantu dictionary CSV from GitHub."""
+    print('Loading Bantu dictionary from:', url)
+    try:
+        req = urllib.request.Request(url, headers={'User-Agent': 'AncientWordExplorer/1.0'})
+        with urllib.request.urlopen(req, timeout=30) as r:
+            raw = r.read().decode('utf-8')
+
+        lookup = {}
+        for line in raw.splitlines():
+            parts = line.split(',')
+            if len(parts) < 8:
+                continue
+            strongs_id = parts[5].strip().strip('"')
+            bantu_word = parts[6].strip().strip('"')
+            language   = parts[7].strip().strip('"')
+            meaning    = parts[4].strip().strip('"')
+            translit   = parts[1].strip().strip('"')
+
+            if not strongs_id or not bantu_word or not language:
+                continue
+            if language in ('Hebrew', 'Aramaic', 'Greek', 'language'):
+                continue
+            if not strongs_id.startswith('H'):
+                continue
+
+            if strongs_id not in lookup:
+                lookup[strongs_id] = []
+            lookup[strongs_id].append({
+                'word': bantu_word,
+                'language': language,
+                'meaning': meaning,
+                'transliteration': translit
+            })
+
+        print(f'Loaded {len(lookup)} H-numbers, {sum(len(v) for v in lookup.values())} entries')
+        return lookup
+
+    except Exception as e:
+        print('ERROR loading Bantu dictionary:', e)
+        return {}
+
+# Load at startup
+BANTU_DB = load_bantu_db(GITHUB_CSV_URL)
+
+# ── KJV verse lookup ──────────────────────────────────────────────────────────
 KJV = {
     "genesis 1:1": "In the beginning God created the heaven and the earth.",
     "genesis 1:2": "And the earth was without form, and void; and darkness was upon the face of the deep. And the Spirit of God moved upon the face of the waters.",
     "genesis 1:3": "And God said, Let there be light: and there was light.",
     "exodus 3:14": "And God said unto Moses, I AM THAT I AM: and he said, Thus shalt thou say unto the children of Israel, I AM hath sent me unto you.",
-    "exodus 20:3": "Thou shalt have no other gods before me.",
     "deuteronomy 33:29": "Happy art thou, O Israel: who is like unto thee, O people saved by the LORD, the shield of thy help, and who is the sword of thy excellency! and thine enemies shall be found liars unto thee; and thou shalt tread upon their high places.",
     "psalm 23:1": "The LORD is my shepherd; I shall not want.",
     "psalm 23:2": "He maketh me to lie down in green pastures: he leadeth me beside the still waters.",
@@ -25,7 +77,6 @@ KJV = {
     "psalm 23:5": "Thou preparest a table before me in the presence of mine enemies: thou anointest my head with oil; my cup runneth over.",
     "psalm 23:6": "Surely goodness and mercy shall follow me all the days of my life: and I will dwell in the house of the LORD for ever.",
     "psalm 91:1": "He that dwelleth in the secret place of the most High shall abide under the shadow of the Almighty.",
-    "psalm 91:2": "I will say of the LORD, He is my refuge and my fortress: my God; in him will I trust.",
     "psalm 119:105": "Thy word is a lamp unto my feet, and a light unto my path.",
     "proverbs 3:5": "Trust in the LORD with all thine heart; and lean not unto thine own understanding.",
     "proverbs 3:6": "In all thy ways acknowledge him, and he shall direct thy paths.",
@@ -40,53 +91,22 @@ KJV = {
     "revelation 1:8": "I am Alpha and Omega, the beginning and the ending, saith the Lord, which is, and which was, and which is to come, the Almighty.",
 }
 
-# ── Verified Strong's numbers for key verses ─────────────────────────────────
-# Format: { "verse_key": { "english_phrase": "Hxxxx" } }
-# Used to cross-check and correct Claude's Strong's assignments
 VERIFIED_STRONGS = {
     "deuteronomy 33:29": {
-        "happy": "H835",
-        "blessed": "H835",
-        "israel": "H3478",
-        "saved": "H3467",
-        "salvation": "H3468",
-        "lord": "H3068",
-        "shield": "H4043",
-        "help": "H5828",
-        "sword": "H2719",
-        "excellency": "H1346",
-        "enemies": "H341",
-        "liars": "H3584",
-        "found liars": "H3584",
-        "tread": "H1869",
-        "high places": "H1116",
+        "happy": "H835", "israel": "H3478", "saved": "H3467",
+        "lord": "H3068", "shield": "H4043", "help": "H5828",
+        "sword": "H2719", "excellency": "H1346", "enemies": "H341",
+        "liars": "H3584", "found liars": "H3584",
+        "tread": "H1869", "high places": "H1116",
     },
     "genesis 1:1": {
-        "beginning": "H7225",
-        "created": "H1254",
-        "god": "H430",
-        "heaven": "H8064",
-        "earth": "H776",
-    },
-    "exodus 3:14": {
-        "i am": "H1961",
-    },
-    "psalm 23:1": {
-        "lord": "H3068",
-        "shepherd": "H7462",
-        "want": "H2637",
+        "beginning": "H7225", "created": "H1254",
+        "god": "H430", "heaven": "H8064", "earth": "H776",
     },
     "isaiah 40:31": {
-        "wait": "H6960",
-        "lord": "H3068",
-        "renew": "H2498",
-        "strength": "H3581",
-        "mount up": "H5927",
-        "eagles": "H5404",
-        "run": "H7323",
-        "weary": "H3021",
-        "walk": "H1980",
-        "faint": "H3286",
+        "wait": "H6960", "lord": "H3068", "renew": "H2498",
+        "strength": "H3581", "eagles": "H5404",
+        "run": "H7323", "walk": "H1980",
     },
 }
 
@@ -99,10 +119,8 @@ def lookup_verse(reference):
         'gen': 'genesis', 'exo': 'exodus', 'ex': 'exodus',
         'deut': 'deuteronomy', 'deu': 'deuteronomy', 'dt': 'deuteronomy',
         'ps': 'psalm', 'psa': 'psalm', 'prov': 'proverbs', 'pro': 'proverbs',
-        'isa': 'isaiah', 'jer': 'jeremiah',
-        'jn': 'john', 'joh': 'john',
-        'rom': 'romans', 'phil': 'philippians', 'php': 'philippians',
-        'heb': 'hebrews', 'rev': 'revelation',
+        'isa': 'isaiah', 'jer': 'jeremiah', 'jn': 'john', 'joh': 'john',
+        'rom': 'romans', 'phil': 'philippians', 'heb': 'hebrews', 'rev': 'revelation',
     }
     for short, full in abbrev.items():
         if key.startswith(short + ' ') or key.startswith(short + '.'):
@@ -113,19 +131,16 @@ def lookup_verse(reference):
 
 
 def correct_strongs(result, verse_key):
-    """Cross-check Claude's Strong's numbers against our verified table."""
     verified = VERIFIED_STRONGS.get(verse_key.lower().strip(), {})
     if not verified:
         return result
     for verse in result.get('verses', []):
         for word in verse.get('words', []):
             meaning = (word.get('english_meaning') or '').lower()
-            translit = (word.get('hebrew_transliteration') or '').lower()
             for phrase, correct_h in verified.items():
-                if phrase in meaning or phrase in translit:
-                    if word.get('strongs') != correct_h:
-                        print(f'Correcting Strong\'s: {word.get("strongs")} -> {correct_h} for "{phrase}"')
-                        word['strongs'] = correct_h
+                if phrase in meaning and word.get('strongs') != correct_h:
+                    print(f'Correcting: {word.get("strongs")} -> {correct_h} for "{phrase}"')
+                    word['strongs'] = correct_h
     return result
 
 
@@ -134,20 +149,16 @@ PROMPT = """You are a scholar of ancient Hebrew, Biblical linguistics, and Bantu
 Verse: "{verse}"
 KJV text: "{verse_text}"
 
-CRITICAL INSTRUCTIONS for Strong's numbers:
-- You MUST use the correct Strong's number for each specific Hebrew word as it appears in THIS verse
-- Do NOT guess or approximate - use the exact lexical form and its correct H-number
-- For example in Deuteronomy 33:29: "found liars" is H3584 (kachash), NOT H8267 (sheqer)
-- Double-check each Strong's number before including it
+CRITICAL: Use the CORRECT Strong's H-number for each specific Hebrew word in this verse.
+Example: in Deuteronomy 33:29 "found liars" is H3584 (kachash), NOT H8267 (sheqer).
 
 Task:
-- Select 5-8 key Hebrew words from this verse
-- For each word provide the CORRECT Strong's H-number for that exact word
-- For each word find a related Bantu language word (cognate, phonetic, or thematic)
-- Break each word into letters with ancient pictographic meanings from Jeff Benner's Ancient Hebrew Lexicon
+- Select 5-8 key Hebrew words
+- Correct Strong's H-number for each
+- Related Bantu word (cognate, phonetic, or thematic)
+- Letters with ancient pictographic meanings from Jeff Benner's Ancient Hebrew Lexicon
 - Return ONLY raw JSON, no markdown, no backticks
-
-Use ONLY straight ASCII double quotes. No smart quotes. No special dashes.
+- Use only straight ASCII double quotes
 
 {{"verses":[{{"reference":"{verse}","text":"{verse_text}","words":[{{"hebrew_word":"chars","hebrew_transliteration":"english","hebrew_root":"root","strongs":"H0000","english_meaning":"meaning","hebrew_letters":[{{"letter":"Name","hebrew_char":"char","ancient_meaning":"Benner meaning"}}],"composite_meaning":"combined meaning"}}]}}]}}"""
 
@@ -155,20 +166,17 @@ PROMPT_NO_TEXT = """You are a scholar of ancient Hebrew, Biblical linguistics, a
 
 Verse: "{verse}"
 
-CRITICAL INSTRUCTIONS for Strong's numbers:
-- You MUST use the correct Strong's number for each specific Hebrew word as it appears in THIS verse
-- Do NOT guess or approximate - use the exact lexical form and its correct H-number
-- Double-check each Strong's number before including it
+CRITICAL: Use the CORRECT Strong's H-number for each specific Hebrew word.
+Provide the COMPLETE full KJV verse text - never truncate.
 
 Task:
-- Provide the COMPLETE full KJV verse text - every single word, never truncate
-- Select 5-8 key Hebrew words from this verse
-- For each word provide the CORRECT Strong's H-number
-- For each word find a related Bantu language word (cognate, phonetic, or thematic)
-- Break each word into letters with ancient pictographic meanings from Jeff Benner's Ancient Hebrew Lexicon
+- Complete full KJV verse text
+- Select 5-8 key Hebrew words
+- Correct Strong's H-number for each
+- Related Bantu word (cognate, phonetic, or thematic)
+- Letters with ancient pictographic meanings from Jeff Benner's Ancient Hebrew Lexicon
 - Return ONLY raw JSON, no markdown, no backticks
-
-Use ONLY straight ASCII double quotes. No smart quotes.
+- Use only straight ASCII double quotes
 
 {{"verses":[{{"reference":"{verse}","text":"COMPLETE VERSE TEXT","words":[{{"hebrew_word":"chars","hebrew_transliteration":"english","hebrew_root":"root","strongs":"H0000","english_meaning":"meaning","hebrew_letters":[{{"letter":"Name","hebrew_char":"char","ancient_meaning":"Benner meaning"}}],"composite_meaning":"combined meaning"}}]}}]}}"""
 
@@ -200,8 +208,7 @@ def api_call(messages, max_tokens=6000):
 def clean_json_text(raw):
     raw = raw.strip()
     if raw.startswith('```'):
-        lines = raw.split('\n')
-        raw = '\n'.join(lines[1:])
+        raw = '\n'.join(raw.split('\n')[1:])
     if raw.endswith('```'):
         raw = raw[:-3]
     raw = raw.strip()
@@ -217,14 +224,10 @@ def clean_json_text(raw):
 
 def repair_json(bad_json):
     print('Attempting JSON repair...')
-    fix_prompt = (
-        'The following JSON is invalid. Fix it and return ONLY valid JSON, '
-        'nothing else, no markdown:\n\n' + bad_json[:3000]
-    )
+    fix_prompt = 'Fix this invalid JSON and return ONLY valid JSON, nothing else:\n\n' + bad_json[:3000]
     try:
         fixed = api_call([{'role': 'user', 'content': fix_prompt}], max_tokens=6000)
-        fixed = clean_json_text(fixed)
-        return json.loads(fixed)
+        return json.loads(clean_json_text(fixed))
     except Exception as e:
         print('Repair failed:', e)
         raise Exception('Could not parse response. Please try again.')
@@ -236,20 +239,23 @@ def call_claude(verse, verse_text=''):
         prompt = PROMPT.format(verse=verse, verse_text=safe_text)
     else:
         prompt = PROMPT_NO_TEXT.format(verse=verse)
-
     raw = api_call([{'role': 'user', 'content': prompt}])
     raw = clean_json_text(raw)
-
     try:
         return json.loads(raw)
-    except json.JSONDecodeError as e:
-        print('Initial parse failed:', e)
+    except json.JSONDecodeError:
         return repair_json(raw)
 
 
 @app.route('/')
 def index():
     return send_from_directory('.', 'ancient_word_explorer.html')
+
+
+@app.route('/bantu-db')
+def bantu_db():
+    """Serve the Bantu dictionary to the frontend as JSON."""
+    return jsonify(BANTU_DB)
 
 
 @app.route('/analyse', methods=['POST'])
@@ -260,20 +266,11 @@ def analyse():
     if not verse:
         return jsonify({'error': 'No verse provided'}), 400
     try:
-        # 1. Server-side KJV lookup (guaranteed accurate)
-        verse_text = lookup_verse(verse)
-        if not verse_text:
-            verse_text = verse_text_from_client
-
+        verse_text = lookup_verse(verse) or verse_text_from_client
         result = call_claude(verse, verse_text)
-
-        # 2. Force accurate verse text into result
         if verse_text and result.get('verses'):
             result['verses'][0]['text'] = verse_text
-
-        # 3. Correct any wrong Strong's numbers
         result = correct_strongs(result, verse)
-
         return jsonify(result)
     except urllib.error.HTTPError as e:
         return jsonify({'error': 'API error ' + str(e.code) + ': ' + e.read().decode()}), 500
@@ -283,18 +280,13 @@ def analyse():
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
-    print('\n' + '='*50)
+    print('\n' + '='*55)
     print('  Ancient Word Explorer')
-    print('  KJV lookup: ' + str(len(KJV)) + ' verses cached')
-    print('  Verified Strong\'s: ' + str(len(VERIFIED_STRONGS)) + ' verses')
+    print(f'  Bantu DB: {sum(len(v) for v in BANTU_DB.values())} entries, {len(BANTU_DB)} H-numbers')
     print('  Model: claude-haiku (fast!)')
-    print('='*50)
+    print('='*55)
     key = os.environ.get('ANTHROPIC_API_KEY', '')
-    if key:
-        print('  API key: found (' + key[:12] + '...)')
-    else:
-        print('  !! API key NOT SET. Run:')
-        print('     export ANTHROPIC_API_KEY=sk-ant-...')
+    print('  API key:', ('found (' + key[:12] + '...)') if key else 'NOT SET')
     print('  Open: http://localhost:' + str(port))
-    print('='*50 + '\n')
+    print('='*55 + '\n')
     app.run(debug=False, host='0.0.0.0', port=port)
