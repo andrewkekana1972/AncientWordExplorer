@@ -1,31 +1,27 @@
 """
 Ancient Word Explorer - Flask Backend
-Loads Bantu dictionary from GitHub at startup.
-No extra packages needed beyond flask and gunicorn.
+Streaming + caching for fast responses.
 Locally: python3 server.py
-Render:  gunicorn server:app
+Render:  gunicorn --worker-class geventwebsocket.gunicorn.workers.GeventWebSocketWorker server:app
 """
 
-import os, json, re, urllib.request, urllib.error
-from flask import Flask, request, jsonify, send_from_directory
+import os, json, re, urllib.request, urllib.error, threading, time
+from flask import Flask, request, jsonify, send_from_directory, Response, stream_with_context
 
 app = Flask(__name__, static_folder='.')
 
 # ── Load Bantu dictionary from GitHub ────────────────────────────────────────
-# Update this URL to match your GitHub username and repo
 GITHUB_CSV_URL = os.environ.get(
     'BANTU_CSV_URL',
     'https://raw.githubusercontent.com/andrewkekana1972/ancientwordexplorer/main/bantu_dictionary.csv'
 )
 
 def load_bantu_db(url):
-    """Fetch and parse the Bantu dictionary CSV from GitHub."""
     print('Loading Bantu dictionary from:', url)
     try:
         req = urllib.request.Request(url, headers={'User-Agent': 'AncientWordExplorer/1.0'})
         with urllib.request.urlopen(req, timeout=30) as r:
             raw = r.read().decode('utf-8')
-
         lookup = {}
         for line in raw.splitlines():
             parts = line.split(',')
@@ -36,14 +32,12 @@ def load_bantu_db(url):
             language   = parts[7].strip().strip('"')
             meaning    = parts[4].strip().strip('"')
             translit   = parts[1].strip().strip('"')
-
             if not strongs_id or not bantu_word or not language:
                 continue
             if language in ('Hebrew', 'Aramaic', 'Greek', 'language'):
                 continue
             if not strongs_id.startswith('H'):
                 continue
-
             if strongs_id not in lookup:
                 lookup[strongs_id] = []
             lookup[strongs_id].append({
@@ -52,45 +46,15 @@ def load_bantu_db(url):
                 'meaning': meaning,
                 'transliteration': translit
             })
-
         print(f'Loaded {len(lookup)} H-numbers, {sum(len(v) for v in lookup.values())} entries')
         return lookup
-
     except Exception as e:
         print('ERROR loading Bantu dictionary:', e)
         return {}
 
-# Load at startup
 BANTU_DB = load_bantu_db(GITHUB_CSV_URL)
 
-def prewarm_cache():
-    """Pre-cache popular verses in background so first user gets fast results."""
-    import threading, time
-    def warm():
-        # Wait for server to fully start
-        time.sleep(3)
-        popular = ['Genesis 1:1', 'John 1:1', 'Psalm 23:1', 'Exodus 3:14', 'Isaiah 40:31', 'Deuteronomy 33:29']
-        for verse in popular:
-            key = verse.lower().strip()
-            if key not in CACHE:
-                try:
-                    print('Pre-warming:', verse)
-                    verse_text = lookup_verse(verse)
-                    result = call_claude(verse, verse_text)
-                    if verse_text and result.get('verses'):
-                        result['verses'][0]['text'] = verse_text
-                    result = correct_strongs(result, verse)
-                    CACHE[key] = result
-                    print('Pre-warmed:', verse)
-                    time.sleep(1)
-                except Exception as e:
-                    print('Pre-warm failed for', verse, ':', e)
-    t = threading.Thread(target=warm, daemon=True)
-    t.start()
-
-prewarm_cache()
-
-# ── Result cache (speeds up repeated searches) ───────────────────────────────
+# ── Result cache ──────────────────────────────────────────────────────────────
 CACHE = {}
 
 # ── KJV verse lookup ──────────────────────────────────────────────────────────
@@ -140,7 +104,6 @@ VERIFIED_STRONGS = {
     },
 }
 
-
 def lookup_verse(reference):
     key = reference.lower().strip()
     if key in KJV:
@@ -159,7 +122,6 @@ def lookup_verse(reference):
                 return KJV[expanded]
     return ''
 
-
 def correct_strongs(result, verse_key):
     verified = VERIFIED_STRONGS.get(verse_key.lower().strip(), {})
     if not verified:
@@ -173,7 +135,6 @@ def correct_strongs(result, verse_key):
                     word['strongs'] = correct_h
     return result
 
-
 PROMPT = """Ancient Hebrew scholar. Verse: "{verse}" KJV: "{verse_text}"
 Select 5-8 key Hebrew words. Use CORRECT Strong's H-numbers (e.g. Deut 33:29 "found liars"=H3584 not H8267).
 Return ONLY this JSON, no markdown:
@@ -184,8 +145,7 @@ Provide COMPLETE KJV text. Select 5-8 key Hebrew words with CORRECT Strong's H-n
 Return ONLY this JSON, no markdown:
 {{"verses":[{{"reference":"{verse}","text":"COMPLETE VERSE TEXT","words":[{{"hebrew_word":"chars","hebrew_transliteration":"trans","hebrew_root":"root","strongs":"H0000","english_meaning":"meaning","hebrew_letters":[{{"letter":"Name","hebrew_char":"c","ancient_meaning":"Benner pictograph meaning"}}],"composite_meaning":"combined"}}]}}]}}"""
 
-
-def api_call(messages, max_tokens=6000):
+def api_call(messages, max_tokens=4000):
     key = os.environ.get('ANTHROPIC_API_KEY', '').strip()
     if not key:
         raise Exception('ANTHROPIC_API_KEY not set.')
@@ -208,7 +168,6 @@ def api_call(messages, max_tokens=6000):
         body = json.loads(r.read().decode('utf-8'))
     return body['content'][0]['text']
 
-
 def clean_json_text(raw):
     raw = raw.strip()
     if raw.startswith('```'):
@@ -225,17 +184,15 @@ def clean_json_text(raw):
         raw = raw[start:end+1]
     return raw
 
-
 def repair_json(bad_json):
     print('Attempting JSON repair...')
-    fix_prompt = 'Fix this invalid JSON and return ONLY valid JSON, nothing else:\n\n' + bad_json[:3000]
+    fix_prompt = 'Fix this invalid JSON and return ONLY valid JSON:\n\n' + bad_json[:3000]
     try:
-        fixed = api_call([{'role': 'user', 'content': fix_prompt}], max_tokens=6000)
+        fixed = api_call([{'role': 'user', 'content': fix_prompt}], max_tokens=4000)
         return json.loads(clean_json_text(fixed))
     except Exception as e:
         print('Repair failed:', e)
         raise Exception('Could not parse response. Please try again.')
-
 
 def call_claude(verse, verse_text=''):
     if verse_text:
@@ -250,17 +207,44 @@ def call_claude(verse, verse_text=''):
     except json.JSONDecodeError:
         return repair_json(raw)
 
+def prewarm_cache():
+    """Pre-cache popular verses in background at startup."""
+    def warm():
+        time.sleep(3)
+        popular = [
+            'Genesis 1:1', 'John 1:1', 'Psalm 23:1', 'Exodus 3:14',
+            'Isaiah 40:31', 'Deuteronomy 33:29', 'John 3:16',
+            'Psalm 23:4', 'Proverbs 3:5', 'Romans 8:28',
+            'Philippians 4:13', 'Hebrews 11:1', 'Jeremiah 29:11',
+            'Isaiah 53:5', 'Psalm 91:1',
+        ]
+        for verse in popular:
+            key = verse.lower().strip()
+            if key not in CACHE:
+                try:
+                    print('Pre-warming:', verse)
+                    verse_text = lookup_verse(verse)
+                    result = call_claude(verse, verse_text)
+                    if verse_text and result.get('verses'):
+                        result['verses'][0]['text'] = verse_text
+                    result = correct_strongs(result, verse)
+                    CACHE[key] = result
+                    print('Pre-warmed:', verse)
+                    time.sleep(0.5)
+                except Exception as e:
+                    print('Pre-warm failed for', verse, ':', e)
+    t = threading.Thread(target=warm, daemon=True)
+    t.start()
+
+prewarm_cache()
 
 @app.route('/')
 def index():
     return send_from_directory('.', 'ancient_word_explorer.html')
 
-
 @app.route('/bantu-db')
 def bantu_db():
-    """Serve the Bantu dictionary to the frontend as JSON."""
     return jsonify(BANTU_DB)
-
 
 @app.route('/analyse', methods=['POST'])
 def analyse():
@@ -270,7 +254,6 @@ def analyse():
     if not verse:
         return jsonify({'error': 'No verse provided'}), 400
 
-    # Return cached result instantly if available
     cache_key = verse.lower().strip()
     if cache_key in CACHE:
         print('Cache hit:', verse)
@@ -282,15 +265,12 @@ def analyse():
         if verse_text and result.get('verses'):
             result['verses'][0]['text'] = verse_text
         result = correct_strongs(result, verse)
-        # Store in cache
         CACHE[cache_key] = result
-        print('Cached:', verse, '| Cache size:', len(CACHE))
         return jsonify(result)
     except urllib.error.HTTPError as e:
         return jsonify({'error': 'API error ' + str(e.code) + ': ' + e.read().decode()}), 500
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
