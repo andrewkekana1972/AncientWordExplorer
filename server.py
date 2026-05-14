@@ -174,41 +174,15 @@ def correct_strongs(result, verse_key):
     return result
 
 
-PROMPT = """You are a scholar of ancient Hebrew, Biblical linguistics, and Bantu languages.
+PROMPT = """Ancient Hebrew scholar. Verse: "{verse}" KJV: "{verse_text}"
+Select 5-8 key Hebrew words. Use CORRECT Strong's H-numbers (e.g. Deut 33:29 "found liars"=H3584 not H8267).
+Return ONLY this JSON, no markdown:
+{{"verses":[{{"reference":"{verse}","text":"{verse_text}","words":[{{"hebrew_word":"chars","hebrew_transliteration":"trans","hebrew_root":"root","strongs":"H0000","english_meaning":"meaning","hebrew_letters":[{{"letter":"Name","hebrew_char":"c","ancient_meaning":"Benner pictograph meaning"}}],"composite_meaning":"combined"}}]}}]}}"""
 
-Verse: "{verse}"
-KJV text: "{verse_text}"
-
-CRITICAL: Use the CORRECT Strong's H-number for each specific Hebrew word in this verse.
-Example: in Deuteronomy 33:29 "found liars" is H3584 (kachash), NOT H8267 (sheqer).
-
-Task:
-- Select 5-8 key Hebrew words
-- Correct Strong's H-number for each
-- Related Bantu word (cognate, phonetic, or thematic)
-- Letters with ancient pictographic meanings from Jeff Benner's Ancient Hebrew Lexicon
-- Return ONLY raw JSON, no markdown, no backticks
-- Use only straight ASCII double quotes
-
-{{"verses":[{{"reference":"{verse}","text":"{verse_text}","words":[{{"hebrew_word":"chars","hebrew_transliteration":"english","hebrew_root":"root","strongs":"H0000","english_meaning":"meaning","hebrew_letters":[{{"letter":"Name","hebrew_char":"char","ancient_meaning":"Benner meaning"}}],"composite_meaning":"combined meaning"}}]}}]}}"""
-
-PROMPT_NO_TEXT = """You are a scholar of ancient Hebrew, Biblical linguistics, and Bantu languages.
-
-Verse: "{verse}"
-
-CRITICAL: Use the CORRECT Strong's H-number for each specific Hebrew word.
-Provide the COMPLETE full KJV verse text - never truncate.
-
-Task:
-- Complete full KJV verse text
-- Select 5-8 key Hebrew words
-- Correct Strong's H-number for each
-- Related Bantu word (cognate, phonetic, or thematic)
-- Letters with ancient pictographic meanings from Jeff Benner's Ancient Hebrew Lexicon
-- Return ONLY raw JSON, no markdown, no backticks
-- Use only straight ASCII double quotes
-
-{{"verses":[{{"reference":"{verse}","text":"COMPLETE VERSE TEXT","words":[{{"hebrew_word":"chars","hebrew_transliteration":"english","hebrew_root":"root","strongs":"H0000","english_meaning":"meaning","hebrew_letters":[{{"letter":"Name","hebrew_char":"char","ancient_meaning":"Benner meaning"}}],"composite_meaning":"combined meaning"}}]}}]}}"""
+PROMPT_NO_TEXT = """Ancient Hebrew scholar. Verse: "{verse}"
+Provide COMPLETE KJV text. Select 5-8 key Hebrew words with CORRECT Strong's H-numbers.
+Return ONLY this JSON, no markdown:
+{{"verses":[{{"reference":"{verse}","text":"COMPLETE VERSE TEXT","words":[{{"hebrew_word":"chars","hebrew_transliteration":"trans","hebrew_root":"root","strongs":"H0000","english_meaning":"meaning","hebrew_letters":[{{"letter":"Name","hebrew_char":"c","ancient_meaning":"Benner pictograph meaning"}}],"composite_meaning":"combined"}}]}}]}}"""
 
 
 def api_call(messages, max_tokens=6000):

@@ -123,7 +123,9 @@ tr:hover td{background:#1a1408}
 
 <script>
 var BANTU_DB = {};
+var SESSION_CACHE = {};
 
+// Load dictionary from server
 fetch('/bantu-db')
   .then(function(r){ return r.json(); })
   .then(function(db){
@@ -179,39 +181,50 @@ document.getElementById('hInput').addEventListener('keydown', function(e){ if(e.
 function doSearch(){
   var q = document.getElementById('qInput').value.trim();
   if(!q) return;
+
+  // Check browser session cache first — instant
+  var cacheKey = q.toLowerCase().trim();
+  if(SESSION_CACHE[cacheKey]){
+    renderResults(SESSION_CACHE[cacheKey]);
+    return;
+  }
+
   document.getElementById('resultsArea').innerHTML = '';
   document.getElementById('loader').style.display = 'block';
   document.getElementById('errBox').style.display = 'none';
   document.getElementById('goBtn').disabled = true;
   startLoader();
 
-  fetch('https://bible-api.com/' + encodeURIComponent(q) + '?translation=kjv')
+  // Fire bible-api and analyse in parallel
+  var biblePromise = fetch('https://bible-api.com/' + encodeURIComponent(q) + '?translation=kjv')
     .then(function(r){ return r.json(); })
     .then(function(bible){
-      var verseText = '';
-      if(bible && bible.text){
-        verseText = bible.text.replace(/\s+/g,' ').trim();
-      }
-      return fetch('/analyse', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({ verse: q, verse_text: verseText })
-      });
+      return (bible && bible.text) ? bible.text.replace(/\s+/g,' ').trim() : '';
     })
-    .then(function(r){ return r.json(); })
-    .then(function(data){
-      document.getElementById('loader').style.display = 'none';
-      document.getElementById('goBtn').disabled = false;
-      stopLoader();
-      if(data.error){ showErr(data.error); return; }
-      renderResults(data);
-    })
-    .catch(function(e){
-      document.getElementById('loader').style.display = 'none';
-      document.getElementById('goBtn').disabled = false;
-      stopLoader();
-      showErr('Request failed: ' + e.message);
+    .catch(function(){ return ''; });
+
+  biblePromise.then(function(verseText){
+    return fetch('/analyse', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ verse: q, verse_text: verseText })
     });
+  })
+  .then(function(r){ return r.json(); })
+  .then(function(data){
+    document.getElementById('loader').style.display = 'none';
+    document.getElementById('goBtn').disabled = false;
+    stopLoader();
+    if(data.error){ showErr(data.error); return; }
+    SESSION_CACHE[cacheKey] = data;
+    renderResults(data);
+  })
+  .catch(function(e){
+    document.getElementById('loader').style.display = 'none';
+    document.getElementById('goBtn').disabled = false;
+    stopLoader();
+    showErr('Request failed: ' + e.message);
+  });
 }
 
 function showErr(msg){
@@ -243,7 +256,6 @@ function byLang(hits){ var r={}; hits.forEach(function(m){ if(!r[m.language]) r[
 function uniq(a){ var s={}; return a.filter(function(x){ return s[x]?false:(s[x]=true); }); }
 
 function buildDictCell(hits){
-  // Returns all Bantu entries for this H-number grouped by language
   if(!hits.length) return '<span class="nomatch">Not yet in dictionary</span>';
   var bl = byLang(hits);
   return Object.keys(bl).map(function(lang){
@@ -259,35 +271,23 @@ function buildDictCell(hits){
 }
 
 function buildHebrewCell(w, hits){
-  // Hebrew word + transliteration (highlighted if matched) + all English meanings
   var transClass = hits.length ? 'htrans-match' : 'htrans';
   var html = '<span class="hword">'+(w.hebrew_word||'')+'</span>'
     +'<span class="'+transClass+'">'+(w.hebrew_transliteration||'')+'</span>';
-
-  // Collect all meanings: from dictionary entries + Claude's english_meaning
   var allMeanings = [];
-
-  // From dictionary (all meanings linked to this H-number)
   if(hits.length){
     uniq(hits.map(function(e){ return e.meaning; })).filter(Boolean).forEach(function(m){
-      if(allMeanings.indexOf(m) === -1) allMeanings.push(m);
+      if(allMeanings.indexOf(m)===-1) allMeanings.push(m);
     });
   }
-
-  // Also add Claude's english_meaning if not already included
   if(w.english_meaning){
-    var claudeMeanings = w.english_meaning.split(/[,;\/]+/).map(function(m){ return m.trim(); }).filter(Boolean);
-    claudeMeanings.forEach(function(m){
-      if(allMeanings.indexOf(m) === -1) allMeanings.push(m);
+    w.english_meaning.split(/[,;]+/).map(function(m){ return m.trim(); }).filter(Boolean).forEach(function(m){
+      if(allMeanings.indexOf(m)===-1) allMeanings.push(m);
     });
   }
-
-  // Always show meanings if we have any
   if(allMeanings.length){
     html += '<div class="dict-meanings">'
-      + allMeanings.map(function(m){
-          return '<span class="dict-meaning-tag">'+m+'</span>';
-        }).join(' ')
+      + allMeanings.map(function(m){ return '<span class="dict-meaning-tag">'+m+'</span>'; }).join(' ')
       +'</div>';
   }
   return html;
