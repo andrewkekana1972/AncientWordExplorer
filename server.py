@@ -57,6 +57,26 @@ BANTU_DB = load_bantu_db(GITHUB_CSV_URL)
 # ── Result cache ──────────────────────────────────────────────────────────────
 CACHE = {}
 
+# ── Load pre-computed Bible cache from GitHub ─────────────────────────────────
+BIBLE_CACHE_URL = os.environ.get(
+    'BIBLE_CACHE_URL',
+    'https://raw.githubusercontent.com/andrewkekana1972/ancientwordexplorer/main/bible_cache.json'
+)
+
+def load_bible_cache(url):
+    print('Loading pre-computed Bible cache from:', url)
+    try:
+        req = urllib.request.Request(url, headers={'User-Agent': 'AncientWordExplorer/1.0'})
+        with urllib.request.urlopen(req, timeout=30) as r:
+            data = json.loads(r.read().decode('utf-8'))
+        print(f'Bible cache loaded: {len(data)} verses pre-computed')
+        return data
+    except Exception as e:
+        print('Bible cache not found (will use Claude for all requests):', e)
+        return {}
+
+CACHE.update(load_bible_cache(BIBLE_CACHE_URL))
+
 # ── KJV verse lookup ──────────────────────────────────────────────────────────
 KJV = {
     "genesis 1:1": "In the beginning God created the heaven and the earth.",
