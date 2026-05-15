@@ -55,7 +55,8 @@ tr:hover td{background:#1a1408}
 .dict-meanings{margin-top:8px;display:flex;flex-wrap:wrap;gap:4px}
 .dict-meaning-tag{display:inline-block;background:#1a1a2a;border:1px solid #2a2a4a;border-radius:4px;padding:2px 8px;font-size:12px;color:#8a8ac0;font-style:italic}
 .hroot{color:#a08840;font-style:italic;font-size:16px}
-.hstrongs{color:#5a4a2a;font-size:14px;display:block;margin-top:3px}
+.hstrongs{color:#6a7a9a;font-size:14px;display:block;margin-top:3px;text-decoration:none;border-bottom:1px dotted #4a5a7a}
+.hstrongs:hover{color:#8aaadd;border-bottom-color:#8aaadd}
 .ltag{display:inline-block;background:#1e1810;border:1px solid #2e2214;border-radius:3px;padding:2px 6px;font-size:14px;color:#c9a84c;margin:2px 2px 0 0;cursor:help}
 .lmean{font-size:15px;color:#b0a880;line-height:1.7}
 .lmean strong{color:#c8b870}
@@ -307,7 +308,11 @@ function renderResults(data){
       var lmeans='<div class="lmean">'+(w.hebrew_letters||[]).map(function(l){ return '<strong>'+l.letter+'</strong> ('+l.hebrew_char+'): '+l.ancient_meaning; }).join('<br>')+'</div>';
       return '<tr>'
         +'<td>'+buildHebrewCell(w, hits)+'</td>'
-        +'<td><span class="hroot">'+(w.hebrew_root||'')+'</span><span class="hstrongs">'+(w.strongs||'')+'</span><br><small style="color:#5a4a2a;font-size:11px">'+(w.english_meaning||'')+'</small></td>'
+        +'<td><span class="hroot">'+(w.hebrew_root||'')+'</span>'
+        +(w.strongs
+          ? '<a class="hstrongs" href="https://www.blueletterbible.org/lexicon/'+w.strongs+'/kjv/wlc/0-1/" target="_blank" title="View in Blue Letter Bible">'+w.strongs+' &#x2197;</a>'
+          : '')
+        +'<br><small style="color:#5a4a2a;font-size:11px">'+(w.english_meaning||'')+'</small></td>'
         +'<td>'+ltags+'</td>'
         +'<td>'+lmeans+'<span class="composite">'+(w.composite_meaning||'')+'</span></td>'
         +'<td>'+buildDictCell(hits)+'</td>'
