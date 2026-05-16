@@ -137,6 +137,71 @@ tr:hover td{background:#1a1408}
 .lookup-section{margin-top:2rem;border-top:1px solid #2a2010;padding-top:1.5rem}
 .lookup-title{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.14em;color:#7a6a4a;text-transform:uppercase;margin-bottom:.75rem}
 .lookup-result{background:#12100a;border:1px solid #2a2010;border-radius:8px;padding:1rem 1.2rem;font-size:15px;min-height:56px;line-height:1.8;margin-top:.5rem}
+
+/* ── Mobile Optimisation ─────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .shell{padding:1rem .75rem 4rem}
+  .header h1{font-size:18px;letter-spacing:.05em}
+  .header p{font-size:12px}
+  .auth-bar{flex-wrap:wrap;gap:6px;margin-bottom:.75rem}
+  .auth-btn-google{font-size:9px;padding:4px 8px}
+  .auth-btn{font-size:9px;padding:4px 8px}
+  .auth-name{font-size:12px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .search-box{padding:1rem}
+  .pills{gap:5px}
+  .pill{font-size:12px;padding:3px 9px}
+  .fg input{font-size:14px;padding:8px 10px}
+  .btn{padding:9px 16px;font-size:11px}
+  .stats-bar{flex-wrap:wrap}
+  .stat{flex:1 1 45%;padding:.5rem .5rem;border-right:none;border-bottom:1px solid #2a2010}
+  .stat:nth-child(1),.stat:nth-child(2){border-right:1px solid #2a2010}
+  .stat-n{font-size:13px}
+  .stat-l{font-size:10px}
+  .action-bar{gap:6px}
+  .save-btn,.share-btn,.note-btn{font-size:9px;padding:6px 10px}
+  .vtext{font-size:15px;line-height:1.75;padding:.9rem 1rem}
+  .vsec{padding:.75rem 1rem .4rem}
+  /* Stack table into cards on mobile */
+  .tbl-wrap{padding:0}
+  table,thead,tbody,th,td,tr{display:block}
+  thead{display:none}
+  tbody tr{border:1px solid #2a2010;border-radius:8px;margin:.75rem;padding:.75rem;background:#0d0b07}
+  tbody td{border:none;padding:.4rem .25rem;font-size:14px}
+  tbody td::before{content:attr(data-label);font-family:'Cinzel',serif;font-size:9px;letter-spacing:.1em;color:#5a4a2a;text-transform:uppercase;display:block;margin-bottom:4px}
+  .hword{font-size:20px}
+  .htrans{font-size:14px}
+  .htrans-match{font-size:14px;padding:3px 8px}
+  .lmean{font-size:13px}
+  .composite{font-size:13px}
+  .bwords{font-size:14px}
+  .bmeans{font-size:12px}
+  .blang{font-size:10px}
+  .hroot{font-size:14px}
+  .hstrongs{font-size:13px}
+  .dict-meaning-tag{font-size:11px}
+  .history-panel{padding:1rem}
+  .history-verse{font-size:13px}
+  .modal{padding:1.5rem;margin:.5rem}
+  .modal h2{font-size:14px}
+  .modal-input,.modal-textarea{font-size:14px}
+  .lookup-section{padding-top:1.25rem}
+  .lookup-result{font-size:13px}
+  .shared-note-text{font-size:14px}
+  .loader-symbol{font-size:28px}
+  .loader-msg{font-size:13px}
+}
+
+@media (max-width: 480px) {
+  .header h1{font-size:16px}
+  .pills-label{display:none}
+  .pill{font-size:11px;padding:3px 8px}
+  .stat{flex:1 1 100%;border-right:none}
+  .auth-signed-out{flex-wrap:wrap;justify-content:flex-end}
+  .action-bar{justify-content:flex-start}
+  .share-btns{flex-direction:column}
+  tbody tr{margin:.5rem 0}
+}
+
 </style>
 </head>
 <body>
@@ -728,13 +793,13 @@ function renderResults(data){
       var lmeans='<div class="lmean">'+(w.hebrew_letters||[]).map(function(l){return '<strong>'+l.letter+'</strong> ('+l.hebrew_char+'): '+l.ancient_meaning;}).join('<br>')+'</div>';
       var strongs=(w.strongs||'').replace(/^H0+/,'H');
       return '<tr>'
-        +'<td>'+buildHebrewCell(w,hits)+'</td>'
-        +'<td><span class="hroot">'+(w.hebrew_root||'')+'</span>'
+        +'<td data-label="Hebrew Word">'+buildHebrewCell(w,hits)+'</td>'
+        +'<td data-label="Root / Strong's"><span class="hroot">'+(w.hebrew_root||'')+'</span>'
         +(strongs?'<a class="hstrongs" href="https://www.blueletterbible.org/lexicon/'+strongs+'/kjv/wlc/0-1/" target="_blank">'+strongs+' &#x2197;</a>':'')
         +'<br><small style="color:#5a4a2a;font-size:11px">'+(w.english_meaning||'')+'</small></td>'
-        +'<td>'+ltags+'</td>'
-        +'<td>'+lmeans+'<span class="composite">'+(w.composite_meaning||'')+'</span></td>'
-        +'<td>'+buildDictCell(hits)+'</td>'
+        +'<td data-label="Ancient Letters">'+ltags+'</td>'
+        +'<td data-label="Letter Meanings">'+lmeans+'<span class="composite">'+(w.composite_meaning||'')+'</span></td>'
+        +'<td data-label="Bantu Dictionary">'+buildDictCell(hits)+'</td>'
         +'</tr>';
     }).join('');
     var pct=total>0?Math.round(matched/total*100):0;
