@@ -129,6 +129,7 @@ tr:hover td{background:#1a1408}
 .history-verse{display:block;color:#c9a84c;font-size:14px;cursor:pointer;font-style:italic}
 .history-verse:hover{text-decoration:underline}
 .history-note-preview{display:block;font-size:12px;color:#5a4a2a;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.history-note-full{display:block;font-size:13px;color:#8a7a5a;margin-top:5px;line-height:1.6;font-style:italic;background:#0d0b07;border:1px solid #2a2010;border-radius:5px;padding:6px 10px}
 .history-actions{display:flex;gap:4px;flex-shrink:0}
 .hist-btn{background:none;border:1px solid #2a2010;border-radius:4px;color:#5a4a2a;cursor:pointer;font-size:13px;padding:3px 8px;transition:all .15s}
 .hist-btn:hover{border-color:#c9a84c;color:#c9a84c}
@@ -552,13 +553,16 @@ function renderHistory(items){
   if(!items.length){ panel.style.display='none'; return; }
   panel.style.display='block';
   list.innerHTML = items.map(function(item){
+    var noteHtml = item.note
+      ? '<div class="history-note-full">'+item.note+'</div>'
+        +'<button class="hist-btn hist-note" data-id="'+item.id+'" data-verse="'+item.verse+'" title="Edit note">&#x270E; Edit note</button>'
+      : '<button class="hist-btn hist-note" data-id="'+item.id+'" data-verse="'+item.verse+'" title="Add note">&#x270E; Add note</button>';
     return '<div class="history-item" data-id="'+item.id+'">'
       +'<div class="history-main">'
       +'<span class="history-verse" data-verse="'+item.verse+'">'+item.verse+'</span>'
-      +(item.note ? '<span class="history-note-preview">'+item.note.substring(0,60)+(item.note.length>60?'...':'')+'</span>' : '')
+      +noteHtml
       +'</div>'
       +'<div class="history-actions">'
-      +'<button class="hist-btn hist-note" data-id="'+item.id+'" data-verse="'+item.verse+'" title="Edit note">&#x270E;</button>'
       +'<button class="hist-btn hist-del" data-id="'+item.id+'" title="Remove">&#x2715;</button>'
       +'</div>'
       +'</div>';
