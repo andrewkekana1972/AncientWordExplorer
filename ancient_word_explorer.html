@@ -9,10 +9,9 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'EB Garamond',Georgia,serif;background:#0d0b07;color:#e8dfc8;min-height:100vh}
 .shell{max-width:1020px;margin:0 auto;padding:2rem 1.25rem 5rem}
-.header{text-align:center;margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid #3a2e1a}
+.header{text-align:center;margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid #3a2e1a}
 .header h1{font-family:'Cinzel',serif;font-size:24px;font-weight:700;color:#c9a84c;letter-spacing:.1em;margin-bottom:6px}
 .header p{font-size:14px;color:#7a6a4a;font-style:italic}
-/* Auth bar */
 .auth-bar{display:flex;justify-content:flex-end;align-items:center;gap:10px;margin-bottom:1rem;min-height:36px}
 .auth-signed-out{display:flex;align-items:center;gap:8px}
 .auth-signed-in{display:none;align-items:center;gap:10px}
@@ -21,40 +20,28 @@ body{font-family:'EB Garamond',Georgia,serif;background:#0d0b07;color:#e8dfc8;mi
 .auth-btn:hover{border-color:#c9a84c;background:#1e1810}
 .auth-btn-google{background:#1e1810;border:1px solid #3a2e1a;border-radius:6px;color:#e8dfc8;font-family:'Cinzel',serif;font-size:10px;letter-spacing:.06em;padding:5px 12px;cursor:pointer;display:flex;align-items:center;gap:6px}
 .auth-btn-google:hover{border-color:#c9a84c}
-/* Save banner */
-.save-banner{background:#12100a;border:1px solid #3a2e1a;border-radius:8px;padding:.75rem 1.2rem;margin-bottom:1.25rem;font-size:13px;color:#7a6a4a;display:none;text-align:center}
+.save-banner{background:#12100a;border:1px solid #3a2e1a;border-radius:8px;padding:.75rem 1.2rem;margin-bottom:1.25rem;font-size:13px;color:#7a6a4a;display:none;text-align:center;line-height:1.7}
 .save-banner a{color:#c9a84c;cursor:pointer;text-decoration:underline}
-/* Save button */
-.save-btn{background:#1a2a1a;border:1px solid #2a4a2a;border-radius:6px;color:#6a9a6a;font-family:'Cinzel',serif;font-size:10px;letter-spacing:.08em;padding:5px 14px;cursor:pointer;transition:all .15s}
+.save-btn{background:#1a2a1a;border:1px solid #2a4a2a;border-radius:6px;color:#6a9a6a;font-family:'Cinzel',serif;font-size:10px;letter-spacing:.08em;padding:6px 16px;cursor:pointer;transition:all .15s;display:none;margin-top:.5rem}
 .save-btn:hover{background:#2a4a2a;color:#8aba8a}
-/* Modal */
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:1000;align-items:center;justify-content:center}
-.modal{background:#16120a;border:1px solid #3a2e1a;border-radius:12px;padding:2rem;width:100%;max-width:400px;position:relative}
-.modal h2{font-family:'Cinzel',serif;font-size:16px;color:#c9a84c;margin-bottom:.5rem;letter-spacing:.08em}
-.modal p{font-size:13px;color:#7a6a4a;margin-bottom:1.5rem;line-height:1.6}
-.modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;color:#5a4a2a;font-size:18px;cursor:pointer;line-height:1}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:1000;align-items:center;justify-content:center}
+.modal{background:#16120a;border:1px solid #3a2e1a;border-radius:12px;padding:2rem;width:100%;max-width:400px;position:relative;margin:1rem}
+.modal h2{font-family:'Cinzel',serif;font-size:16px;color:#c9a84c;margin-bottom:.4rem;letter-spacing:.08em}
+.modal-sub{font-size:13px;color:#7a6a4a;margin-bottom:1rem;line-height:1.6}
+.modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;color:#5a4a2a;font-size:20px;cursor:pointer}
 .modal-close:hover{color:#c9a84c}
-.modal-input{background:#0d0b07;border:1px solid #3a2e1a;border-radius:7px;color:#e8dfc8;font-family:'EB Garamond',serif;font-size:15px;padding:8px 12px;width:100%;margin-bottom:.75rem;outline:none}
+.modal-benefits{background:#0d0b07;border:1px solid #2a2010;border-radius:8px;padding:.85rem 1rem;margin-bottom:1.25rem;list-style:none}
+.modal-benefits li{font-size:13px;color:#7a6a4a;padding:3px 0;line-height:1.5}
+.modal-benefits li::before{content:'¹4';color:#6a9a6a;margin-right:8px}
+.modal-input{background:#0d0b07;border:1px solid #3a2e1a;border-radius:7px;color:#e8dfc8;font-family:'EB Garamond',serif;font-size:15px;padding:8px 12px;width:100%;margin-bottom:.75rem;outline:none;display:block}
 .modal-input:focus{border-color:#c9a84c}
-.modal-btn{background:#c9a84c;color:#0d0b07;border:none;border-radius:7px;font-family:'Cinzel',serif;font-size:12px;font-weight:700;letter-spacing:.1em;padding:10px;cursor:pointer;width:100%;margin-bottom:.75rem}
+.modal-btn{background:#c9a84c;color:#0d0b07;border:none;border-radius:7px;font-family:'Cinzel',serif;font-size:12px;font-weight:700;letter-spacing:.1em;padding:10px;cursor:pointer;width:100%;margin-bottom:.75rem;display:block}
 .modal-btn:hover{background:#ddb84e}
 .modal-or{text-align:center;color:#3a2e1a;font-size:12px;margin-bottom:.75rem}
-.modal-google{background:#1e1810;border:1px solid #3a2e1a;border-radius:7px;color:#e8dfc8;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.06em;padding:10px;cursor:pointer;width:100%;display:flex;align-items:center;justify-content:center;gap:8px}
+.modal-google{background:#1e1810;border:1px solid #3a2e1a;border-radius:7px;color:#e8dfc8;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.06em;padding:10px;cursor:pointer;width:100%;display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:.75rem}
 .modal-google:hover{border-color:#c9a84c}
-.auth-error{color:#c06060;font-size:12px;margin-top:.5rem;display:none}
-.modal-benefits{background:#0d0b07;border:1px solid #2a2010;border-radius:8px;padding:.9rem 1rem;margin-bottom:1.25rem}
-.modal-benefits li{font-size:13px;color:#7a6a4a;list-style:none;padding:3px 0;line-height:1.5}
-.modal-benefits li::before{content:'¹4';color:#6a9a6a;margin-right:8px}
-/* History panel */
-.history-panel{background:#16120a;border:1px solid #3a2e1a;border-radius:10px;padding:1.25rem;margin-top:2rem;display:none}
-.history-title{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.14em;color:#7a6a4a;text-transform:uppercase;margin-bottom:.75rem}
-.history-item{display:flex;align-items:center;gap:8px;padding:.5rem 0;border-bottom:1px solid #1e1810}
-.history-item:last-child{border-bottom:none}
-.history-verse{flex:1;color:#c9a84c;font-size:14px;cursor:pointer;font-style:italic}
-.history-verse:hover{text-decoration:underline}
-.history-delete{background:none;border:none;color:#3a2e1a;cursor:pointer;font-size:14px;padding:2px 6px}
-.history-delete:hover{color:#c06060}
-/* Search */
+.auth-error{color:#c06060;font-size:12px;margin-top:.25rem;display:none}
+.modal-hint{font-size:11px;color:#3a2e1a;text-align:center;margin-top:.5rem}
 .search-box{background:#16120a;border:1px solid #3a2e1a;border-radius:10px;padding:1.25rem;margin-bottom:1rem}
 .row{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;margin-bottom:.9rem}
 .fg{display:flex;flex-direction:column;gap:5px;flex:1;min-width:180px}
@@ -80,9 +67,9 @@ body{font-family:'EB Garamond',Georgia,serif;background:#0d0b07;color:#e8dfc8;mi
 .errbox{display:none;background:#1a0808;border:1px solid #5a2020;border-radius:8px;padding:.8rem 1rem;color:#c06060;font-size:13px;margin-bottom:1rem}
 .results{display:flex;flex-direction:column;gap:2rem;margin-bottom:2rem}
 .vcard{background:#16120a;border:1px solid #3a2e1a;border-radius:10px;overflow:hidden}
-.vhead{background:#1e1810;padding:.9rem 1.2rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #3a2e1a;flex-wrap:wrap;gap:8px}
-.vref{font-family:'Cinzel',serif;font-size:14px;font-weight:600;color:#c9a84c}
-.vcov{font-size:12px;color:#6a5a3a;font-style:italic}
+.vhead{background:#1e1810;padding:.9rem 1.2rem;border-bottom:1px solid #3a2e1a}
+.vref{font-family:'Cinzel',serif;font-size:14px;font-weight:600;color:#c9a84c;display:block}
+.vcov{font-size:12px;color:#6a5a3a;font-style:italic;display:block;margin-top:2px}
 .hit{color:#6a9a6a}
 .vtext{padding:1.1rem 1.2rem;font-size:17px;line-height:1.9;font-style:italic;border-bottom:1px solid #3a2e1a;color:#d8cfa8}
 .vsec{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.14em;color:#6a5a3a;text-transform:uppercase;padding:.9rem 1.2rem .5rem}
@@ -97,9 +84,9 @@ tr:hover td{background:#1a1408}
 .htrans-match{color:#e8d060;font-size:15px;display:block;margin-top:4px;background:#1a2a0a;border:1px solid #4a8a1a;border-radius:5px;padding:4px 12px;font-weight:700;letter-spacing:.04em}
 .dict-meanings{margin-top:8px;display:flex;flex-wrap:wrap;gap:4px}
 .dict-meaning-tag{display:inline-block;background:#1a1a2a;border:1px solid #2a2a4a;border-radius:4px;padding:2px 8px;font-size:12px;color:#8a8ac0;font-style:italic}
-.hroot{color:#a08840;font-style:italic;font-size:16px}
+.hroot{color:#a08840;font-style:italic;font-size:16px;display:block}
 .hstrongs{color:#6a7a9a;font-size:14px;display:block;margin-top:3px;text-decoration:none;border-bottom:1px dotted #4a5a7a}
-.hstrongs:hover{color:#8aaadd;border-bottom-color:#8aaadd}
+.hstrongs:hover{color:#8aaadd}
 .ltag{display:inline-block;background:#1e1810;border:1px solid #2e2214;border-radius:3px;padding:2px 6px;font-size:14px;color:#c9a84c;margin:2px 2px 0 0;cursor:help}
 .lmean{font-size:15px;color:#b0a880;line-height:1.7}
 .lmean strong{color:#c8b870}
@@ -109,6 +96,14 @@ tr:hover td{background:#1a1408}
 .bmeans{color:#5a4a2a;font-size:14px}
 .nomatch{color:#3a3020;font-style:italic;font-size:15px}
 .empty{text-align:center;padding:3rem;color:#3a2e1a;font-style:italic;font-size:15px;line-height:2.5}
+.history-panel{background:#16120a;border:1px solid #3a2e1a;border-radius:10px;padding:1.25rem;margin-top:2rem;display:none}
+.history-title{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.14em;color:#7a6a4a;text-transform:uppercase;margin-bottom:.75rem}
+.history-item{display:flex;align-items:center;gap:8px;padding:.5rem 0;border-bottom:1px solid #1e1810}
+.history-item:last-child{border-bottom:none}
+.history-verse{flex:1;color:#c9a84c;font-size:14px;cursor:pointer;font-style:italic}
+.history-verse:hover{text-decoration:underline}
+.history-delete{background:none;border:none;color:#3a2e1a;cursor:pointer;font-size:14px;padding:2px 6px}
+.history-delete:hover{color:#c06060}
 .lookup-section{margin-top:2rem;border-top:1px solid #2a2010;padding-top:1.5rem}
 .lookup-title{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.14em;color:#7a6a4a;text-transform:uppercase;margin-bottom:.75rem}
 .lookup-result{background:#12100a;border:1px solid #2a2010;border-radius:8px;padding:1rem 1.2rem;font-size:15px;min-height:56px;line-height:1.8;margin-top:.5rem}
@@ -117,20 +112,18 @@ tr:hover td{background:#1a1408}
 <body>
 <div class="shell">
 
-<!-- Header -->
 <div class="header">
   <h1>&#x2721; Ancient Word Explorer &#x2721;</h1>
-  <p>Bible Search &nbsp;&middot;&nbsp; Hebrew Roots &nbsp;&middot;&nbsp; Your Bantu Dictionary &nbsp;&middot;&nbsp; Ancient Letter Meanings</p>
+  <p>Bible Search &nbsp;&middot;&nbsp; Hebrew Roots &nbsp;&middot;&nbsp; Bantu Dictionary &nbsp;&middot;&nbsp; Ancient Letter Meanings</p>
 </div>
 
-<!-- Auth bar -->
 <div class="auth-bar">
   <div class="auth-signed-out" id="authSignedOut">
     <button class="auth-btn-google" id="googleSignInBtn">
       <svg width="14" height="14" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
       Sign in with Google
     </button>
-    <button class="auth-btn" id="openAuthModal">Sign in / Register</button>
+    <button class="auth-btn" id="openAuthModal">Email sign in</button>
   </div>
   <div class="auth-signed-in" id="authSignedIn">
     <span class="auth-name" id="userName"></span>
@@ -138,15 +131,10 @@ tr:hover td{background:#1a1408}
   </div>
 </div>
 
-<!-- Save banner for guests -->
 <div class="save-banner" id="saveBanner">
-  &#x2661; <a id="saveBannerLink">Sign in to save this study, add notes and build your library</a>
-  &nbsp;&mdash;&nbsp;
-  <a id="googleSignInBtn2">Sign in with Google</a> or
-  <a id="openAuthModal2">use email</a>
+  &#x2661; <a id="saveBannerLink">Sign in to save this study and build your personal library</a>
 </div>
 
-<!-- Search -->
 <div class="search-box">
   <div class="pills">
     <span class="pills-label">Quick pick:</span>
@@ -166,7 +154,6 @@ tr:hover td{background:#1a1408}
   </div>
 </div>
 
-<!-- Stats -->
 <div class="stats-bar">
   <div class="stat"><span class="stat-n" id="statHnums">...</span><span class="stat-l">H-numbers mapped</span></div>
   <div class="stat"><span class="stat-n" id="statEntries">...</span><span class="stat-l">Bantu word entries</span></div>
@@ -180,17 +167,17 @@ tr:hover td{background:#1a1408}
   <span class="loader-msg" id="loaderMsg">Searching the scriptures...</span>
 </div>
 
+<button class="save-btn" id="saveBtn">&#x2661; Save Study</button>
+
 <div class="results" id="resultsArea">
   <div class="empty">&#x05D0;<br>Enter a verse above and click Explore.</div>
 </div>
 
-<!-- Saved studies -->
 <div class="history-panel" id="historyPanel">
   <div class="history-title">&#x2661; Your Saved Studies</div>
   <div id="historyList"></div>
 </div>
 
-<!-- H-number lookup -->
 <div class="lookup-section">
   <div class="lookup-title">&#x25BC; Direct H-number lookup (instant)</div>
   <div class="row">
@@ -203,21 +190,21 @@ tr:hover td{background:#1a1408}
   <div class="lookup-result" id="hResult" style="color:#4a3a1a;font-style:italic">Enter any H-number to instantly see all Bantu matches.</div>
 </div>
 
-</div><!-- /shell -->
+</div>
 
 <!-- Auth Modal -->
 <div class="modal-overlay" id="authModal">
   <div class="modal">
-    <button class="modal-close">&#x2715;</button>
-    <h2>&#x2721; Sign In to Ancient Word Explorer</h2>
-    <p>Create an account to unlock:</p>
+    <button class="modal-close" id="modalClose">&#x2715;</button>
+    <h2>&#x2721; Sign In</h2>
+    <p class="modal-sub">Create an account to unlock:</p>
     <ul class="modal-benefits">
       <li>Save your favourite verse studies</li>
       <li>Add personal notes to any verse</li>
       <li>Share studies with others</li>
       <li>See your full search history</li>
     </ul>
-    <button class="modal-google" id="googleSignInBtn2">
+    <button class="modal-google" id="googleSignInBtnModal">
       <svg width="16" height="16" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
       Continue with Google
     </button>
@@ -226,15 +213,15 @@ tr:hover td{background:#1a1408}
     <input class="modal-input" type="password" id="authPassword" placeholder="Password (min 6 chars)" />
     <button class="modal-btn" id="emailSignInBtn">Sign In / Create Account</button>
     <div class="auth-error" id="authError"></div>
-    <p style="font-size:11px;color:#3a2e1a;text-align:center">New? Just enter your email and a password to register.</p>
+    <p class="modal-hint">New user? Just enter email + password to register automatically.</p>
   </div>
 </div>
 
-<script type="module">
+<script type='module'>
 // ── Firebase Setup ────────────────────────────────────────────────────────────
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-import { getFirestore, doc, setDoc, getDoc, collection, addDoc, getDocs, deleteDoc, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCdtHtTrJnDMdjAyPcKRzIxZRwg1PUYeuA",
@@ -264,181 +251,141 @@ fetch('/bantu-db')
     BANTU_DB = db;
     var n = Object.keys(db).length;
     var entries = Object.values(db).reduce(function(a,v){ return a+v.length; }, 0);
-    var el = document.getElementById('dbStatus');
-    el.textContent = '\u2714 Ready (' + n + ')';
-    el.style.color = '#6a9a6a';
+    document.getElementById('dbStatus').textContent = '\u2714 Ready (' + n + ')';
+    document.getElementById('dbStatus').style.color = '#6a9a6a';
     document.getElementById('statHnums').textContent = n.toLocaleString();
     document.getElementById('statEntries').textContent = entries.toLocaleString();
   })
-  .catch(function(e){
-    console.error('Failed to load Bantu DB:', e);
-    document.getElementById('dbStatus').textContent = 'Load error';
-    document.getElementById('dbStatus').style.color = '#c06060';
-  });
+  .catch(function(e){ console.error('Bantu DB error:', e); });
 
 // ── Auth State ────────────────────────────────────────────────────────────────
 onAuthStateChanged(auth, function(user) {
   currentUser = user;
   updateAuthUI(user);
   if(user) loadHistory();
+  else {
+    document.getElementById('historyPanel').style.display = 'none';
+    document.getElementById('historyList').innerHTML = '';
+  }
 });
 
 function updateAuthUI(user) {
-  var signedOut = document.getElementById('authSignedOut');
-  var signedIn = document.getElementById('authSignedIn');
-  var userName = document.getElementById('userName');
-  var saveBanner = document.getElementById('saveBanner');
-
-  if(user) {
-    signedOut.style.display = 'none';
-    signedIn.style.display = 'flex';
-    userName.textContent = user.displayName || user.email;
-    saveBanner.style.display = 'none';
-  } else {
-    signedOut.style.display = 'flex';
-    signedIn.style.display = 'none';
-    saveBanner.style.display = currentResult ? 'block' : 'none';
-  }
-  // Show/hide save button
-  var saveBtn = document.getElementById('saveBtn');
-  if(saveBtn) saveBtn.style.display = user ? 'inline-block' : 'none';
+  document.getElementById('authSignedOut').style.display = user ? 'none' : 'flex';
+  document.getElementById('authSignedIn').style.display = user ? 'flex' : 'none';
+  if(user) document.getElementById('userName').textContent = user.displayName || user.email;
+  document.getElementById('saveBtn').style.display = user && currentResult ? 'inline-block' : 'none';
+  document.getElementById('saveBanner').style.display = !user && currentResult ? 'block' : 'none';
 }
 
-// ── Auth Actions ──────────────────────────────────────────────────────────────
-document.getElementById('googleSignInBtn').addEventListener('click', function() {
+// ── Auth actions ──────────────────────────────────────────────────────────────
+document.getElementById('googleSignInBtn').addEventListener('click', function(){
   signInWithPopup(auth, googleProvider).catch(function(e){ showAuthError(e.message); });
 });
-
-document.getElementById('googleSignInBtn2').addEventListener('click', function() {
-  signInWithPopup(auth, googleProvider).catch(function(e){ showAuthError(e.message); });
-  closeModal('authModal');
+document.getElementById('googleSignInBtnModal').addEventListener('click', function(){
+  signInWithPopup(auth, googleProvider).then(function(){ closeModal(); }).catch(function(e){ showAuthError(e.message); });
 });
-
-document.getElementById('signOutBtn').addEventListener('click', function() {
+document.getElementById('signOutBtn').addEventListener('click', function(){
   signOut(auth);
+  currentResult = null;
+  currentVerse = '';
+  document.getElementById('saveBtn').style.display = 'none';
 });
-
-document.getElementById('openAuthModal').addEventListener('click', function() {
-  openModal('authModal');
-});
-
-document.getElementById('emailSignInBtn').addEventListener('click', function() {
+document.getElementById('openAuthModal').addEventListener('click', function(){ openModal(); });
+document.getElementById('saveBannerLink').addEventListener('click', function(){ openModal(); });
+document.getElementById('emailSignInBtn').addEventListener('click', function(){
   var email = document.getElementById('authEmail').value.trim();
   var pass = document.getElementById('authPassword').value;
-  if(!email || !pass) return;
+  if(!email || !pass){ showAuthError('Please enter email and password'); return; }
   signInWithEmailAndPassword(auth, email, pass)
-    .then(function(){ closeModal('authModal'); })
+    .then(function(){ closeModal(); })
     .catch(function(e){
-      // If not found, create account
-      if(e.code === 'auth/user-not-found' || e.code === 'auth/invalid-credential') {
+      if(e.code === 'auth/user-not-found' || e.code === 'auth/invalid-credential' || e.code === 'auth/invalid-email') {
         createUserWithEmailAndPassword(auth, email, pass)
-          .then(function(){ closeModal('authModal'); })
+          .then(function(){ closeModal(); })
           .catch(function(e2){ showAuthError(e2.message); });
-      } else {
-        showAuthError(e.message);
-      }
+      } else { showAuthError(e.message); }
     });
 });
 
-function showAuthError(msg) {
+function openModal(){
+  document.getElementById('authModal').style.display = 'flex';
+  document.getElementById('authError').style.display = 'none';
+}
+function closeModal(){
+  document.getElementById('authModal').style.display = 'none';
+}
+function showAuthError(msg){
   var el = document.getElementById('authError');
   el.textContent = msg;
   el.style.display = 'block';
 }
-
-// ── Modal helpers ─────────────────────────────────────────────────────────────
-function openModal(id) {
-  document.getElementById(id).style.display = 'flex';
-  document.getElementById('authError').textContent = '';
-  document.getElementById('authError').style.display = 'none';
-}
-function closeModal(id) {
-  document.getElementById(id).style.display = 'none';
-}
-document.querySelectorAll('.modal-close').forEach(function(btn) {
-  btn.addEventListener('click', function() {
-    this.closest('.modal-overlay').style.display = 'none';
-  });
-});
-document.querySelectorAll('.modal-overlay').forEach(function(overlay) {
-  overlay.addEventListener('click', function(e) {
-    if(e.target === this) this.style.display = 'none';
-  });
+document.getElementById('modalClose').addEventListener('click', closeModal);
+document.getElementById('authModal').addEventListener('click', function(e){
+  if(e.target === this) closeModal();
 });
 
-// ── Save / Favourites ─────────────────────────────────────────────────────────
-async function saveCurrentVerse() {
+// ── Save study ────────────────────────────────────────────────────────────────
+document.getElementById('saveBtn').addEventListener('click', saveStudy);
+
+async function saveStudy(){
   if(!currentUser || !currentResult || !currentVerse) return;
-  var saveBtn = document.getElementById('saveBtn');
-  saveBtn.textContent = 'Saving...';
+  var btn = document.getElementById('saveBtn');
+  btn.textContent = 'Saving...';
+  btn.disabled = true;
   try {
     await addDoc(collection(db, 'users', currentUser.uid, 'favourites'), {
       verse: currentVerse,
       result: currentResult,
-      savedAt: new Date().toISOString(),
-      note: ''
+      savedAt: new Date().toISOString()
     });
-    saveBtn.textContent = '\u2764 Saved!';
-    saveBtn.style.background = '#2a4a2a';
-    setTimeout(function(){ saveBtn.textContent = '\u2661 Save Study'; saveBtn.style.background = ''; }, 2000);
+    btn.textContent = '\u2714 Saved!';
+    btn.style.background = '#2a4a2a';
+    btn.style.color = '#8aba8a';
+    setTimeout(function(){
+      btn.textContent = '\u2661 Save Study';
+      btn.style.background = '';
+      btn.style.color = '';
+      btn.disabled = false;
+    }, 2000);
     loadHistory();
   } catch(e) {
-    saveBtn.textContent = 'Error saving';
-    console.error(e);
+    console.error('Save error:', e);
+    btn.textContent = 'Error';
+    btn.disabled = false;
   }
 }
 
-document.getElementById('saveBtn').addEventListener('click', saveCurrentVerse);
-
-async function loadHistory() {
+// ── Load saved history ────────────────────────────────────────────────────────
+async function loadHistory(){
   if(!currentUser) return;
   try {
-    var q = query(
-      collection(db, 'users', currentUser.uid, 'favourites'),
-      orderBy('savedAt', 'desc'),
-      limit(50)
-    );
+    var q = query(collection(db, 'users', currentUser.uid, 'favourites'), orderBy('savedAt','desc'), limit(50));
     var snap = await getDocs(q);
     var items = [];
-    snap.forEach(function(d) {
-      items.push({ id: d.id, ...d.data() });
-    });
+    snap.forEach(function(d){ items.push({ id: d.id, ...d.data() }); });
     renderHistory(items);
-  } catch(e) {
-    console.error('Load history error:', e);
-  }
+  } catch(e){ console.error('History error:', e); }
 }
 
-function renderHistory(items) {
+function renderHistory(items){
   var panel = document.getElementById('historyPanel');
   var list = document.getElementById('historyList');
-  if(!items.length) {
-    panel.style.display = 'none';
-    return;
-  }
+  if(!items.length){ panel.style.display = 'none'; return; }
   panel.style.display = 'block';
-  list.innerHTML = items.map(function(item) {
-    return '<div class="history-item" data-id="' + item.id + '">'
-      + '<span class="history-verse" data-verse="' + item.verse + '">' + item.verse + '</span>'
-      + '<button class="history-delete" data-id="' + item.id + '" title="Remove">&#x2715;</button>'
-      + (item.note ? '<div class="history-note">' + item.note + '</div>' : '')
-      + '</div>';
+  list.innerHTML = items.map(function(item){
+    return '<div class="history-item">'
+      +'<span class="history-verse" data-verse="'+item.verse+'">'+item.verse+'</span>'
+      +'<button class="history-delete" data-id="'+item.id+'" title="Remove">&#x2715;</button>'
+      +'</div>';
   }).join('');
-
-  // Click to reload a saved study
-  list.querySelectorAll('.history-verse').forEach(function(el) {
-    el.addEventListener('click', function() {
-      var verse = this.getAttribute('data-verse');
-      document.getElementById('qInput').value = verse;
+  list.querySelectorAll('.history-verse').forEach(function(el){
+    el.addEventListener('click', function(){
+      document.getElementById('qInput').value = this.getAttribute('data-verse');
       doSearch();
-      document.getElementById('historyPanel').scrollIntoView({behavior:'smooth'});
     });
   });
-
-  // Delete saved study
-  list.querySelectorAll('.history-delete').forEach(function(btn) {
-    btn.addEventListener('click', async function(e) {
-      e.stopPropagation();
+  list.querySelectorAll('.history-delete').forEach(function(btn){
+    btn.addEventListener('click', async function(){
       var id = this.getAttribute('data-id');
       await deleteDoc(doc(db, 'users', currentUser.uid, 'favourites', id));
       loadHistory();
@@ -446,34 +393,19 @@ function renderHistory(items) {
   });
 }
 
-// ── Note modal ────────────────────────────────────────────────────────────────
-document.getElementById('addNoteBtn') && document.getElementById('addNoteBtn').addEventListener('click', function() {
-  if(!currentUser) { openModal('authModal'); return; }
-  openModal('noteModal');
-});
-
 // ── Loader ────────────────────────────────────────────────────────────────────
 var loaderMessages = [
-  'Searching the scriptures\u2026',
-  'Consulting the Ancient Hebrew Lexicon\u2026',
-  'Mapping Bantu roots\u2026',
-  'Reading the letter pictographs\u2026',
-  'Tracing the ancient tongues\u2026',
-  'Connecting Hebrew to Africa\u2026',
-  'Almost ready\u2026'
+  'Searching the scriptures\u2026','Consulting the Ancient Hebrew Lexicon\u2026',
+  'Mapping Bantu roots\u2026','Reading the letter pictographs\u2026',
+  'Tracing the ancient tongues\u2026','Connecting Hebrew to Africa\u2026','Almost ready\u2026'
 ];
 var loaderInterval = null;
 function startLoader(){
-  var i = 0;
+  var i=0;
   document.getElementById('loaderMsg').textContent = loaderMessages[0];
-  loaderInterval = setInterval(function(){
-    i = (i+1) % loaderMessages.length;
-    document.getElementById('loaderMsg').textContent = loaderMessages[i];
-  }, 1800);
+  loaderInterval = setInterval(function(){ i=(i+1)%loaderMessages.length; document.getElementById('loaderMsg').textContent=loaderMessages[i]; },1800);
 }
-function stopLoader(){
-  if(loaderInterval){ clearInterval(loaderInterval); loaderInterval = null; }
-}
+function stopLoader(){ if(loaderInterval){ clearInterval(loaderInterval); loaderInterval=null; } }
 
 // ── Search ────────────────────────────────────────────────────────────────────
 document.querySelectorAll('.pill').forEach(function(p){
@@ -494,6 +426,7 @@ function doSearch(){
     currentVerse = q;
     currentResult = SESSION_CACHE[cacheKey];
     renderResults(SESSION_CACHE[cacheKey]);
+    updateAuthUI(currentUser);
     return;
   }
 
@@ -501,17 +434,17 @@ function doSearch(){
   document.getElementById('loader').style.display = 'block';
   document.getElementById('errBox').style.display = 'none';
   document.getElementById('goBtn').disabled = true;
+  document.getElementById('saveBtn').style.display = 'none';
   document.getElementById('saveBanner').style.display = 'none';
   startLoader();
 
   fetch('https://bible-api.com/' + encodeURIComponent(q) + '?translation=kjv')
     .then(function(r){ return r.json(); })
     .then(function(bible){
-      var verseText = (bible && bible.text) ? bible.text.replace(/\s+/g,' ').trim() : '';
+      var vt = (bible && bible.text) ? bible.text.replace(/\s+/g,' ').trim() : '';
       return fetch('/analyse', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({ verse: q, verse_text: verseText })
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ verse:q, verse_text:vt })
       });
     })
     .then(function(r){ return r.json(); })
@@ -524,7 +457,7 @@ function doSearch(){
       currentVerse = q;
       currentResult = data;
       renderResults(data);
-      if(!currentUser) document.getElementById('saveBanner').style.display = 'block';
+      updateAuthUI(currentUser);
     })
     .catch(function(e){
       document.getElementById('loader').style.display = 'none';
@@ -555,9 +488,7 @@ function doHLookup(){
   var html='<strong style="color:#c9a84c;font-family:Cinzel,serif">'+key+'</strong> &mdash; <em style="color:#8a7a5a">'+(hits[0].transliteration||'')+'</em><br><br>';
   Object.keys(bl).forEach(function(lang){
     var e=bl[lang];
-    var words=uniq(e.map(function(x){return x.word;})).join(', ');
-    var means=uniq(e.map(function(x){return x.meaning;})).join(', ');
-    html+='<span class="blang">'+lang+'</span> <span class="bwords">'+words+'</span> <span class="bmeans">— '+means+'</span><br>';
+    html+='<span class="blang">'+lang+'</span> <span class="bwords">'+uniq(e.map(function(x){return x.word;})).join(', ')+'</span> <span class="bmeans">— '+uniq(e.map(function(x){return x.meaning;})).join(', ')+'</span><br>';
   });
   el.innerHTML=html;
 }
@@ -568,35 +499,19 @@ function uniq(a){ var s={}; return a.filter(function(x){ return s[x]?false:(s[x]
 
 function buildDictCell(hits){
   if(!hits.length) return '<span class="nomatch">Not yet in dictionary</span>';
-  var bl = byLang(hits);
-  return Object.keys(bl).map(function(lang){
-    var entries = bl[lang];
-    var words = uniq(entries.map(function(e){ return e.word; })).join(', ');
-    var means = uniq(entries.map(function(e){ return e.meaning; })).join(', ');
-    return '<div style="margin-bottom:6px"><span class="blang">'+lang+'</span> <span class="bwords">'+words+'</span><br><span class="bmeans">'+means+'</span></div>';
+  return Object.keys(byLang(hits)).map(function(lang){
+    var e=byLang(hits)[lang];
+    return '<div style="margin-bottom:6px"><span class="blang">'+lang+'</span> <span class="bwords">'+uniq(e.map(function(x){return x.word;})).join(', ')+'</span><br><span class="bmeans">'+uniq(e.map(function(x){return x.meaning;})).join(', ')+'</span></div>';
   }).join('');
 }
 
 function buildHebrewCell(w, hits){
-  var transClass = hits.length ? 'htrans-match' : 'htrans';
   var html = '<span class="hword">'+(w.hebrew_word||'')+'</span>'
-    +'<span class="'+transClass+'">'+(w.hebrew_transliteration||'')+'</span>';
-  var allMeanings = [];
-  if(hits.length){
-    uniq(hits.map(function(e){ return e.meaning; })).filter(Boolean).forEach(function(m){
-      if(allMeanings.indexOf(m)===-1) allMeanings.push(m);
-    });
-  }
-  if(w.english_meaning){
-    w.english_meaning.split(/[,;]+/).map(function(m){ return m.trim(); }).filter(Boolean).forEach(function(m){
-      if(allMeanings.indexOf(m)===-1) allMeanings.push(m);
-    });
-  }
-  if(allMeanings.length){
-    html += '<div class="dict-meanings">'
-      + allMeanings.map(function(m){ return '<span class="dict-meaning-tag">'+m+'</span>'; }).join(' ')
-      +'</div>';
-  }
+    +'<span class="'+(hits.length?'htrans-match':'htrans')+'">'+(w.hebrew_transliteration||'')+'</span>';
+  var all=[];
+  if(hits.length) uniq(hits.map(function(e){return e.meaning;})).filter(Boolean).forEach(function(m){if(all.indexOf(m)===-1)all.push(m);});
+  if(w.english_meaning) w.english_meaning.split(/[,;]+/).map(function(m){return m.trim();}).filter(Boolean).forEach(function(m){if(all.indexOf(m)===-1)all.push(m);});
+  if(all.length) html+='<div class="dict-meanings">'+all.map(function(m){return '<span class="dict-meaning-tag">'+m+'</span>';}).join(' ')+'</div>';
   return html;
 }
 
@@ -606,16 +521,16 @@ function renderResults(data){
   if(!data.verses||!data.verses.length){ area.innerHTML='<div class="empty">No verses found.</div>'; return; }
   data.verses.forEach(function(verse){
     var card=document.createElement('div'); card.className='vcard';
-    var matched=0, total=0;
+    var matched=0,total=0;
     var rows=(verse.words||[]).map(function(w){
       total++;
       var hits=lookupH(w.strongs||''); if(hits.length) matched++;
-      var ltags=(w.hebrew_letters||[]).map(function(l){ return '<span class="ltag" title="'+l.ancient_meaning+'">'+l.hebrew_char+' '+l.letter+'</span>'; }).join('');
-      var lmeans='<div class="lmean">'+(w.hebrew_letters||[]).map(function(l){ return '<strong>'+l.letter+'</strong> ('+l.hebrew_char+'): '+l.ancient_meaning; }).join('<br>')+'</div>';
+      var ltags=(w.hebrew_letters||[]).map(function(l){return '<span class="ltag" title="'+l.ancient_meaning+'">'+l.hebrew_char+' '+l.letter+'</span>';}).join('');
+      var lmeans='<div class="lmean">'+(w.hebrew_letters||[]).map(function(l){return '<strong>'+l.letter+'</strong> ('+l.hebrew_char+'): '+l.ancient_meaning;}).join('<br>')+'</div>';
       return '<tr>'
-        +'<td>'+buildHebrewCell(w, hits)+'</td>'
+        +'<td>'+buildHebrewCell(w,hits)+'</td>'
         +'<td><span class="hroot">'+(w.hebrew_root||'')+'</span>'
-        +(w.strongs ? '<a class="hstrongs" href="https://www.blueletterbible.org/lexicon/'+w.strongs+'/kjv/wlc/0-1/" target="_blank">'+w.strongs+' &#x2197;</a>' : '')
+        +(w.strongs?'<a class="hstrongs" href="https://www.blueletterbible.org/lexicon/'+w.strongs+'/kjv/wlc/0-1/" target="_blank">'+w.strongs+' &#x2197;</a>':'')
         +'<br><small style="color:#5a4a2a;font-size:11px">'+(w.english_meaning||'')+'</small></td>'
         +'<td>'+ltags+'</td>'
         +'<td>'+lmeans+'<span class="composite">'+(w.composite_meaning||'')+'</span></td>'
@@ -624,13 +539,8 @@ function renderResults(data){
     }).join('');
     var pct=total>0?Math.round(matched/total*100):0;
     card.innerHTML=
-      '<div class="vhead">'
-      +'<span class="vref">'+(verse.reference||'')+'</span>'
-      +'<div style="display:flex;align-items:center;gap:10px">'
-      +'<span class="vcov"><span class="hit">'+matched+'/'+total+'</span> in your dictionary ('+pct+'%)</span>'
-      +(currentUser ? '<button id="saveBtn" class="save-btn">\u2661 Save Study</button>' : '')
-      +'</div>'
-      +'</div>'
+      '<div class="vhead"><span class="vref">'+(verse.reference||'')+'</span>'
+      +'<span class="vcov"><span class="hit">'+matched+'/'+total+'</span> in your dictionary ('+pct+'%)</span></div>'
       +'<div class="vtext">'+(verse.text||'')+'</div>'
       +'<div class="vsec">\u05D0 Hebrew Roots &amp; Bantu Dictionary Matches</div>'
       +'<div class="tbl-wrap"><table>'
@@ -638,19 +548,10 @@ function renderResults(data){
       +'<th>Letter Meanings &amp; Composite</th><th>Your Bantu Dictionary</th></tr></thead>'
       +'<tbody>'+rows+'</tbody></table></div>';
     area.appendChild(card);
-
-    // Wire save button after render
-    var sb = document.getElementById('saveBtn');
-    if(sb) sb.addEventListener('click', saveCurrentVerse);
   });
   area.scrollIntoView({behavior:'smooth',block:'start'});
 }
 
-// Wire save banner links
-var sb = document.getElementById('saveBannerLink');
-var ob2 = document.getElementById('openAuthModal2');
-if(sb) sb.addEventListener('click', function(){ openModal('authModal'); });
-if(ob2) ob2.addEventListener('click', function(){ openModal('authModal'); });
 </script>
 </body>
 </html>
