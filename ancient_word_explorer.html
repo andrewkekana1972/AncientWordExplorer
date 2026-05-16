@@ -493,7 +493,13 @@ function doHLookup(){
   el.innerHTML=html;
 }
 
-function lookupH(h){ return BANTU_DB[(h||'').trim().toUpperCase()]||[]; }
+function lookupH(h){
+  if(!h) return [];
+  var key = h.trim().toUpperCase();
+  // Normalise: remove leading zeros e.g. H0430 -> H430
+  key = key.replace(/^H0+/, 'H');
+  return BANTU_DB[key] || [];
+}
 function byLang(hits){ var r={}; hits.forEach(function(m){ if(!r[m.language]) r[m.language]=[]; r[m.language].push(m); }); return r; }
 function uniq(a){ var s={}; return a.filter(function(x){ return s[x]?false:(s[x]=true); }); }
 
@@ -530,7 +536,7 @@ function renderResults(data){
       return '<tr>'
         +'<td>'+buildHebrewCell(w,hits)+'</td>'
         +'<td><span class="hroot">'+(w.hebrew_root||'')+'</span>'
-        +(w.strongs?'<a class="hstrongs" href="https://www.blueletterbible.org/lexicon/'+w.strongs+'/kjv/wlc/0-1/" target="_blank">'+w.strongs+' &#x2197;</a>':'')
+        +(w.strongs?'<a class="hstrongs" href="https://www.blueletterbible.org/lexicon/'+w.strongs.replace(/^H0+/,"H")+'/kjv/wlc/0-1/" target="_blank">'+w.strongs.replace(/^H0+/,"H")+' &#x2197;</a>':'')
         +'<br><small style="color:#5a4a2a;font-size:11px">'+(w.english_meaning||'')+'</small></td>'
         +'<td>'+ltags+'</td>'
         +'<td>'+lmeans+'<span class="composite">'+(w.composite_meaning||'')+'</span></td>'
