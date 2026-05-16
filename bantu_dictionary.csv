@@ -3701,6 +3701,7 @@
 1254,ʼûwlâm,lamed-aleph,לא,however,H199,ʼûwlâm,Hebrew,אולם
 1254,ʼiwweleth,lamed-aleph,לא,silliness,H200,ʼiwweleth,Hebrew,אולת
 1254,ʼal,lamed-aleph,לא,not,H408,ʼal,Hebrew,אל
+1254,ʼal,lamed-aleph,לא,no-thing,H408,lu-tho,isiZulu,אל
 1254,ʼal,lamed-aleph,לא,god,H409,ʼal,Hebrew,אל
 1254,ʼalᵉlay,lamed-aleph,לא,alas!,H480,ʼalᵉlay,Hebrew,אללי
 1254,yâʼal,lamed-aleph,לא,be slack,H2973,yâʼal,Hebrew,יאל
@@ -3859,6 +3860,7 @@
 1262,lâhaṭ,lamed-thete,לט,lick,H3857,lâhaṭ,Hebrew,להט
 1262,lâhaṭ,lamed-thete,לט,fire,H3857,lâhaṭ,Hebrew,להט
 1262,lâhaṭ,lamed-thete,לט,burn,H3857,lâhaṭ,Hebrew,להט
+1262,lâhaṭ,lamed-thete,לט,ash resulting from fire burning,H3857,umlotha,Hebrew,להט
 1262,lâhaṭ,lamed-thete,לט,kindle,H3857,lâhaṭ,Hebrew,להט
 1262,lahaṭ,lamed-thete,לט,blaze,H3858,lahaṭ,Hebrew,להט
 1262,lûwṭ,lamed-thete,לט,cover,H3874,lota,NSesotho,לוט
@@ -5871,6 +5873,8 @@
 1362,tôwʻâphâh,ayin-peh,עפ,strength,H8443,tôwʻâphâh,Hebrew,תועפה
 1362,tôwʻâphâh,ayin-peh,עפ,plenty,H8443,tôwʻâphâh,Hebrew,תועפה
 1363,ʼâʻ,ayin-tsade,עצ,tree,H636,ʼâʻ,Hebrew,אע
+1363,ʼâʻ,ayin-tsade,עצ,tree source for drug (medicine),H636,umtsi,seSwati,אע
+1363,ʼâʻ,ayin-tsade,עצ,drug,H636,umthi,isiZulu,אע
 1363,yâʻats,ayin-tsade,עצ,give,H3289,atsoa,Sesotho,יעץ
 1363,yâʻats,ayin-tsade,עצ,advise,H3289,yese,Kikongo,יעץ
 1363,yâʻats,ayin-tsade,עצ,grant,H3289,atsoa,Sesotho,יעץ
@@ -5881,6 +5885,11 @@
 1363,ʻûwts,ayin-tsade,עצ,counsel,H5779,ʻûwts,Hebrew,עוץ
 1363,ʻûwts,ayin-tsade,עצ,advice,H5779,ʻûwts,Hebrew,עוץ
 1363,ʻêts,ayin-tsade,עצ,tree,H6086,ʻêts,Hebrew,עץ
+1363,ʻêts,ayin-tsade,עצ,tree source for drug (medicine),H6086,umtsi,seSwati,עץ
+1363,ʻêts,ayin-tsade,עצ,tree,H6086,umuthi,isiZulu,עץ
+1363,ʻêts,ayin-tsade,עצ,drug,H6086,umuthi,isiZulu,עץ
+1363,ʻêts,ayin-tsade,עצ,medicine,H6086,umuthi,isiZulu,עץ
+1363,ʻêts,ayin-tsade,עצ,wood,H6086,umuthi,isiZulu,עץ
 1363,ʻêts,ayin-tsade,עצ,wood,H6086,ʻêts,Hebrew,עץ
 1363,ʻêts,ayin-tsade,עצ,timber,H6086,ʻêts,Hebrew,עץ
 1363,ʻêts,ayin-tsade,עצ,stick,H6086,ʻêts,Hebrew,עץ
