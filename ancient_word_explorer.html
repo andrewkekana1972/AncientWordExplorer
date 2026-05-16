@@ -22,10 +22,20 @@ body{font-family:'EB Garamond',Georgia,serif;background:#0d0b07;color:#e8dfc8;mi
 .auth-btn-google:hover{border-color:#c9a84c}
 .save-banner{background:#12100a;border:1px solid #3a2e1a;border-radius:8px;padding:.75rem 1.2rem;margin-bottom:1.25rem;font-size:13px;color:#7a6a4a;display:none;text-align:center;line-height:1.7}
 .save-banner a{color:#c9a84c;cursor:pointer;text-decoration:underline}
-.save-btn{background:#1a2a1a;border:1px solid #2a4a2a;border-radius:6px;color:#6a9a6a;font-family:'Cinzel',serif;font-size:10px;letter-spacing:.08em;padding:6px 16px;cursor:pointer;transition:all .15s;display:none;margin-top:.5rem}
+.action-bar{display:flex;gap:10px;margin-bottom:1rem;flex-wrap:wrap}
+.save-btn,.share-btn,.note-btn{border:none;border-radius:6px;font-family:'Cinzel',serif;font-size:10px;letter-spacing:.08em;padding:7px 16px;cursor:pointer;transition:all .15s;display:none}
+.save-btn{background:#1a2a1a;border:1px solid #2a4a2a;color:#6a9a6a}
 .save-btn:hover{background:#2a4a2a;color:#8aba8a}
+.share-btn{background:#1a1a2a;border:1px solid #2a2a4a;color:#6a6a9a}
+.share-btn:hover{background:#2a2a4a;color:#8a8aba}
+.note-btn{background:#2a1a10;border:1px solid #4a2a10;color:#9a6a3a}
+.note-btn:hover{background:#3a2a10;color:#ba8a5a}
+.shared-note-box{background:#0a140a;border:1px solid #1a4a1a;border-radius:8px;padding:1rem 1.2rem;margin-bottom:1.25rem;display:none}
+.shared-note-label{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:#5a9a5a;text-transform:uppercase;margin-bottom:.4rem;display:block}
+.shared-note-text{font-size:15px;color:#a8d0a8;font-style:italic;line-height:1.7}
+.shared-by{font-size:12px;color:#3a5a3a;margin-top:.4rem;display:block}
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:1000;align-items:center;justify-content:center}
-.modal{background:#16120a;border:1px solid #3a2e1a;border-radius:12px;padding:2rem;width:100%;max-width:400px;position:relative;margin:1rem}
+.modal{background:#16120a;border:1px solid #3a2e1a;border-radius:12px;padding:2rem;width:100%;max-width:420px;position:relative;margin:1rem}
 .modal h2{font-family:'Cinzel',serif;font-size:16px;color:#c9a84c;margin-bottom:.4rem;letter-spacing:.08em}
 .modal-sub{font-size:13px;color:#7a6a4a;margin-bottom:1rem;line-height:1.6}
 .modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;color:#5a4a2a;font-size:20px;cursor:pointer}
@@ -35,13 +45,28 @@ body{font-family:'EB Garamond',Georgia,serif;background:#0d0b07;color:#e8dfc8;mi
 .modal-benefits li::before{content:'¹4';color:#6a9a6a;margin-right:8px}
 .modal-input{background:#0d0b07;border:1px solid #3a2e1a;border-radius:7px;color:#e8dfc8;font-family:'EB Garamond',serif;font-size:15px;padding:8px 12px;width:100%;margin-bottom:.75rem;outline:none;display:block}
 .modal-input:focus{border-color:#c9a84c}
+.modal-textarea{background:#0d0b07;border:1px solid #3a2e1a;border-radius:7px;color:#e8dfc8;font-family:'EB Garamond',serif;font-size:15px;padding:10px 12px;width:100%;margin-bottom:.75rem;outline:none;display:block;resize:vertical;min-height:120px;line-height:1.6}
+.modal-textarea:focus{border-color:#c9a84c}
 .modal-btn{background:#c9a84c;color:#0d0b07;border:none;border-radius:7px;font-family:'Cinzel',serif;font-size:12px;font-weight:700;letter-spacing:.1em;padding:10px;cursor:pointer;width:100%;margin-bottom:.75rem;display:block}
 .modal-btn:hover{background:#ddb84e}
+.modal-btn-sec{background:#1e1810;border:1px solid #3a2e1a;border-radius:7px;color:#c9a84c;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.08em;padding:8px;cursor:pointer;width:100%;margin-bottom:.5rem;display:block;text-align:center}
+.modal-btn-sec:hover{border-color:#c9a84c}
 .modal-or{text-align:center;color:#3a2e1a;font-size:12px;margin-bottom:.75rem}
 .modal-google{background:#1e1810;border:1px solid #3a2e1a;border-radius:7px;color:#e8dfc8;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.06em;padding:10px;cursor:pointer;width:100%;display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:.75rem}
 .modal-google:hover{border-color:#c9a84c}
 .auth-error{color:#c06060;font-size:12px;margin-top:.25rem;display:none}
 .modal-hint{font-size:11px;color:#3a2e1a;text-align:center;margin-top:.5rem}
+.share-link-row{display:flex;gap:8px;margin-bottom:.75rem}
+.share-link-input{background:#0d0b07;border:1px solid #3a2e1a;border-radius:7px;color:#a89060;font-family:monospace;font-size:12px;padding:8px 10px;flex:1;outline:none}
+.share-copy-btn{background:#1e1810;border:1px solid #3a2e1a;border-radius:7px;color:#c9a84c;font-family:'Cinzel',serif;font-size:10px;padding:8px 12px;cursor:pointer;white-space:nowrap}
+.share-copy-btn:hover{border-color:#c9a84c}
+.share-status{font-size:12px;color:#6a9a6a;text-align:center;min-height:18px;margin-bottom:.5rem}
+.share-btns{display:flex;gap:8px}
+.share-wa{background:#1a2a1a;border:1px solid #2a4a2a;border-radius:7px;color:#6a9a6a;font-family:'Cinzel',serif;font-size:10px;padding:8px;cursor:pointer;flex:1;text-align:center}
+.share-wa:hover{background:#2a4a2a}
+.share-em{background:#1a1a2a;border:1px solid #2a2a4a;border-radius:7px;color:#6a6a9a;font-family:'Cinzel',serif;font-size:10px;padding:8px;cursor:pointer;flex:1;text-align:center}
+.share-em:hover{background:#2a2a4a}
+.note-verse-label{font-family:'Cinzel',serif;font-size:11px;color:#c9a84c;letter-spacing:.06em;margin-bottom:.75rem;display:block}
 .search-box{background:#16120a;border:1px solid #3a2e1a;border-radius:10px;padding:1.25rem;margin-bottom:1rem}
 .row{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;margin-bottom:.9rem}
 .fg{display:flex;flex-direction:column;gap:5px;flex:1;min-width:180px}
@@ -98,12 +123,16 @@ tr:hover td{background:#1a1408}
 .empty{text-align:center;padding:3rem;color:#3a2e1a;font-style:italic;font-size:15px;line-height:2.5}
 .history-panel{background:#16120a;border:1px solid #3a2e1a;border-radius:10px;padding:1.25rem;margin-top:2rem;display:none}
 .history-title{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.14em;color:#7a6a4a;text-transform:uppercase;margin-bottom:.75rem}
-.history-item{display:flex;align-items:center;gap:8px;padding:.5rem 0;border-bottom:1px solid #1e1810}
+.history-item{display:flex;align-items:center;gap:8px;padding:.6rem 0;border-bottom:1px solid #1e1810}
 .history-item:last-child{border-bottom:none}
-.history-verse{flex:1;color:#c9a84c;font-size:14px;cursor:pointer;font-style:italic}
+.history-main{flex:1;min-width:0}
+.history-verse{display:block;color:#c9a84c;font-size:14px;cursor:pointer;font-style:italic}
 .history-verse:hover{text-decoration:underline}
-.history-delete{background:none;border:none;color:#3a2e1a;cursor:pointer;font-size:14px;padding:2px 6px}
-.history-delete:hover{color:#c06060}
+.history-note-preview{display:block;font-size:12px;color:#5a4a2a;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.history-actions{display:flex;gap:4px;flex-shrink:0}
+.hist-btn{background:none;border:1px solid #2a2010;border-radius:4px;color:#5a4a2a;cursor:pointer;font-size:13px;padding:3px 8px;transition:all .15s}
+.hist-btn:hover{border-color:#c9a84c;color:#c9a84c}
+.hist-del:hover{border-color:#c06060;color:#c06060}
 .lookup-section{margin-top:2rem;border-top:1px solid #2a2010;padding-top:1.5rem}
 .lookup-title{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.14em;color:#7a6a4a;text-transform:uppercase;margin-bottom:.75rem}
 .lookup-result{background:#12100a;border:1px solid #2a2010;border-radius:8px;padding:1rem 1.2rem;font-size:15px;min-height:56px;line-height:1.8;margin-top:.5rem}
@@ -119,10 +148,7 @@ tr:hover td{background:#1a1408}
 
 <div class="auth-bar">
   <div class="auth-signed-out" id="authSignedOut">
-    <button class="auth-btn-google" id="googleSignInBtn">
-      <svg width="14" height="14" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-      Sign in with Google
-    </button>
+    <button class="auth-btn-google" id="googleSignInBtn"><svg width="14" height="14" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg> Sign in with Google</button>
     <button class="auth-btn" id="openAuthModal">Email sign in</button>
   </div>
   <div class="auth-signed-in" id="authSignedIn">
@@ -132,7 +158,21 @@ tr:hover td{background:#1a1408}
 </div>
 
 <div class="save-banner" id="saveBanner">
-  &#x2661; <a id="saveBannerLink">Sign in to save this study and build your personal library</a>
+  &#x2661; <a id="saveBannerLink">Sign in to save this study, add notes and share with your assembly</a>
+</div>
+
+<!-- Shared study note box -->
+<div class="shared-note-box" id="sharedNoteBox">
+  <span class="shared-note-label">&#x2721; Shared Study Note</span>
+  <div class="shared-note-text" id="sharedNoteText"></div>
+  <span class="shared-by">Shared by <span id="sharedBy"></span></span>
+</div>
+
+<!-- Action buttons -->
+<div class="action-bar">
+  <button class="save-btn" id="saveBtn">&#x2661; Save Study</button>
+  <button class="note-btn" id="addNoteBtn">&#x270E; Add Note</button>
+  <button class="share-btn" id="shareBtn">&#x2197; Share Study</button>
 </div>
 
 <div class="search-box">
@@ -167,8 +207,6 @@ tr:hover td{background:#1a1408}
   <span class="loader-msg" id="loaderMsg">Searching the scriptures...</span>
 </div>
 
-<button class="save-btn" id="saveBtn">&#x2661; Save Study</button>
-
 <div class="results" id="resultsArea">
   <div class="empty">&#x05D0;<br>Enter a verse above and click Explore.</div>
 </div>
@@ -201,19 +239,47 @@ tr:hover td{background:#1a1408}
     <ul class="modal-benefits">
       <li>Save your favourite verse studies</li>
       <li>Add personal notes to any verse</li>
-      <li>Share studies with others</li>
+      <li>Share studies with your assembly</li>
       <li>See your full search history</li>
     </ul>
-    <button class="modal-google" id="googleSignInBtnModal">
-      <svg width="16" height="16" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-      Continue with Google
-    </button>
+    <button class="modal-google" id="googleSignInBtnModal"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg> Continue with Google</button>
     <div class="modal-or">— or use email —</div>
     <input class="modal-input" type="email" id="authEmail" placeholder="Email address" />
     <input class="modal-input" type="password" id="authPassword" placeholder="Password (min 6 chars)" />
     <button class="modal-btn" id="emailSignInBtn">Sign In / Create Account</button>
     <div class="auth-error" id="authError"></div>
-    <p class="modal-hint">New user? Just enter email + password to register automatically.</p>
+    <p class="modal-hint">New user? Enter email + password to register automatically.</p>
+  </div>
+</div>
+
+<!-- Note Modal -->
+<div class="modal-overlay" id="noteModal">
+  <div class="modal">
+    <button class="modal-close" id="noteModalClose">&#x2715;</button>
+    <h2>&#x270E; Personal Note</h2>
+    <span class="note-verse-label" id="noteVerse"></span>
+    <textarea class="modal-textarea" id="noteText" placeholder="Write your personal notes, reflections or insights about this verse study..."></textarea>
+    <button class="modal-btn" id="saveNoteBtn">Save Note</button>
+  </div>
+</div>
+
+<!-- Share Modal -->
+<div class="modal-overlay" id="shareModal">
+  <div class="modal">
+    <button class="modal-close" id="shareModalClose">&#x2715;</button>
+    <h2>&#x2197; Share Study</h2>
+    <p class="modal-sub">Share <strong style="color:#c9a84c" id="shareVerseLabel"></strong> with your assembly</p>
+    <textarea class="modal-textarea" id="shareNote" placeholder="Add a personal message or insight to share with this study (optional)..." style="min-height:80px"></textarea>
+    <button class="modal-btn" id="generateShareBtn">Generate Share Link</button>
+    <div class="share-link-row">
+      <input class="share-link-input" type="text" id="shareLink" placeholder="Your share link will appear here..." readonly />
+      <button class="share-copy-btn" id="copyLinkBtn">&#x2398; Copy</button>
+    </div>
+    <div class="share-status" id="shareStatus"></div>
+    <div class="share-btns">
+      <button class="share-wa" id="whatsappBtn">&#x1F4AC; WhatsApp</button>
+      <button class="share-em" id="emailShareBtn">&#x2709; Email</button>
+    </div>
   </div>
 </div>
 
@@ -221,7 +287,7 @@ tr:hover td{background:#1a1408}
 // ── Firebase Setup ────────────────────────────────────────────────────────────
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, updateDoc, getDoc, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCdtHtTrJnDMdjAyPcKRzIxZRwg1PUYeuA",
@@ -243,6 +309,7 @@ var SESSION_CACHE = {};
 var currentUser = null;
 var currentResult = null;
 var currentVerse = '';
+var currentSavedId = null;
 
 // ── Load Bantu Dictionary ─────────────────────────────────────────────────────
 fetch('/bantu-db')
@@ -257,6 +324,33 @@ fetch('/bantu-db')
     document.getElementById('statEntries').textContent = entries.toLocaleString();
   })
   .catch(function(e){ console.error('Bantu DB error:', e); });
+
+// ── Check for shared study in URL ─────────────────────────────────────────────
+window.addEventListener('load', function() {
+  var params = new URLSearchParams(window.location.search);
+  var shareId = params.get('study');
+  if(shareId) loadSharedStudy(shareId);
+});
+
+async function loadSharedStudy(shareId) {
+  try {
+    var snap = await getDoc(doc(db, 'shared', shareId));
+    if(snap.exists()) {
+      var data = snap.data();
+      document.getElementById('qInput').value = data.verse || '';
+      currentVerse = data.verse || '';
+      currentResult = data.result;
+      SESSION_CACHE[(data.verse||'').toLowerCase()] = data.result;
+      renderResults(data.result);
+      if(data.note) {
+        document.getElementById('sharedNoteBox').style.display = 'block';
+        document.getElementById('sharedNoteText').textContent = data.note;
+        document.getElementById('sharedBy').textContent = data.sharedBy || 'Someone';
+      }
+      document.getElementById('resultsArea').scrollIntoView({behavior:'smooth'});
+    }
+  } catch(e) { console.error('Load shared study error:', e); }
+}
 
 // ── Auth State ────────────────────────────────────────────────────────────────
 onAuthStateChanged(auth, function(user) {
@@ -273,8 +367,10 @@ function updateAuthUI(user) {
   document.getElementById('authSignedOut').style.display = user ? 'none' : 'flex';
   document.getElementById('authSignedIn').style.display = user ? 'flex' : 'none';
   if(user) document.getElementById('userName').textContent = user.displayName || user.email;
-  document.getElementById('saveBtn').style.display = user && currentResult ? 'inline-block' : 'none';
-  document.getElementById('saveBanner').style.display = !user && currentResult ? 'block' : 'none';
+  var hasResult = !!currentResult;
+  document.getElementById('saveBtn').style.display = user && hasResult ? 'inline-block' : 'none';
+  document.getElementById('shareBtn').style.display = hasResult ? 'inline-block' : 'none';
+  document.getElementById('saveBanner').style.display = !user && hasResult ? 'block' : 'none';
 }
 
 // ── Auth actions ──────────────────────────────────────────────────────────────
@@ -282,47 +378,47 @@ document.getElementById('googleSignInBtn').addEventListener('click', function(){
   signInWithPopup(auth, googleProvider).catch(function(e){ showAuthError(e.message); });
 });
 document.getElementById('googleSignInBtnModal').addEventListener('click', function(){
-  signInWithPopup(auth, googleProvider).then(function(){ closeModal(); }).catch(function(e){ showAuthError(e.message); });
+  signInWithPopup(auth, googleProvider).then(function(){ closeModal('authModal'); }).catch(function(e){ showAuthError(e.message); });
 });
 document.getElementById('signOutBtn').addEventListener('click', function(){
   signOut(auth);
-  currentResult = null;
-  currentVerse = '';
+  currentResult = null; currentVerse = ''; currentSavedId = null;
   document.getElementById('saveBtn').style.display = 'none';
+  document.getElementById('shareBtn').style.display = 'none';
 });
-document.getElementById('openAuthModal').addEventListener('click', function(){ openModal(); });
-document.getElementById('saveBannerLink').addEventListener('click', function(){ openModal(); });
+document.getElementById('openAuthModal').addEventListener('click', function(){ openModal('authModal'); });
+document.getElementById('saveBannerLink').addEventListener('click', function(){ openModal('authModal'); });
 document.getElementById('emailSignInBtn').addEventListener('click', function(){
   var email = document.getElementById('authEmail').value.trim();
   var pass = document.getElementById('authPassword').value;
   if(!email || !pass){ showAuthError('Please enter email and password'); return; }
   signInWithEmailAndPassword(auth, email, pass)
-    .then(function(){ closeModal(); })
+    .then(function(){ closeModal('authModal'); })
     .catch(function(e){
       if(e.code === 'auth/user-not-found' || e.code === 'auth/invalid-credential' || e.code === 'auth/invalid-email') {
         createUserWithEmailAndPassword(auth, email, pass)
-          .then(function(){ closeModal(); })
+          .then(function(){ closeModal('authModal'); })
           .catch(function(e2){ showAuthError(e2.message); });
       } else { showAuthError(e.message); }
     });
 });
 
-function openModal(){
-  document.getElementById('authModal').style.display = 'flex';
-  document.getElementById('authError').style.display = 'none';
-}
-function closeModal(){
-  document.getElementById('authModal').style.display = 'none';
-}
+// ── Modal helpers ─────────────────────────────────────────────────────────────
+function openModal(id){ document.getElementById(id).style.display='flex'; }
+function closeModal(id){ document.getElementById(id).style.display='none'; }
+
+document.getElementById('modalClose').addEventListener('click', function(){ closeModal('authModal'); });
+document.getElementById('noteModalClose').addEventListener('click', function(){ closeModal('noteModal'); });
+document.getElementById('shareModalClose').addEventListener('click', function(){ closeModal('shareModal'); });
+
+document.querySelectorAll('.modal-overlay').forEach(function(el){
+  el.addEventListener('click', function(e){ if(e.target===this) this.style.display='none'; });
+});
+
 function showAuthError(msg){
   var el = document.getElementById('authError');
-  el.textContent = msg;
-  el.style.display = 'block';
+  el.textContent = msg; el.style.display = 'block';
 }
-document.getElementById('modalClose').addEventListener('click', closeModal);
-document.getElementById('authModal').addEventListener('click', function(e){
-  if(e.target === this) closeModal();
-});
 
 // ── Save study ────────────────────────────────────────────────────────────────
 document.getElementById('saveBtn').addEventListener('click', saveStudy);
@@ -330,39 +426,121 @@ document.getElementById('saveBtn').addEventListener('click', saveStudy);
 async function saveStudy(){
   if(!currentUser || !currentResult || !currentVerse) return;
   var btn = document.getElementById('saveBtn');
-  btn.textContent = 'Saving...';
-  btn.disabled = true;
+  btn.textContent = 'Saving...'; btn.disabled = true;
   try {
-    await addDoc(collection(db, 'users', currentUser.uid, 'favourites'), {
+    var ref = await addDoc(collection(db, 'users', currentUser.uid, 'favourites'), {
       verse: currentVerse,
       result: currentResult,
+      note: '',
       savedAt: new Date().toISOString()
     });
+    currentSavedId = ref.id;
     btn.textContent = '\u2714 Saved!';
-    btn.style.background = '#2a4a2a';
-    btn.style.color = '#8aba8a';
-    setTimeout(function(){
-      btn.textContent = '\u2661 Save Study';
-      btn.style.background = '';
-      btn.style.color = '';
-      btn.disabled = false;
-    }, 2000);
+    btn.style.background = '#2a4a2a'; btn.style.color = '#8aba8a';
+    setTimeout(function(){ btn.textContent='\u2661 Save Study'; btn.style.background=''; btn.style.color=''; btn.disabled=false; }, 2000);
     loadHistory();
-  } catch(e) {
-    console.error('Save error:', e);
-    btn.textContent = 'Error';
-    btn.disabled = false;
+  } catch(e){ console.error('Save error:', e); btn.textContent='Error'; btn.disabled=false; }
+}
+
+// ── Notes ─────────────────────────────────────────────────────────────────────
+document.getElementById('addNoteBtn').addEventListener('click', function(){
+  if(!currentUser){ openModal('authModal'); return; }
+  if(!currentSavedId){ 
+    // Save first then open note
+    saveStudy().then(function(){ openNoteModal(); });
+  } else {
+    openNoteModal();
+  }
+});
+
+function openNoteModal(){
+  document.getElementById('noteModal').style.display = 'flex';
+  document.getElementById('noteVerse').textContent = currentVerse;
+  // Load existing note
+  if(currentUser && currentSavedId){
+    getDoc(doc(db, 'users', currentUser.uid, 'favourites', currentSavedId)).then(function(snap){
+      if(snap.exists()) document.getElementById('noteText').value = snap.data().note || '';
+    });
   }
 }
 
-// ── Load saved history ────────────────────────────────────────────────────────
+document.getElementById('saveNoteBtn').addEventListener('click', async function(){
+  if(!currentUser || !currentSavedId) return;
+  var note = document.getElementById('noteText').value.trim();
+  var btn = this;
+  btn.textContent = 'Saving...'; btn.disabled = true;
+  try {
+    await updateDoc(doc(db, 'users', currentUser.uid, 'favourites', currentSavedId), { note: note });
+    btn.textContent = '\u2714 Saved!';
+    setTimeout(function(){ btn.textContent='Save Note'; btn.disabled=false; closeModal('noteModal'); loadHistory(); }, 1200);
+  } catch(e){ console.error('Note error:', e); btn.textContent='Error'; btn.disabled=false; }
+});
+
+// ── Share ─────────────────────────────────────────────────────────────────────
+document.getElementById('shareBtn').addEventListener('click', function(){
+  openModal('shareModal');
+  document.getElementById('shareLink').value = '';
+  document.getElementById('shareStatus').textContent = '';
+  document.getElementById('shareNote').value = '';
+  document.getElementById('shareVerseLabel').textContent = currentVerse;
+});
+
+document.getElementById('generateShareBtn').addEventListener('click', async function(){
+  if(!currentResult || !currentVerse){ return; }
+  var btn = this;
+  btn.textContent = 'Generating...'; btn.disabled = true;
+  var note = document.getElementById('shareNote').value.trim();
+  try {
+    var ref = await addDoc(collection(db, 'shared'), {
+      verse: currentVerse,
+      result: currentResult,
+      note: note,
+      sharedBy: currentUser ? (currentUser.displayName || currentUser.email) : 'Anonymous',
+      sharedAt: new Date().toISOString()
+    });
+    var url = window.location.origin + window.location.pathname + '?study=' + ref.id;
+    document.getElementById('shareLink').value = url;
+    document.getElementById('shareStatus').textContent = '\u2714 Link ready to share!';
+    btn.textContent = 'Generate Link';
+    btn.disabled = false;
+  } catch(e){ console.error('Share error:', e); btn.textContent='Error'; btn.disabled=false; }
+});
+
+document.getElementById('copyLinkBtn').addEventListener('click', function(){
+  var link = document.getElementById('shareLink').value;
+  if(!link) return;
+  navigator.clipboard.writeText(link).then(function(){
+    document.getElementById('shareStatus').textContent = '\u2714 Copied to clipboard!';
+  }).catch(function(){
+    document.getElementById('shareLink').select();
+    document.execCommand('copy');
+    document.getElementById('shareStatus').textContent = '\u2714 Copied!';
+  });
+});
+
+document.getElementById('whatsappBtn').addEventListener('click', function(){
+  var link = document.getElementById('shareLink').value;
+  if(!link) return;
+  var msg = 'Check out this Hebrew-Bantu word study for ' + currentVerse + ': ' + link;
+  window.open('https://wa.me/?text=' + encodeURIComponent(msg), '_blank');
+});
+
+document.getElementById('emailShareBtn').addEventListener('click', function(){
+  var link = document.getElementById('shareLink').value;
+  if(!link) return;
+  var subject = 'Hebrew-Bantu Word Study: ' + currentVerse;
+  var body = 'I wanted to share this Ancient Word Explorer study with you:\n\n' + currentVerse + '\n\n' + link + '\n\nVisit Ancient Word Explorer to study Hebrew-Bantu connections in the Bible.';
+  window.open('mailto:?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body));
+});
+
+// ── History ───────────────────────────────────────────────────────────────────
 async function loadHistory(){
   if(!currentUser) return;
   try {
-    var q = query(collection(db, 'users', currentUser.uid, 'favourites'), orderBy('savedAt','desc'), limit(50));
+    var q = query(collection(db,'users',currentUser.uid,'favourites'), orderBy('savedAt','desc'), limit(50));
     var snap = await getDocs(q);
     var items = [];
-    snap.forEach(function(d){ items.push({ id: d.id, ...d.data() }); });
+    snap.forEach(function(d){ items.push({ id:d.id, ...d.data() }); });
     renderHistory(items);
   } catch(e){ console.error('History error:', e); }
 }
@@ -370,24 +548,45 @@ async function loadHistory(){
 function renderHistory(items){
   var panel = document.getElementById('historyPanel');
   var list = document.getElementById('historyList');
-  if(!items.length){ panel.style.display = 'none'; return; }
-  panel.style.display = 'block';
+  if(!items.length){ panel.style.display='none'; return; }
+  panel.style.display='block';
   list.innerHTML = items.map(function(item){
-    return '<div class="history-item">'
+    return '<div class="history-item" data-id="'+item.id+'">'
+      +'<div class="history-main">'
       +'<span class="history-verse" data-verse="'+item.verse+'">'+item.verse+'</span>'
-      +'<button class="history-delete" data-id="'+item.id+'" title="Remove">&#x2715;</button>'
+      +(item.note ? '<span class="history-note-preview">'+item.note.substring(0,60)+(item.note.length>60?'...':'')+'</span>' : '')
+      +'</div>'
+      +'<div class="history-actions">'
+      +'<button class="hist-btn hist-note" data-id="'+item.id+'" data-verse="'+item.verse+'" title="Edit note">&#x270E;</button>'
+      +'<button class="hist-btn hist-del" data-id="'+item.id+'" title="Remove">&#x2715;</button>'
+      +'</div>'
       +'</div>';
   }).join('');
+
   list.querySelectorAll('.history-verse').forEach(function(el){
     el.addEventListener('click', function(){
       document.getElementById('qInput').value = this.getAttribute('data-verse');
       doSearch();
     });
   });
-  list.querySelectorAll('.history-delete').forEach(function(btn){
+  list.querySelectorAll('.hist-note').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var id = this.getAttribute('data-id');
+      var verse = this.getAttribute('data-verse');
+      currentSavedId = id;
+      currentVerse = verse;
+      document.getElementById('noteVerse').textContent = verse;
+      getDoc(doc(db,'users',currentUser.uid,'favourites',id)).then(function(snap){
+        if(snap.exists()) document.getElementById('noteText').value = snap.data().note || '';
+        openModal('noteModal');
+      });
+    });
+  });
+  list.querySelectorAll('.hist-del').forEach(function(btn){
     btn.addEventListener('click', async function(){
       var id = this.getAttribute('data-id');
-      await deleteDoc(doc(db, 'users', currentUser.uid, 'favourites', id));
+      await deleteDoc(doc(db,'users',currentUser.uid,'favourites',id));
+      if(currentSavedId===id) currentSavedId=null;
       loadHistory();
     });
   });
@@ -402,15 +601,15 @@ var loaderMessages = [
 var loaderInterval = null;
 function startLoader(){
   var i=0;
-  document.getElementById('loaderMsg').textContent = loaderMessages[0];
-  loaderInterval = setInterval(function(){ i=(i+1)%loaderMessages.length; document.getElementById('loaderMsg').textContent=loaderMessages[i]; },1800);
+  document.getElementById('loaderMsg').textContent=loaderMessages[0];
+  loaderInterval=setInterval(function(){ i=(i+1)%loaderMessages.length; document.getElementById('loaderMsg').textContent=loaderMessages[i]; },1800);
 }
 function stopLoader(){ if(loaderInterval){ clearInterval(loaderInterval); loaderInterval=null; } }
 
 // ── Search ────────────────────────────────────────────────────────────────────
 document.querySelectorAll('.pill').forEach(function(p){
   p.addEventListener('click', function(){
-    document.getElementById('qInput').value = this.getAttribute('data-verse');
+    document.getElementById('qInput').value=this.getAttribute('data-verse');
     doSearch();
   });
 });
@@ -420,71 +619,62 @@ document.getElementById('qInput').addEventListener('keydown', function(e){ if(e.
 function doSearch(){
   var q = document.getElementById('qInput').value.trim();
   if(!q) return;
-
   var cacheKey = q.toLowerCase().trim();
   if(SESSION_CACHE[cacheKey]){
-    currentVerse = q;
-    currentResult = SESSION_CACHE[cacheKey];
+    currentVerse=q; currentResult=SESSION_CACHE[cacheKey]; currentSavedId=null;
     renderResults(SESSION_CACHE[cacheKey]);
-    updateAuthUI(currentUser);
-    return;
+    updateAuthUI(currentUser); return;
   }
-
-  document.getElementById('resultsArea').innerHTML = '';
-  document.getElementById('loader').style.display = 'block';
-  document.getElementById('errBox').style.display = 'none';
-  document.getElementById('goBtn').disabled = true;
-  document.getElementById('saveBtn').style.display = 'none';
-  document.getElementById('saveBanner').style.display = 'none';
+  document.getElementById('resultsArea').innerHTML='';
+  document.getElementById('loader').style.display='block';
+  document.getElementById('errBox').style.display='none';
+  document.getElementById('goBtn').disabled=true;
+  document.getElementById('saveBtn').style.display='none';
+  document.getElementById('shareBtn').style.display='none';
+  document.getElementById('saveBanner').style.display='none';
+  document.getElementById('sharedNoteBox').style.display='none';
   startLoader();
 
-  fetch('https://bible-api.com/' + encodeURIComponent(q) + '?translation=kjv')
+  fetch('https://bible-api.com/'+encodeURIComponent(q)+'?translation=kjv')
     .then(function(r){ return r.json(); })
     .then(function(bible){
-      var vt = (bible && bible.text) ? bible.text.replace(/\s+/g,' ').trim() : '';
-      return fetch('/analyse', {
-        method:'POST', headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({ verse:q, verse_text:vt })
-      });
+      var vt=(bible&&bible.text)?bible.text.replace(/\s+/g,' ').trim():'';
+      return fetch('/analyse',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({verse:q,verse_text:vt})});
     })
     .then(function(r){ return r.json(); })
     .then(function(data){
-      document.getElementById('loader').style.display = 'none';
-      document.getElementById('goBtn').disabled = false;
+      document.getElementById('loader').style.display='none';
+      document.getElementById('goBtn').disabled=false;
       stopLoader();
       if(data.error){ showErr(data.error); return; }
-      SESSION_CACHE[cacheKey] = data;
-      currentVerse = q;
-      currentResult = data;
+      SESSION_CACHE[cacheKey]=data;
+      currentVerse=q; currentResult=data; currentSavedId=null;
       renderResults(data);
       updateAuthUI(currentUser);
     })
     .catch(function(e){
-      document.getElementById('loader').style.display = 'none';
-      document.getElementById('goBtn').disabled = false;
+      document.getElementById('loader').style.display='none';
+      document.getElementById('goBtn').disabled=false;
       stopLoader();
-      showErr('Request failed: ' + e.message);
+      showErr('Request failed: '+e.message);
     });
 }
 
-function showErr(msg){
-  var el = document.getElementById('errBox');
-  el.textContent = 'Error: ' + msg;
-  el.style.display = 'block';
-}
+function showErr(msg){ var el=document.getElementById('errBox'); el.textContent='Error: '+msg; el.style.display='block'; }
 
 // ── H-number lookup ───────────────────────────────────────────────────────────
 document.getElementById('hBtn').addEventListener('click', doHLookup);
 document.getElementById('hInput').addEventListener('keydown', function(e){ if(e.key==='Enter') doHLookup(); });
 
 function doHLookup(){
-  var raw = document.getElementById('hInput').value.trim().toUpperCase();
+  var raw=document.getElementById('hInput').value.trim().toUpperCase();
   if(!raw) return;
-  var key = raw.charAt(0)==='H' ? raw : 'H'+raw;
-  var hits = BANTU_DB[key]||[];
-  var el = document.getElementById('hResult');
+  var key=raw.charAt(0)==='H'?raw:'H'+raw;
+  key=key.replace(/^H0+/,'H');
+  var hits=BANTU_DB[key]||[];
+  var el=document.getElementById('hResult');
   if(!hits.length){ el.innerHTML='<span style="color:#5a4a2a">No matches for <strong style="color:#c9a84c">'+key+'</strong>.</span>'; return; }
-  var bl = byLang(hits);
+  var bl=byLang(hits);
   var html='<strong style="color:#c9a84c;font-family:Cinzel,serif">'+key+'</strong> &mdash; <em style="color:#8a7a5a">'+(hits[0].transliteration||'')+'</em><br><br>';
   Object.keys(bl).forEach(function(lang){
     var e=bl[lang];
@@ -495,10 +685,8 @@ function doHLookup(){
 
 function lookupH(h){
   if(!h) return [];
-  var key = h.trim().toUpperCase();
-  // Normalise: remove leading zeros e.g. H0430 -> H430
-  key = key.replace(/^H0+/, 'H');
-  return BANTU_DB[key] || [];
+  var key=h.trim().toUpperCase().replace(/^H0+/,'H');
+  return BANTU_DB[key]||[];
 }
 function byLang(hits){ var r={}; hits.forEach(function(m){ if(!r[m.language]) r[m.language]=[]; r[m.language].push(m); }); return r; }
 function uniq(a){ var s={}; return a.filter(function(x){ return s[x]?false:(s[x]=true); }); }
@@ -511,8 +699,8 @@ function buildDictCell(hits){
   }).join('');
 }
 
-function buildHebrewCell(w, hits){
-  var html = '<span class="hword">'+(w.hebrew_word||'')+'</span>'
+function buildHebrewCell(w,hits){
+  var html='<span class="hword">'+(w.hebrew_word||'')+'</span>'
     +'<span class="'+(hits.length?'htrans-match':'htrans')+'">'+(w.hebrew_transliteration||'')+'</span>';
   var all=[];
   if(hits.length) uniq(hits.map(function(e){return e.meaning;})).filter(Boolean).forEach(function(m){if(all.indexOf(m)===-1)all.push(m);});
@@ -533,10 +721,11 @@ function renderResults(data){
       var hits=lookupH(w.strongs||''); if(hits.length) matched++;
       var ltags=(w.hebrew_letters||[]).map(function(l){return '<span class="ltag" title="'+l.ancient_meaning+'">'+l.hebrew_char+' '+l.letter+'</span>';}).join('');
       var lmeans='<div class="lmean">'+(w.hebrew_letters||[]).map(function(l){return '<strong>'+l.letter+'</strong> ('+l.hebrew_char+'): '+l.ancient_meaning;}).join('<br>')+'</div>';
+      var strongs=(w.strongs||'').replace(/^H0+/,'H');
       return '<tr>'
         +'<td>'+buildHebrewCell(w,hits)+'</td>'
         +'<td><span class="hroot">'+(w.hebrew_root||'')+'</span>'
-        +(w.strongs?'<a class="hstrongs" href="https://www.blueletterbible.org/lexicon/'+w.strongs.replace(/^H0+/,"H")+'/kjv/wlc/0-1/" target="_blank">'+w.strongs.replace(/^H0+/,"H")+' &#x2197;</a>':'')
+        +(strongs?'<a class="hstrongs" href="https://www.blueletterbible.org/lexicon/'+strongs+'/kjv/wlc/0-1/" target="_blank">'+strongs+' &#x2197;</a>':'')
         +'<br><small style="color:#5a4a2a;font-size:11px">'+(w.english_meaning||'')+'</small></td>'
         +'<td>'+ltags+'</td>'
         +'<td>'+lmeans+'<span class="composite">'+(w.composite_meaning||'')+'</span></td>'

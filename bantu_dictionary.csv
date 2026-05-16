@@ -1448,6 +1448,7 @@
 1081,dâlal,dalet-lamed,דל,impoverished,H1809,tlala,Sesotho,דלל
 1081,deleth,dalet-lamed,דל,something swinging,H1817,deleth,Hebrew,דלת
 1082,ʼâdam,dalet-mah,דמ,show blood,H119,ʼâdam,Hebrew,אדם
+1082,ʼâdam,dalet-mah,דמ,uncle make of same blood with mother,H119,umalume,Hebrew,אדם
 1082,ʼâdâm,dalet-mah,דמ,ruddy,H120,ʼâdâm,Hebrew,אדם
 1082,ʼâdôm,dalet-mah,דמ,rosy,H122,ʼâdôm,Hebrew,אדם
 1082,ʼôdem,dalet-mah,דמ,redness,H124,ʼôdem,Hebrew,אדם
@@ -1458,7 +1459,7 @@
 1082,ʼadmônîy,dalet-mah,דמ,reddish,H132,ʼadmônîy,Hebrew,אדמני
 1082,dâham,dalet-mah,דמ,be dumb,H1724,dâham,Hebrew,דהם
 1082,dâham,dalet-mah,דמ,astonished,H1724,dâham,Hebrew,דהם
-1082,dûwmâh,dalet-mah,דמ,silence,H1745,dûwmâh,Hebrew,דומה
+1082,dûwmâh,dalet-mah,דמ,silence,H1745,duma,isiZulu,דומה
 1082,dûwmâh,dalet-mah,דמ,silence,H1745,dûwmâh,Hebrew,דומה
 1082,dûwmâh,dalet-mah,דמ,destroy,H1745,dûwmâh,Hebrew,דומה
 1082,dûwmîyâh,dalet-mah,דמ,stillness,H1747,dûwmîyâh,Hebrew,דומיה
@@ -3932,6 +3933,8 @@
 1266,ʼâlam,lamed-mah,למ,tie,H481,ʼâlam,Hebrew,אלם
 1266,ʼâlam,lamed-mah,למ,binding,H481,ʼâlam,Hebrew,אלם
 1266,ʼâlam,lamed-mah,למ,silent,H481,ʼâlam,Hebrew,אלם
+1266,ʼâlam,lamed-mah,למ,mouth,H481,umulomo,isiZulu,אלם
+1266,ʼâlam,lamed-mah,למ,muzzle,H481,umulomo,isiZulu,אלם
 1266,ʼâlam,lamed-mah,למ,dumb,H481,ʼâlam,Hebrew,אלם
 1266,ʼêlem,lamed-mah,למ,silence,H482,ʼêlem,Hebrew,אלם
 1266,ʼêlem,lamed-mah,למ,congregation,H482,ʼêlem,Hebrew,אלם
