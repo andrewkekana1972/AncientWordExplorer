@@ -370,6 +370,7 @@ function updateAuthUI(user) {
   var hasResult = !!currentResult;
   document.getElementById('saveBtn').style.display = user && hasResult ? 'inline-block' : 'none';
   document.getElementById('shareBtn').style.display = hasResult ? 'inline-block' : 'none';
+  document.getElementById('addNoteBtn').style.display = hasResult ? 'inline-block' : 'none';
   document.getElementById('saveBanner').style.display = !user && hasResult ? 'block' : 'none';
 }
 
