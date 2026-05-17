@@ -15,7 +15,7 @@ body{font-family:'EB Garamond',Georgia,serif;background:#0d0b07;color:#e8dfc8;mi
 .auth-bar{display:flex;justify-content:flex-end;align-items:center;gap:10px;margin-bottom:1rem;min-height:36px}
 .auth-signed-out{display:flex;align-items:center;gap:8px}
 .auth-signed-in{display:none;align-items:center;gap:10px}
-.auth-name{font-size:13px;color:#7a6a4a;font-style:italic}
+.auth-name{font-size:13px;color:#7a6a4a;font-style:italic;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .auth-btn{background:none;border:1px solid #3a2e1a;border-radius:6px;color:#c9a84c;font-family:'Cinzel',serif;font-size:10px;letter-spacing:.08em;padding:5px 12px;cursor:pointer;transition:all .15s}
 .auth-btn:hover{border-color:#c9a84c;background:#1e1810}
 .auth-btn-google{background:#1e1810;border:1px solid #3a2e1a;border-radius:6px;color:#e8dfc8;font-family:'Cinzel',serif;font-size:10px;letter-spacing:.06em;padding:5px 12px;cursor:pointer;display:flex;align-items:center;gap:6px}
@@ -49,8 +49,6 @@ body{font-family:'EB Garamond',Georgia,serif;background:#0d0b07;color:#e8dfc8;mi
 .modal-textarea:focus{border-color:#c9a84c}
 .modal-btn{background:#c9a84c;color:#0d0b07;border:none;border-radius:7px;font-family:'Cinzel',serif;font-size:12px;font-weight:700;letter-spacing:.1em;padding:10px;cursor:pointer;width:100%;margin-bottom:.75rem;display:block}
 .modal-btn:hover{background:#ddb84e}
-.modal-btn-sec{background:#1e1810;border:1px solid #3a2e1a;border-radius:7px;color:#c9a84c;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.08em;padding:8px;cursor:pointer;width:100%;margin-bottom:.5rem;display:block;text-align:center}
-.modal-btn-sec:hover{border-color:#c9a84c}
 .modal-or{text-align:center;color:#3a2e1a;font-size:12px;margin-bottom:.75rem}
 .modal-google{background:#1e1810;border:1px solid #3a2e1a;border-radius:7px;color:#e8dfc8;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.06em;padding:10px;cursor:pointer;width:100%;display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:.75rem}
 .modal-google:hover{border-color:#c9a84c}
@@ -68,17 +66,17 @@ body{font-family:'EB Garamond',Georgia,serif;background:#0d0b07;color:#e8dfc8;mi
 .share-em:hover{background:#2a2a4a}
 .note-verse-label{font-family:'Cinzel',serif;font-size:11px;color:#c9a84c;letter-spacing:.06em;margin-bottom:.75rem;display:block}
 .search-box{background:#16120a;border:1px solid #3a2e1a;border-radius:10px;padding:1.25rem;margin-bottom:1rem}
-.row{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;margin-bottom:.9rem}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end;margin-bottom:.9rem}
 .fg{display:flex;flex-direction:column;gap:5px;flex:1;min-width:180px}
 .fg label{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.14em;color:#7a6a4a;text-transform:uppercase}
 .fg input{background:#0d0b07;border:1px solid #3a2e1a;border-radius:7px;color:#e8dfc8;font-family:'EB Garamond',serif;font-size:16px;padding:9px 12px;outline:none;width:100%;transition:border-color .2s}
 .fg input:focus{border-color:#c9a84c}
 .btn{background:#c9a84c;color:#0d0b07;border:none;border-radius:7px;font-family:'Cinzel',serif;font-size:12px;font-weight:700;letter-spacing:.1em;padding:10px 22px;cursor:pointer;white-space:nowrap;align-self:flex-end;transition:background .15s}
+.btn:hover{background:#ddb84e}
+.btn:disabled{background:#4a3a1a;color:#7a6a4a;cursor:not-allowed}
 .nav-btn{background:#1e1810;border:1px solid #3a2e1a;border-radius:7px;color:#c9a84c;font-size:14px;padding:10px 14px;cursor:pointer;align-self:flex-end;transition:all .15s}
 .nav-btn:hover{background:#2a2010;border-color:#c9a84c}
 .nav-btn:disabled{color:#3a2e1a;cursor:not-allowed;border-color:#2a2010}
-.btn:hover{background:#ddb84e}
-.btn:disabled{background:#4a3a1a;color:#7a6a4a;cursor:not-allowed}
 .pills{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin-bottom:1rem}
 .pills-label{font-size:11px;font-family:'Cinzel',serif;color:#6a5a3a}
 .pill{background:#1e1810;border:1px solid #3a2e1a;border-radius:20px;color:#c9a84c;font-size:13px;padding:3px 13px;cursor:pointer;font-family:'EB Garamond',serif}
@@ -126,85 +124,54 @@ tr:hover td{background:#1a1408}
 .empty{text-align:center;padding:3rem;color:#3a2e1a;font-style:italic;font-size:15px;line-height:2.5}
 .history-panel{background:#16120a;border:1px solid #3a2e1a;border-radius:10px;padding:1.25rem;margin-top:2rem;display:none}
 .history-title{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.14em;color:#7a6a4a;text-transform:uppercase;margin-bottom:.75rem}
-.history-item{display:flex;align-items:center;gap:8px;padding:.6rem 0;border-bottom:1px solid #1e1810}
+.history-item{display:flex;align-items:flex-start;gap:8px;padding:.6rem 0;border-bottom:1px solid #1e1810}
 .history-item:last-child{border-bottom:none}
 .history-main{flex:1;min-width:0}
 .history-verse{display:block;color:#c9a84c;font-size:14px;cursor:pointer;font-style:italic}
 .history-verse:hover{text-decoration:underline}
-.history-note-preview{display:block;font-size:12px;color:#5a4a2a;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .history-note-full{display:block;font-size:13px;color:#8a7a5a;margin-top:5px;line-height:1.6;font-style:italic;background:#0d0b07;border:1px solid #2a2010;border-radius:5px;padding:6px 10px}
-.history-actions{display:flex;gap:4px;flex-shrink:0}
-.hist-btn{background:none;border:1px solid #2a2010;border-radius:4px;color:#5a4a2a;cursor:pointer;font-size:13px;padding:3px 8px;transition:all .15s}
+.history-actions{display:flex;gap:4px;flex-shrink:0;margin-top:2px}
+.hist-btn{background:none;border:1px solid #2a2010;border-radius:4px;color:#5a4a2a;cursor:pointer;font-size:12px;padding:3px 8px;transition:all .15s;white-space:nowrap}
 .hist-btn:hover{border-color:#c9a84c;color:#c9a84c}
 .hist-del:hover{border-color:#c06060;color:#c06060}
 .lookup-section{margin-top:2rem;border-top:1px solid #2a2010;padding-top:1.5rem}
 .lookup-title{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.14em;color:#7a6a4a;text-transform:uppercase;margin-bottom:.75rem}
 .lookup-result{background:#12100a;border:1px solid #2a2010;border-radius:8px;padding:1rem 1.2rem;font-size:15px;min-height:56px;line-height:1.8;margin-top:.5rem}
-
-/* ── Mobile Optimisation ─────────────────────────────────────────────────── */
-@media (max-width: 768px) {
+@media(max-width:768px){
   .shell{padding:1rem .75rem 4rem}
-  .header h1{font-size:18px;letter-spacing:.05em}
+  .header h1{font-size:18px}
   .header p{font-size:12px}
-  .auth-bar{flex-wrap:wrap;gap:6px;margin-bottom:.75rem}
-  .auth-btn-google{font-size:9px;padding:4px 8px}
-  .auth-btn{font-size:9px;padding:4px 8px}
-  .auth-name{font-size:12px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .search-box{padding:1rem}
+  .auth-bar{flex-wrap:wrap;gap:6px}
+  .auth-btn-google,.auth-btn{font-size:9px;padding:4px 8px}
   .pills{gap:5px}
-  .pill{font-size:12px;padding:3px 9px}
-  .fg input{font-size:14px;padding:8px 10px}
-  .btn{padding:9px 16px;font-size:11px}
+  .pill{font-size:11px;padding:3px 9px}
+  .fg input{font-size:14px}
+  .btn{padding:9px 14px;font-size:11px}
+  .nav-btn{padding:9px 11px;font-size:13px}
   .stats-bar{flex-wrap:wrap}
-  .stat{flex:1 1 45%;padding:.5rem .5rem;border-right:none;border-bottom:1px solid #2a2010}
+  .stat{flex:1 1 45%;border-right:none;border-bottom:1px solid #2a2010}
   .stat:nth-child(1),.stat:nth-child(2){border-right:1px solid #2a2010}
-  .stat-n{font-size:13px}
-  .stat-l{font-size:10px}
   .action-bar{gap:6px}
   .save-btn,.share-btn,.note-btn{font-size:9px;padding:6px 10px}
-  .vtext{font-size:15px;line-height:1.75;padding:.9rem 1rem}
-  .vsec{padding:.75rem 1rem .4rem}
-  /* Stack table into cards on mobile */
-  .tbl-wrap{padding:0}
+  .vtext{font-size:15px;padding:.9rem 1rem}
   table,thead,tbody,th,td,tr{display:block}
   thead{display:none}
-  tbody tr{border:1px solid #2a2010;border-radius:8px;margin:.75rem;padding:.75rem;background:#0d0b07}
+  tbody tr{border:1px solid #2a2010;border-radius:8px;margin:.75rem 0;padding:.75rem;background:#0d0b07}
   tbody td{border:none;padding:.4rem .25rem;font-size:14px}
   tbody td::before{content:attr(data-label);font-family:'Cinzel',serif;font-size:9px;letter-spacing:.1em;color:#5a4a2a;text-transform:uppercase;display:block;margin-bottom:4px}
   .hword{font-size:20px}
-  .htrans{font-size:14px}
-  .htrans-match{font-size:14px;padding:3px 8px}
-  .lmean{font-size:13px}
-  .composite{font-size:13px}
-  .bwords{font-size:14px}
-  .bmeans{font-size:12px}
-  .blang{font-size:10px}
-  .hroot{font-size:14px}
-  .hstrongs{font-size:13px}
-  .dict-meaning-tag{font-size:11px}
-  .history-panel{padding:1rem}
-  .history-verse{font-size:13px}
+  .htrans,.htrans-match{font-size:14px}
+  .lmean,.composite,.bwords{font-size:14px}
+  .bmeans,.blang{font-size:12px}
   .modal{padding:1.5rem;margin:.5rem}
-  .modal h2{font-size:14px}
-  .modal-input,.modal-textarea{font-size:14px}
-  .lookup-section{padding-top:1.25rem}
-  .lookup-result{font-size:13px}
-  .shared-note-text{font-size:14px}
-  .loader-symbol{font-size:28px}
-  .loader-msg{font-size:13px}
+  .share-btns{flex-direction:column}
 }
-
-@media (max-width: 480px) {
+@media(max-width:480px){
   .header h1{font-size:16px}
   .pills-label{display:none}
-  .pill{font-size:11px;padding:3px 8px}
   .stat{flex:1 1 100%;border-right:none}
   .auth-signed-out{flex-wrap:wrap;justify-content:flex-end}
-  .action-bar{justify-content:flex-start}
-  .share-btns{flex-direction:column}
-  tbody tr{margin:.5rem 0}
 }
-
 </style>
 </head>
 <body>
@@ -230,14 +197,12 @@ tr:hover td{background:#1a1408}
   &#x2661; <a id="saveBannerLink">Sign in to save this study, add notes and share with your assembly</a>
 </div>
 
-<!-- Shared study note box -->
 <div class="shared-note-box" id="sharedNoteBox">
   <span class="shared-note-label">&#x2721; Shared Study Note</span>
   <div class="shared-note-text" id="sharedNoteText"></div>
   <span class="shared-by">Shared by <span id="sharedBy"></span></span>
 </div>
 
-<!-- Action buttons -->
 <div class="action-bar">
   <button class="save-btn" id="saveBtn">&#x2661; Save Study</button>
   <button class="note-btn" id="addNoteBtn">&#x270E; Add Note</button>
@@ -259,8 +224,8 @@ tr:hover td{background:#1a1408}
       <label>Bible Verse or Phrase</label>
       <input type="text" id="qInput" placeholder="e.g. Genesis 1:1" />
     </div>
-    <button class="nav-btn" id="prevBtn" title="Previous verse">&#x25C4;</button>
-    <button class="nav-btn" id="nextBtn" title="Next verse">&#x25BA;</button>
+    <button class="nav-btn" id="prevBtn" title="Previous verse" disabled>&#x25C4;</button>
+    <button class="nav-btn" id="nextBtn" title="Next verse" disabled>&#x25BA;</button>
     <button class="btn" id="goBtn">&#9654; Explore</button>
   </div>
 </div>
@@ -340,7 +305,7 @@ tr:hover td{background:#1a1408}
     <button class="modal-close" id="shareModalClose">&#x2715;</button>
     <h2>&#x2197; Share Study</h2>
     <p class="modal-sub">Share <strong style="color:#c9a84c" id="shareVerseLabel"></strong> with your assembly</p>
-    <textarea class="modal-textarea" id="shareNote" placeholder="Add a personal message or insight to share with this study (optional)..." style="min-height:80px"></textarea>
+    <textarea class="modal-textarea" id="shareNote" placeholder="Add a personal message or insight (optional)..." style="min-height:80px"></textarea>
     <button class="modal-btn" id="generateShareBtn">Generate Share Link</button>
     <div class="share-link-row">
       <input class="share-link-input" type="text" id="shareLink" placeholder="Your share link will appear here..." readonly />
@@ -353,7 +318,6 @@ tr:hover td{background:#1a1408}
     </div>
   </div>
 </div>
-
 <script type='module'>
 // ── Firebase Setup ────────────────────────────────────────────────────────────
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
@@ -441,7 +405,6 @@ function updateAuthUI(user) {
   var hasResult = !!currentResult;
   document.getElementById('saveBtn').style.display = user && hasResult ? 'inline-block' : 'none';
   document.getElementById('shareBtn').style.display = hasResult ? 'inline-block' : 'none';
-  document.getElementById('addNoteBtn').style.display = hasResult ? 'inline-block' : 'none';
   document.getElementById('saveBanner').style.display = !user && hasResult ? 'block' : 'none';
 }
 
@@ -623,16 +586,13 @@ function renderHistory(items){
   if(!items.length){ panel.style.display='none'; return; }
   panel.style.display='block';
   list.innerHTML = items.map(function(item){
-    var noteHtml = item.note
-      ? '<div class="history-note-full">'+item.note+'</div>'
-        +'<button class="hist-btn hist-note" data-id="'+item.id+'" data-verse="'+item.verse+'" title="Edit note">&#x270E; Edit note</button>'
-      : '<button class="hist-btn hist-note" data-id="'+item.id+'" data-verse="'+item.verse+'" title="Add note">&#x270E; Add note</button>';
     return '<div class="history-item" data-id="'+item.id+'">'
       +'<div class="history-main">'
       +'<span class="history-verse" data-verse="'+item.verse+'">'+item.verse+'</span>'
-      +noteHtml
+      +(item.note ? '<span class="history-note-preview">'+item.note.substring(0,60)+(item.note.length>60?'...':'')+'</span>' : '')
       +'</div>'
       +'<div class="history-actions">'
+      +'<button class="hist-btn hist-note" data-id="'+item.id+'" data-verse="'+item.verse+'" title="Edit note">&#x270E;</button>'
       +'<button class="hist-btn hist-del" data-id="'+item.id+'" title="Remove">&#x2715;</button>'
       +'</div>'
       +'</div>';
@@ -698,8 +658,7 @@ function doSearch(){
   if(SESSION_CACHE[cacheKey]){
     currentVerse=q; currentResult=SESSION_CACHE[cacheKey]; currentSavedId=null;
     renderResults(SESSION_CACHE[cacheKey]);
-    updateAuthUI(currentUser);
-    updateNavButtons(); return;
+    updateAuthUI(currentUser); return;
   }
   document.getElementById('resultsArea').innerHTML='';
   document.getElementById('loader').style.display='block';
@@ -727,7 +686,6 @@ function doSearch(){
       currentVerse=q; currentResult=data; currentSavedId=null;
       renderResults(data);
       updateAuthUI(currentUser);
-      updateNavButtons();
     })
     .catch(function(e){
       document.getElementById('loader').style.display='none';
@@ -800,13 +758,13 @@ function renderResults(data){
       var lmeans='<div class="lmean">'+(w.hebrew_letters||[]).map(function(l){return '<strong>'+l.letter+'</strong> ('+l.hebrew_char+'): '+l.ancient_meaning;}).join('<br>')+'</div>';
       var strongs=(w.strongs||'').replace(/^H0+/,'H');
       return '<tr>'
-        +'<td data-label="Hebrew Word">'+buildHebrewCell(w,hits)+'</td>'
-        +'<td data-label="Root / Strong's"><span class="hroot">'+(w.hebrew_root||'')+'</span>'
+        +'<td>'+buildHebrewCell(w,hits)+'</td>'
+        +'<td><span class="hroot">'+(w.hebrew_root||'')+'</span>'
         +(strongs?'<a class="hstrongs" href="https://www.blueletterbible.org/lexicon/'+strongs+'/kjv/wlc/0-1/" target="_blank">'+strongs+' &#x2197;</a>':'')
         +'<br><small style="color:#5a4a2a;font-size:11px">'+(w.english_meaning||'')+'</small></td>'
-        +'<td data-label="Ancient Letters">'+ltags+'</td>'
-        +'<td data-label="Letter Meanings">'+lmeans+'<span class="composite">'+(w.composite_meaning||'')+'</span></td>'
-        +'<td data-label="Bantu Dictionary">'+buildDictCell(hits)+'</td>'
+        +'<td>'+ltags+'</td>'
+        +'<td>'+lmeans+'<span class="composite">'+(w.composite_meaning||'')+'</span></td>'
+        +'<td>'+buildDictCell(hits)+'</td>'
         +'</tr>';
     }).join('');
     var pct=total>0?Math.round(matched/total*100):0;
@@ -894,81 +852,48 @@ var BIBLE = [
   ["Revelation",[20,29,22,11,14,17,17,13,21,11,19,17,18,20,8,21,18,24,21,15,27,21]]
 ];
 
-function parseRef(ref) {
-  // Parse "Genesis 1:1" -> {bookIdx, chapter, verse}
-  var m = ref.match(/^(.+?)\s+(\d+):(\d+)$/);
+function parseRef(ref){
+  var m=ref.match(/^(.+?)\s+(\d+):(\d+)$/);
   if(!m) return null;
-  var bookName = m[1].trim();
-  var ch = parseInt(m[2]);
-  var v = parseInt(m[3]);
-  var bookIdx = -1;
-  for(var i=0; i<BIBLE.length; i++){
-    if(BIBLE[i][0].toLowerCase() === bookName.toLowerCase()){
-      bookIdx = i; break;
-    }
-  }
-  if(bookIdx === -1) return null;
-  return {bookIdx:bookIdx, chapter:ch, verse:v};
+  var bookName=m[1].trim(), ch=parseInt(m[2]), v=parseInt(m[3]), bookIdx=-1;
+  for(var i=0;i<BIBLE.length;i++){ if(BIBLE[i][0].toLowerCase()===bookName.toLowerCase()){bookIdx=i;break;} }
+  if(bookIdx===-1) return null;
+  return {bookIdx:bookIdx,chapter:ch,verse:v};
 }
-
-function makeRef(bookIdx, chapter, verse) {
-  return BIBLE[bookIdx][0] + ' ' + chapter + ':' + verse;
+function makeRef(bi,ch,v){ return BIBLE[bi][0]+' '+ch+':'+v; }
+function getNextVerse(ref){
+  var p=parseRef(ref); if(!p) return null;
+  var verses=BIBLE[p.bookIdx][1];
+  if(p.verse<verses[p.chapter-1]) return makeRef(p.bookIdx,p.chapter,p.verse+1);
+  if(p.chapter<verses.length) return makeRef(p.bookIdx,p.chapter+1,1);
+  if(p.bookIdx<BIBLE.length-1) return makeRef(p.bookIdx+1,1,1);
+  return null;
 }
-
-function getNextVerse(ref) {
-  var p = parseRef(ref);
-  if(!p) return null;
-  var verses = BIBLE[p.bookIdx][1];
-  var maxVerse = verses[p.chapter-1];
-  var maxChapter = verses.length;
-  if(p.verse < maxVerse) return makeRef(p.bookIdx, p.chapter, p.verse+1);
-  if(p.chapter < maxChapter) return makeRef(p.bookIdx, p.chapter+1, 1);
-  if(p.bookIdx < BIBLE.length-1) return makeRef(p.bookIdx+1, 1, 1);
-  return null; // end of Bible
+function getPrevVerse(ref){
+  var p=parseRef(ref); if(!p) return null;
+  var verses=BIBLE[p.bookIdx][1];
+  if(p.verse>1) return makeRef(p.bookIdx,p.chapter,p.verse-1);
+  if(p.chapter>1) return makeRef(p.bookIdx,p.chapter-1,verses[p.chapter-2]);
+  if(p.bookIdx>0){ var pb=BIBLE[p.bookIdx-1]; var lc=pb[1].length; return makeRef(p.bookIdx-1,lc,pb[1][lc-1]); }
+  return null;
 }
-
-function getPrevVerse(ref) {
-  var p = parseRef(ref);
-  if(!p) return null;
-  var verses = BIBLE[p.bookIdx][1];
-  if(p.verse > 1) return makeRef(p.bookIdx, p.chapter, p.verse-1);
-  if(p.chapter > 1) {
-    var prevChVerses = verses[p.chapter-2];
-    return makeRef(p.bookIdx, p.chapter-1, prevChVerses);
-  }
-  if(p.bookIdx > 0) {
-    var prevBook = BIBLE[p.bookIdx-1];
-    var lastCh = prevBook[1].length;
-    var lastV = prevBook[1][lastCh-1];
-    return makeRef(p.bookIdx-1, lastCh, lastV);
-  }
-  return null; // beginning of Bible
+function updateNavButtons(){
+  var ref=document.getElementById('qInput').value.trim();
+  var p=parseRef(ref);
+  document.getElementById('prevBtn').disabled=!p||!getPrevVerse(ref);
+  document.getElementById('nextBtn').disabled=!p||!getNextVerse(ref);
 }
-
-function updateNavButtons() {
-  var ref = document.getElementById('qInput').value.trim();
-  var prevBtn = document.getElementById('prevBtn');
-  var nextBtn = document.getElementById('nextBtn');
-  if(!ref || !parseRef(ref)) {
-    prevBtn.disabled = true; nextBtn.disabled = true; return;
-  }
-  prevBtn.disabled = !getPrevVerse(ref);
-  nextBtn.disabled = !getNextVerse(ref);
-}
-
-document.getElementById('prevBtn').addEventListener('click', function(){
-  var ref = document.getElementById('qInput').value.trim();
-  var prev = getPrevVerse(ref);
-  if(prev){ document.getElementById('qInput').value = prev; doSearch(); }
+document.getElementById('prevBtn').addEventListener('click',function(){
+  var prev=getPrevVerse(document.getElementById('qInput').value.trim());
+  if(prev){document.getElementById('qInput').value=prev;doSearch();}
 });
-document.getElementById('nextBtn').addEventListener('click', function(){
-  var ref = document.getElementById('qInput').value.trim();
-  var next = getNextVerse(ref);
-  if(next){ document.getElementById('qInput').value = next; doSearch(); }
+document.getElementById('nextBtn').addEventListener('click',function(){
+  var next=getNextVerse(document.getElementById('qInput').value.trim());
+  if(next){document.getElementById('qInput').value=next;doSearch();}
 });
-document.getElementById('qInput').addEventListener('input', updateNavButtons);
-
+document.getElementById('qInput').addEventListener('input',updateNavButtons);
 updateNavButtons();
+
 </script>
 </body>
 </html>
