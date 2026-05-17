@@ -735,8 +735,10 @@ function buildDictCell(hits){
 }
 
 function buildHebrewCell(w,hits){
+  var rawTrans=w.hebrew_transliteration||'';
+  var dispTrans=normaliseTranslit(rawTrans);
   var html='<span class="hword">'+(w.hebrew_word||'')+'</span>'
-    +'<span class="'+(hits.length?'htrans-match':'htrans')+'">'+(w.hebrew_transliteration||'')+'</span>';
+    +'<span class="'+(hits.length?'htrans-match':'htrans')+'">'+(dispTrans||rawTrans)+'</span>';
   var all=[];
   if(hits.length) uniq(hits.map(function(e){return e.meaning;})).filter(Boolean).forEach(function(m){if(all.indexOf(m)===-1)all.push(m);});
   if(w.english_meaning) w.english_meaning.split(/[,;]+/).map(function(m){return m.trim();}).filter(Boolean).forEach(function(m){if(all.indexOf(m)===-1)all.push(m);});
