@@ -157,13 +157,19 @@ def correct_strongs(result, verse_key):
 
 PROMPT = """Ancient Hebrew scholar. Verse: "{verse}" KJV: "{verse_text}"
 Select 5-8 key Hebrew words. Use CORRECT Strong's H-numbers (e.g. Deut 33:29 "found liars"=H3584 not H8267).
+IMPORTANT: For hebrew_transliteration use the ROOT/LEMMA form only - strip all prefixes and suffixes.
+Examples: banim->ben, elohim->el, bereshit->reshit, vayomer->amar, hashamayim->shamayim
+The root form must match what appears in a Hebrew dictionary/lexicon entry.
 Return ONLY this JSON, no markdown:
-{{"verses":[{{"reference":"{verse}","text":"{verse_text}","words":[{{"hebrew_word":"chars","hebrew_transliteration":"trans","hebrew_root":"root","strongs":"H0000","english_meaning":"meaning","hebrew_letters":[{{"letter":"Name","hebrew_char":"c","ancient_meaning":"Benner pictograph meaning"}}],"composite_meaning":"combined"}}]}}]}}"""
+{{"verses":[{{"reference":"{verse}","text":"{verse_text}","words":[{{"hebrew_word":"chars","hebrew_transliteration":"root-lemma-form","hebrew_root":"root","strongs":"H0000","english_meaning":"meaning","hebrew_letters":[{{"letter":"Name","hebrew_char":"c","ancient_meaning":"Benner pictograph meaning"}}],"composite_meaning":"combined"}}]}}]}}"""
 
 PROMPT_NO_TEXT = """Ancient Hebrew scholar. Verse: "{verse}"
 Provide COMPLETE KJV text. Select 5-8 key Hebrew words with CORRECT Strong's H-numbers.
+IMPORTANT: For hebrew_transliteration use the ROOT/LEMMA form only - strip all prefixes and suffixes.
+Examples: banim->ben, elohim->el, bereshit->reshit, vayomer->amar, hashamayim->shamayim
+The root form must match what appears in a Hebrew dictionary/lexicon entry.
 Return ONLY this JSON, no markdown:
-{{"verses":[{{"reference":"{verse}","text":"COMPLETE VERSE TEXT","words":[{{"hebrew_word":"chars","hebrew_transliteration":"trans","hebrew_root":"root","strongs":"H0000","english_meaning":"meaning","hebrew_letters":[{{"letter":"Name","hebrew_char":"c","ancient_meaning":"Benner pictograph meaning"}}],"composite_meaning":"combined"}}]}}]}}"""
+{{"verses":[{{"reference":"{verse}","text":"COMPLETE VERSE TEXT","words":[{{"hebrew_word":"chars","hebrew_transliteration":"root-lemma-form","hebrew_root":"root","strongs":"H0000","english_meaning":"meaning","hebrew_letters":[{{"letter":"Name","hebrew_char":"c","ancient_meaning":"Benner pictograph meaning"}}],"composite_meaning":"combined"}}]}}]}}"""
 
 def api_call(messages, max_tokens=4000):
     key = os.environ.get('ANTHROPIC_API_KEY', '').strip()
