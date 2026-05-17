@@ -25,6 +25,7 @@
 1002,ʼâyab,aleph-bet,אב,enemy,H340,ʼâyab,Hebrew,איב
 1002,ʼâyab,aleph-bet,אב,enemy,H340,lenaba,Sesotho,איב
 1002,ʼôyêb,aleph-bet,אב,hating,H341,ʼôyêb,Hebrew,איב
+1002,ʼôyêb,aleph-bet,אב,enemy,H341,lenaba,NSesotho,איב
 1002,ʼêybâh,aleph-bet,אב,hostility,H342,ʼêybâh,Hebrew,איבה
 1002,yâʼab,aleph-bet,אב,desire,H2968,yâʼab,Hebrew,יאב
 1002,yâʼab,aleph-bet,אב,long,H2968,yâʼab,Hebrew,יאב
@@ -525,7 +526,7 @@
 1035,behâlâh,bet-lamed,בל,afraid,H928,uvalo,isiZulu,בהלה
 1035,behâlâh,bet-lamed,בל,fierce,H928,balla,Sesotho,בהלה
 1035,behâlâh,bet-lamed,בל,trouble,H928,balla,Sesotho,בהלה
-1035,bûwl,bet-lamed,בל,rain,H944,mbula,Dialect1,בול
+1035,bûwl,bet-lamed,בל,rain,H944,mbula,Lingala,בול
 1035,bûwl,bet-lamed,בל,produce,H944,bûwl,Hebrew,בול
 1035,bûwl,bet-lamed,בל,rain,H944,mvula,isiZulu,בול
 1035,bûwl,bet-lamed,בל,rain,H944,mvula,Kikongo,בול
@@ -4197,6 +4198,7 @@
 1288,ʼômer,mah-lamed,מל,promise,H562,ʼômer,Hebrew,אמר
 1288,ʼimmar,mah-lamed,מל,lamb,H563,ʼimmar,Hebrew,אמר
 1288,ʼimrâh,mah-lamed,מל,speak,H565,khuluma,isiZulu,אמרה
+1288,ʼimrâh,mah-lamed,מל,speak,H565,abar,Khelobedu,אמרה
 1288,ʼethmôwl,mah-lamed,מל,heretofore,H865,ʼethmôwl,Hebrew,אתמול
 1288,ʼethmôwl,mah-lamed,מל,yesterday,H865,ʼethmôwl,Hebrew,אתמול
 1288,ʼethmôwl,mah-lamed,מל,before,H865,ʼethmôwl,Hebrew,אתמול
@@ -7184,6 +7186,11 @@
 1439,ribbôw,resh-bet,רב,myriad,H7240,ribbôw,Hebrew,רבו
 1439,ribbôw,resh-bet,רב,countless,H7240,ribbôw,Hebrew,רבו
 1439,râbîyb,resh-bet,רב,rain,H7241,râbîyb,Hebrew,רביב
+1439,râbîyb,resh-bet,רב,showers,H7241,râbîyb,Hebrew,רביב
+1439,râbîyb,resh-bet,רב,gentle rain,H7241,râbîyb,Hebrew,רביב
+1439,râbîyb,resh-bet,רב,abundant rain,H7241,râbîyb,Hebrew,רביב
+1439,râbîyb,resh-bet,רב,rain,H7241,pula,Sesotho,רביב
+1439,râbîyb,resh-bet,רב,rain,H7241,mbula,Lingala,רביב
 1439,rabrab,resh-bet,רב,huge,H7260,rabrab,Hebrew,רברב
 1439,rabrab,resh-bet,רב,great,H7260,rabrab,Hebrew,רברב
 1439,rabrᵉbân,resh-bet,רב,magnate,H7261,rabrᵉbân,Hebrew,רברבן
@@ -10728,7 +10735,10 @@
 2318,lâphath,lamed-peh-tau,לפת,take,H3943,lâphath,Hebrew,לפת
 2318,lâphath,lamed-peh-tau,לפת,turn,H3943,lâphath,Hebrew,לפת
 2319,lâqach,lamed-qupha-kgeta,לקח,bride,H3947,lekhahla,Sesotho,לקח
-2319,leqach,lamed-qupha-kgeta,לקח,received,H3948,leqach,Hebrew,לקח
+2319,leqach,lamed-qupha-kgeta,לקח,doctrine,H3948,leqach,Hebrew,לקח
+2319,leqach,lamed-qupha-kgeta,לקח,instructions,H3948,leqach,Hebrew,לקח
+2319,leqach,lamed-qupha-kgeta,לקח,fair speech,H3948,leqach,Hebrew,לקח
+2319,leqach,lamed-qupha-kgeta,לקח,doctrine,H3948,eko,Yoruba,לקח
 2319,malqôwach,lamed-qupha-kgeta,לקח,jaws,H4455,malqôwach,Hebrew,מלקוח
 2319,malqôwach,lamed-qupha-kgeta,לקח,prey,H4455,malqôwach,Hebrew,מלקוח
 2319,malqôwach,lamed-qupha-kgeta,לקח,booty,H4455,malqôwach,Hebrew,מלקוח
@@ -13398,7 +13408,9 @@
 2754,tardêmâh,resh-dalet-mah,רדמ,lethargy,H8639,tardêmâh,Hebrew,תרדמה
 2755,murdâph,resh-dalet-peh,רדפ,persecuted,H4783,murdâph,Hebrew,מרדף
 2755,râdaph,resh-dalet-peh,רדפ,run after,H7291,râdaph,Hebrew,רדף
+2755,râdaph,resh-dalet-peh,רדפ,spread out,H7291,phalala,NSesotho,רדף
 2755,râdaph,resh-dalet-peh,רדפ,persecute,H7291,râdaph,Hebrew,רדף
+2755,râdaph,resh-dalet-peh,רדפ,destroy,H7291,paradza,chiShona,רדף
 2755,râdaph,resh-dalet-peh,רדפ,chase,H7291,râdaph,Hebrew,רדף
 2755,râdaph,resh-dalet-peh,רדפ,pursue,H7291,râdaph,Hebrew,רדף
 2755,râdaph,resh-dalet-peh,רדפ,follow,H7291,râdaph,Hebrew,רדף
