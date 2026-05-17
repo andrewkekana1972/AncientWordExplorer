@@ -578,6 +578,9 @@
 1035,bᵉlîymâh,bet-lamed,בל,whatever,H1099,bᵉlîymâh,Hebrew,בלימה
 1035,bᵉlîyaʻal,bet-lamed,בל,without profit,H1100,bᵉlîyaʻal,Hebrew,בליעל
 1035,bâlal,bet-lamed,בל,anoint,H1101,balla,Sesotho,בלל
+1035,bâlal,bet-lamed,בל,confuse language,H1101,bolela,Sesotho,בלל
+1035,bâlal,bet-lamed,בל,mix words,H1101,bolela,Sesotho,בלל
+1035,bâlal,bet-lamed,בל,mixing of breath and sounds,H1101,bolela,Sesotho,בלל
 1035,bâlal,bet-lamed,בל,anoint,H1101,bolla,Sesotho,בלל
 1035,bâlal,bet-lamed,בל,put lathes on the roof,H1101,balla,Sesotho,בלל
 1035,bâlaʻ,bet-lamed,בל,kill,H1104,bolaya,NSesotho,בלע
@@ -5066,12 +5069,20 @@
 1319,mânôwr,nunu-resh,נר,yoke,H4500,mânôwr,Hebrew,מנור
 1319,mᵉnôwrâh,nunu-resh,נר,chandelier,H4501,mᵉnôwrâh,Hebrew,מנורה
 1319,nᵉhîyr,nunu-resh,נר,enlightenment,H5094,nᵉhîyr,Hebrew,נהיר
+1319,nᵉhîyr,nunu-resh,נר,light ,H5094,nᵉhîyr,Hebrew,נהיר
+1319,nᵉhîyr,nunu-resh,נר,buffalo - with its glistening skin,H5094,nare,Hebrew,נהיר
+1319,nᵉhîyr,nunu-resh,נר,buffalo - with its glistening skin,H5094,nyathi,isiZulu,נהיר
 1319,nᵉhîyr,nunu-resh,נר,light of wisdom,H5094,nᵉhîyr,Hebrew,נהיר
 1319,nᵉhîyr,nunu-resh,נר,wisdom,H5094,ungwaru,Ndau,נהיר
 1319,nâhar,nunu-resh,נר,sparkle,H5102,nâhar,Hebrew,נהר
+1319,nâhar,nunu-resh,נר,buffalo - with its glistening skin,H5102,nare,Hebrew,נהר
+1319,nâhar,nunu-resh,נר,buffalo - with its glistening skin,H5102,nyathi,isiZulu,נהר
 1319,nᵉhar,nunu-resh,נר,river,H5103,nᵉhar,Hebrew,נהר
 1319,nâhâr,nunu-resh,נר,stream,H5104,nâhâr,Hebrew,נהר
 1319,nᵉhârâh,nunu-resh,נר,daylight,H5105,nᵉhârâh,Hebrew,נהרה
+1319,nᵉhârâh,nunu-resh,נר,light,H5105,nᵉhârâh,Hebrew,נהרה
+1319,nᵉhârâh,nunu-resh,נר,buffalo - with its glistening skin,H5105,nare,Sesotho,נהרה
+1319,nᵉhârâh,nunu-resh,נר,buffalo - with its glistening skin,H5105,nyathi,isiZulu,נהרה
 1319,nûwr,nunu-resh,נר,knowledge,H5135,kinara ,chiShona,נור
 1319,nûwr,nunu-resh,נר,thirst due to heat,H5135,lenyora,Sesotho,נור
 1319,nîyr,nunu-resh,נר,till the soil,H5214,nîyr,Hebrew,ניר
@@ -8422,6 +8433,7 @@
 1484,tâʼâh,tau-aleph,תא,point,H8376,nthla,Sesotho,תאה
 1484,tâʼâh,tau-aleph,תא,point,H8376,aaye,Yoruba,תאה
 1484,tᵉʼôw,tau-aleph,תא,lion,H8377,tau,Sesotho,תאו
+1484,tᵉʼôw,tau-aleph,תא,the covenant animal,H8377,tau,Sesotho,תאו
 1484,tᵉʼôw,tau-aleph,תא,wild ox,H8377,tau,Sesotho,תאו
 1485,tâʼab,tau-bet,תב,desire,H8373,tâʼab,Hebrew,תאב
 1485,tâʼab,tau-bet,תב,abhor,H8374,tuba,Sesotho,תאב
