@@ -906,6 +906,8 @@
 1047,gaʼăwâh,gimel-aleph,גא,highness,H1346,ga,Yoruba,גאוה
 1047,gaʼăwâh,gimel-aleph,גא,height,H1346,iga,Yoruba,גאוה
 1047,gâʼôwn,gimel-aleph,גא,excellency,H1347,gâʼôwn,Hebrew,גאון
+1047,gâʼôwn,gimel-aleph,גא,excellency,H1347,kaone,NSesotho,גאון
+1047,gâʼôwn,gimel-aleph,גא,better,H1347,kaone,NSesotho,גאון
 1047,gâʼôwn,gimel-aleph,גא,excellent,H1347,gâʼôwn,Hebrew,גאון
 1047,gâʼôwn,gimel-aleph,גא,majesty,H1347,gâʼôwn,Hebrew,גאון
 1047,gâʼôwn,gimel-aleph,גא,pomp,H1347,gâʼôwn,Hebrew,גאון
@@ -5355,6 +5357,7 @@
 1336,tsânîyn,sin-nunu,סנ,thorn,H6796,tsânîyn,Hebrew,צנין
 1336,tsânaʻ,sin-nunu,סנ,humiliate,H6800,tsânaʻ,Hebrew,צנע
 1336,sânêʼ,sin-nunu,סנ,hate,H8130,sânêʼ,Hebrew,שנא
+1336,sânêʼ,sin-nunu,סנ,hate,H8130,zonda,isizulu,שנא
 1336,sᵉnêʼ,sin-nunu,סנ,enemy,H8131,sᵉnêʼ,Hebrew,שנא
 1336,sᵉnêʼ,sin-nunu,סנ,hate,H8131,sᵉnêʼ,Hebrew,שנא
 1336,sinʼâh,sin-nunu,סנ,hate,H8135,sinʼâh,Hebrew,שנאה
@@ -11706,6 +11709,7 @@
 2487,sâmach,sin-mah-kgeta,סמח,joyful,H8055,simua,chiBemba,שמח
 2487,sâmêach,sin-mah-kgeta,סמח,blithe,H8056,sâmêach,Hebrew,שמח
 2487,simchâh,sin-mah-kgeta,סמח,blithesomeness,H8057,simchâh,Hebrew,שמחה
+2487,simchâh,sin-mah-kgeta,סמח,joyful,H8057,simua,chiBemba,שמחה
 2488,çâmak,sin-mah-khaf,סמכ,prop,H5564,çâmak,Hebrew,סמך
 2488,çâmak,sin-mah-khaf,סמכ,lay,H5564,çâmak,Hebrew,סמך
 2488,çâmak,sin-mah-khaf,סמכ,uphold,H5564,çâmak,Hebrew,סמך
