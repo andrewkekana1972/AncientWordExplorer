@@ -734,9 +734,31 @@ function buildDictCell(hits){
   }).join('');
 }
 
+
+// ── Normalise Hebrew transliteration to root form ────────────────────────────
+function normaliseTranslit(t) {
+  if(!t) return t;
+  var s = t.toLowerCase().trim();
+  // Strip common prefixes (longest first)
+  var prefixes = ['vay','hay','has','ham','hal','hav','ve','va','be','le','ke','mi','me','ha','la','ba','ka'];
+  for(var i=0;i<prefixes.length;i++){
+    if(s.startsWith(prefixes[i]) && s.length > prefixes[i].length + 2){
+      s = s.slice(prefixes[i].length); break;
+    }
+  }
+  // Strip common suffixes (longest first)
+  var suffixes = ['ekhem','otehem','eyhem','oteinu','eynu','ekha','echa','enu','hem','kem','tam','tem','tim','oth','aim','im','ot','ah','nu','ti','am','iy'];
+  for(var i=0;i<suffixes.length;i++){
+    if(s.endsWith(suffixes[i]) && s.length > suffixes[i].length + 2){
+      s = s.slice(0, s.length - suffixes[i].length); break;
+    }
+  }
+  return s;
+}
+
 function buildHebrewCell(w,hits){
-  var rawTrans=w.hebrew_transliteration||'';
-  var dispTrans=normaliseTranslit(rawTrans);
+  var rawTrans = w.hebrew_transliteration || '';
+  var dispTrans = normaliseTranslit(rawTrans);
   var html='<span class="hword">'+(w.hebrew_word||'')+'</span>'
     +'<span class="'+(hits.length?'htrans-match':'htrans')+'">'+(dispTrans||rawTrans)+'</span>';
   var all=[];
