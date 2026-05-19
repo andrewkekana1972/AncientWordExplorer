@@ -28,20 +28,6 @@ dictionary_df.columns = [
     for c in dictionary_df.columns
 ]
 
-# Normalize Strong's numbers
-def normalize_strongs(value):
-
-    if pd.isna(value):
-        return ""
-
-    value = str(value).strip().upper()
-
-    value = value.replace(" ", "")
-
-    if value and not value.startswith("H"):
-        value = "H" + value
-
-    return value
 
 dictionary_df["strongs_number"] = (
     dictionary_df["strongs_number"]
@@ -144,7 +130,20 @@ CACHE.update(load_bible_cache(BIBLE_CACHE_URL))
 # =========================================================
 # LOOKUP BANTU MATCHES
 # =========================================================
+# Normalize Strong's numbers
+def normalize_strongs(value):
 
+    if pd.isna(value):
+        return ""
+
+    value = str(value).strip().upper()
+
+    value = value.replace(" ", "")
+
+    if value and not value.startswith("H"):
+        value = "H" + value
+
+    return value
 def lookup_bantu_matches(strongs_number):
 
     strongs_number = normalize_strongs(
@@ -456,7 +455,12 @@ def analyse():
 
         # Enrich with accurate data from YOUR dictionary
         result = enrich_from_dictionary(result)
-        for verse_data in result.get("verses", []):
+
+# =====================================================
+# ADD BANTU MATCHES
+# =====================================================
+
+for verse_data in result.get("verses", []):
 
     for word in verse_data.get("words", []):
 
@@ -468,20 +472,11 @@ def analyse():
 
         word["bantu_matches"] = bantu_matches
 
-        # =========================================================
-# ADD BANTU MATCHES
-# =========================================================
+# =====================================================
 
-strongs = word.get("strongs", "")
+CACHE[cache_key] = result
 
-bantu_matches = lookup_bantu_matches(
-    strongs
-)
-
-word["bantu_matches"] = bantu_matches
-
-        CACHE[cache_key] = result
-        return jsonify(result)
+return jsonify(result)
 
     except urllib.error.HTTPError as e:
         return jsonify({'error': 'API error ' + str(e.code) + ': ' + e.read().decode()}), 500
