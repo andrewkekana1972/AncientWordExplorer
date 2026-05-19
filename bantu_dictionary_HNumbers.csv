@@ -504,6 +504,7 @@ H444,1261,ʼâlach,lamed-kgeta,לח,filthy,lahla,isiZulu,אלח
 H451,1012,ʼalyâh,aleph-lamed,אל,rump,idi,Yoruba,אליה
 H452,1012,ʼÊlîyâh,aleph-lamed,אל,he went up,Élìá ,Ewe,אליה
 H459,1012,ʼillêyn,aleph-lamed,אל,these,ʼillêyn,Hebrew,אלין
+H460,1339,ʼElyâçâph,sin-peh,ספ,Elisaph,ʼElyâçâph,Hebrew,אליסף
 H479,1104,ʼillêk,hey-lamed,הל,these,ʼillêk,Hebrew,אלך
 H479,1104,ʼillêk,hey-lamed,הל,those,ʼillêk,Hebrew,אלך
 H480,1254,ʼalᵉlay,lamed-aleph,לא,alas!,ʼalᵉlay,Hebrew,אללי
@@ -828,6 +829,7 @@ H666,1388,ʼăphêr,peh-resh,פר,turban,ʼăphêr,Hebrew,אפר
 H667,2636,ʼephrôach,peh-resh-kgeta,פרח,brood,ʼephrôach,Hebrew,אפרח
 H667,2636,ʼephrôach,peh-resh-kgeta,פרח,young,ʼephrôach,Hebrew,אפרח
 H676,2655,ʼetsbaʻ,tsade-bet-ayin,צבע,sieze,ʼetsbaʻ,Hebrew,אצבע
+H669,1388,ʼEphrayim,peh-resh,,Ephrayim,ʼEphrayim,Hebrew,אפרים
 H677,2655,ʼetsbaʻ,tsade-bet-ayin,צבע,finger,ʼetsbaʻ,Hebrew,אצבע
 H677,2655,ʼetsbaʻ,tsade-bet-ayin,צבע,toe,ʼetsbaʻ,Hebrew,אצבע
 H678,1403,ʼâtsîyl,tsade-lamed,צל,extremity,ʼâtsîyl,Hebrew,אציל
@@ -4923,6 +4925,8 @@ H3123,1221,yôwnâh,yad-nunu,ינ,dove,yôwnâh,Hebrew,יונה
 H3126,1318,yôwnêq,nunu-qupha,נק,sucker,yôwnêq,Hebrew,יונק
 H3126,1318,yôwnêq,nunu-qupha,נק,plant,yôwnêq,Hebrew,יונק
 H3127,1318,yôwneqeth,nunu-qupha,נק,sprout,yôwneqeth,Hebrew,יונקת
+H3130,1339,Yôwçêph,sin-peh,ספ,Joseph,Yôwçêph,Hebrew,יוסף
+H3130,1339,Yôwçêph,sin-peh,ספ,Joseph,Yosipha,isiZulu,יוסף
 H3138,1227,yôwreh,yad-resh,יר,sprinkling,yôwreh,Hebrew,יורה
 H3148,1503,yôwthêr,tau-resh,תר,redundant,yôwthêr,Hebrew,יותר
 H3148,1503,yôwthêr,tau-resh,תר,all,yothe,Kelobedu,יותר
@@ -7343,6 +7347,7 @@ H4517,1322,mᵉnaʻnaʻ,nunu-ayin,נע,cornet,mᵉnaʻnaʻ,Hebrew,מנענע
 H4518,1318,mᵉnaqqîyth,nunu-qupha,נק,sacrificial basin,mᵉnaqqîyth,Hebrew,מנקית
 H4518,1318,mᵉnaqqîyth,nunu-qupha,נק,bowl,mᵉnaqqîyth,Hebrew,מנקית
 H4518,1318,mᵉnaqqîyth,nunu-qupha,נק,cup,mᵉnaqqîyth,Hebrew,מנקית
+H4519,1290,Mᵉnashsheh,mah-nunu,מנ,Manasseh,Mᵉnashsheh,Hebrew,מנשה
 H4521,1290,mᵉnâth,mah-nunu,מנ,allotment,mᵉnâth,Hebrew,מנת
 H4521,1290,mᵉnâth,mah-nunu,מנ,portion,mᵉnâth,Hebrew,מנת
 H4522,1291,maç,mah-sin,מס,burden,maç,Hebrew,מס
