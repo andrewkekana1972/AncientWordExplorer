@@ -456,6 +456,7 @@ H399,1242,ʼăkal,khaf-lamed,כל,eat,ʼăkal,Hebrew,אכל
 H400,1242,ʼôkel,khaf-lamed,כל,food,ʼôkel,Hebrew,אכל
 H402,1242,ʼoklâh,khaf-lamed,כל,food,chakulya,Dombe,אכלה
 H402,1242,ʼoklâh,khaf-lamed,כל,food,ukudla,isiZulu,אכלה
+H402,1242,ʼoklâh,khaf-lamed,כל,food,okele,Yoruba,אכלה
 H402,1242,ʼoklâh,khaf-lamed,כל,food,madia,Kituba,אכלה
 H403,1244,ʼâkên,khaf-nunu,כנ,emphasize the unexpected,akere,NSesotho,אכן
 H403,1244,ʼâkên,khaf-nunu,כנ,albeit,akere,NSesotho,אכן
@@ -494,6 +495,7 @@ H429,1104,ʼêlleh,hey-lamed,הל,these,ʼêlleh,Hebrew,אלה
 H429,1104,ʼêlleh,hey-lamed,הל,that one,ʼêlleh,Sesotho,אלה
 H430,1012,ʼĕlôhîym,aleph-lamed,אל,high,hodimo,Sesotho,אלהים
 H430,1012,ʼĕlôhîym,aleph-lamed,אל,heaven,lehodimo,Sesotho,אלהים
+H430,1012,ʼĕlôhîym,aleph-lamed,אל,God,aluwah,Yoruba,אלהים
 H431,1104,ʼălûw,hey-lamed,הל,lo!,ʼălûw,Hebrew,אלו
 H432,1104,ʼillûw,hey-lamed,הל,nay,ʼillûw,Hebrew,אלו
 H433,1012,ʼĕlôwahh,aleph-lamed,אל,god,orisa,Yoruba,אלוה
@@ -961,6 +963,7 @@ H776,1455,ʼerets,resh-tsade,רצ,ground,ehansi,xiTsonga,ארץ
 H776,1455,ʼerets,resh-tsade,רצ,ground,fhasi,tshiVenda,ארץ
 H776,1455,ʼerets,resh-tsade,רצ,ground,fase,tshiVenda,ארץ
 H776,1455,ʼerets,resh-tsade,רצ,ground,phansi,isiZulu,ארץ
+H776,1455,ʼerets,resh-tsade,רצ,wet land,ere,Yoruba,ארץ
 H778,1455,ʼăraq,resh-tsade,רצ,earth,ʼăraq,Hebrew,ארק
 H779,1457,ʼârar,resh-resh,רר,speak angrily,rora,Sesotho,ארר
 H779,1457,ʼârar,resh-resh,רר,curse,rora,Sesotho,ארר
@@ -1468,13 +1471,21 @@ H1116,1036,bâmâh,bet-mah,במ,high place,boma ,Swahili,במה
 H1116,1036,bâmâh,bet-mah,במ,worship,obama,Swahili,במה
 H1116,1036,bâmâh,bet-mah,במ,worship,obama,Sesotho,במה
 H1119,1282,bᵉmôw,mah-waw,מו,in,bᵉmôw,Hebrew,במו
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
+H1121,1037,bên,bet-nunu,בנ,son,bên,Hebrew,בן
+H1121,1037,bên,bet-nunu,בנ,children,bana ,Kituba,בן
+H1121,1037,bên,bet-nunu,בנ,children,vana ,chiShona,בן
+H1121,1037,bên,bet-nunu,בנ,children,vhana ,chiShona,בן
+H1121,1037,bên,bet-nunu,בנ,children,bana ,Sesotho,בן
+H1121,1037,bên,bet-nunu,בנ,children,ana ,Nyanja,בן
+H1121,1037,bên,bet-nunu,בנ,children,abana ,chiBemba,בן
+H1121,1037,bên,bet-nunu,בנ,men,bana ,Sesotho,בן
+H1121,1037,bên,bet-nunu,בנ,son,bên,Hebrew,בן
+H1121,1037,bên,bet-nunu,בנ,son,mwanakomana,chiShona,בן
+H1121,1037,bên,bet-nunu,בנ,son,omode,Yoruba,בן
+H1121,1037,bên,bet-nunu,בנ,youths,bana ,Sesotho,בן
+H1121,1037,bên,bet-nunu,בנ,son,mwana mobali,Lingala,בן
+H1121,1037,bên,bet-nunu,בנ,son,umwana,chiBemba,בן
+H1121,1037,bên,bet-nunu,בנ,son,mwana wamamuna,Nyanja,בן
 H1123,1037,bên,bet-nunu,בנ,male child,bana,Sesotho,בן
 H1123,1037,bên,bet-nunu,בנ,children,bana,Sesotho,בן
 H1124,1037,bᵉnâʼ,bet-nunu,בנ,build,bᵉnâʼ,Hebrew,בנא
@@ -12194,10 +12205,12 @@ H7217,1458,rêʼsh,resh-shin,רש,head,rêʼsh,Hebrew,ראש
 H7218,1458,rôʼsh,resh-shin,רש,head,rôʼsh,Hebrew,ראש
 H7219,1458,rôʼsh,resh-shin,רש,poisonous plant,rôʼsh,Hebrew,ראש
 H7221,1458,riʼshâh,resh-shin,רש,beginning,riʼshâh,Hebrew,ראשה
+H7221,1458,riʼshâh,resh-shin,רש,beginning,ibere,Yoruba,ראשה
 H7222,1458,rôʼshâh,resh-shin,רש,head,rôʼshâh,Hebrew,ראשה
 H7223,1458,riʼshôwn,resh-shin,רש,first,riʼshôwn,Hebrew,ראשון
 H7224,1458,riʼshônîy,resh-shin,רש,first,riʼshônîy,Hebrew,ראשני
 H7225,1458,rêʼshîyth,resh-shin,רש,first,rêʼshîyth,Hebrew,ראשית
+H7225,1458,rêʼshîyth,resh-shin,רש,beginning,ibere,Yoruba,ראשית
 H7226,1458,raʼăshôth,resh-shin,רש,pillow,raʼăshôth,Hebrew,ראשת
 H7226,1458,raʼăshôth,resh-shin,רש,bolster,raʼăshôth,Hebrew,ראשת
 H7227,1439,rab,resh-bet,רב,long,rab,Hebrew,רב
@@ -13709,7 +13722,9 @@ H8059,2849,shᵉmiṭṭâh,shin-mah-thete,שמט,remission,shᵉmiṭṭâh,Heb
 H8059,2849,shᵉmiṭṭâh,shin-mah-thete,שמט,release ,shᵉmiṭṭâh,Hebrew,שמטה
 H8063,2488,sᵉmîykâh,sin-mah-khaf,סמכ,run,sᵉmîykâh,Hebrew,שמיכה
 H8064,1473,shâmayim,shin-mah,שמ,sky,shâmayim,Hebrew,שמים
+H8064,1473,shâmayim,shin-mah,שמ,cloud,sanma,Yoruba,שמים
 H8065,1473,shâmayin,shin-mah,שמ,heavens,shâmayin,Hebrew,שמין
+H8065,1473,shâmayin,shin-mah,שמ,heavens,sanma,Yoruba,שמין
 H8065,1473,shâmayin,shin-mah,שמ,sky,shâmayin,Hebrew,שמין
 H8065,1473,shâmayin,shin-mah,שמ,air,shâmayin,Hebrew,שמין
 H8065,1473,shâmayin,shin-mah,שמ,heaven,shâmayin,Hebrew,שמין
