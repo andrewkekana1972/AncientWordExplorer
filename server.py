@@ -460,13 +460,13 @@ def analyse():
 # ADD BANTU MATCHES
 # =====================================================
 
-for verse_data in result.get("verses", []):
+        for verse_data in result.get("verses", []):
 
-    for word in verse_data.get("words", []):
+            for word in verse_data.get("words", []):
 
-        strongs = word.get("strongs", "")
+                strongs = word.get("strongs", "")
 
-        bantu_matches = lookup_bantu_matches(
+                bantu_matches = lookup_bantu_matches(
             strongs
         )
 
@@ -474,9 +474,9 @@ for verse_data in result.get("verses", []):
 
 # =====================================================
 
-CACHE[cache_key] = result
+        CACHE[cache_key] = result
 
-return jsonify(result)
+        return jsonify(result)
 
     except urllib.error.HTTPError as e:
         return jsonify({'error': 'API error ' + str(e.code) + ': ' + e.read().decode()}), 500
