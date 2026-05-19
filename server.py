@@ -8,37 +8,12 @@ Ancient Word Explorer - Flask Backend
 import os, json, re, urllib.request, urllib.error, threading, time
 from flask import Flask, request, jsonify, send_from_directory
 
-# =========================================================
-# LOAD BANTU DICTIONARY
-# =========================================================
-
-import pandas as pd
-
-BANTU_DICTIONARY_URL = (
-    "https://raw.githubusercontent.com/"
-    "andrewkekana1972/AncientWordExplorer/main/"
-    "bantu_dictionary_HNumbers.csv"
-)
-
-dictionary_df = pd.read_csv(BANTU_DICTIONARY_URL)
-
-# Normalize column names
-dictionary_df.columns = [
-    c.strip().lower().replace(" ", "_")
-    for c in dictionary_df.columns
-]
-
-
-dictionary_df["strongs_number"] = (
-    dictionary_df["strongs_number"]
-    .apply(normalize_strongs)
-)
 app = Flask(__name__, static_folder='.')
 
 # ── Load full dictionary from GitHub ─────────────────────────────────────────
 GITHUB_CSV_URL = os.environ.get(
     'BANTU_CSV_URL',
-    'https://raw.githubusercontent.com/andrewkekana1972/ancientwordexplorer/main/bantu_dictionary_HNumbers.csv'
+    'https://raw.githubusercontent.com/andrewkekana1972/ancientwordexplorer/main/bantu_dictionary.csv'
 )
 
 def load_dictionary(url):
@@ -58,11 +33,11 @@ def load_dictionary(url):
             parts = line.split(',')
             if len(parts) < 8:
                 continue
-            hnum        = parts[0].strip().strip('"')
-            translit    = parts[2].strip().strip('"')
-            heb_chars   = parts[4].strip().strip('"')
-            letter_grp  = parts[3].strip().strip('"')
-            meaning     = parts[5].strip().strip('"')
+            hnum        = parts[5].strip().strip('"')
+            translit    = parts[1].strip().strip('"')
+            heb_chars   = parts[3].strip().strip('"')
+            letter_grp  = parts[2].strip().strip('"')
+            meaning     = parts[4].strip().strip('"')
             bantu_word  = parts[6].strip().strip('"')
             language    = parts[7].strip().strip('"')
 
@@ -126,70 +101,6 @@ def load_bible_cache(url):
         return {}
 
 CACHE.update(load_bible_cache(BIBLE_CACHE_URL))
-
-# =========================================================
-# LOOKUP BANTU MATCHES
-# =========================================================
-# Normalize Strong's numbers
-def normalize_strongs(value):
-
-    if pd.isna(value):
-        return ""
-
-    value = str(value).strip().upper()
-
-    value = value.replace(" ", "")
-
-    if value and not value.startswith("H"):
-        value = "H" + value
-
-    return value
-def lookup_bantu_matches(strongs_number):
-
-    strongs_number = normalize_strongs(
-        strongs_number
-    )
-
-    matches = dictionary_df[
-        dictionary_df["strongs_number"] == strongs_number
-    ]
-
-    if matches.empty:
-        return []
-
-    grouped = {}
-
-    for _, row in matches.iterrows():
-
-        dialect = str(
-            row.get("bantu_dialect", "")
-        ).strip()
-
-        bantu_word = str(
-            row.get("bantu_word", "")
-        ).strip()
-
-        if not dialect or not bantu_word:
-            continue
-
-        if dialect not in grouped:
-            grouped[dialect] = []
-
-        if bantu_word not in grouped[dialect]:
-            grouped[dialect].append(
-                bantu_word
-            )
-
-    results = []
-
-    for dialect, words in grouped.items():
-
-        results.append({
-            "dialect": dialect,
-            "words": words
-        })
-
-    return results
 
 # ── KJV verse lookup ──────────────────────────────────────────────────────────
 KJV = {
@@ -456,26 +367,7 @@ def analyse():
         # Enrich with accurate data from YOUR dictionary
         result = enrich_from_dictionary(result)
 
-# =====================================================
-# ADD BANTU MATCHES
-# =====================================================
-
-        for verse_data in result.get("verses", []):
-
-            for word in verse_data.get("words", []):
-
-                strongs = word.get("strongs", "")
-
-                bantu_matches = lookup_bantu_matches(
-            strongs
-        )
-
-        word["bantu_matches"] = bantu_matches
-
-# =====================================================
-
         CACHE[cache_key] = result
-
         return jsonify(result)
 
     except urllib.error.HTTPError as e:
