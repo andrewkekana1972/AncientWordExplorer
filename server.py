@@ -13,7 +13,7 @@ app = Flask(__name__, static_folder='.')
 # ── Load full dictionary from GitHub ─────────────────────────────────────────
 GITHUB_CSV_URL = os.environ.get(
     'BANTU_CSV_URL',
-    'https://raw.githubusercontent.com/andrewkekana1972/ancientwordexplorer/main/bantu_dictionary.csv'
+    'https://raw.githubusercontent.com/andrewkekana1972/ancientwordexplorer/main/bantu_dictionary_HNumbers.csv'
 )
 
 def load_dictionary(url):
@@ -33,11 +33,11 @@ def load_dictionary(url):
             parts = line.split(',')
             if len(parts) < 8:
                 continue
-            hnum        = parts[5].strip().strip('"')
-            translit    = parts[1].strip().strip('"')
-            heb_chars   = parts[3].strip().strip('"')
-            letter_grp  = parts[2].strip().strip('"')
-            meaning     = parts[4].strip().strip('"')
+            hnum        = parts[0].strip().strip('"')
+            translit    = parts[2].strip().strip('"')
+            heb_chars   = parts[4].strip().strip('"')
+            letter_grp  = parts[3].strip().strip('"')
+            meaning     = parts[5].strip().strip('"')
             bantu_word  = parts[6].strip().strip('"')
             language    = parts[7].strip().strip('"')
 
