@@ -4,6 +4,79 @@
 <meta charset='UTF-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0'>
 <title>Ancient Word Explorer</title>
+.lex-card{
+  background:#1e1e1e;
+  border:1px solid #333;
+  border-radius:12px;
+  padding:16px;
+  margin-bottom:18px;
+}
+
+.lex-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:12px;
+}
+
+.hebrew-word{
+  font-size:28px;
+  font-weight:bold;
+  color:#f5d76e;
+}
+
+.strongs-number{
+  font-size:14px;
+  color:#87ceeb;
+  font-weight:bold;
+}
+
+.lex-body{
+  margin-bottom:15px;
+}
+
+.lex-item{
+  margin-bottom:8px;
+  color:#f0f0f0;
+}
+
+.label{
+  font-weight:bold;
+  color:#d4af37;
+}
+
+.bantu-section{
+  margin-top:15px;
+  padding-top:12px;
+  border-top:1px solid #444;
+}
+
+.bantu-title{
+  font-weight:bold;
+  color:#d4af37;
+  margin-bottom:12px;
+  font-size:16px;
+}
+
+.bantu-group{
+  margin-bottom:12px;
+}
+
+.bantu-language{
+  font-weight:bold;
+  color:#87ceeb;
+  margin-bottom:3px;
+}
+
+.bantu-words{
+  margin-left:10px;
+  color:#f0f0f0;
+}
+
+.no-bantu{
+  color:#888;
+  font-style:italic;
+}
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
@@ -769,41 +842,90 @@ function buildHebrewCell(w,hits){
 }
 
 function renderResults(data){
-  var area=document.getElementById('resultsArea');
-  area.innerHTML='';
-  if(!data.verses||!data.verses.length){ area.innerHTML='<div class="empty">No verses found.</div>'; return; }
-  data.verses.forEach(function(verse){
-    var card=document.createElement('div'); card.className='vcard';
-    var matched=0,total=0;
-    var rows=(verse.words||[]).map(function(w){
-      total++;
-      var hits=lookupH(w.strongs||''); if(hits.length) matched++;
-      var ltags=(w.hebrew_letters||[]).map(function(l){return '<span class="ltag" title="'+l.ancient_meaning+'">'+l.hebrew_char+' '+l.letter+'</span>';}).join('');
-      var lmeans='<div class="lmean">'+(w.hebrew_letters||[]).map(function(l){return '<strong>'+l.letter+'</strong> ('+l.hebrew_char+'): '+l.ancient_meaning;}).join('<br>')+'</div>';
-      var strongs=(w.strongs||'').replace(/^H0+/,'H');
-      return '<tr>'
-        +'<td>'+buildHebrewCell(w,hits)+'</td>'
-        +'<td><span class="hroot">'+(w.hebrew_root||'')+'</span>'
-        +(strongs?'<a class="hstrongs" href="https://www.blueletterbible.org/lexicon/'+strongs+'/kjv/wlc/0-1/" target="_blank">'+strongs+' &#x2197;</a>':'')
-        +'<br><small style="color:#5a4a2a;font-size:11px">'+(w.english_meaning||'')+'</small></td>'
-        +'<td>'+ltags+'</td>'
-        +'<td>'+lmeans+'<span class="composite">'+(w.composite_meaning||'')+'</span></td>'
-        +'<td>'+buildDictCell(hits)+'</td>'
-        +'</tr>';
-    }).join('');
-    var pct=total>0?Math.round(matched/total*100):0;
-    card.innerHTML=
-      '<div class="vhead"><span class="vref">'+(verse.reference||'')+'</span>'
-      +'<span class="vcov"><span class="hit">'+matched+'/'+total+'</span> in your dictionary ('+pct+'%)</span></div>'
-      +'<div class="vtext">'+(verse.text||'')+'</div>'
-      +'<div class="vsec">\u05D0 Hebrew Roots &amp; Bantu Dictionary Matches</div>'
-      +'<div class="tbl-wrap"><table>'
-      +'<thead><tr><th>Hebrew Word</th><th>Root / Strong\'s</th><th>Ancient Letters</th>'
-      +'<th>Letter Meanings &amp; Composite</th><th>Your Bantu Dictionary</th></tr></thead>'
-      +'<tbody>'+rows+'</tbody></table></div>';
-    area.appendChild(card);
-  });
-  area.scrollIntoView({behavior:'smooth',block:'start'});
+  
+  var rows=(verse.words||[]).map(function(w){
+
+matched += (w.bantu_matches && w.bantu_matches.length) ? 1 : 0;
+total++;
+
+return `
+  <div class="lex-card">
+
+    <div class="lex-header">
+
+      <div class="hebrew-word">
+        ${w.hebrew_word || ''}
+      </div>
+
+      <div class="strongs-number">
+        ${w.strongs || ''}
+      </div>
+
+    </div>
+
+    <div class="lex-body">
+
+      <div class="lex-item">
+        <span class="label">Transliteration:</span>
+        ${w.hebrew_transliteration || ''}
+      </div>
+
+      <div class="lex-item">
+        <span class="label">Root:</span>
+        ${w.hebrew_root || ''}
+      </div>
+
+      <div class="lex-item">
+        <span class="label">Meaning:</span>
+        ${w.english_meaning || ''}
+      </div>
+
+    </div>
+
+    <div class="bantu-section">
+
+      <div class="bantu-title">
+        Bantu Equivalents
+      </div>
+
+      ${
+        w.bantu_matches &&
+        w.bantu_matches.length
+
+        ?
+
+        w.bantu_matches.map(function(match){
+
+          return `
+
+            <div class="bantu-group">
+
+              <div class="bantu-language">
+                ${match.dialect}
+              </div>
+
+              <div class="bantu-words">
+                ${match.words.join(", ")}
+              </div>
+
+            </div>
+
+          `;
+
+        }).join("")
+
+        :
+
+        `<div class="no-bantu">
+            No Bantu matches found
+         </div>`
+      }
+
+    </div>
+
+  </div>
+`;
+}).join('');  
 }
 
 // ── Bible Navigation ──────────────────────────────────────────────────────────
