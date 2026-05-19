@@ -1,58 +1,83 @@
 """
 Ancient Word Explorer - Flask Backend
-Streaming + caching for fast responses.
-Locally: python3 server.py
-Render:  gunicorn --worker-class geventwebsocket.gunicorn.workers.GeventWebSocketWorker server:app
+- Hebrew words, transliterations, Bantu matches come from YOUR dictionary
+- Claude only provides ancient letter meanings and composite meaning
+- Verse text comes from bible-api (via browser) or KJV cache
 """
 
 import os, json, re, urllib.request, urllib.error, threading, time
-from flask import Flask, request, jsonify, send_from_directory, Response, stream_with_context
+from flask import Flask, request, jsonify, send_from_directory
 
 app = Flask(__name__, static_folder='.')
 
-# ── Load Bantu dictionary from GitHub ────────────────────────────────────────
+# ── Load full dictionary from GitHub ─────────────────────────────────────────
 GITHUB_CSV_URL = os.environ.get(
     'BANTU_CSV_URL',
     'https://raw.githubusercontent.com/andrewkekana1972/ancientwordexplorer/main/bantu_dictionary.csv'
 )
 
-def load_bantu_db(url):
-    print('Loading Bantu dictionary from:', url)
+def load_dictionary(url):
+    print('Loading dictionary from:', url)
     try:
         req = urllib.request.Request(url, headers={'User-Agent': 'AncientWordExplorer/1.0'})
         with urllib.request.urlopen(req, timeout=30) as r:
             raw = r.read().decode('utf-8')
-        lookup = {}
+
+        # Build two lookups:
+        # DICT_FULL: H-number -> {transliteration, hebrew_chars, meanings, bantu}
+        # BANTU_DB:  H-number -> [{word, language, meaning}]  (for frontend)
+        dict_full = {}
+        bantu_db = {}
+
         for line in raw.splitlines():
             parts = line.split(',')
             if len(parts) < 8:
                 continue
-            strongs_id = parts[5].strip().strip('"')
-            bantu_word = parts[6].strip().strip('"')
-            language   = parts[7].strip().strip('"')
-            meaning    = parts[4].strip().strip('"')
-            translit   = parts[1].strip().strip('"')
-            if not strongs_id or not bantu_word or not language:
-                continue
-            if language in ('Hebrew', 'Aramaic', 'Greek', 'language'):
-                continue
-            if not strongs_id.startswith('H'):
-                continue
-            if strongs_id not in lookup:
-                lookup[strongs_id] = []
-            lookup[strongs_id].append({
-                'word': bantu_word,
-                'language': language,
-                'meaning': meaning,
-                'transliteration': translit
-            })
-        print(f'Loaded {len(lookup)} H-numbers, {sum(len(v) for v in lookup.values())} entries')
-        return lookup
-    except Exception as e:
-        print('ERROR loading Bantu dictionary:', e)
-        return {}
+            hnum        = parts[5].strip().strip('"')
+            translit    = parts[1].strip().strip('"')
+            heb_chars   = parts[3].strip().strip('"')
+            letter_grp  = parts[2].strip().strip('"')
+            meaning     = parts[4].strip().strip('"')
+            bantu_word  = parts[6].strip().strip('"')
+            language    = parts[7].strip().strip('"')
 
-BANTU_DB = load_bantu_db(GITHUB_CSV_URL)
+            if not hnum or not hnum.startswith('H'):
+                continue
+
+            # Initialise entry
+            if hnum not in dict_full:
+                dict_full[hnum] = {
+                    'strongs': hnum,
+                    'transliteration': translit,
+                    'hebrew_chars': heb_chars,
+                    'letter_group': letter_grp,
+                    'meanings': [],
+                    'bantu': []
+                }
+            if hnum not in bantu_db:
+                bantu_db[hnum] = []
+
+            if language in ('Hebrew', 'Aramaic', 'Greek', 'language'):
+                # Hebrew rows give additional English meanings
+                if meaning and meaning not in dict_full[hnum]['meanings']:
+                    dict_full[hnum]['meanings'].append(meaning)
+            else:
+                # Bantu rows
+                if bantu_word and bantu_word != 'nan':
+                    entry = {'word': bantu_word, 'language': language, 'meaning': meaning,
+                             'transliteration': translit}
+                    dict_full[hnum]['bantu'].append(entry)
+                    bantu_db[hnum].append(entry)
+
+        print('Loaded {} H-numbers ({} with Bantu matches)'.format(
+            len(dict_full), sum(1 for v in dict_full.values() if v['bantu'])))
+        return dict_full, bantu_db
+
+    except Exception as e:
+        print('ERROR loading dictionary:', e)
+        return {}, {}
+
+DICT_FULL, BANTU_DB = load_dictionary(GITHUB_CSV_URL)
 
 # ── Result cache ──────────────────────────────────────────────────────────────
 CACHE = {}
@@ -64,15 +89,15 @@ BIBLE_CACHE_URL = os.environ.get(
 )
 
 def load_bible_cache(url):
-    print('Loading pre-computed Bible cache from:', url)
+    print('Loading Bible cache from:', url)
     try:
         req = urllib.request.Request(url, headers={'User-Agent': 'AncientWordExplorer/1.0'})
         with urllib.request.urlopen(req, timeout=30) as r:
             data = json.loads(r.read().decode('utf-8'))
-        print(f'Bible cache loaded: {len(data)} verses pre-computed')
+        print('Bible cache loaded: {} verses'.format(len(data)))
         return data
     except Exception as e:
-        print('Bible cache not found (will use Claude for all requests):', e)
+        print('Bible cache not found:', e)
         return {}
 
 CACHE.update(load_bible_cache(BIBLE_CACHE_URL))
@@ -151,27 +176,67 @@ def correct_strongs(result, verse_key):
             meaning = (word.get('english_meaning') or '').lower()
             for phrase, correct_h in verified.items():
                 if phrase in meaning and word.get('strongs') != correct_h:
-                    print(f'Correcting: {word.get("strongs")} -> {correct_h} for "{phrase}"')
                     word['strongs'] = correct_h
     return result
 
-PROMPT = """Ancient Hebrew scholar. Verse: "{verse}" KJV: "{verse_text}"
-Select 5-8 key Hebrew words. Use CORRECT Strong's H-numbers (e.g. Deut 33:29 "found liars"=H3584 not H8267).
-IMPORTANT: For hebrew_transliteration use the ROOT/LEMMA form only - strip all prefixes and suffixes.
-Examples: banim->ben, elohim->el, bereshit->reshit, vayomer->amar, hashamayim->shamayim
-The root form must match what appears in a Hebrew dictionary/lexicon entry.
-Return ONLY this JSON, no markdown:
-{{"verses":[{{"reference":"{verse}","text":"{verse_text}","words":[{{"hebrew_word":"chars","hebrew_transliteration":"root-lemma-form","hebrew_root":"root","strongs":"H0000","english_meaning":"meaning","hebrew_letters":[{{"letter":"Name","hebrew_char":"c","ancient_meaning":"Benner pictograph meaning"}}],"composite_meaning":"combined"}}]}}]}}"""
+def normalise_hnum(h):
+    """Strip leading zeros: H0430 -> H430"""
+    if not h:
+        return h
+    return re.sub(r'^H0+', 'H', h.strip().upper())
 
-PROMPT_NO_TEXT = """Ancient Hebrew scholar. Verse: "{verse}"
-Provide COMPLETE KJV text. Select 5-8 key Hebrew words with CORRECT Strong's H-numbers.
-IMPORTANT: For hebrew_transliteration use the ROOT/LEMMA form only - strip all prefixes and suffixes.
-Examples: banim->ben, elohim->el, bereshit->reshit, vayomer->amar, hashamayim->shamayim
-The root form must match what appears in a Hebrew dictionary/lexicon entry.
-Return ONLY this JSON, no markdown:
-{{"verses":[{{"reference":"{verse}","text":"COMPLETE VERSE TEXT","words":[{{"hebrew_word":"chars","hebrew_transliteration":"root-lemma-form","hebrew_root":"root","strongs":"H0000","english_meaning":"meaning","hebrew_letters":[{{"letter":"Name","hebrew_char":"c","ancient_meaning":"Benner pictograph meaning"}}],"composite_meaning":"combined"}}]}}]}}"""
+def enrich_from_dictionary(result):
+    """Replace Claude's Hebrew data with accurate data from our dictionary."""
+    for verse in result.get('verses', []):
+        for word in verse.get('words', []):
+            hnum = normalise_hnum(word.get('strongs', ''))
+            if not hnum:
+                continue
+            entry = DICT_FULL.get(hnum)
+            if not entry:
+                continue
+            # Override with our accurate data
+            word['strongs'] = hnum
+            if entry.get('transliteration'):
+                word['hebrew_transliteration'] = entry['transliteration']
+            if entry.get('hebrew_chars'):
+                word['hebrew_word'] = entry['hebrew_chars']
+            if entry.get('meanings'):
+                word['english_meaning'] = ', '.join(entry['meanings'][:5])
+    return result
 
-def api_call(messages, max_tokens=4000):
+# ── Claude prompt — ONLY asks for H-numbers and letter meanings ───────────────
+PROMPT = """You are a scholar of ancient Hebrew and the Ancient Hebrew Lexicon of the Bible by Jeff Benner.
+
+Analyse this Bible verse: "{verse}"
+KJV text: "{verse_text}"
+
+Your task:
+1. Identify 5-8 key Hebrew words in this verse
+2. For each word provide the correct Strong's H-number
+3. For each word break it into constituent Hebrew letters with their ancient pictographic meanings from Jeff Benner's Ancient Hebrew Lexicon
+4. Provide a composite meaning from the letter pictographs
+
+You do NOT need to provide the Hebrew characters, transliteration or English meaning - those come from our dictionary.
+Return ONLY raw JSON, no markdown:
+{{"verses":[{{"reference":"{verse}","text":"{verse_text}","words":[{{"strongs":"H0000","hebrew_letters":[{{"letter":"Name","hebrew_char":"char","ancient_meaning":"Benner pictograph meaning"}}],"composite_meaning":"combined pictographic meaning"}}]}}]}}"""
+
+PROMPT_NO_TEXT = """You are a scholar of ancient Hebrew and the Ancient Hebrew Lexicon of the Bible by Jeff Benner.
+
+Analyse this Bible verse: "{verse}"
+Provide the complete KJV text.
+
+Your task:
+1. Identify 5-8 key Hebrew words in this verse
+2. For each word provide the correct Strong's H-number
+3. For each word break it into constituent Hebrew letters with their ancient pictographic meanings from Jeff Benner's Ancient Hebrew Lexicon
+4. Provide a composite meaning from the letter pictographs
+
+Return ONLY raw JSON, no markdown:
+{{"verses":[{{"reference":"{verse}","text":"COMPLETE KJV TEXT","words":[{{"strongs":"H0000","hebrew_letters":[{{"letter":"Name","hebrew_char":"char","ancient_meaning":"Benner pictograph meaning"}}],"composite_meaning":"combined pictographic meaning"}}]}}]}}"""
+
+
+def api_call(messages, max_tokens=3000):
     key = os.environ.get('ANTHROPIC_API_KEY', '').strip()
     if not key:
         raise Exception('ANTHROPIC_API_KEY not set.')
@@ -194,13 +259,13 @@ def api_call(messages, max_tokens=4000):
         body = json.loads(r.read().decode('utf-8'))
     return body['content'][0]['text']
 
-def clean_json_text(raw):
+
+def clean_json(raw):
     raw = raw.strip()
     if raw.startswith('```'):
         raw = '\n'.join(raw.split('\n')[1:])
     if raw.endswith('```'):
-        raw = raw[:-3]
-    raw = raw.strip()
+        raw = raw[:-3].strip()
     raw = raw.replace('\u2018', "'").replace('\u2019', "'")
     raw = raw.replace('\u201c', '"').replace('\u201d', '"')
     raw = raw.replace('\u2014', '-').replace('\u2013', '-')
@@ -210,31 +275,30 @@ def clean_json_text(raw):
         raw = raw[start:end+1]
     return raw
 
-def repair_json(bad_json):
-    print('Attempting JSON repair...')
-    fix_prompt = 'Fix this invalid JSON and return ONLY valid JSON:\n\n' + bad_json[:3000]
+
+def repair_json(bad):
     try:
-        fixed = api_call([{'role': 'user', 'content': fix_prompt}], max_tokens=4000)
-        return json.loads(clean_json_text(fixed))
-    except Exception as e:
-        print('Repair failed:', e)
+        fixed = api_call([{'role': 'user', 'content': 'Fix this JSON and return ONLY valid JSON:\n\n' + bad[:3000]}])
+        return json.loads(clean_json(fixed))
+    except:
         raise Exception('Could not parse response. Please try again.')
+
 
 def call_claude(verse, verse_text=''):
     if verse_text:
-        safe_text = verse_text.replace('"', "'")
-        prompt = PROMPT.format(verse=verse, verse_text=safe_text)
+        safe = verse_text.replace('"', "'")
+        prompt = PROMPT.format(verse=verse, verse_text=safe)
     else:
         prompt = PROMPT_NO_TEXT.format(verse=verse)
     raw = api_call([{'role': 'user', 'content': prompt}])
-    raw = clean_json_text(raw)
+    raw = clean_json(raw)
     try:
         return json.loads(raw)
     except json.JSONDecodeError:
         return repair_json(raw)
 
+
 def prewarm_cache():
-    """Pre-cache popular verses in background at startup."""
     def warm():
         time.sleep(3)
         popular = [
@@ -254,23 +318,27 @@ def prewarm_cache():
                     if verse_text and result.get('verses'):
                         result['verses'][0]['text'] = verse_text
                     result = correct_strongs(result, verse)
+                    result = enrich_from_dictionary(result)
                     CACHE[key] = result
                     print('Pre-warmed:', verse)
-                    time.sleep(0.5)
+                    time.sleep(1)
                 except Exception as e:
                     print('Pre-warm failed for', verse, ':', e)
-    t = threading.Thread(target=warm, daemon=True)
-    t.start()
+    threading.Thread(target=warm, daemon=True).start()
 
 prewarm_cache()
+
 
 @app.route('/')
 def index():
     return send_from_directory('.', 'ancient_word_explorer.html')
 
+
 @app.route('/bantu-db')
 def bantu_db():
+    """Serve Bantu-only lookup to frontend for instant H-number matching."""
     return jsonify(BANTU_DB)
+
 
 @app.route('/analyse', methods=['POST'])
 def analyse():
@@ -288,22 +356,33 @@ def analyse():
     try:
         verse_text = lookup_verse(verse) or verse_text_from_client
         result = call_claude(verse, verse_text)
+
+        # Force accurate verse text
         if verse_text and result.get('verses'):
             result['verses'][0]['text'] = verse_text
+
+        # Fix any wrong Strong's numbers
         result = correct_strongs(result, verse)
+
+        # Enrich with accurate data from YOUR dictionary
+        result = enrich_from_dictionary(result)
+
         CACHE[cache_key] = result
         return jsonify(result)
+
     except urllib.error.HTTPError as e:
         return jsonify({'error': 'API error ' + str(e.code) + ': ' + e.read().decode()}), 500
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     print('\n' + '='*55)
     print('  Ancient Word Explorer')
-    print(f'  Bantu DB: {sum(len(v) for v in BANTU_DB.values())} entries, {len(BANTU_DB)} H-numbers')
-    print('  Model: claude-haiku (fast!)')
+    print('  Dictionary: {} H-numbers loaded'.format(len(DICT_FULL)))
+    print('  Bantu entries: {}'.format(sum(len(v) for v in BANTU_DB.values())))
+    print('  Model: claude-haiku (letter meanings only)')
     print('='*55)
     key = os.environ.get('ANTHROPIC_API_KEY', '')
     print('  API key:', ('found (' + key[:12] + '...)') if key else 'NOT SET')
