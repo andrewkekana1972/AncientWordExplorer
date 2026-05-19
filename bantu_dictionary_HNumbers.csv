@@ -1270,9 +1270,11 @@ H957,1030,baz,bet-zayin,בז,spoil,baz,Hebrew,בז
 H957,1030,baz,bet-zayin,בז,booty,baz,Hebrew,בז
 H958,1035,bâzâʼ,bet-lamed,בל,spoil,baza,Kikongo,בזא
 H958,1035,bâzâʼ,bet-lamed,בל,scar,isibaza,isiZulu,בזא
+H958,1035,bâzâʼ,bet-lamed,בל,carve,isibaza,isiZulu,בזא
 H959,1035,bâzâh,bet-lamed,בל,despise,baza,Kikongo,בזה
 H960,1030,bâzôh,bet-zayin,בז,scorned,bâzôh,Hebrew,בזה
 H960,1030,bâzôh,bet-zayin,בז,despise,bâzôh,Hebrew,בזה
+H960,1030,bâzôh,bet-zayin,בז,"despised person, spoil of war",boshwa,isiZulu,בזה
 H961,1035,bizzâh,bet-lamed,בל,plunder,betsa,Sesotho,בזה
 H962,1030,bâzaz,bet-zayin,בז,caught,boshwa,isiZulu,בזז
 H962,1030,bâzaz,bet-zayin,בז,take away,boshwa,isiZulu,בזז
@@ -1491,6 +1493,7 @@ H1155,2025,bôçer,bet-sin-resh,בסר,unripe grapes,bôçer,Hebrew,בסר
 H1155,2025,bôçer,bet-sin-resh,בסר,sour grapes,bôçer,Hebrew,בסר
 H1156,1039,bᵉʻâʼ,bet-ayin,בע,ask,kubatsa,kiRundi,בעא
 H1156,1039,bᵉʻâʼ,bet-ayin,בע,ask,botsa,Sesotho,בעא
+H1156,1039,bᵉʻâʼ,bet-ayin,בע,ask,buza,isiZulu,בעא
 H1156,1039,bᵉʻâʼ,bet-ayin,בע,inquire,botsa,Sesotho,בעא
 H1156,1039,bᵉʻâʼ,bet-ayin,בע,pray,bᵉʻâʼ,Hebrew,בעא
 H1156,1039,bᵉʻâʼ,bet-ayin,בע,inquire,bᵉʻâʼ,Hebrew,בעא
@@ -2365,6 +2368,13 @@ H1692,2092,dâbaq,dalet-bet-qupha,דבק,pursue hard,dâbaq,Hebrew,דבק
 H1693,2092,dᵉbaq,dalet-bet-qupha,דבק,stick to,dᵉbaq,Hebrew,דבק
 H1694,2092,debeq,dalet-bet-qupha,דבק,joint,debeq,Hebrew,דבק
 H1695,2092,dâbêq,dalet-bet-qupha,דבק,adhering,dâbêq,Hebrew,דבק
+H1696,2093,dâbar,dalet-bet-resh,דבר,commune,dâbar,Hebrew,דבר
+H1696,2093,dâbar,dalet-bet-resh,דבר,tell,landa,isiZulu,דבר
+H1696,2093,dâbar,dalet-bet-resh,דבר,narrate,landa,isiZulu,דבר
+H1696,2093,dâbar,dalet-bet-resh,דבר,history,umlando,isiZulu,דבר
+H1696,2093,dâbar,dalet-bet-resh,דבר,narrative,umlando,isiZulu,דבר
+H1696,2093,dâbar,dalet-bet-resh,דבר,negotiate,rera,Sesotho,דבר
+H1696,2093,dâbar,dalet-bet-resh,דבר,discuss a matter,rera,Sesotho,דבר
 H1696,2093,dâbar,dalet-bet-resh,דבר,story,ndaba,isiZulu,דבר
 H1696,2093,dâbar,dalet-bet-resh,דבר,issue,ndaba,isiZulu,דבר
 H1696,2093,dâbar,dalet-bet-resh,דבר,essay,ndaba,isiZulu,דבר
@@ -3377,6 +3387,9 @@ H2263,2142,châbaq,kgeta-bet-qupha,חבק,gather,kuvhanganya,tshiVenda,חבק
 H2264,2142,chibbuq,kgeta-bet-qupha,חבק,clasping of the hands,chibbuq,Hebrew,חבק
 H2264,2142,chibbuq,kgeta-bet-qupha,חבק,folding,chibbuq,Hebrew,חבק
 H2264,2142,chibbuq,kgeta-bet-qupha,חבק,embrace,chibbuq,Hebrew,חבק
+H2266,1163,châbar,kgeta-bet,חב,heap,châbar,Hebrew,חבר
+H2266,1163,châbar,kgeta-bet,חב,heap of stones to bury,ngcwaba,isiZulu,חבר
+H2266,1163,châbar,kgeta-bet,חב,bury,ngcwaba,isiZulu,חבר
 H2266,1163,châbar,kgeta-bet,חב,charmer,khabare,Sesotho,חבר
 H2266,2143,châbar,kgeta-bet-resh,חבר,companion,mhlobo,isiXhosa,חבר
 H2266,2143,châbar,kgeta-bet-resh,חבר,companions,sehlopha,NSesotho,חבר
@@ -3461,7 +3474,10 @@ H2300,1165,châdad,kgeta-dalet,חד,fierce,châdad,Hebrew,חדד
 H2302,1165,châdâh,kgeta-dalet,חד,darling,chido,chiShona,חדה
 H2302,1165,châdâh,kgeta-dalet,חד,desire,chido,chiShona,חדה
 H2302,1165,châdâh,kgeta-dalet,חד,court,khotla,Sesotho,חדה
-H2302,1165,châdâh,kgeta-dalet,חד,judgement brings people together,châdâh,Hebrew,חדה
+H2302,1165,châdâh,kgeta-dalet,חד,judgement join people together,châdâh,Hebrew,חדה
+H2302,1165,châdâh,kgeta-dalet,חד,rejoice,châdâh,Hebrew,חדה
+H2302,1165,châdâh,kgeta-dalet,חד,glad,châdâh,Hebrew,חדה
+H2302,1165,châdâh,kgeta-dalet,חד,warbler,ungcede,isiZulu,חדה
 H2302,1165,châdâh,kgeta-dalet,חד,judge,mohudi,Setswana,חדה
 H2303,1165,chaddûwd,kgeta-dalet,חד,point,chaddûwd,Hebrew,חדוד
 H2303,1165,chaddûwd,kgeta-dalet,חד,sharp,chaddûwd,Hebrew,חדוד
@@ -3693,6 +3709,13 @@ H2425,1171,châyay,kgeta-yad,חי,a way of life,mahanyelo,xiTsonga,חיי
 H2425,1171,châyay,kgeta-yad,חי,behaviour,hanyelo,xiTsonga,חיי
 H2425,1171,châyay,kgeta-yad,חי,life,ikun,Yoruba,חיי
 H2426,1173,chêyl,kgeta-lamed,חל,army,chêyl,Hebrew,חיל
+H2426,1173,chêyl,kgeta-lamed,חל,rampart,chêyl,Hebrew,חיל
+H2426,1173,chêyl,kgeta-lamed,חל,host,chêyl,Hebrew,חיל
+H2426,1173,chêyl,kgeta-lamed,חל,bulwarks,chêyl,Hebrew,חיל
+H2426,1173,chêyl,kgeta-lamed,חל,trench,chêyl,Hebrew,חיל
+H2426,1173,chêyl,kgeta-lamed,חל,wall,chêyl,Hebrew,חיל
+H2426,1173,chêyl,kgeta-lamed,חל,border,umngcele,isiZulu,חיל
+H2426,1173,chêyl,kgeta-lamed,חל,boundry,umngcele,isiZulu,חיל
 H2427,1173,chîyl,kgeta-lamed,חל,throe,chîyl,Hebrew,חיל
 H2428,1173,chayil,kgeta-lamed,חל,life,buchilo,Kalanga,חיל
 H2428,1173,chayil,kgeta-lamed,חל,living person,ichilli,Kalanga,חיל
@@ -3865,6 +3888,10 @@ H2490,1173,châlal,kgeta-lamed,חל,miracle,mohlolo,Sesotho,חלל
 H2490,1173,châlal,kgeta-lamed,חל,slay,châlal,Hebrew,חלל
 H2490,1173,châlal,kgeta-lamed,חל,profane,châlal,Hebrew,חלל
 H2490,1173,châlal,kgeta-lamed,חל,pollute,châlal,Hebrew,חלל
+H2490,1173,châlal,kgeta-lamed,חל,polluted,ngcola,isiZulu,חלל
+H2490,1173,châlal,kgeta-lamed,חל,corrupted,ngcola,isiZulu,חלל
+H2490,1173,châlal,kgeta-lamed,חל,contaminated,ngcola,isiZulu,חלל
+H2490,1173,châlal,kgeta-lamed,חל,become immoral,ngcola,isiZulu,חלל
 H2490,1173,châlal,kgeta-lamed,חל,defile,châlal,Hebrew,חלל
 H2490,1173,châlal,kgeta-lamed,חל,divorce,hlala,Hebrew,חלל
 H2490,1173,châlal,kgeta-lamed,חל,defeat,hlola,Sesotho,חלל
@@ -4043,6 +4070,9 @@ H2583,1175,chânâh,kgeta-nunu,חנ,set up camp,chânâh,Hebrew,חנה
 H2583,1175,chânâh,kgeta-nunu,חנ,pitch camp,chânâh,Hebrew,חנה
 H2583,1175,chânâh,kgeta-nunu,חנ,rested in tents,chânâh,Hebrew,חנה
 H2583,1175,chânâh,kgeta-nunu,חנ,outside,ntle,Sesotho,חנה
+H2583,1175,chânâh,kgeta-nunu,חנ,outside,phandle,isiZulu,חנה
+H2583,1175,chânâh,kgeta-nunu,חנ,outdoors,phandle,isiZulu,חנה
+H2583,1175,chânâh,kgeta-nunu,חנ,wilderness,indle,isiZulu,חנה
 H2583,1175,chânâh,kgeta-nunu,חנ,outside,ita,Yoruba,חנה
 H2587,1175,channûwn,kgeta-nunu,חנ,compassion,aanu,Yoruba,חנון
 H2587,1175,channûwn,kgeta-nunu,חנ,kindness,iaanu,Yoruba,חנון
@@ -4542,6 +4572,7 @@ H2842,1435,châshash,qupha-shin,קש,chaff,châshash,Hebrew,חשש
 H2844,1183,chath,kgeta-tau,חת,break,khata,Sesotho,חת
 H2844,1183,chath,kgeta-tau,חת,crushed,khata,Sesotho,חת
 H2846,1183,châthâh,kgeta-tau,חת,choose,khetha,isiZulu,חתה
+H2846,1183,châthâh,kgeta-tau,חת,full stop separate sentences like a wall,ungci,isiZulu,חתה
 H2846,1183,châthâh,kgeta-tau,חת,seize,kukwata,Luganda,חתה
 H2846,1183,châthâh,kgeta-tau,חת,heap,châthâh,Hebrew,חתה
 H2846,1183,châthâh,kgeta-tau,חת,take,teka,xiTsonga,חתה
@@ -4906,6 +4937,11 @@ H3154,1154,yezaʻ,zayin-ayin,זע,sweat,ziya,Ndau,יזע
 H3161,1165,yâchad,kgeta-dalet,חד,unity,sodokan,Yoruba,יחד
 H3162,1165,yachad,kgeta-dalet,חד,unit,yachad,Hebrew,יחד
 H3162,1165,yachad,kgeta-dalet,חד,unit,ukukodwa,isiZulu,יחד
+H3173,1165,yâchîyd,kgeta-dalet,חד,only,yâchîyd,Hebrew,יחיד
+H3173,1165,yâchîyd,kgeta-dalet,חד,sacred,ungcwele,isiZulu,יחיד
+H3173,1165,yâchîyd,kgeta-dalet,חד,special,ungcwele,isiZulu,יחיד
+H3173,1165,yâchîyd,kgeta-dalet,חד,solitary,yâchîyd,Hebrew,יחיד
+H3173,1165,yâchîyd,kgeta-dalet,חד,desolate,yâchîyd,Hebrew,יחיד
 H3173,1165,yâchîyd,kgeta-dalet,חד,only,ukukodwa,isiZulu,יחיד
 H3173,1165,yâchîyd,kgeta-dalet,חד,only,eyodwa,isiZulu,יחיד
 H3173,1165,yâchîyd,kgeta-dalet,חד,one,eyodwa,isiZulu,יחיד
@@ -5703,7 +5739,8 @@ H3677,1245,keçeʼ,khaf-sin,כס,fulness,keçeʼ,Hebrew,כסא
 H3677,1245,keçeʼ,khaf-sin,כס,appoint,keçeʼ,Hebrew,כסא
 H3678,1245,kiççêʼ,khaf-sin,כס,covered,kiççêʼ,Hebrew,כסא
 H3680,1245,kâçâh,khaf-sin,כס,plump,kâçâh,Hebrew,כסה
-H3680,1245,kâçâh,khaf-sin,כס,cover,mbasa,isiZulu,כסה
+H3680,1245,kâçâh,khaf-sin,כס,cover,embasa,isiZulu,כסה
+H3680,1245,kâçâh,khaf-sin,כס,blanket,embasa,isiZulu,כסה
 H3681,1245,kâçûwy,khaf-sin,כס,covered,kâçûwy,Hebrew,כסוי
 H3682,1245,kᵉçûwth,khaf-sin,כס,cover,kᵉçûwth,Hebrew,כסות
 H3683,2274,kâçach,khaf-sin-kgeta,כסח,cut off,kâçach,Hebrew,כסח
@@ -6566,6 +6603,12 @@ H4160,1294,mûwts,mah-tsade,מצ,squeeze,mûwts,Hebrew,מוץ
 H4160,1294,mûwts,mah-tsade,מצ,extortioner,mûwts,Hebrew,מוץ
 H4161,1392,môwtsâʼ,tsade-aleph,צא,go,tsamaya,Setswana,מוצא
 H4161,1392,môwtsâʼ,tsade-aleph,צא,go,tsamaya,NSesotho,מוצא
+H4161,1392,môwtsâʼ,tsade-aleph,צא,spring,môwtsâʼ,Hebrew,מוצא
+H4161,1392,môwtsâʼ,tsade-aleph,צא,brought,môwtsâʼ,Hebrew,מוצא
+H4161,1392,môwtsâʼ,tsade-aleph,צא,east,môwtsâʼ,Hebrew,מוצא
+H4161,1392,môwtsâʼ,tsade-aleph,צא,bud,môwtsâʼ,Hebrew,מוצא
+H4161,1392,môwtsâʼ,tsade-aleph,צא,outgoing,môwtsâʼ,Hebrew,מוצא
+H4161,1392,môwtsâʼ,tsade-aleph,צא,proceed,môwtsâʼ,Hebrew,מוצא
 H4163,1392,môwtsâʼâh,tsade-aleph,צא,origin,motse,Sesotho,מוצאה
 H4163,1392,môwtsâʼâh,tsade-aleph,צא,home,motse,Sesotho,מוצאה
 H4163,1392,môwtsâʼâh,tsade-aleph,צא,family,motse,Sesotho,מוצאה
@@ -9274,6 +9317,7 @@ H5521,1333,çukkâh,sin-khaf,סכ,tents,masika,Sesotho,סכה
 H5522,1333,çikkûwth,sin-khaf,סכ,booth,çikkûwth,Hebrew,סכות
 H5522,1333,çikkûwth,sin-khaf,סכ,tabernacle,çikkûwth,Hebrew,סכות
 H5526,1333,çâkak,sin-khaf,סכ,establish,ukuseka,isiXhosa,סכך
+H5526,1333,çâkak,sin-khaf,סכ,support,seka,isiXhosa,סכך
 H5526,1333,çâkak,sin-khaf,סכ,set in order,ukuseka,isiXhosa,סכך
 H5526,1333,çâkak,sin-khaf,סכ,entwine,çâkak,Hebrew,סכך
 H5526,1333,çâkak,sin-khaf,סכ,cover,çâkak,Hebrew,סכך
@@ -9515,6 +9559,7 @@ H5628,2507,çârach,sin-resh-kgeta,סרח,exceed,çârach,Hebrew,סרח
 H5628,2507,çârach,sin-resh-kgeta,סרח,vanish,çârach,Hebrew,סרח
 H5629,2507,çerach,sin-resh-kgeta,סרח,redundancy,çerach,Hebrew,סרח
 H5629,2507,çerach,sin-resh-kgeta,סרח,remnant,çerach,Hebrew,סרח
+H5629,2507,çerach,sin-resh-kgeta,סרח,remnant,insalela,isiZulu,סרח
 H5630,1480,çiryôn,shin-resh,שר,coat of mail,çiryôn,Hebrew,סרין
 H5630,1480,çiryôn,shin-resh,שר,habergeon,çiryôn,Hebrew,סרין
 H5630,1480,çiryôn,shin-resh,שר,coat,çiryôn,Hebrew,סרין
@@ -12563,9 +12608,23 @@ H7451,1460,raʻ,resh-ayin,רע,wickedness,boloyi,Sesotho,רע
 H7451,1460,raʻ,resh-ayin,רע,wickeness,rogo,Sesotho,רע
 H7452,1460,rêaʻ,resh-ayin,רע,crash,rêaʻ,Hebrew,רע
 H7452,1460,rêaʻ,resh-ayin,רע,hurt,rêaʻ,Hebrew,רע
+H7453,1453,rêaʻ,resh-ayin,רע,another,rêaʻ,Hebrew,רע
+H7453,1453,rêaʻ,resh-ayin,רע,other,rêaʻ,Hebrew,רע
+H7453,1453,rêaʻ,resh-ayin,רע,husband,rêaʻ,Hebrew,רע
+H7453,1453,rêaʻ,resh-ayin,רע,friend,rêaʻ,Hebrew,רע
+H7453,1453,rêaʻ,resh-ayin,רע,brother,rêaʻ,Hebrew,רע
+H7453,1453,rêaʻ,resh-ayin,רע,husband,rêaʻ,Hebrew,רע
+H7453,1453,rêaʻ,resh-ayin,רע,lover,rêaʻ,Hebrew,רע
+H7453,1453,rêaʻ,resh-ayin,רע,neighbour,rêaʻ,Hebrew,רע
+H7453,1453,rêaʻ,resh-ayin,רע,fellow,rêaʻ,Hebrew,רע
+H7453,1453,rêaʻ,resh-ayin,רע,companion,rêaʻ,Hebrew,רע
 H7453,1453,rêaʻ,resh-ayin,רע,husband,rra,Sesotho,רע
 H7453,1453,rêaʻ,resh-ayin,רע,husband,di,Igbo,רע
+H7453,1453,rêaʻ,resh-ayin,רע,master,di,Igbo,רע
+H7453,1453,rêaʻ,resh-ayin,רע,lord,di,Igbo,רע
 H7453,1453,rêaʻ,resh-ayin,רע,friend,rra,Sesotho,רע
+H7453,1453,rêaʻ,resh-ayin,רע,friend,umngani,isiZulu,רע
+H7453,1453,rêaʻ,resh-ayin,רע,friend,mogwera,Sesotho,רע
 H7453,1453,rêaʻ,resh-ayin,רע,companion,rra,Sesotho,רע
 H7453,1453,rêaʻ,resh-ayin,רע,brother,rra,Sesotho,רע
 H7453,1453,rêaʻ,resh-ayin,רע,neighbour,rra,Sesotho,רע
@@ -12601,6 +12660,8 @@ H7468,1453,rᵉʻûwth,resh-ayin,רע,another,rᵉʻûwth,Hebrew,רעות
 H7468,1453,rᵉʻûwth,resh-ayin,רע,brother,muratho,tshiVenda,רעות
 H7468,1453,rᵉʻûwth,resh-ayin,רע,brother,moratho,NSesotho,רעות
 H7469,1453,rᵉʻûwth,resh-ayin,רע,feeding,rᵉʻûwth,Hebrew,רעות
+H7469,1453,rᵉʻûwth,resh-ayin,רע,vexation,rᵉʻûwth,Hebrew,רעות
+H7469,1453,rᵉʻûwth,resh-ayin,רע,burden,mthwalo,isiZulu,רעות
 H7470,1453,rᵉʻûwth,resh-ayin,רע,will,rato,Sesotho,רעות
 H7470,1453,rᵉʻûwth,resh-ayin,רע,pleasure,rato,Sesotho,רעות
 H7470,1453,rᵉʻûwth,resh-ayin,רע,will,thato,Sesotho,רעות
@@ -13156,7 +13217,7 @@ H7725,1462,shûwb,shin-bet,שב,bring back,busha(reverse),NSesotho,שוב
 H7725,1462,shûwb,shin-bet,שב,surely bring back again,shûwb,Hebrew,שוב
 H7725,1462,shûwb,shin-bet,שב,restore,shûwb,Hebrew,שוב
 H7725,1462,shûwb,shin-bet,שב,rescue,shûwb,Hebrew,שוב
-H7725,1462,shûwb,shin-bet,שב,bring back,swaba (reverse),Sesotho,שוב
+H7725,1462,shûwb,shin-bet,שב,bring back,swaba,Sesotho,שוב
 H7726,1462,shôwbâb,shin-bet,שב,backsliding,xopa,isiXhosa,שובב
 H7726,1462,shôwbâb,shin-bet,שב,mixing food,shaba,Sesotho,שובב
 H7726,1462,shôwbâb,shin-bet,שב,eat two different things at the same time,sheba,Sesotho,שובב
@@ -13997,6 +14058,7 @@ H8388,1503,tâʼar,tau-resh,תר,delineate,tâʼar,Hebrew,תאר
 H8388,1503,tâʼar,tau-resh,תר,mark,tâʼar,Hebrew,תאר
 H8388,1503,tâʼar,tau-resh,תר,draw,tâʼar,Hebrew,תאר
 H8389,1503,tôʼar,tau-resh,תר,outline,tôʼar,Hebrew,תאר
+H8389,1503,tôʼar,tau-resh,תר,resemble,landa,isiZulu,תאר
 H8389,1503,tôʼar,tau-resh,תר,form,tôʼar,Hebrew,תאר
 H8389,1503,tôʼar,tau-resh,תר,goodly,tôʼar,Hebrew,תאר
 H8389,1503,tôʼar,tau-resh,תר,favoured,tôʼar,Hebrew,תאר
