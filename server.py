@@ -7,8 +7,6 @@ Ancient Word Explorer - Flask Backend
 
 import os, json, re, urllib.request, urllib.error, threading, time
 from flask import Flask, request, jsonify, send_from_directory
-import csv
-from io import StringIO
 
 app = Flask(__name__, static_folder='.')
 
@@ -30,27 +28,20 @@ def load_dictionary(url):
         # BANTU_DB:  H-number -> [{word, language, meaning}]  (for frontend)
         dict_full = {}
         bantu_db = {}
-	
-        reader = csv.reader(StringIO(raw))
 
-        for parts in reader:
+        for line in raw.splitlines():
+            parts = line.split(',')
             if len(parts) < 9:
                 continue
-	   
-            hnum        = (parts[0]
-			.strip()
-			.strip('"')
-        			.upper()
-        			.replace(' ', '')
-	    )
-            translit    = parts[2].strip()
-            heb_chars   = parts[8].strip()
-            letter_grp  = parts[4].strip()
-            meaning     = parts[5].strip()
-            bantu_word  = parts[6].strip()
-            language    = parts[7].strip()
+            hnum        = parts[0].strip().strip('"')
+            translit    = parts[2].strip().strip('"')
+            heb_chars   = parts[8].strip().strip('"')
+            letter_grp  = parts[4].strip().strip('"')
+            meaning     = parts[5].strip().strip('"')
+            bantu_word  = parts[6].strip().strip('"')
+            language    = parts[7].strip().strip('"')
 
-            if not hnum.startswith('H'):
+            if not hnum or not hnum.startswith('H'):
                 continue
 
             # Initialise entry
