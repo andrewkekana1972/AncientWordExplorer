@@ -31,7 +31,7 @@ def load_dictionary(url):
 
         for line in raw.splitlines():
             parts = line.split(',')
-            if len(parts) < 8:
+            if len(parts) < 9:
                 continue
             hnum        = parts[0].strip().strip('"')
             translit    = parts[2].strip().strip('"')
