@@ -36,15 +36,21 @@ def load_dictionary(url):
         for parts in reader:
             if len(parts) < 9:
                 continue
-            hnum        = parts[0].strip().strip('"')
-            translit    = parts[2].strip().strip('"')
-            heb_chars   = parts[8].strip().strip('"')
-            letter_grp  = parts[4].strip().strip('"')
-            meaning     = parts[5].strip().strip('"')
-            bantu_word  = parts[6].strip().strip('"')
-            language    = parts[7].strip().strip('"')
+	   
+            hnum        = (parts[0]
+			.strip()
+			.strip('"')
+        			.upper()
+        			.replace(' ', '')
+	    )
+            translit    = parts[2].strip()
+            heb_chars   = parts[8].strip()
+            letter_grp  = parts[4].strip()
+            meaning     = parts[5].strip()
+            bantu_word  = parts[6].strip()
+            language    = parts[7].strip()
 
-            if not hnum or not hnum.startswith('H'):
+            if not hnum.startswith('H'):
                 continue
 
             # Initialise entry
