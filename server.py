@@ -7,6 +7,8 @@ Ancient Word Explorer - Flask Backend
 
 import os, json, re, urllib.request, urllib.error, threading, time
 from flask import Flask, request, jsonify, send_from_directory
+import csv
+from io import StringIO
 
 app = Flask(__name__, static_folder='.')
 
@@ -28,9 +30,10 @@ def load_dictionary(url):
         # BANTU_DB:  H-number -> [{word, language, meaning}]  (for frontend)
         dict_full = {}
         bantu_db = {}
+	
+        reader = csv.reader(StringIO(raw))
 
-        for line in raw.splitlines():
-            parts = line.split(',')
+        for parts in reader:
             if len(parts) < 9:
                 continue
             hnum        = parts[0].strip().strip('"')
