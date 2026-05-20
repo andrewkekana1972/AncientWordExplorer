@@ -35,7 +35,7 @@ def load_dictionary(url):
                 continue
             hnum        = parts[0].strip().strip('"')
             translit    = parts[2].strip().strip('"')
-            heb_chars   = parts[3].strip().strip('"')
+            heb_chars   = parts[8].strip().strip('"')
             letter_grp  = parts[4].strip().strip('"')
             meaning     = parts[5].strip().strip('"')
             bantu_word  = parts[6].strip().strip('"')
