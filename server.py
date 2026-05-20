@@ -349,9 +349,9 @@ def analyse():
         return jsonify({'error': 'No verse provided'}), 400
 
     cache_key = verse.lower().strip()
-    if cache_key in CACHE:
-        print('Cache hit:', verse)
-        return jsonify(CACHE[cache_key])
+    #if cache_key in CACHE:
+    #    print('Cache hit:', verse)
+    #    return jsonify(CACHE[cache_key])
 
     try:
         verse_text = lookup_verse(verse) or verse_text_from_client
