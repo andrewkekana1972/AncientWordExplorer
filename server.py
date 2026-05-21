@@ -24,9 +24,9 @@ def load_dictionary(url):
             raw = r.read().decode('utf-8')
 
         # Build two lookups:
-        # DICT_FULL: H-number -> {transliteration, hebrew_chars, meanings, bantu}
+        # FULL_DICT: H-number -> {transliteration, hebrew_chars, meanings, bantu}
         # BANTU_DB:  H-number -> [{word, language, meaning}]  (for frontend)
-        dict_full = {}
+        full_dict = {}
         bantu_db = {}
 
         for line in raw.splitlines():
@@ -45,8 +45,8 @@ def load_dictionary(url):
                 continue
 
             # Initialise entry
-            if hnum not in dict_full:
-                dict_full[hnum] = {
+            if hnum not in full_dict:
+                full_dict[hnum] = {
                     'strongs': hnum,
                     'transliteration': translit,
                     'hebrew_chars': heb_chars,
@@ -59,19 +59,19 @@ def load_dictionary(url):
 
             if language in ('Hebrew', 'Aramaic', 'Greek', 'language'):
                 # Hebrew rows give additional English meanings
-                if meaning and meaning not in dict_full[hnum]['meanings']:
-                    dict_full[hnum]['meanings'].append(meaning)
+                if meaning and meaning not in full_dict[hnum]['meanings']:
+                    full_dict[hnum]['meanings'].append(meaning)
             else:
                 # Bantu rows
                 if bantu_word and bantu_word != 'nan':
                     entry = {'word': bantu_word, 'language': language, 'meaning': meaning,
                              'transliteration': translit}
-                    dict_full[hnum]['bantu'].append(entry)
+                    full_dict[hnum]['bantu'].append(entry)
                     bantu_db[hnum].append(entry)
 
         print('Loaded {} H-numbers ({} with Bantu matches)'.format(
-            len(dict_full), sum(1 for v in dict_full.values() if v['bantu'])))
-        return dict_full, bantu_db
+            len(full_dict), sum(1 for v in full_dict.values() if v['bantu'])))
+        return full_dict, bantu_db
 
     except Exception as e:
         print('ERROR loading dictionary:', e)
@@ -192,7 +192,7 @@ def enrich_from_dictionary(result):
             hnum = normalise_hnum(word.get('strongs', ''))
             if not hnum:
                 continue
-            entry = DICT_FULL.get(hnum)
+            entry = FULL_DICT.get(hnum)
             if not entry:
                 continue
             # Override with our accurate data
@@ -385,7 +385,7 @@ if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     print('\n' + '='*55)
     print('  Ancient Word Explorer')
-    print('  Dictionary: {} H-numbers loaded'.format(len(DICT_FULL)))
+    print('  Dictionary: {} H-numbers loaded'.format(len(FULL_DICT)))
     print('  Bantu entries: {}'.format(sum(len(v) for v in BANTU_DB.values())))
     print('  Model: claude-haiku (letter meanings only)')
     print('='*55)

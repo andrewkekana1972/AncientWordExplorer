@@ -340,7 +340,7 @@ const googleProvider = new GoogleAuthProvider();
 
 // ── State ─────────────────────────────────────────────────────────────────────
 var BANTU_DB = {};
-var full_dict = {};
+var FULL_DICT = {};
 var SESSION_CACHE = {};
 var currentUser = null;
 var currentResult = null;
@@ -366,7 +366,7 @@ fetch('/full-dict')
     return r.json();
   })
   .then(function(data){
-    full_dict = data || {};
+    FULL_DICT = data || {};
   });
 
 // ── Check for shared study in URL ─────────────────────────────────────────────
