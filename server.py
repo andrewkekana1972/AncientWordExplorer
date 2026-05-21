@@ -5,6 +5,7 @@ Ancient Word Explorer - Flask Backend
 - Verse text comes from bible-api (via browser) or KJV cache
 """
 
+FULL_DICT, BANTU_DB = load_dictionary()
 import os, json, re, urllib.request, urllib.error, threading, time
 from flask import Flask, request, jsonify, send_from_directory
 
@@ -342,7 +343,7 @@ def bantu_db():
 @app.route('/full-dict')
 def full_dict():
     """Serve complete lexical dictionary."""
-    return jsonify(full_dict)
+    return jsonify(FULL_DICT)
 
 
 @app.route('/analyse', methods=['POST'])
