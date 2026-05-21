@@ -706,9 +706,23 @@ function doHLookup(){
   if(!raw) return;
   var key=raw.charAt(0)==='H'?raw:'H'+raw;
   key=key.replace(/^H0+/,'H');
-  var hits=BANTU_DB[key]||[];
-  var el=document.getElementById('hResult');
-  if(!hits.length){ el.innerHTML='<span style="color:#5a4a2a">No matches for <strong style="color:#c9a84c">'+key+'</strong>.</span>'; return; }
+  var hits = BANTU_DB[key] || [];
+
+  var el = document.getElementById('hResult');
+
+  if(!hits.length){
+
+  el.innerHTML =
+    '<strong style="color:#c9a84c;font-family:Cinzel,serif">'
+    + key +
+    '</strong><br><br>' +
+
+    '<span style="color:#8a7a5a">' +
+    'Strong\'s entry exists but no Bantu matches found.' +
+    '</span>';
+
+  return;
+}
   var bl=byLang(hits);
   var html='<strong style="color:#c9a84c;font-family:Cinzel,serif">'+key+'</strong> &mdash; <em style="color:#8a7a5a">'+(hits[0].transliteration||'')+'</em><br><br>';
   Object.keys(bl).forEach(function(lang){
