@@ -175,6 +175,18 @@ tr:hover td{background:#1a1408}
 </style>
 </head>
 <body>
+    <div style="
+    background-color: #fff3cd;
+    color: #856404;
+    padding: 12px 16px;
+    border: 1px solid #ffeeba;
+    border-radius: 6px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    margin-bottom: 15px;
+  ">
+  ⚠️ NT Warning: Any Strong’s H-numbers shown in New Testament verses are AI-inferred and not part of the original Strong’s Concordance dataset.
+  </div>
 <div class="shell">
 
 <div class="header">
@@ -340,14 +352,13 @@ const googleProvider = new GoogleAuthProvider();
 
 // ── State ─────────────────────────────────────────────────────────────────────
 var BANTU_DB = {};
-var FULL_DICT = {};
 var SESSION_CACHE = {};
 var currentUser = null;
 var currentResult = null;
 var currentVerse = '';
 var currentSavedId = null;
 
-// ── Load Full and Bantu Dictionaries ─────────────────────────────────────────────────────
+// ── Load Bantu Dictionary ─────────────────────────────────────────────────────
 fetch('/bantu-db')
   .then(function(r){ return r.json(); })
   .then(function(db){
@@ -360,14 +371,6 @@ fetch('/bantu-db')
     document.getElementById('statEntries').textContent = entries.toLocaleString();
   })
   .catch(function(e){ console.error('Bantu DB error:', e); });
-
-fetch('/full-dict')
-  .then(function(r){
-    return r.json();
-  })
-  .then(function(data){
-    FULL_DICT = data || {};
-  });
 
 // ── Check for shared study in URL ─────────────────────────────────────────────
 window.addEventListener('load', function() {
@@ -709,53 +712,15 @@ function showErr(msg){ var el=document.getElementById('errBox'); el.textContent=
 // ── H-number lookup ───────────────────────────────────────────────────────────
 document.getElementById('hBtn').addEventListener('click', doHLookup);
 document.getElementById('hInput').addEventListener('keydown', function(e){ if(e.key==='Enter') doHLookup(); });
-console.log(key);
-console.log(FULL_DICT);
+
 function doHLookup(){
   var raw=document.getElementById('hInput').value.trim().toUpperCase();
   if(!raw) return;
   var key=raw.charAt(0)==='H'?raw:'H'+raw;
   key=key.replace(/^H0+/,'H');
-  var hits = BANTU_DB[key] || [];
-  var lex = FULL_DICT[key] || null;
-
-  var el = document.getElementById('hResult');
-  if(!hits.length){
-
-    if(!lex){
-
-      el.innerHTML =
-        '<span style="color:#5a4a2a">' +
-        'No Strong\'s entry for ' +
-        '<strong style="color:#c9a84c">' +
-        key +
-        '</strong>.</span>';
-
-      return;
-    }
-
-    var meanings = (lex.meanings || []).join(', ');
-
-    el.innerHTML =
-      '<strong style="color:#c9a84c;font-family:Cinzel,serif">' +
-      key +
-      '</strong>' +
-
-      ' &mdash; <em style="color:#8a7a5a">' +
-      (lex.transliteration || '') +
-      '</em><br><br>' +
-
-      '<span style="color:#d8c9a0">' +
-      meanings +
-      '</span><br><br>' +
-
-      '<span style="color:#8a7a5a">' +
-      'No Bantu matches found.' +
-      '</span>';
-
-    return;
-  }
-
+  var hits=BANTU_DB[key]||[];
+  var el=document.getElementById('hResult');
+  if(!hits.length){ el.innerHTML='<span style="color:#5a4a2a">No matches for <strong style="color:#c9a84c">'+key+'</strong>.</span>'; return; }
   var bl=byLang(hits);
   var html='<strong style="color:#c9a84c;font-family:Cinzel,serif">'+key+'</strong> &mdash; <em style="color:#8a7a5a">'+(hits[0].transliteration||'')+'</em><br><br>';
   Object.keys(bl).forEach(function(lang){
@@ -787,14 +752,14 @@ function normaliseTranslit(t) {
   if(!t) return t;
   var s = t.toLowerCase().trim();
   // Strip common prefixes (longest first)
-  var prefixes = ['xxx'];
+  var prefixes = ['vay','hay','has','ham','hal','hav','ve','va','be','le','ke','mi','me','ha','la','ba','ka'];
   for(var i=0;i<prefixes.length;i++){
     if(s.startsWith(prefixes[i]) && s.length > prefixes[i].length + 2){
       s = s.slice(prefixes[i].length); break;
     }
   }
   // Strip common suffixes (longest first)
-  var suffixes = ['xxx'];
+  var suffixes = ['ekhem','otehem','eyhem','oteinu','eynu','ekha','echa','enu','hem','kem','tam','tem','tim','oth','aim','im','ot','ah','nu','ti','am','iy'];
   for(var i=0;i<suffixes.length;i++){
     if(s.endsWith(suffixes[i]) && s.length > suffixes[i].length + 2){
       s = s.slice(0, s.length - suffixes[i].length); break;
