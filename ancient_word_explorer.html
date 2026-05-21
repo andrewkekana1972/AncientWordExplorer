@@ -340,13 +340,14 @@ const googleProvider = new GoogleAuthProvider();
 
 // ── State ─────────────────────────────────────────────────────────────────────
 var BANTU_DB = {};
+var FULL_DICT = {};
 var SESSION_CACHE = {};
 var currentUser = null;
 var currentResult = null;
 var currentVerse = '';
 var currentSavedId = null;
 
-// ── Load Bantu Dictionary ─────────────────────────────────────────────────────
+// ── Load Full and Bantu Dictionaries ─────────────────────────────────────────────────────
 fetch('/bantu-db')
   .then(function(r){ return r.json(); })
   .then(function(db){
@@ -359,6 +360,14 @@ fetch('/bantu-db')
     document.getElementById('statEntries').textContent = entries.toLocaleString();
   })
   .catch(function(e){ console.error('Bantu DB error:', e); });
+
+fetch('/full-dict')
+  .then(function(r){
+    return r.json();
+  })
+  .then(function(data){
+    FULL_DICT = data || {};
+  });
 
 // ── Check for shared study in URL ─────────────────────────────────────────────
 window.addEventListener('load', function() {
@@ -707,22 +716,45 @@ function doHLookup(){
   var key=raw.charAt(0)==='H'?raw:'H'+raw;
   key=key.replace(/^H0+/,'H');
   var hits = BANTU_DB[key] || [];
+  var lex = FULL_DICT[key] || null;
 
   var el = document.getElementById('hResult');
-
   if(!hits.length){
 
-  el.innerHTML =
-    '<strong style="color:#c9a84c;font-family:Cinzel,serif">'
-    + key +
-    '</strong><br><br>' +
+    if(!lex){
 
-    '<span style="color:#8a7a5a">' +
-    'Strong\'s entry exists but no Bantu matches found.' +
-    '</span>';
+      el.innerHTML =
+        '<span style="color:#5a4a2a">' +
+        'No Strong\'s entry for ' +
+        '<strong style="color:#c9a84c">' +
+        key +
+        '</strong>.</span>';
 
-  return;
-}
+      return;
+    }
+
+    var meanings = (lex.meanings || []).join(', ');
+
+    el.innerHTML =
+      '<strong style="color:#c9a84c;font-family:Cinzel,serif">' +
+      key +
+      '</strong>' +
+
+      ' &mdash; <em style="color:#8a7a5a">' +
+      (lex.transliteration || '') +
+      '</em><br><br>' +
+
+      '<span style="color:#d8c9a0">' +
+      meanings +
+      '</span><br><br>' +
+
+      '<span style="color:#8a7a5a">' +
+      'No Bantu matches found.' +
+      '</span>';
+
+    return;
+  }
+
   var bl=byLang(hits);
   var html='<strong style="color:#c9a84c;font-family:Cinzel,serif">'+key+'</strong> &mdash; <em style="color:#8a7a5a">'+(hits[0].transliteration||'')+'</em><br><br>';
   Object.keys(bl).forEach(function(lang){
