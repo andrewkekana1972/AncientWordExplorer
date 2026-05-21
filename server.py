@@ -5,7 +5,6 @@ Ancient Word Explorer - Flask Backend
 - Verse text comes from bible-api (via browser) or KJV cache
 """
 
-FULL_DICT, BANTU_DB = load_dictionary()
 import os, json, re, urllib.request, urllib.error, threading, time
 from flask import Flask, request, jsonify, send_from_directory
 
@@ -78,7 +77,7 @@ def load_dictionary(url):
         print('ERROR loading dictionary:', e)
         return {}, {}
 
-DICT_FULL, BANTU_DB = load_dictionary(GITHUB_CSV_URL)
+FULL_DICT, BANTU_DB = load_dictionary(GITHUB_CSV_URL)
 
 # ── Result cache ──────────────────────────────────────────────────────────────
 CACHE = {}
@@ -341,7 +340,7 @@ def bantu_db():
     return jsonify(BANTU_DB)
 
 @app.route('/full-dict')
-def full_dict():
+def full_dict_route():
     """Serve complete lexical dictionary."""
     return jsonify(FULL_DICT)
 
