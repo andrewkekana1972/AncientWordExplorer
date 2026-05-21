@@ -339,6 +339,11 @@ def bantu_db():
     """Serve Bantu-only lookup to frontend for instant H-number matching."""
     return jsonify(BANTU_DB)
 
+@app.route('/full-dict')
+def full_dict():
+    """Serve complete lexical dictionary."""
+    return jsonify(full_dict)
+
 
 @app.route('/analyse', methods=['POST'])
 def analyse():

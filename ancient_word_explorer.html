@@ -340,7 +340,7 @@ const googleProvider = new GoogleAuthProvider();
 
 // ── State ─────────────────────────────────────────────────────────────────────
 var BANTU_DB = {};
-var FULL_DICT = {};
+var full_dict = {};
 var SESSION_CACHE = {};
 var currentUser = null;
 var currentResult = null;
@@ -366,7 +366,7 @@ fetch('/full-dict')
     return r.json();
   })
   .then(function(data){
-    FULL_DICT = data || {};
+    full_dict = data || {};
   });
 
 // ── Check for shared study in URL ─────────────────────────────────────────────
@@ -710,14 +710,14 @@ function showErr(msg){ var el=document.getElementById('errBox'); el.textContent=
 document.getElementById('hBtn').addEventListener('click', doHLookup);
 document.getElementById('hInput').addEventListener('keydown', function(e){ if(e.key==='Enter') doHLookup(); });
 console.log(key);
-console.log(FULL_DICT);
+console.log(full_dict);
 function doHLookup(){
   var raw=document.getElementById('hInput').value.trim().toUpperCase();
   if(!raw) return;
   var key=raw.charAt(0)==='H'?raw:'H'+raw;
   key=key.replace(/^H0+/,'H');
   var hits = BANTU_DB[key] || [];
-  var lex = FULL_DICT[key] || null;
+  var lex = full_dict[key] || null;
 
   var el = document.getElementById('hResult');
   if(!hits.length){
