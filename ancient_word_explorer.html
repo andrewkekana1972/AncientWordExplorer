@@ -747,7 +747,7 @@ function normaliseTranslit(t) {
     }
   }
   // Strip common suffixes (longest first)
-  var suffixes = ['ekhem','otehem','eyhem','oteinu','eynu','ekha','echa','enu','hem','kem','tam','tem','tim','oth','aim','im','ot','ah','nu','ti','am','iy'];
+  var suffixes = ['ekhem','otehem','eyhem','oteinu','eynu','ekha','echa','enu','hem','kem','tam','tem','tim','oth','aim','ot','ah','nu','ti','am','iy'];
   for(var i=0;i<suffixes.length;i++){
     if(s.endsWith(suffixes[i]) && s.length > suffixes[i].length + 2){
       s = s.slice(0, s.length - suffixes[i].length); break;
