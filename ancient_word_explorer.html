@@ -421,13 +421,13 @@ fetch('/bantu-db')
   })
   .catch(function(e){ console.error('Bantu DB error:', e); });
 
-// fetch('/full-dict')
-//  .then(function(r){
-//    return r.json();
-//  })
-//  .then(function(data){
-//    FULL_DICT = data || {};
-//  });
+fetch('/full-dict')
+  .then(function(r){
+    return r.json();
+  })
+  .then(function(data){
+    FULL_DICT = data || {};
+  });
 
 // ── Check for shared study in URL ─────────────────────────────────────────────
 window.addEventListener('load', function() {
@@ -777,81 +777,7 @@ function doHLookup(){
   var key=raw.charAt(0)==='H'?raw:'H'+raw;
   key=key.replace(/^H0+/,'H');
   var hits = BANTU_DB[key] || [];
-  // var lex = FULL_DICT[key] || null;
-  fetch('/lookup/' + key)
-  .then(function(r){
-      return r.json();
-  })
-  .then(function(lex){
-
-      var hits = BANTU_DB[key] || [];
-
-      var el = document.getElementById('hResult');
-
-      if(lex.error){
-
-          el.innerHTML =
-            '<span style="color:#5a4a2a">' +
-            'No Strong\'s entry for ' +
-            '<strong style="color:#c9a84c">' +
-            key +
-            '</strong>.</span>';
-
-          return;
-      }
-
-      var meanings = (lex.meanings || []).join(', ');
-
-      var html =
-        '<strong style="color:#c9a84c;font-family:Cinzel,serif">' +
-        key +
-        '</strong>' +
-
-        ' &mdash; <em style="color:#8a7a5a">' +
-        (lex.transliteration || '') +
-        '</em><br><br>' +
-
-        '<span style="color:#d8c9a0">' +
-        meanings +
-        '</span><br><br>';
-
-      if(!hits.length){
-
-          html +=
-            '<span style="color:#8a7a5a">' +
-            'No Bantu matches found.' +
-            '</span>';
-
-      } else {
-
-          var bl = byLang(hits);
-
-          Object.keys(bl).forEach(function(lang){
-
-              var e = bl[lang];
-
-              html +=
-                '<span class="blang">' +
-                lang +
-                '</span> ' +
-
-                '<span class="bwords">' +
-                uniq(e.map(function(x){
-                    return x.word;
-                })).join(', ') +
-                '</span> ' +
-
-                '<span class="bmeans">— ' +
-                uniq(e.map(function(x){
-                    return x.meaning;
-                })).join(', ') +
-                '</span><br>';
-          });
-      }
-
-      el.innerHTML = html;
-
-  });
+  var lex = FULL_DICT[key] || null;
 
   var el = document.getElementById('hResult');
   if(!hits.length){
