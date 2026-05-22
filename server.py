@@ -5,7 +5,7 @@ Ancient Word Explorer - Flask Backend
 - Verse text comes from bible-api (via browser) or KJV cache
 """
 
-import os, json, re, urllib.request, urllib.error, threading, time
+import os, json, re, urllib.request, urllib.error, threading, time, re
 from flask import Flask, request, jsonify, send_from_directory
 
 app = Flask(__name__, static_folder='.')
@@ -338,6 +338,22 @@ def index():
 def bantu_db():
     """Serve Bantu-only lookup to frontend for instant H-number matching."""
     return jsonify(BANTU_DB)
+
+@app.route('/lookup/<hnum>')
+def lookup_hnum(hnum):
+
+    key = hnum.strip().upper()
+
+    key = re.sub(r'^H0+', 'H', key)
+
+    lex = FULL_DICT.get(key)
+
+    if not lex:
+        return jsonify({
+            'error': 'Not found'
+        })
+
+    return jsonify(lex)
 
 @app.route('/full-dict')
 def full_dict_route():
