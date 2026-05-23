@@ -791,7 +791,7 @@ function doHLookup(){
   var key=raw.charAt(0)==='H'?raw:'H'+raw;
   key=key.replace(/^H0+/,'H');
   var hits = BANTU_DB[key] || [];
-  var lex = FULL_DICT[key] || null;
+  // var lex = FULL_DICT[key] || null;
 
   var el = document.getElementById('hResult');
   if(!hits.length){
@@ -834,8 +834,7 @@ function doHLookup(){
   var html='<strong style="color:#c9a84c;font-family:Cinzel,serif">'+key+'</strong> &mdash; <em style="color:#8a7a5a">'+(hits[0].transliteration||'')+'</em><br><br>';
   Object.keys(bl).forEach(function(lang){
     var e=bl[lang];
-    html+='<span class="blang">'+lang+'</span> <span class="bwords">'+uniq(e.map(function(x){return x.word +' <button onclick="speakBantu(\'' +x.word +'\')">[SPEAK]</button>';})).join(', ')+'</span> <span class="bmeans">— '+uniq(e.map(function(x){return x.meaning;})).join(', ')+'</span><br>';});
-  el.innerHTML=html;
+    html += '<span class="blang">' + lang + '</span> ' +'<span class="bwords">TEST BUTTON <button>CLICK</button></span> ' +'<span class="bmeans">— TEST</span><br>';
 }
 
 function lookupH(h){
