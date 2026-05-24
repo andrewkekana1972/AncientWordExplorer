@@ -429,6 +429,19 @@ fetch('/full-dict')
     FULL_DICT = data || {};
   });
 
+
+document.addEventListener('click', function(e){
+
+  if(e.target.classList.contains('speak')){
+
+    e.preventDefault();
+
+    var word = e.target.getAttribute('data-word');
+
+    speakBantu(word);
+  }
+
+});
 function speakBantu(word){
 
 if(!word) return;
@@ -443,18 +456,6 @@ utter.pitch = 1;
 
 speechSynthesis.speak(utter);
 }
-document.addEventListener('click', function(e){
-
-  if(e.target.classList.contains('speak')){
-
-    e.preventDefault();
-
-    var word = e.target.getAttribute('data-word');
-
-    speakBantu(word);
-  }
-
-});
 // ── Check for shared study in URL ─────────────────────────────────────────────
 window.addEventListener('load', function() {
   var params = new URLSearchParams(window.location.search);
@@ -847,6 +848,7 @@ function doHLookup(){
   Object.keys(bl).forEach(function(lang){
     var e=bl[lang];
     html+='<span class="blang">'+lang+'</span> <span class="bwords">'+uniq(e.map(function(x){return x.word + ' <a href="#" class="speak" data-word="'+x.word+'">🔊</a>';})).join(', ')+'</span> <span class="bmeans">— '+uniq(e.map(function(x){return x.meaning;})).join(', ')+'</span><br>';
+    // html+='<span class="blang">'+lang+'</span> <span class="bwords">'+uniq(e.map(function(x){return x.word + ' <a href="#" class="speak" data-word="'+x.word+'">🔊</a>';})).join(', ')+'</span> <span class="bmeans">— '+uniq(e.map(function(x){return x.meaning;})).join(', ')+'</span><br>';
     // html+='<span class="blang">'+lang+'</span> <span class="bwords">'+uniq(e.map(function(x){return x.word +' <button onclick="speakBantu(\'' +x.word +'\')">[SPEAK]</button>';})).join(', ')+'</span> <span class="bmeans">— '+uniq(e.map(function(x){return x.meaning;})).join(', ')+'</span><br>';});
   el.innerHTML=html;
 }
