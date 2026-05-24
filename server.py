@@ -7,6 +7,7 @@ Ancient Word Explorer - Flask Backend
 
 import os, json, re, urllib.request, urllib.error, threading, time
 from flask import Flask, request, jsonify, send_from_directory
+from anthropic import Anthropic, APIStatusError
 
 app = Flask(__name__, static_folder='.')
 
@@ -212,10 +213,11 @@ Analyse this Bible verse: "{verse}"
 KJV text: "{verse_text}"
 
 Your task:
-1. Identify 5-8 key Hebrew words in this verse
+1. Analyse all meaningful Hebrew words represented in this verse, not just selected keywords
 2. For each word provide the correct Strong's H-number
 3. For each word break it into constituent Hebrew letters with their ancient pictographic meanings from Jeff Benner's Ancient Hebrew Lexicon
 4. Provide a composite meaning from the letter pictographs
+5. Exclude duplicate repetitions of the same Strong's number unless the meaning differs in context
 
 You do NOT need to provide the Hebrew characters, transliteration or English meaning - those come from our dictionary.
 Return ONLY raw JSON, no markdown:
@@ -227,10 +229,11 @@ Analyse this Bible verse: "{verse}"
 Provide the complete KJV text.
 
 Your task:
-1. Identify 5-8 key Hebrew words in this verse
+1. Analyse all meaningful Hebrew words represented in this verse, not just selected keywords
 2. For each word provide the correct Strong's H-number
 3. For each word break it into constituent Hebrew letters with their ancient pictographic meanings from Jeff Benner's Ancient Hebrew Lexicon
 4. Provide a composite meaning from the letter pictographs
+5. Exclude duplicate repetitions of the same Strong's number unless the meaning differs in context
 
 Return ONLY raw JSON, no markdown:
 {{"verses":[{{"reference":"{verse}","text":"COMPLETE KJV TEXT","words":[{{"strongs":"H0000","hebrew_letters":[{{"letter":"Name","hebrew_char":"char","ancient_meaning":"Benner pictograph meaning"}}],"composite_meaning":"combined pictographic meaning"}}]}}]}}"""
