@@ -290,6 +290,10 @@ This tool is intended for educational and exploratory purposes only.
   </div>
 </div>
 
+<div style="margin:12px 0;">
+  <button id="speakTestBtn">TEST SPEECH</button>
+</div>
+
 <div class="stats-bar">
   <div class="stat"><span class="stat-n" id="statHnums">...</span><span class="stat-l">H-numbers mapped</span></div>
   <div class="stat"><span class="stat-n" id="statEntries">...</span><span class="stat-l">Bantu word entries</span></div>
@@ -784,6 +788,31 @@ function doSearch(){
 
 function showErr(msg){ var el=document.getElementById('errBox'); el.textContent='Error: '+msg; el.style.display='block'; }
 
+function speakBantu(word){
+
+if(!word) return;
+
+if(!window.speechSynthesis){
+  alert('Speech synthesis not supported in this browser.');
+  return;
+}
+
+var utter = new SpeechSynthesisUtterance(word);
+
+utter.lang = 'en-ZA';
+
+utter.rate = 0.85;
+
+utter.pitch = 1;
+
+speechSynthesis.speak(utter);
+}
+
+document.getElementById('speakTestBtn').addEventListener('click', function(){
+
+speakBantu('izulu');
+
+});
 // ── H-number lookup ───────────────────────────────────────────────────────────
 document.getElementById('hBtn').addEventListener('click', doHLookup);
 document.getElementById('hInput').addEventListener('keydown', function(e){ if(e.key==='Enter') doHLookup(); });
