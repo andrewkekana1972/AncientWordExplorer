@@ -850,7 +850,7 @@ function doHLookup(){
   var html='<strong style="color:#c9a84c;font-family:Cinzel,serif">'+key+'</strong> &mdash; <em style="color:#8a7a5a">'+(hits[0].transliteration||'')+'</em><br><br>';
   Object.keys(bl).forEach(function(lang){
     var e=bl[lang];
-    html+='<span class="blang">'+lang+'</span> <span class="bwords">'+uniq(e.map(function(x){return x.word +' <button onclick="speakBantu(\'' +x.word +'\')">[SPEAK]</button>';})).join(', ')+'</span> <span class="bmeans">— '+uniq(e.map(function(x){return x.meaning;})).join(', ')+'</span><br>';});
+    html+='<span class="blang">'+lang+'</span> <span class="bwords">'+uniq(e.map(function(x){ return x.word+' <span class="speak-btn" data-word="'+x.word+'" style="cursor:pointer;">🔊</span>'; })).join(', ')+'</span> <span class="bmeans">— '+uniq(e.map(function(x){ return x.meaning; })).join(', ')+'</span><br>';});
   el.innerHTML=html;
 }
 
@@ -870,7 +870,17 @@ function buildDictCell(hits){
   }).join('');
 }
 
+document.addEventListener('click', function(e){
 
+if(e.target.classList.contains('speak-btn')){
+
+  var word = e.target.getAttribute('data-word');
+
+  speakBantu(word);
+
+}
+
+});
 // ── Normalise Hebrew transliteration to root form ────────────────────────────
 function normaliseTranslit(t) {
   if(!t) return t;
