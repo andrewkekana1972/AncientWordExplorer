@@ -774,42 +774,24 @@ function doSearch(){
 
 function showErr(msg){ var el=document.getElementById('errBox'); el.textContent='Error: '+msg; el.style.display='block'; }
 
-function speakBantu(word, lang){
+function speakBantu(word){
 
 if(!word) return;
 
 if(!window.speechSynthesis){
-  alert('Speech synthesis not supported.');
+  alert('Speech synthesis not supported in this browser.');
   return;
 }
 
 var utter = new SpeechSynthesisUtterance(word);
 
-lang = (lang || '').toLowerCase();
-
-if(lang.includes('isizulu')){
-  utter.lang = 'zu-ZA';
-}
-else if(lang.includes('isixhosa')){
-  utter.lang = 'xh-ZA';
-}
-else if(lang.includes('sesotho')){
-  utter.lang = 'st-ZA';
-}
-else if(lang.includes('setswana')){
-  utter.lang = 'tn-ZA';
-}
-else if(lang.includes('swahili')){
-  utter.lang = 'sw-KE';
-}
-else{
-  utter.lang = 'en-ZA';
-}
+utter.lang = 'en-ZA';
 
 utter.rate = 0.85;
+
 utter.pitch = 1;
 
-window.speechSynthesis.speak(utter);
+speechSynthesis.speak(utter);
 }
 
 document.getElementById('speakTestBtn').addEventListener('click', function(){
@@ -868,7 +850,7 @@ function doHLookup(){
   var html='<strong style="color:#c9a84c;font-family:Cinzel,serif">'+key+'</strong> &mdash; <em style="color:#8a7a5a">'+(hits[0].transliteration||'')+'</em><br><br>';
   Object.keys(bl).forEach(function(lang){
     var e=bl[lang];
-    html+='<span class="blang">'+lang+'</span> <span class="bwords">'+uniq(e.map(function(x){ return x.word+' <span class="speak-btn" data-word="'+x.word+'" data-lang="'+lang+'" style="cursor:pointer;">🔊</span>'; })).join(', ')+'</span> <span class="bmeans">— '+uniq(e.map(function(x){ return x.meaning; })).join(', ')+'</span><br>';});
+    html+='<span class="blang">'+lang+'</span> <span class="bwords">'+uniq(e.map(function(x){ return x.word+' <span class="speak-btn" data-word="'+x.word+'" style="cursor:pointer;">🔊</span>'; })).join(', ')+'</span> <span class="bmeans">— '+uniq(e.map(function(x){ return x.meaning; })).join(', ')+'</span><br>';});
   el.innerHTML=html;
 }
 
@@ -884,7 +866,7 @@ function buildDictCell(hits){
   if(!hits.length) return '<span class="nomatch">Not yet in dictionary</span>';
   return Object.keys(byLang(hits)).map(function(lang){
     var e=byLang(hits)[lang];
-    return '<div style="margin-bottom:6px"><span class="blang">'+lang+'</span> <span class="bwords">'+uniq(e.map(function(x){return x.word+' <span class="speak-btn" data-word="'+x.word+'" data-lang="'+lang+'" style="cursor:pointer;">🔊</span>';})).join(', ')+'</span><br><span class="bmeans">'+uniq(e.map(function(x){return x.meaning;})).join(', ')+'</span></div>';
+    return '<div style="margin-bottom:6px"><span class="blang">'+lang+'</span> <span class="bwords">'+uniq(e.map(function(x){return x.word+' <span class="speak-btn" data-word="'+x.word+'" style="cursor:pointer;">🔊</span>';})).join(', ')+'</span><br><span class="bmeans">'+uniq(e.map(function(x){return x.meaning;})).join(', ')+'</span></div>';
   }).join('');
 }
 
@@ -894,9 +876,7 @@ if(e.target.classList.contains('speak-btn')){
 
   var word = e.target.getAttribute('data-word');
 
- 
-
-speakBantu(word, lang);
+  speakBantu(word);
 
 }
 
