@@ -433,20 +433,6 @@ fetch('/full-dict')
     FULL_DICT = data || {};
   });
 
-function speakBantu(word){
-
-if(!word) return;
-
-var utter = new SpeechSynthesisUtterance(word);
-
-utter.lang = 'en-ZA';
-
-utter.rate = 0.85;
-
-utter.pitch = 1;
-
-speechSynthesis.speak(utter);
-}
 // ── Check for shared study in URL ─────────────────────────────────────────────
 window.addEventListener('load', function() {
   var params = new URLSearchParams(window.location.search);
