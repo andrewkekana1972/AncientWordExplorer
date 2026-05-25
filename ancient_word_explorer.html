@@ -232,6 +232,8 @@ Where lexical data is unavailable, AI may generate comparative lexical suggestio
 This tool is intended for educational and exploratory purposes only.
 </p>
 
+</div>
+
 </details>
 <div class="shell">
 
@@ -923,20 +925,7 @@ function renderResults(data){
   });
   area.scrollIntoView({behavior:'smooth',block:'start'});
 }
-function speakBantu(word){
 
-if(!word) return;
-
-var utter = new SpeechSynthesisUtterance(word);
-
-utter.lang = 'en-ZA';
-
-utter.rate = 0.85;
-
-utter.pitch = 1;
-
-speechSynthesis.speak(utter);
-}
 // ── Bible Navigation ──────────────────────────────────────────────────────────
 var BIBLE = [
   ["Genesis",[31,25,24,26,32,22,24,22,29,32,32,20,18,24,21,16,27,33,38,18,34,24,20,67,34,35,46,22,35,43,55,32,20,31,29,43,36,30,23,23,57,38,34,34,28,34,31,22,33,26]],
