@@ -791,7 +791,7 @@ function doHLookup(){
   var key=raw.charAt(0)==='H'?raw:'H'+raw;
   key=key.replace(/^H0+/,'H');
   var hits = BANTU_DB[key] || [];
-  var lex = FULL_DICT[key] || null;
+  // var lex = FULL_DICT[key] || null;
 
   var el = document.getElementById('hResult');
   if(!hits.length){
