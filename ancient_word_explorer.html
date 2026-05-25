@@ -783,7 +783,6 @@ function showErr(msg){ var el=document.getElementById('errBox'); el.textContent=
 // ── H-number lookup ───────────────────────────────────────────────────────────
 document.getElementById('hBtn').addEventListener('click', doHLookup);
 document.getElementById('hInput').addEventListener('keydown', function(e){ if(e.key==='Enter') doHLookup(); });
-// console.log(key);
 console.log(FULL_DICT);
 function doHLookup(){
   var raw=document.getElementById('hInput').value.trim().toUpperCase();
@@ -791,8 +790,7 @@ function doHLookup(){
   var key=raw.charAt(0)==='H'?raw:'H'+raw;
   key=key.replace(/^H0+/,'H');
   var hits = BANTU_DB[key] || [];
-  // var lex = FULL_DICT[key] || null;
-
+  
   var el = document.getElementById('hResult');
   if(!hits.length){
 
