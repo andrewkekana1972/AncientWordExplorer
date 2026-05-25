@@ -290,9 +290,6 @@ This tool is intended for educational and exploratory purposes only.
   </div>
 </div>
 
-<div style="margin:12px 0;">
-  <button id="speakTestBtn">TEST SPEECH</button>
-</div>
 
 <div class="stats-bar">
   <div class="stat"><span class="stat-n" id="statHnums">...</span><span class="stat-l">H-numbers mapped</span></div>
@@ -792,13 +789,7 @@ utter.rate = 0.85;
 utter.pitch = 1;
 
 speechSynthesis.speak(utter);
-}
-
-document.getElementById('speakTestBtn').addEventListener('click', function(){
-
-speakBantu('izulu');
-
-});
+};
 // ── H-number lookup ───────────────────────────────────────────────────────────
 document.getElementById('hBtn').addEventListener('click', doHLookup);
 document.getElementById('hInput').addEventListener('keydown', function(e){ if(e.key==='Enter') doHLookup(); });
