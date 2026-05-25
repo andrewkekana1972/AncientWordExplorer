@@ -866,7 +866,7 @@ function buildDictCell(hits){
   if(!hits.length) return '<span class="nomatch">Not yet in dictionary</span>';
   return Object.keys(byLang(hits)).map(function(lang){
     var e=byLang(hits)[lang];
-    return '<div style="margin-bottom:6px"><span class="blang">'+lang+'</span> <span class="bwords">'+uniq(e.map(function(x){return x.word;})).join(', ')+'</span><br><span class="bmeans">'+uniq(e.map(function(x){return x.meaning;})).join(', ')+'</span></div>';
+    return '<div style="margin-bottom:6px"><span class="blang">'+lang+'</span> <span class="bwords">'+uniq(e.map(function(x){return x.word+' <span class="speak-btn" data-word="'+x.word+'" style="cursor:pointer;">🔊</span>';})).join(', ')+'</span><br><span class="bmeans">'+uniq(e.map(function(x){return x.meaning;})).join(', ')+'</span></div>';
   }).join('');
 }
 
