@@ -1030,11 +1030,21 @@ function updateNavButtons(){
 }
 document.getElementById('prevBtn').addEventListener('click',function(){
   var prev=getPrevVerse(document.getElementById('qInput').value.trim());
-  if(prev){document.getElementById('qInput').value=prev;doSearch();}
+
+  if(prev){
+    document.getElementById('qInput').value=prev;
+    updateNavButtons();
+    doSearch();
+  }
 });
 document.getElementById('nextBtn').addEventListener('click',function(){
   var next=getNextVerse(document.getElementById('qInput').value.trim());
-  if(next){document.getElementById('qInput').value=next;doSearch();}
+
+  if(next){
+    document.getElementById('qInput').value=next;
+    updateNavButtons();
+    doSearch();
+  }
 });
 document.getElementById('qInput').addEventListener('input',updateNavButtons);
 updateNavButtons();
