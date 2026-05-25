@@ -727,7 +727,11 @@ function stopLoader(){ if(loaderInterval){ clearInterval(loaderInterval); loader
 // ── Search ────────────────────────────────────────────────────────────────────
 document.querySelectorAll('.pill').forEach(function(p){
   p.addEventListener('click', function(){
+
     document.getElementById('qInput').value=this.getAttribute('data-verse');
+
+    updateNavButtons();
+
     doSearch();
   });
 });
