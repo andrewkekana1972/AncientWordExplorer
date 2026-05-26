@@ -4,31 +4,58 @@ import streamlit as st
 from collections import defaultdict
 import streamlit as st
 
-def search_strongs(h):
-    st.write("Searching:", h)
 # =========================
-# 1. READ URL PARAMS (AWE → HB)
+# 1. READ URL PARAMS
 # =========================
-# 1. URL PARAMS
 params = st.query_params
 strongs = params.get("strongs")
 
 if isinstance(strongs, list):
     strongs = strongs[0]
 
-# 2. STORE TRIGGER
-if strongs:
-    st.session_state["pending_strongs"] = strongs
-
-# 3. YOUR FUNCTION
+# =========================
+# 2. SEARCH FUNCTION (YOUR REAL LOGIC)
+# =========================
 def search_strongs(h):
-    st.write("Searching:", h)
-    # your real logic
+    st.subheader(f"Searching: {h}")
+    # 🔥 PUT YOUR REAL HB LOGIC HERE
+    # AHLB lookup, Bantu matches, etc.
 
-# 4. AUTO EXECUTE ONCE
-if "pending_strongs" in st.session_state:
-    search_strongs(st.session_state["pending_strongs"])
-    del st.session_state["pending_strongs"]
+# =========================
+# 3. TRIGGER HANDLER (ROBUST)
+# =========================
+if "run_once" not in st.session_state:
+    st.session_state.run_once = False
+
+# store incoming AWE value
+if strongs and not st.session_state.run_once:
+    st.session_state.pending = strongs
+    st.session_state.run_once = True
+    st.rerun()
+
+# =========================
+# 4. EXECUTE AFTER RERUN (THIS IS THE KEY)
+# =========================
+if "pending" in st.session_state:
+    search_strongs(st.session_state.pending)
+    del st.session_state.pending
+
+# =========================
+# 5. HEADER
+# =========================
+st.title("HebrewBantu App")
+
+if strongs:
+    st.sidebar.success(f"Coming from AWE: {strongs}")
+    st.info(f"Loaded from AWE: {strongs}")
+
+# =========================
+# 6. MANUAL SEARCH
+# =========================
+user_input = st.text_input("Search Strong's (e.g. H1)")
+
+if st.button("Search"):
+    search_strongs(user_input)
 
 # ---------------- CONFIG ----------------
 CSV_FILE = "bantu_dictionary_HNumbers.csv" # Path to the CSV file
