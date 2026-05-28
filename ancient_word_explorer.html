@@ -1031,40 +1031,47 @@ function doEnglishLookup(){
     var e = bl[lang];
 
     html +=
-      '<span class="blang">' +
-      lang +
-      '</span> ' +
 
-      '<span class="bwords">' +
+    '<div style="margin-bottom:10px">' +
 
-      uniq(
-        e.map(function(x){
+// Hebrew transliteration
+'<span style="color:#c9a84c;font-style:italic">' +
+(e[0].transliteration || '') +
+'</span><br>' +
 
-          return x.word +
-            ' <span class="speak-btn" ' +
-            'data-word="' + x.word + '" ' +
-            'data-lang="' + lang + '" ' +
-            'style="cursor:pointer;">🔊</span>';
+// Language + Bantu words
+'<span class="blang">' +
+lang +
+'</span> ' +
 
-        })
-      ).join(', ') +
+'<span class="bwords">' +
 
-      '</span> ' +
+uniq(
+  e.map(function(x){
 
-      '<span class="bmeans">— ' +
+    return x.word +
+      ' <span class="speak-btn" ' +
+      'data-word="' + x.word + '" ' +
+      'data-lang="' + lang + '" ' +
+      'style="cursor:pointer;">🔊</span>';
 
-      uniq(
-        e.map(function(x){
-          return x.meaning;
-        })
-      ).join(', ') +
+  })
+).join(', ') +
 
-      '</span><br>';
+'</span> ' +
 
-  });
+// Meanings
+'<span class="bmeans">— ' +
 
-  el.innerHTML = html;
-}
+uniq(
+  e.map(function(x){
+    return x.meaning;
+  })
+).join(', ') +
+
+'</span>' +
+
+'</div>';
 // ── Normalise Hebrew transliteration to root form ────────────────────────────
 function normaliseTranslit(t) {
   if(!t) return t;
