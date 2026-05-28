@@ -327,16 +327,40 @@ This tool is intended for educational and exploratory purposes only.
   <div class="lookup-result" id="hResult" style="color:#4a3a1a;font-style:italic">Enter any H-number to instantly see all Bantu matches.</div>
 </div>
 
-<div class="searchDict-section">
-  <div class="searchDict-title">&#x25BC; Search Hebrew-Bantu Dictionary</div>
-  <div class="row">
-    <div class="fg" style="max-width:220px">
-      <label>English word</label>
-      <input type="text" id="hInput" placeholder="e.g. deceive, reveal,father" />
-    </div>
-    <button class="btn" id="hBtn">Search Dictionary</button>
+<div class="lookup-section">
+
+  <div class="lookup-title">
+    &#x25BC; Search Hebrew-Bantu Dictionary
   </div>
-  <div class="searchDict-result" id="hResult" style="color:#4a3a1a;font-style:italic">Enter any English instantly see all Bantu matches.</div>
+
+  <div class="row">
+
+    <div class="fg" style="max-width:220px">
+
+      <label>English word</label>
+
+      <input
+        type="text"
+        id="englishInput"
+        placeholder="e.g. father, deceive, reveal"
+      />
+
+    </div>
+
+    <button class="btn" id="englishBtn">
+      Search Dictionary
+    </button>
+
+  </div>
+
+  <div
+    class="lookup-result"
+    id="englishResult"
+    style="color:#4a3a1a;font-style:italic"
+  >
+    Enter any English word to instantly see all Bantu matches.
+  </div>
+
 </div>
 
 </div>
@@ -937,6 +961,110 @@ speakBantu(word, lang);
 }
 
 });
+// ── English-word lookup ─────────────────────────────────────
+
+document.getElementById('englishBtn')
+.addEventListener('click', doEnglishLookup);
+
+document.getElementById('englishInput')
+.addEventListener('keydown', function(e){
+
+  if(e.key === 'Enter') doEnglishLookup();
+
+});
+
+function doEnglishLookup(){
+
+  var query =
+    document.getElementById('englishInput')
+    .value
+    .trim()
+    .toLowerCase();
+
+  if(!query) return;
+
+  var results = [];
+
+  // SEARCH ENTIRE DATABASE
+  Object.keys(BANTU_DB).forEach(function(h){
+
+    BANTU_DB[h].forEach(function(item){
+
+      var meaning =
+        (item.meaning || '').toLowerCase();
+
+      // MATCH ENGLISH MEANING
+      if(meaning.includes(query)){
+
+        results.push(item);
+
+      }
+
+    });
+
+  });
+
+  var el = document.getElementById('englishResult');
+
+  if(!results.length){
+
+    el.innerHTML =
+      '<span style="color:#5a4a2a">' +
+      'No matches found for ' +
+      '<strong style="color:#c9a84c">' +
+      query +
+      '</strong>.</span>';
+
+    return;
+  }
+
+  // GROUP RESULTS BY LANGUAGE
+  var bl = byLang(results);
+
+  var html =
+    '<strong style="color:#c9a84c;font-family:Cinzel,serif">' +
+    query +
+    '</strong><br><br>';
+
+  Object.keys(bl).forEach(function(lang){
+
+    var e = bl[lang];
+
+    html +=
+      '<span class="blang">' +
+      lang +
+      '</span> ' +
+
+      '<span class="bwords">' +
+
+      uniq(
+        e.map(function(x){
+
+          return x.word +
+            ' <span class="speak-btn" ' +
+            'data-word="' + x.word + '" ' +
+            'data-lang="' + lang + '" ' +
+            'style="cursor:pointer;">🔊</span>';
+
+        })
+      ).join(', ') +
+
+      '</span> ' +
+
+      '<span class="bmeans">— ' +
+
+      uniq(
+        e.map(function(x){
+          return x.meaning;
+        })
+      ).join(', ') +
+
+      '</span><br>';
+
+  });
+
+  el.innerHTML = html;
+}
 // ── Normalise Hebrew transliteration to root form ────────────────────────────
 function normaliseTranslit(t) {
   if(!t) return t;
