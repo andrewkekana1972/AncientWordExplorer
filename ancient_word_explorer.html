@@ -137,6 +137,9 @@ tr:hover td{background:#1a1408}
 .lookup-section{margin-top:2rem;border-top:1px solid #2a2010;padding-top:1.5rem}
 .lookup-title{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.14em;color:#7a6a4a;text-transform:uppercase;margin-bottom:.75rem}
 .lookup-result{background:#12100a;border:1px solid #2a2010;border-radius:8px;padding:1rem 1.2rem;font-size:15px;min-height:56px;line-height:1.8;margin-top:.5rem}
+.searchDict-section{margin-top:2rem;border-top:1px solid #2a2010;padding-top:1.5rem}
+.searchDict-section{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.14em;color:#7a6a4a;text-transform:uppercase;margin-bottom:.75rem}
+.searchDict-section{background:#12100a;border:1px solid #2a2010;border-radius:8px;padding:1rem 1.2rem;font-size:15px;min-height:56px;line-height:1.8;margin-top:.5rem}
 @media(max-width:768px){
   .shell{padding:1rem .75rem 4rem}
   .header h1{font-size:18px}
@@ -322,6 +325,18 @@ This tool is intended for educational and exploratory purposes only.
     <button class="btn" id="hBtn">Look up</button>
   </div>
   <div class="lookup-result" id="hResult" style="color:#4a3a1a;font-style:italic">Enter any H-number to instantly see all Bantu matches.</div>
+</div>
+
+<div class="searchDict-section">
+  <div class="searchDict-title">&#x25BC; Search Hebrew-Bantu Dictionary</div>
+  <div class="row">
+    <div class="fg" style="max-width:220px">
+      <label>English word</label>
+      <input type="text" id="hInput" placeholder="e.g. deceive, reveal,father" />
+    </div>
+    <button class="btn" id="hBtn">Search Dictionary</button>
+  </div>
+  <div class="searchDict-result" id="hResult" style="color:#4a3a1a;font-style:italic">Enter any English instantly see all Bantu matches.</div>
 </div>
 
 </div>
