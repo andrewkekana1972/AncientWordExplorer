@@ -1031,47 +1031,43 @@ function doEnglishLookup(){
     var e = bl[lang];
 
     html +=
+  '<div style="margin-bottom:10px">' +
 
-    '<div style="margin-bottom:10px">' +
+  '<span style="color:#c9a84c;font-style:italic">' +
+  (e[0].transliteration || '') +
+  '</span><br>' +
 
-    // Hebrew transliteration
-    '<span style="color:#c9a84c;font-style:italic">' +
-    (e[0].transliteration || '') +
-    '</span><br>' +
+  '<span class="blang">' +
+  lang +
+  '</span> ' +
 
-    // Language + Bantu words
-    '<span class="blang">' +
-    lang +
-    '</span> ' +
+  '<span class="bwords">' +
 
-    '<span class="bwords">' +
+  uniq(
+    e.map(function(x){
 
-    uniq(
-      e.map(function(x){
+      return x.word +
+        ' <span class="speak-btn" ' +
+        'data-word="' + x.word + '" ' +
+        'data-lang="' + lang + '" ' +
+        'style="cursor:pointer;">🔊</span>';
 
-        return x.word +
-          ' <span class="speak-btn" ' +
-          'data-word="' + x.word + '" ' +
-          'data-lang="' + lang + '" ' +
-          'style="cursor:pointer;">🔊</span>';
+    })
+  ).join(', ') +
 
-      })
-    ).join(', ') +
+  '</span> ' +
 
-    '</span> ' +
+  '<span class="bmeans">— ' +
 
-    // Meanings
-    '<span class="bmeans">— ' +
+  uniq(
+    e.map(function(x){
+      return x.meaning;
+    })
+  ).join(', ') +
 
-    uniq(
-      e.map(function(x){
-        return x.meaning;
-      })
-    ).join(', ') +
+  '</span>' +
 
-    '</span>' +
-
-    '</div>';
+  '</div>';
 // ── Normalise Hebrew transliteration to root form ────────────────────────────
 function normaliseTranslit(t) {
   if(!t) return t;
