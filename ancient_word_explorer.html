@@ -975,105 +975,107 @@ document.getElementById('englishInput')
 
 function doEnglishLookup(){
 
-  var query =
-    document.getElementById('englishInput')
-    .value
-    .trim()
-    .toLowerCase();
+var query =
+  document.getElementById('englishInput')
+  .value
+  .trim()
+  .toLowerCase();
 
-  if(!query) return;
+if(!query) return;
 
-  var results = [];
+var results = [];
 
-  // SEARCH ENTIRE DATABASE
-  Object.keys(BANTU_DB).forEach(function(h){
+// SEARCH ENTIRE DATABASE
+Object.keys(BANTU_DB).forEach(function(h){
 
-    BANTU_DB[h].forEach(function(item){
+  BANTU_DB[h].forEach(function(item){
 
-      var meaning =
-        (item.meaning || '').toLowerCase();
+    var meaning =
+      (item.meaning || '').toLowerCase();
 
-      // MATCH ENGLISH MEANING
-      if(meaning.includes(query)){
+    if(meaning.includes(query)){
 
-        results.push(item);
+      results.push(item);
 
-      }
-
-    });
+    }
 
   });
 
-  var el = document.getElementById('englishResult');
+});
 
-  if(!results.length){
+var el =
+  document.getElementById('englishResult');
 
-    el.innerHTML =
-      '<span style="color:#5a4a2a">' +
-      'No matches found for ' +
-      '<strong style="color:#c9a84c">' +
-      query +
-      '</strong>.</span>';
+if(!results.length){
 
-    return;
-  }
-
-  // GROUP RESULTS BY LANGUAGE
-  var bl = byLang(results);
-
-  var html =
-    '<strong style="color:#c9a84c;font-family:Cinzel,serif">' +
+  el.innerHTML =
+    '<span style="color:#5a4a2a">' +
+    'No matches found for ' +
+    '<strong style="color:#c9a84c">' +
     query +
-    '</strong><br><br>';
+    '</strong>.</span>';
 
-  Object.keys(bl).forEach(function(lang){
+  return;
+}
 
-    var e = bl[lang];
+// GROUP BY LANGUAGE
+var bl = byLang(results);
 
-    Object.keys(bl).forEach(function(lang){
+var html =
+  '<strong style="color:#c9a84c;font-family:Cinzel,serif">' +
+  query +
+  '</strong><br><br>';
 
-var e = bl[lang];
+Object.keys(bl).forEach(function(lang){
 
-html +=
-  '<div style="margin-bottom:10px">' +
+  var e = bl[lang];
 
-  '<span style="color:#c9a84c;font-style:italic">' +
-  (e[0].transliteration || '') +
-  '</span><br>' +
+  html +=
+    '<div style="margin-bottom:10px">' +
 
-  '<span class="blang">' +
-  lang +
-  '</span> ' +
+    '<span style="color:#c9a84c;font-style:italic">' +
+    (e[0].transliteration || '') +
+    '</span><br>' +
 
-  '<span class="bwords">' +
+    '<span class="blang">' +
+    lang +
+    '</span> ' +
 
-  uniq(
-    e.map(function(x){
+    '<span class="bwords">' +
 
-      return x.word +
-        ' <span class="speak-btn" ' +
-        'data-word="' + x.word + '" ' +
-        'data-lang="' + lang + '" ' +
-        'style="cursor:pointer;">🔊</span>';
+    uniq(
+      e.map(function(x){
 
-    })
-  ).join(', ') +
+        return x.word +
+          ' <span class="speak-btn" ' +
+          'data-word="' + x.word + '" ' +
+          'data-lang="' + lang + '" ' +
+          'style="cursor:pointer;">🔊</span>';
 
-  '</span> ' +
+      })
+    ).join(', ') +
 
-  '<span class="bmeans">— ' +
+    '</span> ' +
 
-  uniq(
-    e.map(function(x){
-      return x.meaning;
-    })
-  ).join(', ') +
+    '<span class="bmeans">— ' +
 
-  '</span>' +
+    uniq(
+      e.map(function(x){
 
-  '</div>';
+        return x.meaning;
+
+      })
+    ).join(', ') +
+
+    '</span>' +
+
+    '</div>';
 
 });
+
+el.innerHTML = html;
+
+}
 // ── Normalise Hebrew transliteration to root form ────────────────────────────
 function normaliseTranslit(t) {
   if(!t) return t;
