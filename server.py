@@ -215,9 +215,12 @@ KJV text: "{verse_text}"
 Your task:
 1. Analyse all meaningful Hebrew words represented in this verse, not just selected keywords
 2. For each word provide the correct Strong's H-number
-3. For each word break it into constituent Hebrew letters with their ancient pictographic meanings from Jeff Benner's Ancient Hebrew Lexicon
-4. Provide a composite meaning from the letter pictographs
-5. Exclude duplicate repetitions of the same Strong's number unless the meaning differs in context
+3. Only use Hebrew roots and Strong’s numbers explicitly provided in the supplied lexical data.
+4. Do not invent, infer, substitute, or approximate Strong’s numbers outside the provided list.
+5. If no exact match exists, state:"NO VERIFIED LEXICAL MATCH FOUND."
+6. For each word break it into constituent Hebrew letters with their ancient pictographic meanings from Jeff Benner's Ancient Hebrew Lexicon
+7. Provide a composite meaning from the letter pictographs
+8. Exclude duplicate repetitions of the same Strong's number unless the meaning differs in context
 
 You do NOT need to provide the Hebrew characters, transliteration or English meaning - those come from our dictionary.
 Return ONLY raw JSON, no markdown:
@@ -231,9 +234,13 @@ Provide the complete KJV text.
 Your task:
 1. Analyse all meaningful Hebrew words represented in this verse, not just selected keywords
 2. For each word provide the correct Strong's H-number
-3. For each word break it into constituent Hebrew letters with their ancient pictographic meanings from Jeff Benner's Ancient Hebrew Lexicon
-4. Provide a composite meaning from the letter pictographs
-5. Exclude duplicate repetitions of the same Strong's number unless the meaning differs in context
+3. Only use Hebrew roots and Strong’s numbers explicitly provided in the supplied lexical data.
+4. Do not invent, infer, substitute, or approximate Strong’s numbers outside the provided list.
+5. If no exact match exists, state:"NO VERIFIED LEXICAL MATCH FOUND."
+6. For each word break it into constituent Hebrew letters with their ancient pictographic meanings from Jeff Benner's Ancient Hebrew Lexicon
+7. Provide a composite meaning from the letter pictographs
+8. Exclude duplicate repetitions of the same Strong's number unless the meaning differs in context
+
 
 Return ONLY raw JSON, no markdown:
 {{"verses":[{{"reference":"{verse}","text":"COMPLETE KJV TEXT","words":[{{"strongs":"H0000","hebrew_letters":[{{"letter":"Name","hebrew_char":"char","ancient_meaning":"Benner pictograph meaning"}}],"composite_meaning":"combined pictographic meaning"}}]}}]}}"""
