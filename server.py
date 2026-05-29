@@ -73,14 +73,17 @@ def load_dictionary(url):
                 print('Loaded {} H-numbers ({} with Bantu matches)'.format(
                 len(full_dict), sum(1 for v in full_dict.values() if v['bantu'])))
 
-                print("\n=== DICTIONARY DEBUG ===")
-                print("FULL_DICT size:", len(full_dict))
-                print("H3584 exists:", "H3584" in full_dict)
-                if "H3584" in full_dict:
-                    print("H3584 sample:", full_dict["H3584"])
-                    print("========================\n")
+        print('Loaded {} H-numbers ({} with Bantu matches)'.format(
+            len(full_dict), sum(1 for v in full_dict.values() if v['bantu'])))
 
-                return full_dict, bantu_db
+        print("\n=== DICTIONARY DEBUG ===")
+        print("FULL_DICT size:", len(full_dict))
+        print("H3584 exists:", "H3584" in full_dict)
+        if "H3584" in full_dict:
+            print("H3584 sample:", full_dict["H3584"])
+        print("========================\n")
+
+return full_dict, bantu_db
     except Exception as e:
         print('ERROR loading dictionary:', e)
         return {}, {}
