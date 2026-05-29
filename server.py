@@ -23,6 +23,10 @@ def load_dictionary(url):
         req = urllib.request.Request(url, headers={'User-Agent': 'AncientWordExplorer/1.0'})
         with urllib.request.urlopen(req, timeout=30) as r:
             raw = r.read().decode('utf-8')
+            print("\n=== RAW DEBUG ===")
+            print("Lines:", len(raw.splitlines()))
+            print("First line:", raw.splitlines()[0][:200])
+            print("=================\n")
 
         # Build two lookups:
         # FULL_DICT: H-number -> {transliteration, hebrew_chars, meanings, bantu}
@@ -83,7 +87,7 @@ def load_dictionary(url):
             print("H3584 sample:", full_dict["H3584"])
         print("========================\n")
 
-return full_dict, bantu_db
+        return full_dict, bantu_db
     except Exception as e:
         print('ERROR loading dictionary:', e)
         return {}, {}
