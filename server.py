@@ -73,7 +73,8 @@ def load_dictionary(url):
         print('Loaded {} H-numbers ({} with Bantu matches)'.format(
             len(full_dict), sum(1 for v in full_dict.values() if v['bantu'])))
         return full_dict, bantu_db
-
+        print("FULL_DICT size:", len(full_dict))
+        print("H3584 exists:", "H3584" in full_dict)
     except Exception as e:
         print('ERROR loading dictionary:', e)
         return {}, {}
@@ -213,7 +214,7 @@ You are assisting with comparative lexical exploration.
 IMPORTANT RULES:
 - Do not invent Strong’s numbers.
 - Do not substitute similar Hebrew roots.
-- Only use Hebrew roots strongly supported by the supplied verse text.
+- Only use Hebrew roots explicitly supported by established lexical tradition or supplied lexical data.
 - If uncertain, return:
   "NO VERIFIED MATCH"
 - Distinguish clearly between:
@@ -225,10 +226,28 @@ Verse: {verse}
 Text:
 {verse_text}
 
-Return valid JSON only.
+{{
+  "verses": [
+    {{
+      "reference": "{verse}",
+      "text": "COMPLETE KJV TEXT",
+      "words": [
+        {{
+          "strongs": "H0000",
+          "hebrew_letters": [
+            {{
+              "letter": "Name",
+              "hebrew_char": "char",
+              "ancient_meaning": "Benner pictograph meaning"
+            }}
+          ],
+          "composite_meaning": "combined pictographic meaning"
+        }}
+      ]
+    }}
+  ]
+}}
 """
-
-{{"verses":[{{"reference":"{verse}","text":"COMPLETE KJV TEXT","words":[{{"strongs":"H0000","hebrew_letters":[{{"letter":"Name","hebrew_char":"char","ancient_meaning":"Benner pictograph meaning"}}],"composite_meaning":"combined pictographic meaning"}}]}}]}}"""
 
 
 def api_call(messages, max_tokens=3000):
