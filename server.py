@@ -11,6 +11,9 @@ from anthropic import Anthropic, APIStatusError
 
 app = Flask(__name__, static_folder='.')
 
+def norm_ref(r):
+    return r.lower().strip()
+
 # ── Load full dictionary from GitHub ─────────────────────────────────────────
 GITHUB_CSV_URL = os.environ.get(
     'BANTU_CSV_URL',
@@ -117,6 +120,19 @@ def load_bible_cache(url):
 
 CACHE.update(load_bible_cache(BIBLE_CACHE_URL))
 
+print("\n=== CACHE DEBUG ===")
+print("Cache size:", len(CACHE))
+print("Deuteronomy 33:29 exists:", "Deuteronomy 33:29" in CACHE)
+
+if "Deuteronomy 33:29" in CACHE:
+    print(CACHE["Deuteronomy 33:29"])
+for k in CACHE.keys():
+    if "33:29" in str(k):
+        print("FOUND:", k)
+print(CACHE["deuteronomy 33:29"])
+
+print("===================\n")
+
 # ── KJV verse lookup ──────────────────────────────────────────────────────────
 KJV = {
     "genesis 1:1": "In the beginning God created the heaven and the earth.",
@@ -165,9 +181,8 @@ VERIFIED_STRONGS = {
 }
 
 def lookup_verse(reference):
-    key = reference.lower().strip()
-    if key in KJV:
-        return KJV[key]
+    key = norm_ref(reference)
+    return KJV.get(key)
     abbrev = {
         'gen': 'genesis', 'exo': 'exodus', 'ex': 'exodus',
         'deut': 'deuteronomy', 'deu': 'deuteronomy', 'dt': 'deuteronomy',
@@ -180,7 +195,7 @@ def lookup_verse(reference):
             expanded = full + key[len(short):]
             if expanded in KJV:
                 return KJV[expanded]
-    return ''
+    return None
 
 def correct_strongs(result, verse_key):
     verified = VERIFIED_STRONGS.get(verse_key.lower().strip(), {})
