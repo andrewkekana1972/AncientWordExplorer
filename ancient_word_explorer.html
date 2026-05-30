@@ -1112,11 +1112,15 @@ function buildHebrewCell(w,hits){
 function renderResults(data){
   var area=document.getElementById('resultsArea');
   area.innerHTML='';
+  console.log("API response:", data);
+  console.log("DATA:", data);
+  console.log("VERSES:",data.verses);
   if(!data.verses||!data.verses.length){ area.innerHTML='<div class="empty">No verses found.</div>'; return; }
   data.verses.forEach(function(verse){
+    verse.words = verse.words || [];
     var card=document.createElement('div'); card.className='vcard';
     var matched=0,total=0;
-    var rows=(verse.words||[]).map(function(w){
+    var rows=verse.words.map(function(w){
       total++;
       var hits=lookupH(w.strongs||''); if(hits.length) matched++;
       var ltags=(w.hebrew_letters||[]).map(function(l){return '<span class="ltag" title="'+l.ancient_meaning+'">'+l.hebrew_char+' '+l.letter+'</span>';}).join('');
