@@ -122,14 +122,14 @@ CACHE.update(load_bible_cache(BIBLE_CACHE_URL))
 
 print("\n=== CACHE DEBUG ===")
 print("Cache size:", len(CACHE))
-print("Deuteronomy 33:29 exists:", "Deuteronomy 33:29" in CACHE)
 
-if "Deuteronomy 33:29" in CACHE:
-    print(CACHE["Deuteronomy 33:29"])
-for k in CACHE.keys():
-    if "33:29" in str(k):
-        print("FOUND:", k)
-print(CACHE["deuteronomy 33:29"])
+def norm_ref(r):
+    return r.lower().strip()
+
+key = norm_ref("Deuteronomy 33:29")
+
+print("Normalized key:", key)
+print("Exists in cache:", key in CACHE)
 
 print("===================\n")
 
@@ -351,7 +351,7 @@ def prewarm_cache():
             'Isaiah 53:5', 'Psalm 91:1',
         ]
         for verse in popular:
-            key = verse.lower().strip()
+            key = norm_ref(verse)
             if key not in CACHE:
                 try:
                     print('Pre-warming:', verse)
