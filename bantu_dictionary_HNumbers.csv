@@ -1574,6 +1574,7 @@ H906,1027,bad,bet-dalet,בד,thread,bad,Hebrew,בד
 H906,1027,bad,bet-dalet,בד,linen,bad,Hebrew,בד
 H908,1027,bâdâʼ,bet-dalet,בד,talk nonsense,bheda,isiZulu,בדא
 H908,1027,bâdâʼ,bet-dalet,בד,nonsense,umbhedo,isiZulu,בדא
+H908,1027,bâdâʼ,bet-dalet,בד,talk nonsense,bhedeza,isiZulu,בדא
 H908,1027,bâdâʼ,bet-dalet,בד,lie,ukubeda,isiXhosa,בדא
 H908,1027,bâdâʼ,bet-dalet,בד,sleep,ukubeda,isiXhosa,בדא
 H908,1027,bâdâʼ,bet-dalet,בד,bed,umbhede,isiZulu,בדא
@@ -2265,6 +2266,7 @@ H1250,1043,bâr,bet-resh,בר,wheat,bâr,Hebrew,בר
 H1250,1043,bâr,bet-resh,בר,corn,bar,Hebrew,בר
 H1250,1043,bâr,bet-resh,בר,wheat,korong,Sesotho,בר
 H1250,1043,bâr,bet-resh,בר,wheat,koro,Sesotho,בר
+H1250,1043,bâr,bet-resh,בר,wheat,ikolo,isiZulu,בר
 H1251,1043,bar,bet-resh,בר,field,bar,Hebrew,בר
 H1252,1043,bôr,bet-resh,בר,purity,bôr,Hebrew,בר
 H1252,1043,bôr,bet-resh,בר,purity,gaara,Yoruba,בר
@@ -2433,6 +2435,12 @@ H1305,1043,bârar,bet-resh,בר,polished,bârar,Hebrew,ברר
 H1305,1043,bârar,bet-resh,בר,chosen,bârar,Hebrew,ברר
 H1305,1043,bârar,bet-resh,בר,clean,bârar,Hebrew,ברר
 H1305,1043,bârar,bet-resh,בר,purged,bârar,Hebrew,ברר
+H1305,1043,bârar,bet-resh,בר,purified,bârar,Hebrew,ברר
+H1305,1043,bârar,bet-resh,בר,polished,bârar,Hebrew,ברר
+H1305,1043,bârar,bet-resh,בר,bright,bârar,Hebrew,ברר
+H1305,1043,bârar,bet-resh,בר,chosen,bârar,Hebrew,ברר
+H1305,1043,bârar,bet-resh,בר,choice,bârar,Hebrew,ברר
+H1305,1043,bârar,bet-resh,בר,clear,balela,isiZulu,ברר
 H1306,1111,Birshaʻ,NAME,ברשע,Birsha,Birshaʻ,Hebrew,ברשע
 H1307,1111,Bêrôthîy,NAME,ברתי,Berothite,Bêrôthîy,Hebrew,ברתי
 H1308,1111,Bᵉsôwr,NAME,בשור,Besor,Bᵉsôwr,Hebrew,בשור
@@ -2886,6 +2894,8 @@ H1540,1357,gâlâh,ayin-lamed,על,carried away,gâlâh,Hebrew,גלה
 H1540,1357,gâlâh,ayin-lamed,על,captive,gâlâh,Hebrew,גלה
 H1540,1357,gâlâh,ayin-lamed,על,discover,gâlâh,Hebrew,גלה
 H1540,1357,gâlâh,ayin-lamed,על,reveal,gâlâh,Hebrew,גלה
+H1540,1357,gâlâh,ayin-lamed,על,reveal,utolla,NSesotho,גלה
+H1540,1357,gâlâh,ayin-lamed,על,revelation,utollo,NSesotho,גלה
 H1540,1357,gâlâh,ayin-lamed,על,plainly appear,gâlâh,Hebrew,גלה
 H1540,1357,gâlâh,ayin-lamed,על,plain,mogola,Hebrew,גלה
 H1540,1357,gâlâh,ayin-lamed,על,remove,gâlâh,Hebrew,גלה
@@ -2894,6 +2904,9 @@ H1540,1357,gâlâh,ayin-lamed,על,open,gâlâh,Hebrew,גלה
 H1540,1357,gâlâh,ayin-lamed,על,exile,gâlâh,Hebrew,גלה
 H1540,1357,gâlâh,ayin-lamed,על,show,gâlâh,Hebrew,גלה
 H1541,1357,gᵉlâh,ayin-lamed,על,reveal,gᵉlâh,Hebrew,גלה
+H1541,1357,gᵉlâh,ayin-lamed,על,reveal,utolla,NSesotho,גלה
+H1541,1357,gᵉlâh,ayin-lamed,על,reveal,kutolla,NSesotho,גלה
+H1541,1357,gᵉlâh,ayin-lamed,על,revelation,kutollo,NSesotho,גלה
 H1541,1357,gᵉlâh,ayin-lamed,על,brought over,gᵉlâh,Hebrew,גלה
 H1542,1111,Gilôh,NAME,גלה,Giloh,Gilôh,Hebrew,גלה
 H1543,1357,gullâh,ayin-lamed,על,fountain,gullâh,Hebrew,גלה
@@ -3486,10 +3499,20 @@ H1805,1081,dᵉlîy,dalet-lamed,דל,pail,dᵉlîy,Hebrew,דלי
 H1806,1111,Dᵉlâyâh,NAME,דליה,Delajah,Dᵉlâyâh,Hebrew,דליה
 H1808,1081,dâlîyâh,dalet-lamed,דל,dangling,dâlîyâh,Hebrew,דליה
 H1807,1111,Dᵉlîylâh,NAME,דלילה,Delilah,Dᵉlîylâh,Hebrew,דלילה
-H1809,1081,dâlal,dalet-lamed,דל,belittle,delela,isiZulu,דלל
+H1809,1081,dâlal,dalet-lamed,דל,brough low,dâlal,Hebrew,דלל
+H1809,1081,dâlal,dalet-lamed,דל,dried up,dâlal,Hebrew,דלל
+H1809,1081,dâlal,dalet-lamed,דל,not equal,dâlal,Hebrew,דלל
+H1809,1081,dâlal,dalet-lamed,דל,emptied,dâlal,Hebrew,דלל
+H1809,1081,dâlal,dalet-lamed,דל,fail,dâlal,Hebrew,דלל
+H1809,1081,dâlal,dalet-lamed,דל,impoverished,dâlal,Hebrew,דלל
+H1809,1081,dâlal,dalet-lamed,דל,thin,dâlal,Hebrew,דלל
+H1809,1081,dâlal,dalet-lamed,דל,feeble,dâlal,Hebrew,דלל
+H1809,1081,dâlal,dalet-lamed,דל,feeble knees,dâlal,Hebrew,דלל
+H1809,1081,dâlal,dalet-lamed,דל,knee,idolo,isiZulu,דלל
 H1809,1081,dâlal,dalet-lamed,דל,belittle,deelela,Kalanga,דלל
 H1809,1081,dâlal,dalet-lamed,דל,brought low,delela,isiZulu,דלל
 H1809,1081,dâlal,dalet-lamed,דל,old,dala,isiZulu,דלל
+H1809,1081,dâlal,dalet-lamed,דל,old man is feeble,dala,isiZulu,דלל
 H1809,1081,dâlal,dalet-lamed,דל,antiquity,indulo,isiZulu,דלל
 H1809,1081,dâlal,dalet-lamed,דל,oldman,mdala,isiZulu,דלל
 H1809,1081,dâlal,dalet-lamed,דל,old man,mdala,isiZulu,דלל
@@ -4327,7 +4350,11 @@ H2224,2135,zârach,zayin-resh-kgeta,זרח,shine,zârach,Hebrew,זרח
 H2224,2135,zârach,zayin-resh-kgeta,זרח,up,zârach,Hebrew,זרח
 H2224,2135,zârach,zayin-resh-kgeta,זרח,sun,zuwa,Ndau,זרח
 H2224,2135,zârach,zayin-resh-kgeta,זרח,sun,dzuwa,tshiVenda,זרח
-H2224,2135,zârach,zayin-resh-kgeta,זרח,wake up,tsoga,NSesotho,זרח
+H2224,2135,zârach,zayin-resh-kgeta,זרח,wake up,zârach,Hebrew,זרח
+H2224,2135,zârach,zayin-resh-kgeta,זרח,arise,zârach,Hebrew,זרח
+H2224,2135,zârach,zayin-resh-kgeta,זרח,shine,zârach,Hebrew,זרח
+H2224,2135,zârach,zayin-resh-kgeta,זרח,up,zârach,Hebrew,זרח
+H2224,2135,zârach,zayin-resh-kgeta,זרח,arise,tsoga,Hebrew,זרח
 H2225,2135,zerach,zayin-resh-kgeta,זרח,rising,zerach,Hebrew,זרח
 H2226,1111,Zerach,NAME,זרח,Zerach,Zerach,Hebrew,זרח
 H2227,1111,Zarchîy,NAME,זרחי,Zarchite,Zarchîy,Hebrew,זרחי
@@ -5160,7 +5187,16 @@ H2553,1174,chammân,kgeta-mah,חמ,idol,chammân,Hebrew,חמן
 H2554,2172,châmaç,kgeta-mah-sin,חמס,be violent,châmaç,Hebrew,חמס
 H2555,2172,châmâç,kgeta-mah-sin,חמס,violence,châmâç,Hebrew,חמס
 H2556,2173,châmêts,kgeta-mah-tsade,חמצ,be pungent,châmêts,Hebrew,חמץ
+H2557,2173,châmêts,kgeta-mah-tsade,חמצ,leaven,châmêts,Hebrew,חמץ
 H2557,2173,châmêts,kgeta-mah-tsade,חמצ,ferment,châmêts,Hebrew,חמץ
+H2557,2173,châmêts,kgeta-mah-tsade,חמצ,leaven,tomoso,Sesotho,חמץ
+H2556,2173,châmêts,kgeta-mah-tsade,חמצ,leaven,châmêts,Hebrew,חמץ
+H2556,2173,châmêts,kgeta-mah-tsade,חמצ,cruel,châmêts,Hebrew,חמץ
+H2556,2173,châmêts,kgeta-mah-tsade,חמצ,dye,châmêts,Hebrew,חמץ
+H2556,2173,châmêts,kgeta-mah-tsade,חמצ,leaven,tomoso,Sesotho,חמץ
+H2556,2173,châmêts,kgeta-mah-tsade,חמצ,leaven,ichitutumusi,chiBemba,חמץ
+H2556,2173,châmêts,kgeta-mah-tsade,חמצ,grieve,châmêts,Hebrew,חמץ
+H2557,2173,châmêts,kgeta-mah-tsade,חמצ,leaven,ichitutumusi,chiBemba,חמץ
 H2558,2173,chômets,kgeta-mah-tsade,חמצ,vinegar,chômets,Hebrew,חמץ
 H2559,2174,châmaq,kgeta-mah-qupha,חמק,withdraw,amoga,NSesotho,חמק
 H2559,2174,châmaq,kgeta-mah-qupha,חמק,take away,amoga,NSesotho,חמק
@@ -5170,6 +5206,11 @@ H2560,2175,châmar,kgeta-mah-resh,חמר,love,amora,Sesotho,חמר
 H2560,2175,châmar,kgeta-mah-resh,חמר,love associated boil,amora,Sesotho,חמר
 H2560,2175,châmar,kgeta-mah-resh,חמר,love associated red,amora,Sesotho,חמר
 H2560,2175,châmar,kgeta-mah-resh,חמר,sticky tar,khomara,Sesotho,חמר
+H2560,2175,châmar,kgeta-mah-resh,חמר,boil,châmar,Hebrew,חמר
+H2560,2175,châmar,kgeta-mah-resh,חמר,boils linked to cancer,khomora,Sesotho,חמר
+H2560,2175,châmar,kgeta-mah-resh,חמר,cancer,khomora,Sesotho,חמר
+H2560,2175,châmar,kgeta-mah-resh,חמר,red,châmar,Hebrew,חמר
+H2560,2175,châmar,kgeta-mah-resh,חמר,foul,châmar,Hebrew,חמר
 H2560,2175,châmar,kgeta-mah-resh,חמר,daubed,khomara,Sesotho,חמר
 H2561,2175,chemer,kgeta-mah-resh,חמר,wine,chemer,Hebrew,חמר
 H2561,2175,chemer,kgeta-mah-resh,חמר,ginger beer,kgemere,Sesotho,חמר
@@ -5626,6 +5667,10 @@ H2734,1181,chârâh,kgeta-resh,חר,incense,chârâh,Hebrew,חרה
 H2734,1181,chârâh,kgeta-resh,חר,burn,chârâh,Hebrew,חרה
 H2734,1181,chârâh,kgeta-resh,חר,earnest,chârâh,Hebrew,חרה
 H2734,1181,chârâh,kgeta-resh,חר,grieve,chârâh,Hebrew,חרה
+H2734,1181,chârâh,kgeta-resh,חר,angry,chârâh,Hebrew,חרה
+H2734,1181,chârâh,kgeta-resh,חר,angry,ulaka,isiZulu,חרה
+,,,,,,,,
+,,,,,,,,
 H2736,1111,Charhăyâh,NAME,חרהיה,Charhajah,Charhăyâh,Hebrew,חרהיה
 H2737,2202,chârûwz,kgeta-resh-zayin,חרז,pierced,chârûwz,Hebrew,חרוז
 H2737,2202,chârûwz,kgeta-resh-zayin,חרז,chains,chârûwz,Hebrew,חרוז
@@ -6394,7 +6439,13 @@ H3182,1178,yâchêph,kgeta-peh,חפ,unshod,yâchêph,Hebrew,יחף
 H3183,1111,Yachtsᵉʼêl,NAME,יחצאל,Jachtseel,Yachtsᵉʼêl,Hebrew,יחצאל
 H3184,1111,Yachtsᵉʼêlîy,NAME,יחצאלי,Jachtseelite,Yachtsᵉʼêlîy,Hebrew,יחצאלי
 H3185,1111,Yachtsîyʼêl,NAME,יחציאל,Jachtsiel,Yachtsîyʼêl,Hebrew,יחציאל
-H3186,1181,yâchar,kgeta-resh,חר,delay,yâchar,Hebrew,יחר
+H3176,1181,yâchal,kgeta-resh,חר,delay,yâchar,Hebrew,יחל
+H3176,1181,yâchal,kgeta-resh,חר,wait,yâchar,Hebrew,יחל
+H3176,1181,yâchal,kgeta-resh,חר,trust,yâchar,Hebrew,יחל
+H3176,1181,yâchal,kgeta-resh,חר,hope,yâchar,Hebrew,יחל
+H3176,1181,yâchal,kgeta-resh,חר,hope,kgolwa,Sesotho,יחל
+H3176,1181,yâchal,kgeta-resh,חר,hope,kholwa,isiZulu,יחל
+H3176,1181,yâchal,kgeta-resh,חר,faith,kholo,isiZulu,יחל
 H3187,1176,yâchas,kgeta-sin,חס,enroll,yâchas,Hebrew,יחש
 H3188,1176,yachas,kgeta-sin,חס,pedigree,yachas,Hebrew,יחש
 H3189,1111,Yachath,NAME,יחת,Jachath,Yachath,Hebrew,יחת
@@ -6877,6 +6928,7 @@ H3474,1480,yâshar,shin-resh,שר,fitted,yâshar,Hebrew,ישר
 H3475,1111,Yêsher,NAME,ישר,Jesher,Yêsher,Hebrew,ישר
 H3476,1480,yôsher,shin-resh,שר,right,yôsher,Hebrew,ישר
 H3477,1480,yâshâr,shin-resh,שר,straight,yâshâr,Hebrew,ישר
+H3478,1480,Yisrâʼêl,shin-resh,שר,Israel,Yisrâʼêl,Hebrew,ישראל
 H3480,1111,Yᵉsarʼêlâh,NAME,ישראלה,Jesarelah,Yᵉsarʼêlâh,Hebrew,ישראלה
 H3482,1111,Yisrᵉʼêlîyth,NAME,ישראלית,Jisreelitess,Yisrᵉʼêlîyth,Hebrew,ישראלית
 H3483,1480,yishrâh,shin-resh,שר,rectitude,yishrâh,Hebrew,ישרה
@@ -9117,6 +9169,9 @@ H4452,2341,mâlats,mah-lamed-tsade,מלצ,be smooth,mâlats,Hebrew,מלץ
 H4452,2341,mâlats,mah-lamed-tsade,מלצ,sweet,mâlats,Hebrew,מלץ
 H4453,2000,meltsâr,mah-lamed-tsade-resh,מלצר,butler,meltsâr,Hebrew,מלצר
 H4454,2342,mâlaq,mah-lamed-qupha,מלק,crack a joint,mâlaq,Hebrew,מלק
+H4454,2342,mâlaq,mah-lamed-qupha,מלק,wring,mâlaq,Hebrew,מלק
+H4454,2342,mâlaq,mah-lamed-qupha,מלק,to wring the neck,mâlaq,Hebrew,מלק
+H4454,2342,mâlaq,mah-lamed-qupha,מלק,neck,mqala,isiZulu,מלק
 H4455,2319,malqôwach,lamed-qupha-kgeta,לקח,jaws,malqôwach,Hebrew,מלקוח
 H4455,2319,malqôwach,lamed-qupha-kgeta,לקח,prey,malqôwach,Hebrew,מלקוח
 H4455,2319,malqôwach,lamed-qupha-kgeta,לקח,booty,malqôwach,Hebrew,מלקוח
@@ -10174,6 +10229,9 @@ H4939,2496,mispâch,sin-peh-kgeta,ספח,slaughter,mispâch,Hebrew,משפח
 H4939,2496,mispâch,sin-peh-kgeta,ספח,bloodshed,mispâch,Hebrew,משפח
 H4939,2496,mispâch,sin-peh-kgeta,ספח,oppression,mispâch,Hebrew,משפח
 H4940,2863,mishpâchâh,shin-peh-kgeta,שפח,family,mishpâchâh,Hebrew,משפחה
+H4940,2863,mishpâchâh,shin-peh-kgeta,שפח,family,usapho,isiZulu,משפחה
+H4940,2863,mishpâchâh,shin-peh-kgeta,שפח,family,musapho,isiZulu,משפחה
+H4940,2863,mishpâchâh,shin-peh-kgeta,שפח,my family,mesapho,isiZulu,משפחה
 H4941,2864,mishpâṭ,shin-peh-thete,שפט,verdict,mishpâṭ,Hebrew,משפט
 H4942,2870,mishpâth,shin-peh-tau,שפת,stall,mishpâth,Hebrew,משפת
 H4943,2360,mesheq,mah-shin-qupha,משק,possession,mesheq,Hebrew,משק
@@ -10536,7 +10594,7 @@ H5093,1304,nihyâh,nunu-hey,נה,lamentation,nihyâh,Hebrew,נהיה
 H5093,1304,nihyâh,nunu-hey,נה,doleful,nihyâh,Hebrew,נהיה
 H5094,1319,nᵉhîyr,nunu-resh,נר,enlightenment,nᵉhîyr,Hebrew,נהיר
 H5094,1319,nᵉhîyr,nunu-resh,נר,light ,nᵉhîyr,Hebrew,נהיר
-H5094,1319,nᵉhîyr,nunu-resh,נר,buffalo - with its glistening skin,nare,Hebrew,נהיר
+H5094,1319,nᵉhîyr,nunu-resh,נר,buffalo - with its glistening skin,nare,Sesotho,נהיר
 H5094,1319,nᵉhîyr,nunu-resh,נר,buffalo - with its glistening skin,nyathi,isiZulu,נהיר
 H5094,1319,nᵉhîyr,nunu-resh,נר,light of wisdom,nᵉhîyr,Hebrew,נהיר
 H5094,1319,nᵉhîyr,nunu-resh,נר,wisdom,ungwaru,Ndau,נהיר
@@ -11855,7 +11913,10 @@ H5670,2519,ʻâbaṭ,ayin-bet-thete,עבט,fetch,bute,Igbo,עבט
 H5670,2519,ʻâbaṭ,ayin-bet-thete,עבט,bring,bute,Igbo,עבט
 H5671,2519,ʻabṭîyṭ,ayin-bet-thete,עבט,pledged,ʻabṭîyṭ,Hebrew,עבטיט
 H5672,1508,ʻăbîy,ayin-bet,עב,density,ʻăbîy,Hebrew,עבי
+H5673,2518,ʻăbîydâh,ayin-bet-dalet,עבד,service,ʻăbîydâh,Hebrew,עבידה
+H5673,2518,ʻăbîydâh,ayin-bet-dalet,עבד,work,ʻăbîydâh,Hebrew,עבידה
 H5673,2518,ʻăbîydâh,ayin-bet-dalet,עבד,labor,ʻăbîydâh,Hebrew,עבידה
+H5673,2518,ʻăbîydâh,ayin-bet-dalet,עבד,affair,ʻăbîydâh,Hebrew,עבידה
 H5674,2520,ʻâbar,ayin-bet-resh,עבר,go away,gobara,Sesotho,עבר
 H5674,2520,ʻâbar,ayin-bet-resh,עבר,go away,goboda,Sesotho,עבר
 H5674,2520,ʻâbar,ayin-bet-resh,עבר,went away,gobara,Sesotho,עבר
@@ -11881,6 +11942,9 @@ H5678,2520,ʻebrâh,ayin-bet-resh,עבר,anger,ʻebrâh,Hebrew,עברה
 H5678,2520,ʻebrâh,ayin-bet-resh,עבר,fury,ʻebrâh,Hebrew,עברה
 H5678,2520,ʻebrâh,ayin-bet-resh,עבר,wrath,ʻebrâh,Hebrew,עברה
 H5678,2520,ʻebrâh,ayin-bet-resh,עבר,rage,ʻebrâh,Hebrew,עברה
+H5678,2520,ʻebrâh,ayin-bet-resh,עבר,anger,igwebu,isiZulu,עברה
+H5678,2520,ʻebrâh,ayin-bet-resh,עבר,wrath,igwebu,isiZulu,עברה
+H5678,2520,ʻebrâh,ayin-bet-resh,עבר,rage,igwebu,isiZulu,עברה
 H5679,2520,ʻăbârâh,ayin-bet-resh,עבר,crossing-place,ʻăbârâh,Hebrew,עברה
 H5680,1111,ʻIbrîy,NAME,עברי,Eberite,ʻIbrîy,Hebrew,עברי
 H5681,1111,ʻIbrîy,NAME,עברי,Ibri,ʻIbrîy,Hebrew,עברי
@@ -12071,6 +12135,8 @@ H5782,1526,ʻûwr,ayin-resh,ער,wake,ʻûwr,Hebrew,עור
 H5783,1526,ʻûwr,ayin-resh,ער,bare,ʻûwr,Hebrew,עור
 H5784,1526,ʻûwr,ayin-resh,ער,chaff,ʻûwr,Hebrew,עור
 H5785,1526,ʻôwr,ayin-resh,ער,skin,ʻôwr,Hebrew,עור
+H5785,1526,ʻôwr,ayin-resh,ער,chapped skin,inkwali,isiZulu,עור
+H5785,1526,ʻôwr,ayin-resh,ער,skin,inkwali,isiZulu,עור
 H5786,1526,ʻâwar,ayin-resh,ער,blind,ʻâwar,Hebrew,עור
 H5787,1526,ʻiwwêr,ayin-resh,ער,blind,ʻiwwêr,Hebrew,עור
 H5788,1526,ʻiwwârôwn,ayin-resh,ער,blindness,ʻiwwârôwn,Hebrew,עורון
@@ -12888,10 +12954,14 @@ H6187,2576,ʻêrek,ayin-resh-khaf,ערכ,purchase,reka,Sesotho,ערך
 H6188,2577,ʻârêl,ayin-resh-lamed,ערל,expose,ʻârêl,Hebrew,ערל
 H6189,2577,ʻârêl,ayin-resh-lamed,ערל,exposed,ʻârêl,Hebrew,ערל
 H6190,2577,ʻorlâh,ayin-resh-lamed,ערל,prepuce,ʻorlâh,Hebrew,ערלה
+H6190,2577,ʻorlâh,ayin-resh-lamed,ערל,foreskin,ʻorlâh,Hebrew,ערלה
+H6190,2577,ʻorlâh,ayin-resh-lamed,ערל,chapped skin,inkwali,isiZulu,ערלה
+H6190,2577,ʻorlâh,ayin-resh-lamed,ערל,skin,inkwali,isiZulu,ערלה
 H6191,2908,ʻâram,ayin-resh-mah,ערמ,be,ʻâram,Hebrew,ערם
 H6191,2908,ʻâram,ayin-resh-mah,ערמ,beware,ʻâram,Hebrew,ערם
 H6191,2908,ʻâram,ayin-resh-mah,ערמ,crafty,ʻâram,Hebrew,ערם
 H6191,2908,ʻâram,ayin-resh-mah,ערמ,prudent,ʻâram,Hebrew,ערם
+H6191,2908,ʻâram,ayin-resh-mah,ערמ,craft,ʻâram,Hebrew,ערם
 H6191,2908,ʻâram,ayin-resh-mah,ערמ,subtilty,ʻâram,Hebrew,ערם
 H6192,2578,ʻâram,ayin-resh-mah,ערמ,pile,ʻâram,Hebrew,ערם
 H6193,2908,ʻôrem,ayin-resh-mah,ערמ,stratagem,ʻôrem,Hebrew,ערם
@@ -13751,6 +13821,7 @@ H6565,1388,pârar,peh-resh,פר,break,pârar,Hebrew,פרר
 H6565,1388,pârar,peh-resh,פר,break,baa,Asu,פרר
 H6565,1388,pârar,peh-resh,פר,void,pârar,Hebrew,פרר
 H6565,1388,pârar,peh-resh,פר,defeat,pârar,Hebrew,פרר
+H6565,1388,pârar,peh-resh,פר,defeat,palela,Sesotho,פרר
 H6565,1388,pârar,peh-resh,פר,disannul,pârar,Hebrew,פרר
 H6565,1388,pârar,peh-resh,פר,disappoint,pârar,Hebrew,פרר
 H6565,1388,pârar,peh-resh,פר,frustrate,pârar,Hebrew,פרר
@@ -13763,6 +13834,8 @@ H6565,1388,pârar,peh-resh,פר,corpse,milaambo,Kinyamwezi,פרר
 H6565,1388,pârar,peh-resh,פר,corpse,mulaambo,Bukusu,פרר
 H6565,1388,pârar,peh-resh,פר,cleaned,pârar,Hebrew,פרר
 H6565,1388,pârar,peh-resh,פר,dissolved,pârar,Hebrew,פרר
+H6565,1388,pârar,peh-resh,פר,frustrate,pârar,Hebrew,פרר
+H6565,1388,pârar,peh-resh,פר,frustrate,palela,Sesotho,פרר
 H6565,1388,pârar,peh-resh,פר,divide,pârar,Hebrew,פרר
 H6566,2640,pâras,peh-resh-sin,פרס,break,pâras,Hebrew,פרש
 H6567,2644,pârâsh,peh-resh-shin,פרש,separate,pârâsh,Hebrew,פרש
@@ -14599,6 +14672,11 @@ H6965,1427,qûwm,qupha-mah,קמ,rise up,qumah,isiZulu,קום
 H6965,1427,qûwm,qupha-mah,קמ,leap,gxuma,isiZulu,קום
 H6965,1427,qûwm,qupha-mah,קמ,jump,gxuma,isiZulu,קום
 H6965,1427,qûwm,qupha-mah,קמ,jump,cumi (G2891),Greek,קום
+H6965,1427,qûwm,qupha-mah,קמ,rise,qûwm,Hebrew,קום
+H6965,1427,qûwm,qupha-mah,קמ,stand,qûwm,Hebrew,קום
+H6965,1427,qûwm,qupha-mah,קמ,rise up,phakama,isiZulu,קום
+H6965,1427,qûwm,qupha-mah,קמ,stand up,phakama,isiZulu,קום
+H6965,1427,qûwm,qupha-mah,קמ,rise,phakama,isiZulu,קום
 H6966,1427,qûwm,qupha-mah,קמ,"stand,rise",qûwm,Hebrew,קום
 H6967,1427,qôwmâh,qupha-mah,קמ,arise,qhuma,isiZulu,קומה
 H6967,1427,qôwmâh,qupha-mah,קמ,height,koma,Kikongo,קומה
@@ -16385,6 +16463,16 @@ H7814,2472,sᵉchôwq,sin-kgeta-qupha,סחק,laughter,setshego,Sesotho,שחוק
 H7815,2829,shᵉchôwr,shin-kgeta-resh,שחר,dinginess,shᵉchôwr,Hebrew,שחור
 H7816,1468,shᵉchûwth,shin-kgeta,שח,pit,shᵉchûwth,Hebrew,שחות
 H7817,1468,shâchach,shin-kgeta,שח,sink,shâchach,Hebrew,שחח
+H7817,1468,shâchach,shin-kgeta,שח,bow,shâchach,Hebrew,שחח
+H7817,1468,shâchach,shin-kgeta,שח,cast,shâchach,Hebrew,שחח
+H7817,1468,shâchach,shin-kgeta,שח,bring,shâchach,Hebrew,שחח
+H7817,1468,shâchach,shin-kgeta,שח,low,shâchach,Hebrew,שחח
+H7817,1468,shâchach,shin-kgeta,שח,down,shâchach,Hebrew,שחח
+H7817,1468,shâchach,shin-kgeta,שח,bend,shâchach,Hebrew,שחח
+H7817,1468,shâchach,shin-kgeta,שח,couch,shâchach,Hebrew,שחח
+H7817,1468,shâchach,shin-kgeta,שח,humble,shâchach,Hebrew,שחח
+H7817,1468,shâchach,shin-kgeta,שח,stoop,shâchach,Hebrew,שחח
+H7817,1468,shâchach,shin-kgeta,שח,bend,guqa,isiZulu,שחח
 H7818,2470,sâchaṭ,sin-kgeta-thete,סחט,tread out,sâchaṭ,Hebrew,שחט
 H7819,2823,shâchaṭ,shin-kgeta-bet,שחב,slaughter,shâchaṭ,Hebrew,שחט
 H7819,2823,shâchaṭ,shin-kgeta-bet,שחב,kill,shâchaṭ,Hebrew,שחט
@@ -16970,6 +17058,10 @@ H8191,1476,shaʻshuaʻ,shin-ayin,שע,enjoyment,shaʻshuaʻ,Hebrew,שעשע
 H8191,1476,shaʻshuaʻ,shin-ayin,שע,pleasant,shaʻshuaʻ,Hebrew,שעשע
 H8191,1476,shaʻshuaʻ,shin-ayin,שע,delight,shaʻshuaʻ,Hebrew,שעשע
 H8192,1477,shâphâh,shin-peh,שפ,a tip sticks out,gcepa,isiXhosa,שפה
+H8192,1477,shâphâh,shin-peh,שפ,high,shâphâh,Hebrew,שפה
+H8192,1477,shâphâh,shin-peh,שפ,stick out,shâphâh,Hebrew,שפה
+H8192,1477,shâphâh,shin-peh,שפ,small in height (opposite),fisha,isiZulu,שפה
+H8192,1477,shâphâh,shin-peh,שפ,low,fishane,isiZulu,שפה
 H8193,1339,sâphâh,sin-peh,ספ,lip,sâphâh,Hebrew,שפה
 H8194,1477,shâphâh,shin-peh,שפ,cheese,shâphâh,Hebrew,שפה
 H8195,1111,Shᵉphôw,NAME,שפו,Shepho,Shᵉphôw,Hebrew,שפו
@@ -17823,3 +17915,8 @@ H3365,1434,yâqar,qupha-resh,קר,prized to buy,zora,Asu,
 H3365,1434,yâqar,qupha-resh,קר,prized to buy,yura,Rumanyo,
 H8570,1301,tᵉnûwbâh,nunu-bet,נב,fruit,tᵉnûwbâh,Hebrew,תנובה
 H8570,1301,tᵉnûwbâh,nunu-bet,נב,fruit,dinyoba,NSesotho,תנובה
+H8393,1024,tᵉbûwʼâh,bet-aleph,בא,harvest,buna,NSesotho,תבואה
+H8393,1024,tᵉbûwʼâh,bet-aleph,בא,harvest,umvuno,isiZulu,תבואה
+H8393,1024,tᵉbûwʼâh,bet-aleph,בא,harvest,isivuno,isiZulu,תבואה
+H8393,1024,tᵉbûwʼâh,bet-aleph,בא,harvest,okuvuniweyo,isiZulu,תבואה
+H2085,1141,zâg,zayin-gimel,זג,skin of a fruit,ikhasi,isiZulu,זג
