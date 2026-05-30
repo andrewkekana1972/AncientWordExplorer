@@ -11,9 +11,6 @@ from anthropic import Anthropic, APIStatusError
 
 app = Flask(__name__, static_folder='.')
 
-def norm_ref(r):
-    return r.lower().strip()
-
 # ── Load full dictionary from GitHub ─────────────────────────────────────────
 GITHUB_CSV_URL = os.environ.get(
     'BANTU_CSV_URL',
@@ -26,10 +23,6 @@ def load_dictionary(url):
         req = urllib.request.Request(url, headers={'User-Agent': 'AncientWordExplorer/1.0'})
         with urllib.request.urlopen(req, timeout=30) as r:
             raw = r.read().decode('utf-8')
-            print("\n=== RAW DEBUG ===")
-            print("Lines:", len(raw.splitlines()))
-            print("First line:", raw.splitlines()[0][:200])
-            print("=================\n")
 
         # Build two lookups:
         # FULL_DICT: H-number -> {transliteration, hebrew_chars, meanings, bantu}
@@ -77,20 +70,10 @@ def load_dictionary(url):
                     full_dict[hnum]['bantu'].append(entry)
                     bantu_db[hnum].append(entry)
 
-                print('Loaded {} H-numbers ({} with Bantu matches)'.format(
-                len(full_dict), sum(1 for v in full_dict.values() if v['bantu'])))
-
         print('Loaded {} H-numbers ({} with Bantu matches)'.format(
             len(full_dict), sum(1 for v in full_dict.values() if v['bantu'])))
-
-        print("\n=== DICTIONARY DEBUG ===")
-        print("FULL_DICT size:", len(full_dict))
-        print("H3584 exists:", "H3584" in full_dict)
-        if "H3584" in full_dict:
-            print("H3584 sample:", full_dict["H3584"])
-        print("========================\n")
-
         return full_dict, bantu_db
+
     except Exception as e:
         print('ERROR loading dictionary:', e)
         return {}, {}
@@ -119,19 +102,6 @@ def load_bible_cache(url):
         return {}
 
 CACHE.update(load_bible_cache(BIBLE_CACHE_URL))
-
-print("\n=== CACHE DEBUG ===")
-print("Cache size:", len(CACHE))
-
-def norm_ref(r):
-    return r.lower().strip()
-
-key = norm_ref("Deuteronomy 33:29")
-
-print("Normalized key:", key)
-print("Exists in cache:", key in CACHE)
-
-print("===================\n")
 
 # ── KJV verse lookup ──────────────────────────────────────────────────────────
 KJV = {
@@ -181,8 +151,9 @@ VERIFIED_STRONGS = {
 }
 
 def lookup_verse(reference):
-    key = norm_ref(reference)
-    return KJV.get(key)
+    key = reference.lower().strip()
+    if key in KJV:
+        return KJV[key]
     abbrev = {
         'gen': 'genesis', 'exo': 'exodus', 'ex': 'exodus',
         'deut': 'deuteronomy', 'deu': 'deuteronomy', 'dt': 'deuteronomy',
@@ -195,7 +166,7 @@ def lookup_verse(reference):
             expanded = full + key[len(short):]
             if expanded in KJV:
                 return KJV[expanded]
-    return None
+    return ''
 
 def correct_strongs(result, verse_key):
     verified = VERIFIED_STRONGS.get(verse_key.lower().strip(), {})
@@ -236,46 +207,43 @@ def enrich_from_dictionary(result):
     return result
 
 # ── Claude prompt — ONLY asks for H-numbers and letter meanings ───────────────
-PROMPT = """
-You are assisting with comparative lexical exploration.
+PROMPT = """You are a scholar of ancient Hebrew and the Ancient Hebrew Lexicon of the Bible by Jeff Benner.
 
-IMPORTANT RULES:
-- Do not invent Strong’s numbers.
-- Do not substitute similar Hebrew roots.
-- Only use Hebrew roots explicitly supported by established lexical tradition or supplied lexical data.
-- If uncertain, return:
-  "NO VERIFIED MATCH"
-- Distinguish clearly between:
-  1. Verified lexical correspondence
-  2. AI interpretive suggestion
+Analyse this Bible verse: "{verse}"
+KJV text: "{verse_text}"
 
-Verse: {verse}
+Your task:
+1. Analyse all meaningful Hebrew words represented in this verse, not just selected keywords
+2. For each word provide the correct Strong's H-number
+3. Only use Hebrew roots and Strong’s numbers explicitly provided in the supplied lexical data.
+4. Do not invent, infer, substitute, or approximate Strong’s numbers outside the provided list.
+5. If no exact match exists, state:"NO VERIFIED LEXICAL MATCH FOUND."
+6. For each word break it into constituent Hebrew letters with their ancient pictographic meanings from Jeff Benner's Ancient Hebrew Lexicon
+7. Provide a composite meaning from the letter pictographs
+8. Exclude duplicate repetitions of the same Strong's number unless the meaning differs in context
 
-Text:
-{verse_text}
+You do NOT need to provide the Hebrew characters, transliteration or English meaning - those come from our dictionary.
+Return ONLY raw JSON, no markdown:
+{{"verses":[{{"reference":"{verse}","text":"{verse_text}","words":[{{"strongs":"H0000","hebrew_letters":[{{"letter":"Name","hebrew_char":"char","ancient_meaning":"Benner pictograph meaning"}}],"composite_meaning":"combined pictographic meaning"}}]}}]}}"""
 
-{{
-  "verses": [
-    {{
-      "reference": "{verse}",
-      "text": "COMPLETE KJV TEXT",
-      "words": [
-        {{
-          "strongs": "H0000",
-          "hebrew_letters": [
-            {{
-              "letter": "Name",
-              "hebrew_char": "char",
-              "ancient_meaning": "Benner pictograph meaning"
-            }}
-          ],
-          "composite_meaning": "combined pictographic meaning"
-        }}
-      ]
-    }}
-  ]
-}}
-"""
+PROMPT_NO_TEXT = """You are a scholar of ancient Hebrew and the Ancient Hebrew Lexicon of the Bible by Jeff Benner.
+
+Analyse this Bible verse: "{verse}"
+Provide the complete KJV text.
+
+Your task:
+1. Analyse all meaningful Hebrew words represented in this verse, not just selected keywords
+2. For each word provide the correct Strong's H-number
+3. Only use Hebrew roots and Strong’s numbers explicitly provided in the supplied lexical data.
+4. Do not invent, infer, substitute, or approximate Strong’s numbers outside the provided list.
+5. If no exact match exists, state:"NO VERIFIED LEXICAL MATCH FOUND."
+6. For each word break it into constituent Hebrew letters with their ancient pictographic meanings from Jeff Benner's Ancient Hebrew Lexicon
+7. Provide a composite meaning from the letter pictographs
+8. Exclude duplicate repetitions of the same Strong's number unless the meaning differs in context
+
+
+Return ONLY raw JSON, no markdown:
+{{"verses":[{{"reference":"{verse}","text":"COMPLETE KJV TEXT","words":[{{"strongs":"H0000","hebrew_letters":[{{"letter":"Name","hebrew_char":"char","ancient_meaning":"Benner pictograph meaning"}}],"composite_meaning":"combined pictographic meaning"}}]}}]}}"""
 
 
 def api_call(messages, max_tokens=3000):
@@ -351,7 +319,7 @@ def prewarm_cache():
             'Isaiah 53:5', 'Psalm 91:1',
         ]
         for verse in popular:
-            key = norm_ref(verse)
+            key = verse.lower().strip()
             if key not in CACHE:
                 try:
                     print('Pre-warming:', verse)
