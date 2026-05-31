@@ -906,7 +906,8 @@ H552,1290,ʼumnâm,mah-nunu,מנ,really?,ʼumnâm,Hebrew,אמנם
 H553,1294,ʼâmats,mah-tsade,מצ,be alert,ʼâmats,Hebrew,אמץ
 H553,1294,ʼâmats,mah-tsade,מצ,strengthen,ʼâmats,Hebrew,אמץ
 H553,1294,ʼâmats,mah-tsade,מצ,strengthen,matla,Sesotho,אמץ
-H553,1294,ʼâmats,mah-tsade,מצ,strengthen,amandla,isiZulu,אמץ
+H553,1294,ʼâmats,mah-tsade,מצ,strength,matla,Sesotho,אמץ
+H553,1294,ʼâmats,mah-tsade,מצ,strength,amandla,isiZulu,אמץ
 H553,1294,ʼâmats,mah-tsade,מצ,strengthen,amaka,Bemba,אמץ
 H553,1294,ʼâmats,mah-tsade,מצ,courage,ʼâmats,Hebrew,אמץ
 H553,1294,ʼâmats,mah-tsade,מצ,strong,ʼâmats,Hebrew,אמץ
@@ -5866,6 +5867,10 @@ H2838,2219,châshuq,kgeta-shin-qupha,חשק,attached,châshuq,Hebrew,חשק
 H2839,2219,chishshuq,kgeta-shin-qupha,חשק,conjoined,chishshuq,Hebrew,חשק
 H2840,2220,chishshur,kgeta-shin-resh,חשר,combined,chishshur,Hebrew,חשר
 H2841,2220,chashrâh,kgeta-shin-resh,חשר,combination,chashrâh,Hebrew,חשרה
+H2841,2220,chashrâh,kgeta-shin-resh,חשר,gathering,chashrâh,Hebrew,חשרה
+H2841,2220,chashrâh,kgeta-shin-resh,חשר,gather,chashrâh,Hebrew,חשרה
+H2841,2220,chashrâh,kgeta-shin-resh,חשר,gather,qcosha,isiXhosa,חשרה
+H2841,2220,chashrâh,kgeta-shin-resh,חשר,gather,qokelela,isiXhosa,חשרה
 H2842,1435,châshash,qupha-shin,קש,grass,châshash,Hebrew,חשש
 H2842,1435,châshash,qupha-shin,קש,chaff,châshash,Hebrew,חשש
 H2843,1111,Chushâthîy,NAME,חשתי,Chushathite,Chushâthîy,Hebrew,חשתי
@@ -9695,6 +9700,9 @@ H4672,1294,mâtsâʼ,mah-tsade,מצ,receive,mâtsâʼ,Hebrew,מצא
 H4672,1294,mâtsâʼ,mah-tsade,מצ,suffice,mâtsâʼ,Hebrew,מצא
 H4673,1393,matstsâb,tsade-bet,צב,spot,matstsâb,Hebrew,מצב
 H4673,1393,matstsâb,tsade-bet,צב,garrison,matstsâb,Hebrew,מצב
+H4673,1393,matstsâb,tsade-bet,צב,garrison,mabotha,Sesotho,מצב
+H4673,1393,matstsâb,tsade-bet,צב,forces,mabotha,Sesotho,מצב
+H4673,1393,matstsâb,tsade-bet,צב,armies,mabotha,Sesotho,מצב
 H4673,1393,matstsâb,tsade-bet,צב,stationed,matstsâb,Hebrew,מצב
 H4673,1393,matstsâb,tsade-bet,צב,stood,matstsâb,Hebrew,מצב
 H4674,2426,mutstsâb,nunu-tsade-bet,נצב,station,mutstsâb,Hebrew,מצב
@@ -10023,6 +10031,14 @@ H4830,1453,mirʻîyth,resh-ayin,רע,flock,mirʻîyth,Hebrew,מרעית
 H4830,1453,mirʻîyth,resh-ayin,רע,pasture,mirʻîyth,Hebrew,מרעית
 H4831,1111,Marʻălâh,NAME,מרעלה,Maralah,Marʻălâh,Hebrew,מרעלה
 H4832,1453,marpêʼ,resh-ayin,רע,curative,marpêʼ,Hebrew,מרפא
+H4832,1453,marpêʼ,resh-ayin,רע,cure,marpêʼ,Hebrew,מרפא
+H4832,1453,marpêʼ,resh-ayin,רע,healing,marpêʼ,Hebrew,מרפא
+H4832,1453,marpêʼ,resh-ayin,רע,healing the body,marapo,Sesotho,מרפא
+H4832,1453,marpêʼ,resh-ayin,רע,sound,marpêʼ,Hebrew,מרפא
+H4832,1453,marpêʼ,resh-ayin,רע,wholesome,marpêʼ,Hebrew,מרפא
+H4832,1453,marpêʼ,resh-ayin,רע,yielding,marpêʼ,Hebrew,מרפא
+H4832,1453,marpêʼ,resh-ayin,רע,yielding strap,marapa,Sesotho,מרפא
+H4832,1453,marpêʼ,resh-ayin,רע,straps,marapa,Sesotho,מרפא
 H4833,2786,mirpâs,resh-peh-sin,רפס,muddled water,mirpâs,Hebrew,מרפש
 H4834,2355,mârats,mah-resh-tsade,מרצ,press,mârats,Hebrew,מרץ
 H4834,2355,mârats,mah-resh-tsade,מרצ,grievious,mârats,Hebrew,מרץ
@@ -13887,17 +13903,19 @@ H6596,1390,pôth,peh-tau,פת,dig a hole,fata,Sesotho,פת
 H6596,1390,pôth,peh-tau,פת,hide,pata,Sesotho,פת
 H6596,1390,pôth,peh-tau,פת,secret,pata,Sesotho,פת
 H6597,2652,pithʼôwm,peh-tau-ayin,פתע,instantly,pithʼôwm,Hebrew,פתאום
-H6601,1390,pâthâh,peh-tau,פת,allure,pota,Sesotho,פתה
-H6601,1390,pâthâh,peh-tau,פת,around,pota,Sesotho,פתה
+H6601,1390,pâthâh,peh-tau,פת,allure,pota,Hebrew,פתה
+H6601,1390,pâthâh,peh-tau,פת,around,pota,Hebrew,פתה
 H6601,1390,pâthâh,peh-tau,פת,deceive,pota ka morago,Sesotho,פתה
-H6601,1390,pâthâh,peh-tau,פת,hide intentions,pata,Sesotho,פתה
-H6601,1390,pâthâh,peh-tau,פת,easily deceived,pota,Sesotho,פתה
-H6601,1390,pâthâh,peh-tau,פת,enlarge,pota,Sesotho,פתה
-H6601,1390,pâthâh,peh-tau,פת,enticed,pota,Sesotho,פתה
-H6601,1390,pâthâh,peh-tau,פת,flatter,pota,Sesotho,פתה
-H6601,1390,pâthâh,peh-tau,פת,rape,beta,Sesotho,פתה
-H6601,1390,pâthâh,peh-tau,פת,seduce,pota,Sesotho,פתה
+H6601,1390,pâthâh,peh-tau,פת,around,mapota,Sesotho,פתה
+H6601,1390,pâthâh,peh-tau,פת,hide intentions,pata,Hebrew,פתה
+H6601,1390,pâthâh,peh-tau,פת,easily deceived,pota,Hebrew,פתה
+H6601,1390,pâthâh,peh-tau,פת,enlarge,pota,Hebrew,פתה
+H6601,1390,pâthâh,peh-tau,פת,enticed,pota,Hebrew,פתה
+H6601,1390,pâthâh,peh-tau,פת,flatter,pota,Hebrew,פתה
+H6601,1390,pâthâh,peh-tau,פת,rape,beta,Hebrew,פתה
+H6601,1390,pâthâh,peh-tau,פת,seduce,pota,Hebrew,פתה
 H6601,1390,pâthâh,peh-tau,פת,insert in a hole,peita,Sesotho,פתה
+H6601,1390,pâthâh,peh-tau,פת,twist,potoka,Sesotho,פתה
 H6602,1111,Pᵉthûwʼêl,NAME,פתואל,Pethuel,Pᵉthûwʼêl,Hebrew,פתואל
 H6603,2649,pittûwach,peh-tau-kgeta,פתח,sculpture,pittûwach,Hebrew,פתוח
 H6603,2649,pittûwach,peh-tau-kgeta,פתח,engraving,pittûwach,Hebrew,פתוח
@@ -14872,6 +14890,7 @@ H7086,2719,qᵉʻârâh,qupha-ayin-resh,קער,bowl,qᵉʻârâh,Hebrew,קערה
 H7087,1431,qâphâʼ,qupha-peh,קפ,shrink,qâphâʼ,Hebrew,קפא
 H7088,2720,qâphad,qupha-peh-dalet,קפד,contract,qâphad,Hebrew,קפד
 H7089,2720,qᵉphâdâh,qupha-peh-dalet,קפד,shrinking,qᵉphâdâh,Hebrew,קפדה
+H7089,2720,qᵉphâdâh,qupha-peh-dalet,קפד,shrinking,go gopa,NSesotho,קפדה
 H7090,2720,qippôwd,qupha-peh-dalet,קפד,bittern,qippôwd,Hebrew,קפוד
 H7091,2721,qippôwz,qupha-peh-zayin,קפז,spring,qippôwz,Hebrew,קפוז
 H7092,2722,qâphats,qupha-peh-tsade,קפצ,draw,qâphats,Hebrew,קפץ
@@ -15773,6 +15792,8 @@ H7497,1454,râphâʼ,resh-peh,רפ,giant,râphâʼ,Hebrew,רפא
 H7498,1111,Râphâʼ,NAME,רפא,Rapha,Râphâʼ,Hebrew,רפא
 H7499,1454,rᵉphuʼâh,resh-peh,רפ,medicament,rᵉphuʼâh,Hebrew,רפאה
 H7499,1454,rᵉphuʼâh,resh-peh,רפ,medicine,rᵉphuʼâh,Hebrew,רפאה
+H7499,1454,rᵉphuʼâh,resh-peh,רפ,healing,rᵉphuʼâh,Hebrew,רפאה
+H7499,1454,rᵉphuʼâh,resh-peh,רפ,healing,marapo,Sesotho,רפאה
 H7500,1454,riphʼûwth,resh-peh,רפ,cure,riphʼûwth,Hebrew,רפאות
 H7500,1454,riphʼûwth,resh-peh,רפ,healthy,riphʼûwth,Hebrew,רפאות
 H7501,1111,Rᵉphâʼêl,NAME,רפאל,Rephael,Rᵉphâʼêl,Hebrew,רפאל
