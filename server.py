@@ -213,14 +213,23 @@ Analyse this Bible verse: "{verse}"
 KJV text: "{verse_text}"
 
 Your task:
-1. Analyse all meaningful Hebrew words represented in this verse, not just selected keywords
-2. For each word provide the correct Strong's H-number
-3. Only use Hebrew roots and Strong’s numbers explicitly provided in the supplied lexical data.
-4. Do not invent, infer, substitute, or approximate Strong’s numbers outside the provided list.
-5. If no exact match exists, state:"NO VERIFIED LEXICAL MATCH FOUND."
-6. For each word break it into constituent Hebrew letters with their ancient pictographic meanings from Jeff Benner's Ancient Hebrew Lexicon
-7. Provide a composite meaning from the letter pictographs
-8. Exclude duplicate repetitions of the same Strong's number unless the meaning differs in context
+Identify every distinct Hebrew lexical item represented in the verse.
+
+Do not select only important words.
+Do not summarize.
+Do not paraphrase English phrases into multiple Hebrew words.
+
+Where a single Strong's number corresponds to an English phrase, return the single Strong's number and the full English phrase.
+
+Example:
+English phrase: "found liars"
+Strong's: H3584
+
+Do not split this into separate entries such as:
+H4672 = found
+H3576 = liars
+
+unless the supplied lexical data explicitly shows separate Hebrew lexical items.
 
 You do NOT need to provide the Hebrew characters, transliteration or English meaning - those come from our dictionary.
 Return ONLY raw JSON, no markdown:
@@ -232,14 +241,23 @@ Analyse this Bible verse: "{verse}"
 Provide the complete KJV text.
 
 Your task:
-1. Analyse all meaningful Hebrew words represented in this verse, not just selected keywords
-2. For each word provide the correct Strong's H-number
-3. Only use Hebrew roots and Strong’s numbers explicitly provided in the supplied lexical data.
-4. Do not invent, infer, substitute, or approximate Strong’s numbers outside the provided list.
-5. If no exact match exists, state:"NO VERIFIED LEXICAL MATCH FOUND."
-6. For each word break it into constituent Hebrew letters with their ancient pictographic meanings from Jeff Benner's Ancient Hebrew Lexicon
-7. Provide a composite meaning from the letter pictographs
-8. Exclude duplicate repetitions of the same Strong's number unless the meaning differs in context
+Identify every distinct Hebrew lexical item represented in the verse.
+
+Do not select only important words.
+Do not summarize.
+Do not paraphrase English phrases into multiple Hebrew words.
+
+Where a single Strong's number corresponds to an English phrase, return the single Strong's number and the full English phrase.
+
+Example:
+English phrase: "found liars"
+Strong's: H3584
+
+Do not split this into separate entries such as:
+H4672 = found
+H3576 = liars
+
+unless the supplied lexical data explicitly shows separate Hebrew lexical items.
 
 
 Return ONLY raw JSON, no markdown:
