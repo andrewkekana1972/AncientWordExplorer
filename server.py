@@ -282,7 +282,7 @@ Return ONLY raw JSON, no markdown:
 }
 
 
-PROMPT_NO_TEXT = """You are a scholar of ancient Hebrew and the Ancient Hebrew Lexicon of the Bible by Jeff Benner.
+```python id="nrm91n" PROMPT_NO_TEXT = """You are a scholar of ancient Hebrew and the Ancient Hebrew Lexicon of the Bible by Jeff Benner.
 
 Your task:
 Do NOT identify lexical items from the verse text.
@@ -351,7 +351,8 @@ Return ONLY raw JSON, no markdown:
 ]
 }
 ]
-}
+}"""
+'''
 
 
 def api_call(messages, max_tokens=3000):
