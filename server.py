@@ -213,55 +213,124 @@ Analyse this Bible verse: "{verse}"
 KJV text: "{verse_text}"
 
 Your task:
-Identify every distinct Hebrew lexical item represented in the verse.
+Identify the Hebrew lexical items represented in the verse using ONLY the supplied lexical data.
+
+The supplied lexical data is the sole authority for lexical segmentation.
+
+Do NOT infer, reconstruct, expand, subdivide, or guess Hebrew lexical items from the English verse text.
+
+Identify every distinct lexical item explicitly represented in the supplied lexical data.
 
 Do not select only important words.
 Do not summarize.
-Do not paraphrase English phrases into multiple Hebrew words.
+Do not paraphrase.
 
-Where a single Strong's number corresponds to an English phrase, return the single Strong's number and the full English phrase.
+If the supplied lexical data maps an English phrase to a single Strong's number, treat the entire phrase as ONE lexical item.
 
 Example:
-English phrase: "found liars"
-Strong's: H3584
 
-Do not split this into separate entries such as:
+Supplied lexical data:
+H3584 = "found liars"
+
+Correct:
+H3584
+
+Incorrect:
 H4672 = found
 H3576 = liars
 
-unless the supplied lexical data explicitly shows separate Hebrew lexical items.
+Never split an English phrase into multiple lexical items unless the supplied lexical data explicitly provides separate Strong's numbers for those items.
 
-You do NOT need to provide the Hebrew characters, transliteration or English meaning - those come from our dictionary.
+A Strong's number present in the supplied lexical data always takes precedence over the wording of the English verse.
+
+Return only the lexical items explicitly represented in the supplied lexical data.
+
+You do NOT need to provide Hebrew words, transliterations, or English meanings.
+
 Return ONLY raw JSON, no markdown:
-{{"verses":[{{"reference":"{verse}","text":"{verse_text}","words":[{{"strongs":"H0000","hebrew_letters":[{{"letter":"Name","hebrew_char":"char","ancient_meaning":"Benner pictograph meaning"}}],"composite_meaning":"combined pictographic meaning"}}]}}]}}"""
+
+{
+"verses": [
+{
+"reference": "{verse}",
+"text": "{verse_text}",
+"words": [
+{
+"strongs": "H0000",
+"hebrew_letters": [
+{
+"letter": "Name",
+"hebrew_char": "char",
+"ancient_meaning": "Benner pictograph meaning"
+}
+],
+"composite_meaning": "combined pictographic meaning"
+}
+]
+}
+]
+}
+
 
 PROMPT_NO_TEXT = """You are a scholar of ancient Hebrew and the Ancient Hebrew Lexicon of the Bible by Jeff Benner.
 
-Analyse this Bible verse: "{verse}"
-Provide the complete KJV text.
+Your task is to identify the Hebrew lexical items represented in the verse using ONLY the supplied lexical data.
 
-Your task:
-Identify every distinct Hebrew lexical item represented in the verse.
+The supplied lexical data is the sole authority for lexical segmentation.
+
+Do NOT infer, reconstruct, expand, subdivide, or guess Hebrew lexical items from the English verse text.
+
+Identify every distinct lexical item explicitly represented in the supplied lexical data.
 
 Do not select only important words.
 Do not summarize.
-Do not paraphrase English phrases into multiple Hebrew words.
+Do not paraphrase.
 
-Where a single Strong's number corresponds to an English phrase, return the single Strong's number and the full English phrase.
+If the supplied lexical data maps an English phrase to a single Strong's number, treat the entire phrase as ONE lexical item.
 
 Example:
-English phrase: "found liars"
-Strong's: H3584
 
-Do not split this into separate entries such as:
+Supplied lexical data:
+H3584 = "found liars"
+
+Correct:
+H3584
+
+Incorrect:
 H4672 = found
 H3576 = liars
 
-unless the supplied lexical data explicitly shows separate Hebrew lexical items.
+Never split an English phrase into multiple lexical items unless the supplied lexical data explicitly provides separate Strong's numbers for those items.
 
+A Strong's number present in the supplied lexical data always takes precedence over the wording of the English verse.
+
+Return only the lexical items explicitly represented in the supplied lexical data.
+
+You do NOT need to provide Hebrew words, transliterations, or English meanings.
 
 Return ONLY raw JSON, no markdown:
-{{"verses":[{{"reference":"{verse}","text":"COMPLETE KJV TEXT","words":[{{"strongs":"H0000","hebrew_letters":[{{"letter":"Name","hebrew_char":"char","ancient_meaning":"Benner pictograph meaning"}}],"composite_meaning":"combined pictographic meaning"}}]}}]}}"""
+
+{
+"verses": [
+{
+"reference": "{verse}",
+"text": "{verse_text}",
+"words": [
+{
+"strongs": "H0000",
+"hebrew_letters": [
+{
+"letter": "Name",
+"hebrew_char": "char",
+"ancient_meaning": "Benner pictograph meaning"
+}
+],
+"composite_meaning": "combined pictographic meaning"
+}
+]
+}
+]
+}
 
 
 def api_call(messages, max_tokens=3000):
