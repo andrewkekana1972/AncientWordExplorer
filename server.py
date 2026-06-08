@@ -213,7 +213,17 @@ Analyse this Bible verse: "{verse}"
 KJV text: "{verse_text}"
 
 Your task:
-Identify the Hebrew lexical items represented in the verse using ONLY the supplied lexical data.
+Do NOT identify lexical items from the verse text.
+
+The lexical items have already been identified in the supplied lexical data.
+
+Your task is only to return the Strong's numbers that appear in the supplied lexical data for this verse.
+
+Never generate a Strong's number that is not present in the supplied lexical data.
+
+Never replace a supplied Strong's number with smaller constituent Strong's numbers.
+
+Treat each supplied Strong's number as an indivisible lexical unit.
 
 The supplied lexical data is the sole authority for lexical segmentation.
 
@@ -274,7 +284,18 @@ Return ONLY raw JSON, no markdown:
 
 PROMPT_NO_TEXT = """You are a scholar of ancient Hebrew and the Ancient Hebrew Lexicon of the Bible by Jeff Benner.
 
-Your task is to identify the Hebrew lexical items represented in the verse using ONLY the supplied lexical data.
+Your task:
+Do NOT identify lexical items from the verse text.
+
+The lexical items have already been identified in the supplied lexical data.
+
+Your task is only to return the Strong's numbers that appear in the supplied lexical data for this verse.
+
+Never generate a Strong's number that is not present in the supplied lexical data.
+
+Never replace a supplied Strong's number with smaller constituent Strong's numbers.
+
+Treat each supplied Strong's number as an indivisible lexical unit.
 
 The supplied lexical data is the sole authority for lexical segmentation.
 
