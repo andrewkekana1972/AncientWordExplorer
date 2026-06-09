@@ -236,7 +236,8 @@ Return ONLY raw JSON, no markdown:
       "text":"{verse_text}",
       "words":[
         {{
-          "strongs":"H0000"
+          "strongs":"H0000",
+          "composite_meaning":"combined pictographic meaning"
         }}
       ]
     }}
@@ -266,7 +267,8 @@ Return ONLY raw JSON, no markdown:
       "text":"{verse_text}",
       "words":[
         {{
-          "strongs":"H0000"
+          "strongs":"H0000",
+          "composite_meaning":"combined pictographic meaning"
         }}
       ]
     }}
