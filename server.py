@@ -212,19 +212,30 @@ PROMPT = """You are a scholar of ancient Hebrew and the Ancient Hebrew Lexicon o
 Analyse this Bible verse: "{verse}"
 KJV text: "{verse_text}"
 
-Your task is to identify the Hebrew lexical items represented in the verse using ONLY the supplied lexical data.
+Your task:
+1. Identify the Hebrew lexical items represented in the verse using ONLY the supplied lexical data.
 
-The supplied lexical data is the sole authority for lexical segmentation.
+2. The supplied lexical data is the sole authority for lexical segmentation.
 
-Do NOT infer, reconstruct, expand, subdivide, or guess Hebrew lexical items from the English verse text.
+3. Do NOT infer, reconstruct, expand, subdivide, or guess Hebrew lexical items from the English verse text.
 
-Identify every distinct lexical item explicitly represented in the supplied lexical data.
+4. Do NOT identify lexical items from the verse text.
 
-Do not select only important words.
-Do not summarize.
-Do not paraphrase.
+5. The lexical items have already been identified in the supplied lexical data.
 
-If the supplied lexical data maps an English phrase to a single Strong's number, treat the entire phrase as ONE lexical item.
+6. Your task is only to return the Strong's numbers that appear in the supplied lexical data for this verse.
+
+7. Never generate a Strong's number that is not present in the supplied lexical data.
+
+8. Never replace a supplied Strong's number with smaller constituent Strong's numbers.
+
+9. Treat each supplied Strong's number as an indivisible lexical unit.
+
+10. Do not select only important words.
+12.  not summarize.
+13. Do not paraphrase.
+
+14. If the supplied lexical data maps an English phrase to a single Strong's number, treat the entire phrase as ONE lexical item.
 
 Example:
 
@@ -237,38 +248,19 @@ H3584
 Incorrect:
 H4672 = found
 H3576 = liars
+15. Never split an English phrase into multiple lexical items unless the supplied lexical data explicitly provides separate Strong's numbers for those items.
 
-Never split an English phrase into multiple lexical items unless the supplied lexical data explicitly provides separate Strong's numbers for those items.
+16. A Strong's number present in the supplied lexical data always takes precedence over the wording of the English verse.
 
-A Strong's number present in the supplied lexical data always takes precedence over the wording of the English verse.
+17. Return only the lexical items explicitly represented in the supplied lexical data.
 
-Return only the lexical items explicitly represented in the supplied lexical data.
-
-You do NOT need to provide Hebrew words, transliterations, or English meanings.
+18. You do NOT need to provide Hebrew words, transliterations, or English meanings.
+19. You do NOT need to provide the Hebrew characters, transliteration or English meaning - those come from our dictionary.
 
 Return ONLY raw JSON, no markdown:
+{{"verses":[{{"reference":"{verse}","text":"{verse_text}","words":[{{"strongs":"H0000","hebrew_letters":[{{"letter":"Name","hebrew_char":"char","ancient_meaning":"Benner pictograph meaning"}}],"composite_meaning":"combined pictographic meaning"}}]}}]}}"""
+Return ONLY raw JSON, no markdown:
 
-{
-"verses": [
-{
-"reference": "{verse}",
-"text": "{verse_text}",
-"words": [
-{
-"strongs": "H0000",
-"hebrew_letters": [
-{
-"letter": "Name",
-"hebrew_char": "char",
-"ancient_meaning": "Benner pictograph meaning"
-}
-],
-"composite_meaning": "combined pictographic meaning"
-}
-]
-}
-]
-}
 PROMPT_NO_TEXT = """You are a scholar of ancient Hebrew and the Ancient Hebrew Lexicon of the Bible by Jeff Benner.
 
 Analyse this Bible verse: "{verse}"
