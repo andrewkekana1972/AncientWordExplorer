@@ -215,8 +215,6 @@ KJV text: "{verse_text}"
 Your task:
 1. Identify the Hebrew lexical items represented in the verse using ONLY the supplied lexical data.
 
-2. The supplied lexical data is the sole authority for lexical segmentation.
-
 3. Do NOT infer, reconstruct, expand, subdivide, or guess Hebrew lexical items from the English verse text.
 
 4. Do NOT identify lexical items from the verse text.
@@ -251,8 +249,6 @@ H3576 = liars
 15. Never split an English phrase into multiple lexical items unless the supplied lexical data explicitly provides separate Strong's numbers for those items.
 
 16. A Strong's number present in the supplied lexical data always takes precedence over the wording of the English verse.
-
-17. Return only the lexical items explicitly represented in the supplied lexical data.
 
 18. You do NOT need to provide Hebrew words, transliterations, or English meanings.
 19. You do NOT need to provide the Hebrew characters, transliteration or English meaning - those come from our dictionary.
