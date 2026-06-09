@@ -258,28 +258,15 @@ H3576 = liars
 19. You do NOT need to provide the Hebrew characters, transliteration or English meaning - those come from our dictionary.
 
 Return ONLY raw JSON, no markdown:
+{{"verses":[
+    {{"reference":"{verse}","text":"{verse_text}","words":[
+        {{"strongs":"H0000","hebrew_letters":[
+            {{"letter":"Name","hebrew_char":"char","ancient_meaning":"Benner pictograph meaning"}}
+        ],"composite_meaning":"combined pictographic meaning"}}
+    ]}}
+]
+}}"""
 
-{
-  "verses": [
-    {
-      "reference": "{verse}",
-      "text": "{verse_text}",
-      "words": [
-        {
-          "strongs": "H0000",
-          "hebrew_letters": [
-            {
-              "letter": "Name",
-              "hebrew_char": "char",
-              "ancient_meaning": "Benner pictograph meaning"
-            }
-          ],
-          "composite_meaning": "combined pictographic meaning"
-        }
-      ]
-    }
-  ]
-}
 PROMPT_NO_TEXT = """You are a scholar of ancient Hebrew and the Ancient Hebrew Lexicon of the Bible by Jeff Benner.
 
 Analyse this Bible verse: "{verse}"
