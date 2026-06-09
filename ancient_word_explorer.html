@@ -804,7 +804,13 @@ function doSearch(){
   startLoader();
 
   fetch('https://bible-api.com/'+encodeURIComponent(q)+'?translation=kjv')
-    .then(function(r){ return r.json(); })
+    .then(function(r){
+        return r.text();
+    })
+    .then(function(txt){
+        console.log("RAW RESPONSE:", txt);
+        return JSON.parse(txt);
+    })
     .then(function(bible){
       var vt=(bible&&bible.text)?bible.text.replace(/\s+/g,' ').trim():'';
       return fetch('/analyse',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({verse:q,verse_text:vt})});
