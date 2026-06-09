@@ -213,45 +213,28 @@ Analyse this Bible verse: "{verse}"
 KJV text: "{verse_text}"
 
 Your task:
-1. Identify the Hebrew lexical items represented in the verse using ONLY the supplied lexical data.
+1. Identify every distinct Hebrew lexical item represented in the verse.
 
-3. Do NOT infer, reconstruct, expand, subdivide, or guess Hebrew lexical items from the English verse text.
+2. Do not select only important words.
 
-4. Do NOT identify lexical items from the verse text.
+3. Do not summarize.
 
-5. The lexical items have already been identified in the supplied lexical data.
+4. Do not paraphrase English phrases into multiple Hebrew words.
 
-6. Your task is only to return the Strong's numbers that appear in the supplied lexical data for this verse.
-
-7. Never generate a Strong's number that is not present in the supplied lexical data.
-
-8. Never replace a supplied Strong's number with smaller constituent Strong's numbers.
-
-9. Treat each supplied Strong's number as an indivisible lexical unit.
-
-10. Do not select only important words.
-12. Do not summarize.
-13. Do not paraphrase.
-
-14. If the supplied lexical data maps an English phrase to a single Strong's number, treat the entire phrase as ONE lexical item.
+5. Where a single Strong's number represents an English phrase, return the single Strong's number.
 
 Example:
 
-Supplied lexical data:
-H3584 = "found liars"
-
 Correct:
-H3584
+H3584 = found liars
 
 Incorrect:
 H4672 = found
 H3576 = liars
-15. Never split an English phrase into multiple lexical items unless the supplied lexical data explicitly provides separate Strong's numbers for those items.
 
-16. A Strong's number present in the supplied lexical data always takes precedence over the wording of the English verse.
+6. Do not split English phrases unless the Hebrew lexical item is genuinely composed of separate Strong's numbers.
 
-18. You do NOT need to provide Hebrew words, transliterations, or English meanings.
-19. You do NOT need to provide the Hebrew characters, transliteration or English meaning - those come from our dictionary.
+7. Return only raw JSON.
 
 Return ONLY raw JSON, no markdown:
 {{"verses":[
