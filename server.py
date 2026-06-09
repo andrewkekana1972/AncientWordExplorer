@@ -336,6 +336,7 @@ def call_claude(verse, verse_text=''):
         prompt = PROMPT.format(verse=verse, verse_text=safe)
     else:
         prompt = PROMPT_NO_TEXT.format(verse=verse)
+    print(prompt)    
     raw = api_call([{'role': 'user', 'content': prompt}])
     raw = api_call([{'role': 'user', 'content': prompt}])
 
