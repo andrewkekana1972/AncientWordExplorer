@@ -210,18 +210,14 @@ def enrich_from_dictionary(result):
 PROMPT = """You are a scholar of ancient Hebrew and the Ancient Hebrew Lexicon of the Bible by Jeff Benner.
 
 Analyse this Bible verse: "{verse}"
+
 KJV text: "{verse_text}"
 
-Your task:
-1. Identify every distinct Hebrew lexical item represented in the verse.
+Identify every distinct Hebrew lexical item represented in the verse.
 
-2. Analyse all meaningful Hebrew words represented in the verse, not just selected keywords.
+Analyse all meaningful Hebrew words, not just selected keywords.
 
-3. Do not summarize.
-
-4. Do not omit words.
-
-5. Where a single Strong's number corresponds to an English phrase, return that single Strong's number.
+Where a single Strong's number corresponds to an English phrase, return the single Strong's number.
 
 Example:
 
@@ -231,10 +227,6 @@ H3584 = found liars
 Incorrect:
 H4672 = found
 H3576 = liars
-
-6. Do not split English phrases unless the Hebrew lexical item is genuinely composed of separate Strong's numbers.
-
-7. Return only raw JSON.
 
 Return ONLY raw JSON, no markdown:
 {{"verses":[
