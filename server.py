@@ -215,13 +215,13 @@ KJV text: "{verse_text}"
 Your task:
 1. Identify every distinct Hebrew lexical item represented in the verse.
 
-2. Do not select only important words.
+2. Analyse all meaningful Hebrew words represented in the verse, not just selected keywords.
 
 3. Do not summarize.
 
-4. Do not paraphrase English phrases into multiple Hebrew words.
+4. Do not omit words.
 
-5. Where a single Strong's number represents an English phrase, return the single Strong's number.
+5. Where a single Strong's number corresponds to an English phrase, return that single Strong's number.
 
 Example:
 
