@@ -213,107 +213,37 @@ Analyse this Bible verse: "{verse}"
 KJV text: "{verse_text}"
 
 Your task:
-Do NOT identify lexical items from the verse text.
+1. Analyse all meaningful Hebrew words represented in this verse, not just selected keywords
+2. For each word provide the correct Strong's H-number
+3. Only use Hebrew roots and Strong’s numbers explicitly provided in the supplied lexical data.
+4. Do not invent, infer, substitute, or approximate Strong’s numbers outside the provided list.
+5. If no exact match exists, state:"NO VERIFIED LEXICAL MATCH FOUND."
+6. For each word break it into constituent Hebrew letters with their ancient pictographic meanings from Jeff Benner's Ancient Hebrew Lexicon
+7. Provide a composite meaning from the letter pictographs
+8. Exclude duplicate repetitions of the same Strong's number unless the meaning differs in context
 
-The lexical items have already been identified in the supplied lexical data.
-
-Your task is only to return the Strong's numbers that appear in the supplied lexical data for this verse.
-
-Never generate a Strong's number that is not present in the supplied lexical data.
-
-Never replace a supplied Strong's number with smaller constituent Strong's numbers.
-
-Treat each supplied Strong's number as an indivisible lexical unit.
-
-The supplied lexical data is the sole authority for lexical segmentation.
-
-Do NOT infer, reconstruct, expand, subdivide, or guess Hebrew lexical items from the English verse text.
-
-Identify every distinct lexical item explicitly represented in the supplied lexical data.
-
-Do not select only important words.
-Do not summarize.
-Do not paraphrase.
-
-If the supplied lexical data maps an English phrase to a single Strong's number, treat the entire phrase as ONE lexical item.
-
-Example:
-
-Supplied lexical data:
-H3584 = "found liars"
-
-Correct:
-H3584
-
-Incorrect:
-H4672 = found
-H3576 = liars
-
-Never split an English phrase into multiple lexical items unless the supplied lexical data explicitly provides separate Strong's numbers for those items.
-
-A Strong's number present in the supplied lexical data always takes precedence over the wording of the English verse.
-
-Return only the lexical items explicitly represented in the supplied lexical data.
-
-You do NOT need to provide Hebrew words, transliterations, or English meanings.
-
+You do NOT need to provide the Hebrew characters, transliteration or English meaning - those come from our dictionary.
 Return ONLY raw JSON, no markdown:
+{{"verses":[{{"reference":"{verse}","text":"{verse_text}","words":[{{"strongs":"H0000","hebrew_letters":[{{"letter":"Name","hebrew_char":"char","ancient_meaning":"Benner pictograph meaning"}}],"composite_meaning":"combined pictographic meaning"}}]}}]}}"""
 
-{
-"verses": [
-{
-"reference": "{verse}",
-"text": "{verse_text}",
-"words": [
-{
-"strongs": "H0000",
-"hebrew_letters": [
-{
-"letter": "Name",
-"hebrew_char": "char",
-"ancient_meaning": "Benner pictograph meaning"
-}
-],
-"composite_meaning": "combined pictographic meaning"
-}
-]
-}
-]
-}
-
-PROMPT_NO_TEXT = """You are a scholar of ancient Hebrew  the Ancient Hebrew Lexicon of the Bible by Jeff Benner.
+PROMPT_NO_TEXT = """You are a scholar of ancient Hebrew and the Ancient Hebrew Lexicon of the Bible by Jeff Benner.
 
 Analyse this Bible verse: "{verse}"
 Provide the complete KJV text.
 
 Your task:
-1. Analyse all meaningful Hebrew words represented ithis verse,  just selected keywords
-
+1. Analyse all meaningful Hebrew words represented in this verse, not just selected keywords
+2. For each word provide the correct Strong's H-number
+3. Only use Hebrew roots and Strong’s numbers explicitly provided in the supplied lexical data.
+4. Do not invent, infer, substitute, or approximate Strong’s numbers outside the provided list.
+5. If no exact match exists, state:"NO VERIFIED LEXICAL MATCH FOUND."
+6. For each word break it into constituent Hebrew letters with their ancient pictographic meanings from Jeff Benner's Ancient Hebrew Lexicon
+7. Provide a composite meaning from the letter pictographs
+8. Exclude duplicate repetitions of the same Strong's number unless the meaning differs in context
 
 
 Return ONLY raw JSON, no markdown:
-
-{
-"verses": [
-{
-"reference": "{verse}",
-"text": "{verse_text}",
-"words": [
-{
-"strongs": "H0000",
-"hebrew_letters": [
-{
-"letter": "Name",
-"hebrew_char": "char",
-"ancient_meaning": "Benner pictograph meaning"
-}
-],
-"composite_meaning": "combined pictographic meaning"
-}
-]
-}
-]
-}
+{{"verses":[{{"reference":"{verse}","text":"COMPLETE KJV TEXT","words":[{{"strongs":"H0000","hebrew_letters":[{{"letter":"Name","hebrew_char":"char","ancient_meaning":"Benner pictograph meaning"}}],"composite_meaning":"combined pictographic meaning"}}]}}]}}"""
 
 
 def api_call(messages, max_tokens=3000):
