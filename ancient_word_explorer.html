@@ -115,11 +115,11 @@ td:nth-child(2), th:nth-child(2){
     white-space:nowrap;
 }
 
-td:nth-child(4), th:nth-child(4){
+td:nth-child(3), th:nth-child(3){
     width:35%;
 }
 
-td:nth-child(5), th:nth-child(5){
+td:nth-child(4), th:nth-child(4){
     width:35%;
 }
 th{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.1em;color:#6a5a3a;text-transform:uppercase;text-align:left;padding:7px 10px;border-bottom:1px solid #2e2214}
@@ -1155,10 +1155,7 @@ function renderResults(data){
       strongs = strongs ? strongs.replace(/^H0+/, 'H') : '';
       return '<tr>'
         +'<td>'+buildHebrewCell(w,hits)+'</td>'
-        +'<td><span class="hroot">'+(w.hebrew_root||'')+'</span>'
-        +(strongs?'<a class="hstrongs" href="https://www.blueletterbible.org/lexicon/'+strongs+'/kjv/wlc/0-1/" target="_blank">'+strongs+' &#x2197;</a>':'')
-        +'<br><small style="color:#5a4a2a;font-size:11px">'+(w.english_meaning||'')+'</small></td>'
-        +'<td>'+ltags+'</td>'
+        +'<td><span class="hroot">'+(w.hebrew_root||'')+'</span> ... </td>'
         +'<td>'+lmeans+'<span class="composite">'+(w.composite_meaning||'')+'</span></td>'
         +'<td>'+buildDictCell(hits)+'</td>'
         +'</tr>';
@@ -1171,8 +1168,9 @@ function renderResults(data){
       +'<div class="vsec">\u05D0 Hebrew Roots &amp; Bantu Dictionary Matches</div>'
       +'<div class="tbl-wrap"><table>'
       +'<thead><tr>'
-      +'<th>Hebrew Words and Meanings</th>'
+      +'<th>Hebrew Words and Translations</th>'
       +'<th>Root / Strong\'s</th>'
+      +'<th>Hebrew Concept</th>'
       +'<th>Your Bantu Dictionary</th>'
       +'</tr></thead>'
       +'<tbody>'+rows+'</tbody></table></div>';
