@@ -232,7 +232,7 @@ Your task:
 9. Treat each supplied Strong's number as an indivisible lexical unit.
 
 10. Do not select only important words.
-12.  not summarize.
+12. Do not summarize.
 13. Do not paraphrase.
 
 14. If the supplied lexical data maps an English phrase to a single Strong's number, treat the entire phrase as ONE lexical item.
@@ -259,7 +259,6 @@ H3576 = liars
 
 Return ONLY raw JSON, no markdown:
 {{"verses":[{{"reference":"{verse}","text":"{verse_text}","words":[{{"strongs":"H0000","hebrew_letters":[{{"letter":"Name","hebrew_char":"char","ancient_meaning":"Benner pictograph meaning"}}],"composite_meaning":"combined pictographic meaning"}}]}}]}}"""
-Return ONLY raw JSON, no markdown:
 
 PROMPT_NO_TEXT = """You are a scholar of ancient Hebrew and the Ancient Hebrew Lexicon of the Bible by Jeff Benner.
 
