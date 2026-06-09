@@ -275,7 +275,6 @@ Your task:
 7. Provide a composite meaning from the letter pictographs
 8. Exclude duplicate repetitions of the same Strong's number unless the meaning differs in context
 
-
 Return ONLY raw JSON, no markdown:
 {{"verses":[{{"reference":"{verse}","text":"COMPLETE KJV TEXT","words":[{{"strongs":"H0000","hebrew_letters":[{{"letter":"Name","hebrew_char":"char","ancient_meaning":"Benner pictograph meaning"}}],"composite_meaning":"combined pictographic meaning"}}]}}]}}"""
 
