@@ -485,21 +485,17 @@ fetch('/bantu-db')
   .catch(function(e){ console.error('Bantu DB error:', e); });
 
 fetch('/full-dict')
-  .then(function(r){
-    return r.json();
-  })
+  .then(r => r.json())
   .then(function(data){
-    console.log("FULL_DICT loaded:", data);
 
-    FULL_DICT = data || {};
+      FULL_DICT = data || {};
 
-    console.log("Keys:", Object.keys(FULL_DICT).length);
+      var num_languages = countLanguages(FULL_DICT);
 
-    var num_languages = countLanguages(FULL_DICT);
+      document.getElementById("langCount").textContent = num_languages;
 
-    console.log("Languages:", num_languages);
+      console.log("Languages:", num_languages);
 
-    document.getElementById("langCount").textContent = num_languages;
   });
   console.log("FULL_DICT sample:", Object.values(FULL_DICT)[0]);
   console.log(Object.values(FULL_DICT)[0]);
@@ -533,14 +529,22 @@ async function loadSharedStudy(shareId) {
 function countLanguages(dict){
     var languages = new Set();
 
-    Object.values(dict || {}).forEach(function(row){
-        if (!row || !row.dialect) return;
+    Object.values(dict).forEach(function(entry){
 
-        var lang = row.dialect.trim().toLowerCase();
+        if (!entry.bantu) return;
 
-        if (lang && lang !== "hebrew"){
-            languages.add(lang);
-        }
+        entry.bantu.forEach(function(item){
+
+            if (!item.language) return;
+
+            var lang = item.language.trim();
+
+            if (lang.toLowerCase() !== "hebrew"){
+                languages.add(lang);
+            }
+
+        });
+
     });
 
     return languages.size;
