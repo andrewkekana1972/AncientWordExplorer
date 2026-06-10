@@ -489,15 +489,18 @@ fetch('/full-dict')
     return r.json();
   })
   .then(function(data){
+    console.log("FULL_DICT loaded:", data);
+
     FULL_DICT = data || {};
+
+    console.log("Keys:", Object.keys(FULL_DICT).length);
 
     var num_languages = countLanguages(FULL_DICT);
 
     console.log("Languages:", num_languages);
 
-    document.getElementById("langCount").innerText = num_languages;
-    
-  });  
+    document.getElementById("langCount").textContent = num_languages;
+  });
   console.log("FULL_DICT sample:", Object.values(FULL_DICT)[0]);
 // ── Check for shared study in URL ─────────────────────────────────────────────
 window.addEventListener('load', function() {
