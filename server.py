@@ -400,16 +400,20 @@ def analyse():
     body = request.json or {}
     verse = body.get('verse', '').strip()
     verse_text_from_client = body.get('verse_text', '').strip()
+
     if not verse:
         return jsonify({'error': 'No verse provided'}), 400
 
     cache_key = verse.lower().strip()
-    #if cache_key in CACHE:
-    #    print('Cache hit:', verse)
-    #    return jsonify(CACHE[cache_key])
+
+    # Check cache BEFORE doing any work
+    if cache_key in CACHE:
+        print("Cache hit:", verse)
+        return jsonify(CACHE[cache_key])
 
     try:
         verse_text = lookup_verse(verse) or verse_text_from_client
+
         result = call_claude(verse, verse_text)
 
         # Force accurate verse text
@@ -422,11 +426,18 @@ def analyse():
         # Enrich with accurate data from YOUR dictionary
         result = enrich_from_dictionary(result)
 
+        # Store result in cache
         CACHE[cache_key] = result
+
+        print("Cached:", verse)
+
         return jsonify(result)
 
     except urllib.error.HTTPError as e:
-        return jsonify({'error': 'API error ' + str(e.code) + ': ' + e.read().decode()}), 500
+        return jsonify({
+            'error': 'API error ' + str(e.code) + ': ' + e.read().decode()
+        }), 500
+
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
